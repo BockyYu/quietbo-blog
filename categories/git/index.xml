@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Quietbo</title><link>https://quietbo.com/categories/git/</link><description>Recent content in Git on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Thu, 30 Dec 2021 02:50:39 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/git/index.xml" rel="self" type="application/rss+xml"/><item><title>[Git] Push Branch (增/刪)</title><link>https://quietbo.com/2021/12/30/git-push-branch-%E5%A2%9E-%E5%88%AA/</link><pubDate>Thu, 30 Dec 2021 02:50:39 +0000</pubDate><guid>https://quietbo.com/2021/12/30/git-push-branch-%E5%A2%9E-%E5%88%AA/</guid><description>&lt;p&gt;push featrue/#9999999分支上ogigin&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Quietbo</title><link>https://bockyyu.github.io/quietbo-blog/categories/git/</link><description>Recent content in Git on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Thu, 30 Dec 2021 02:50:39 +0000</lastBuildDate><atom:link href="https://bockyyu.github.io/quietbo-blog/categories/git/index.xml" rel="self" type="application/rss+xml"/><item><title>[Git] Push Branch (增/刪)</title><link>https://bockyyu.github.io/quietbo-blog/2021/12/30/git-push-branch-%E5%A2%9E-%E5%88%AA/</link><pubDate>Thu, 30 Dec 2021 02:50:39 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2021/12/30/git-push-branch-%E5%A2%9E-%E5%88%AA/</guid><description>&lt;p&gt;push featrue/#9999999分支上ogigin&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;在GitLab上會看到剛才Push上去的branch&lt;br&gt;
 &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;移除branch&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Mac] 安裝Jenkins，並與github連接</title><link>https://quietbo.com/2021/12/12/mac-%E5%AE%89%E8%A3%9Djenkins%E4%B8%A6%E8%88%87github%E9%80%A3%E6%8E%A5/</link><pubDate>Sat, 11 Dec 2021 18:24:19 +0000</pubDate><guid>https://quietbo.com/2021/12/12/mac-%E5%AE%89%E8%A3%9Djenkins%E4%B8%A6%E8%88%87github%E9%80%A3%E6%8E%A5/</guid><description>&lt;p&gt;使用Mac M1&lt;br&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Mac] 安裝Jenkins，並與github連接</title><link>https://bockyyu.github.io/quietbo-blog/2021/12/12/mac-%E5%AE%89%E8%A3%9Djenkins%E4%B8%A6%E8%88%87github%E9%80%A3%E6%8E%A5/</link><pubDate>Sat, 11 Dec 2021 18:24:19 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2021/12/12/mac-%E5%AE%89%E8%A3%9Djenkins%E4%B8%A6%E8%88%87github%E9%80%A3%E6%8E%A5/</guid><description>&lt;p&gt;使用Mac M1&lt;br&gt;
 Jenkins 2.319.1&lt;/p&gt;
 &lt;h1 id="安裝jenkins"&gt;安裝Jenkins
 &lt;/h1&gt;&lt;p&gt;到&lt;a class="link" href="https://www.jenkins.io/" target="_blank" rel="noopener"
@@ -38,7 +38,7 @@ Jenkins 2.319.1&lt;/p&gt;
 &lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;h2 id="jenkins檢查github"&gt;Jenkins檢查github
 &lt;/h2&gt;&lt;p&gt;不建議使用，基本上應該是github上有push新的程式後，jenkins再進行建置。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Git]使用Meld作為git diff tool</title><link>https://quietbo.com/2021/10/18/%E4%BD%BF%E7%94%A8meld%E4%BD%9C%E7%82%BAgit-diff-tool%E5%92%8Cmergetool/</link><pubDate>Mon, 18 Oct 2021 10:52:18 +0000</pubDate><guid>https://quietbo.com/2021/10/18/%E4%BD%BF%E7%94%A8meld%E4%BD%9C%E7%82%BAgit-diff-tool%E5%92%8Cmergetool/</guid><description>&lt;p&gt;環境:ubuntu20.04&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Git]使用Meld作為git diff tool</title><link>https://bockyyu.github.io/quietbo-blog/2021/10/18/%E4%BD%BF%E7%94%A8meld%E4%BD%9C%E7%82%BAgit-diff-tool%E5%92%8Cmergetool/</link><pubDate>Mon, 18 Oct 2021 10:52:18 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2021/10/18/%E4%BD%BF%E7%94%A8meld%E4%BD%9C%E7%82%BAgit-diff-tool%E5%92%8Cmergetool/</guid><description>&lt;p&gt;環境:ubuntu20.04&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
@@ -56,7 +56,7 @@ Jenkins 2.319.1&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[Git]提交空資料夾</title><link>https://quietbo.com/2021/05/11/git%E6%8F%90%E4%BA%A4%E7%A9%BA%E8%B3%87%E6%96%99%E5%A4%BE/</link><pubDate>Mon, 10 May 2021 16:26:30 +0000</pubDate><guid>https://quietbo.com/2021/05/11/git%E6%8F%90%E4%BA%A4%E7%A9%BA%E8%B3%87%E6%96%99%E5%A4%BE/</guid><description>&lt;p&gt;Git最初的設計是不支援空資料夾，最初的設計是用來索引文件的，所以Git 只關注文件，不關心目錄，因此在建立空資料夾時，資料夾內一定要有文件，下方提供了我自己使用，且網路上較多人使用的方式，但目的都是要建立空的資料夾。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[Git]提交空資料夾</title><link>https://bockyyu.github.io/quietbo-blog/2021/05/11/git%E6%8F%90%E4%BA%A4%E7%A9%BA%E8%B3%87%E6%96%99%E5%A4%BE/</link><pubDate>Mon, 10 May 2021 16:26:30 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2021/05/11/git%E6%8F%90%E4%BA%A4%E7%A9%BA%E8%B3%87%E6%96%99%E5%A4%BE/</guid><description>&lt;p&gt;Git最初的設計是不支援空資料夾，最初的設計是用來索引文件的，所以Git 只關注文件，不關心目錄，因此在建立空資料夾時，資料夾內一定要有文件，下方提供了我自己使用，且網路上較多人使用的方式，但目的都是要建立空的資料夾。&lt;/p&gt;
 &lt;h2 id="解決方式"&gt;解決方式：
 &lt;/h2&gt;&lt;p&gt;在空目錄下創建空文件：.gitkeep&lt;br&gt;
 這約定俗成的空目錄識別文件名，不具有什麼功用。&lt;br&gt;
@@ -73,7 +73,7 @@ Git裡面並且沒有被更改過的檔案。&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;接下來就像平常一樣的流程：&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Git] 常用指令</title><link>https://quietbo.com/2021/03/02/git-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link><pubDate>Tue, 02 Mar 2021 07:22:36 +0000</pubDate><guid>https://quietbo.com/2021/03/02/git-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid><description>&lt;p&gt;git checkout # 有兩個功能，一個是branch, HASH 間的切換，另外一個則是工作區檔案的還原。&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Git] 常用指令</title><link>https://bockyyu.github.io/quietbo-blog/2021/03/02/git-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link><pubDate>Tue, 02 Mar 2021 07:22:36 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2021/03/02/git-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid><description>&lt;p&gt;git checkout # 有兩個功能，一個是branch, HASH 間的切換，另外一個則是工作區檔案的還原。&lt;br&gt;
 git checkout . # 還原所有檔案&lt;br&gt;
 git checkout app.html # 還原一個檔案&lt;/p&gt;
 &lt;p&gt;git remote update # 檢查遠端是否有更新&lt;br&gt;
@@ -99,7 +99,7 @@ git remote -v # 查詢遠端pull、push路徑&lt;/p&gt;
 git tag -a test_tag -m “” # 新增一個名為test_tag的tag&lt;br&gt;
 git push origin test_tag # push 指定標籤 (多個標籤以空白隔開)&lt;/p&gt;
 &lt;p&gt;git push origin –tag # push 所有 tag&lt;/p&gt;
-&lt;p&gt;git push –tags # push 所有 tag&lt;/p&gt;</description></item><item><title>[Git] 安裝及簡單設定</title><link>https://quietbo.com/2021/02/23/git/</link><pubDate>Tue, 23 Feb 2021 10:43:38 +0000</pubDate><guid>https://quietbo.com/2021/02/23/git/</guid><description>&lt;p&gt;Linux 安裝git&lt;/p&gt;
+&lt;p&gt;git push –tags # push 所有 tag&lt;/p&gt;</description></item><item><title>[Git] 安裝及簡單設定</title><link>https://bockyyu.github.io/quietbo-blog/2021/02/23/git/</link><pubDate>Tue, 23 Feb 2021 10:43:38 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2021/02/23/git/</guid><description>&lt;p&gt;Linux 安裝git&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;驗證git是否已安裝成功&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;

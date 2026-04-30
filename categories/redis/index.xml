@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on Quietbo</title><link>https://quietbo.com/categories/redis/</link><description>Recent content in Redis on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 10 Nov 2024 18:19:00 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>[Redis] 監控</title><link>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</link><pubDate>Sun, 10 Nov 2024 18:19:00 +0000</pubDate><guid>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</guid><description>&lt;!-- raw HTML omitted --&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on Quietbo</title><link>https://bockyyu.github.io/quietbo-blog/categories/redis/</link><description>Recent content in Redis on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 10 Nov 2024 18:19:00 +0000</lastBuildDate><atom:link href="https://bockyyu.github.io/quietbo-blog/categories/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>[Redis] 監控</title><link>https://bockyyu.github.io/quietbo-blog/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</link><pubDate>Sun, 10 Nov 2024 18:19:00 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</guid><description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;參考文章:&lt;a class="link" href="https://www.cnblogs.com/jingzh/p/18414550#13-redis%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener"
  &gt;Redis維之監控指標，效能監控，監控方式，反應慢分析&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;先連接redis（本機默認端口6379）&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
@@ -24,7 +24,7 @@ Keypass：鍵值對統計數量信息&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;h2 id="info-stats-wp-block-heading"&gt;INFO STATS {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;
 &lt;/h2&gt;&lt;p&gt;Redis的統計數據，主要包含命令執行、連接、網路等統計信息。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[Redis] HyperLogLog(HLL) – 活躍量統計</title><link>https://quietbo.com/2023/12/06/redis-hyperlogloghll-%E6%B4%BB%E8%BA%8D%E9%87%8F%E7%B5%B1%E8%A8%88/</link><pubDate>Wed, 06 Dec 2023 11:00:45 +0000</pubDate><guid>https://quietbo.com/2023/12/06/redis-hyperlogloghll-%E6%B4%BB%E8%BA%8D%E9%87%8F%E7%B5%B1%E8%A8%88/</guid><description>&lt;p&gt;統計一個APP的日活量（DAU）和月活量（MAU）&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[Redis] HyperLogLog(HLL) – 活躍量統計</title><link>https://bockyyu.github.io/quietbo-blog/2023/12/06/redis-hyperlogloghll-%E6%B4%BB%E8%BA%8D%E9%87%8F%E7%B5%B1%E8%A8%88/</link><pubDate>Wed, 06 Dec 2023 11:00:45 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2023/12/06/redis-hyperlogloghll-%E6%B4%BB%E8%BA%8D%E9%87%8F%E7%B5%B1%E8%A8%88/</guid><description>&lt;p&gt;統計一個APP的日活量（DAU）和月活量（MAU）&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;本次範例使用Docker內建立一個Redis容器&lt;br&gt;
 &lt;a class="link" href="https://redis.io/docs/data-types/probabilistic/hyperloglogs/" target="_blank" rel="noopener"
@@ -36,7 +36,7 @@ Keypass：鍵值對統計數量信息&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;以上的操作說明為:&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;第4個操作不會將原本兩表刪除，還是會保留著。&lt;/p&gt;
-&lt;p&gt;如果想要HLL的資料刪除的話，可使用del與TTL時間到達後自行刪除&lt;/p&gt;</description></item><item><title>[Redis] 發佈(publish)&amp;訂閱(subscribe)</title><link>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</link><pubDate>Mon, 14 Feb 2022 10:51:45 +0000</pubDate><guid>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</guid><description>&lt;p&gt;環境:Windows 10&lt;br&gt;
+&lt;p&gt;如果想要HLL的資料刪除的話，可使用del與TTL時間到達後自行刪除&lt;/p&gt;</description></item><item><title>[Redis] 發佈(publish)&amp;訂閱(subscribe)</title><link>https://bockyyu.github.io/quietbo-blog/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</link><pubDate>Mon, 14 Feb 2022 10:51:45 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</guid><description>&lt;p&gt;環境:Windows 10&lt;br&gt;
 Redis: 5.0.7&lt;/p&gt;
 &lt;p&gt;Redis發布訂閱(pub/sub) 是一種消息通信模式：發送者(pub) 發送消息，訂閱者(sub) 接收消息。&lt;/p&gt;
 &lt;h2 id="範例.wp-block-heading"&gt;範例
@@ -58,7 +58,7 @@ Redis: 5.0.7&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://redis.io/topics/pubsub" target="_blank" rel="noopener"
  &gt;Redis文檔&lt;/a&gt;&lt;br&gt;
 &lt;a class="link" href="https://www.runoob.com/redis/redis-pub-sub.html" target="_blank" rel="noopener"
- &gt;Redis 發布訂閱&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[Windows|安裝] Another Redis Desktop Manager</title><link>https://quietbo.com/2022/02/07/windows%E5%AE%89%E8%A3%9D-another-redis-desktop-manager/</link><pubDate>Mon, 07 Feb 2022 10:27:56 +0000</pubDate><guid>https://quietbo.com/2022/02/07/windows%E5%AE%89%E8%A3%9D-another-redis-desktop-manager/</guid><description>&lt;p&gt;環境:windows10&lt;/p&gt;
+ &gt;Redis 發布訂閱&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[Windows|安裝] Another Redis Desktop Manager</title><link>https://bockyyu.github.io/quietbo-blog/2022/02/07/windows%E5%AE%89%E8%A3%9D-another-redis-desktop-manager/</link><pubDate>Mon, 07 Feb 2022 10:27:56 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2022/02/07/windows%E5%AE%89%E8%A3%9D-another-redis-desktop-manager/</guid><description>&lt;p&gt;環境:windows10&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://github.com/qishibo/AnotherRedisDesktopManager" target="_blank" rel="noopener"
  &gt;github網址&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;通過winget來完成:&lt;/p&gt;
@@ -67,7 +67,7 @@ Redis: 5.0.7&lt;/p&gt;
 &lt;p&gt;安裝完成後:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;點選New Connection，填入自己的IP,Port號,密碼等&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Redis] Key命令與五種數據的操作(基本指令)</title><link>https://quietbo.com/2021/09/18/redis-key%E5%91%BD%E4%BB%A4%E8%88%87%E4%BA%94%E7%A8%AE%E6%95%B8%E6%93%9A%E7%9A%84%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4/</link><pubDate>Sat, 18 Sep 2021 15:12:23 +0000</pubDate><guid>https://quietbo.com/2021/09/18/redis-key%E5%91%BD%E4%BB%A4%E8%88%87%E4%BA%94%E7%A8%AE%E6%95%B8%E6%93%9A%E7%9A%84%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4/</guid><description>&lt;p&gt;作者:不一定會持續更新。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Redis] Key命令與五種數據的操作(基本指令)</title><link>https://bockyyu.github.io/quietbo-blog/2021/09/18/redis-key%E5%91%BD%E4%BB%A4%E8%88%87%E4%BA%94%E7%A8%AE%E6%95%B8%E6%93%9A%E7%9A%84%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4/</link><pubDate>Sat, 18 Sep 2021 15:12:23 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2021/09/18/redis-key%E5%91%BD%E4%BB%A4%E8%88%87%E4%BA%94%E7%A8%AE%E6%95%B8%E6%93%9A%E7%9A%84%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4/</guid><description>&lt;p&gt;作者:不一定會持續更新。&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -376,7 +376,7 @@ hsetnx: 如果給定的key已經存在，則不執行該命令，返回0&lt;/p&g
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;注意:&lt;br&gt;
 del是刪除key，hdel才是刪除屬性&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Redis]安裝</title><link>https://quietbo.com/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 08:00:54 +0000</pubDate><guid>https://quietbo.com/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;利用apt套件管理器安裝:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Redis]安裝</title><link>https://bockyyu.github.io/quietbo-blog/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 08:00:54 +0000</pubDate><guid>https://bockyyu.github.io/quietbo-blog/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;利用apt套件管理器安裝:&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;檢查redis服務狀態:&lt;br&gt;
