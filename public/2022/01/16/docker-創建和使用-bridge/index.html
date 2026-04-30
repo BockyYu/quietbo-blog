@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="建立一個自訂名稱的 docker network，這邊取名為mybridge:\n查看目前network的訊息，是否有我們建立的mybridge\n">
+<title>[Docker] 創建和使用 bridge</title>
+
+
+<link rel="canonical" href="http://localhost:1313/2022/01/16/docker-%E5%89%B5%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8-bridge/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] 創建和使用 bridge">
+<meta property='og:description' content="建立一個自訂名稱的 docker network，這邊取名為mybridge:\n查看目前network的訊息，是否有我們建立的mybridge\n">
+<meta property='og:url' content='http://localhost:1313/2022/01/16/docker-%E5%89%B5%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8-bridge/'>
+<meta property='og:site_name' content='Quietbo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2022-01-15T18:23:58&#43;00:00'/><meta property='article:modified_time' content='2022-01-15T18:23:58&#43;00:00'/>
+<meta name="twitter:title" content="[Docker] 創建和使用 bridge">
+<meta name="twitter:description" content="建立一個自訂名稱的 docker network，這邊取名為mybridge:\n查看目前network的訊息，是否有我們建立的mybridge\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Quietbo</a></h1>
+            <h2 class="site-description">你的部落格簡介</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>網誌</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>關於</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/categories/dockeramp-docker-compose/" style="background-color: hsl(299, 60%, 84%); color: hsl(299, 60%, 15%);">
+                Docker&amp;amp; Docker-Compose
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2022/01/16/docker-%E5%89%B5%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8-bridge/">[Docker] 創建和使用 bridge</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <footer class="article-meta">
+        
+            <div class="inline-meta">
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published" datetime='2022-01-15T18:23:58Z'>Saturday, January 15, 2022</time>
+                
+
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        1 minute read
+                    </time>
+                
+            </div>
+        
+
+        
+
+        
+    </footer>
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p>建立一個自訂名稱的 docker network，這邊取名為mybridge:</p>
+<!-- raw HTML omitted -->
+<p>查看目前network的訊息，是否有我們建立的mybridge</p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<p>查看mybridge的資訊。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>創建一個容器，指定network在mybridge</p>
+<!-- raw HTML omitted -->
+<p>查看box3的訊息，最下方Networks:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<p>回來查看mybridge，會發現有一個新的容器(box3)資料</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="讓一個容器連接2個網路">讓一個容器連接2個網路
+</h2><p>原本的box1與box2是連接預設的docker0(就是bridge)，而box3是連接mybridge</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>讓box3連接bridge網路，再查看一次box3的網路資訊:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>原本box3只有一個mybridge，新增連接後的Networks出現了bridge的資料。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>進入到box3來查看ip a的狀態，<br>
+eth0屬於mybridge，eth1屬於bridge。<br>
+<!-- raw HTML omitted --></p>
+<h2 id="斷開容器與網絡的連接">斷開容器與網絡的連接
+</h2><p>查看網路相關命令：</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>斷開box3與bridge網絡的連接，並查詢box3</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>結果如下，Networks只剩下mybridge:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>網路圖如下:<br>
+<!-- raw HTML omitted --></p>
+
+</section>
+
+
+    <footer class="article-meta article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/docker/">Docker</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside>
+    <h2 class="section-title">Related content</h2>
+    <div class="subsection-list">
+        <div class="article-list--tile">
+            
+                
+<article class="">
+    <a href="/2022/01/14/docker-docker-bridge-%E7%B6%B2%E8%B7%AF/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Docker] Docker Bridge 網路</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/2022/01/10/docker-data-volume%E7%9A%84%E7%B7%B4%E7%BF%92mysql/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Docker] Data Volume的練習(MySQL)</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%EF%BC%8C%E6%89%BE%E4%B8%8D%E5%88%B0var-lib-docker-volumes-%E5%B7%B2%E8%A7%A3%E6%B1%BA/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Docker] Mac M1 – no such file or directory: /var/lib/docker/volumes ，找不到var/lib/docker/volumes (已解決)</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/2021/09/27/docker-mac-m1-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries%E5%B7%B2%E8%A7%A3%E6%B1%BA/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Docker] Mac M1 – no matching manifest for linux/arm64/v8 in the manifest list entries(已解決)</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/2021/09/13/docker-%E5%AE%89%E8%A3%9D-mac-m1/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Docker] Mac M1 安裝 Docker</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+
+        <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 Quietbo
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.9f49abbfb369d9c2dc399c16a26a5656ad1e148f32355578a0d3e13f6e31d6c1.js" defer></script>
+
+
+    </body>
+</html>

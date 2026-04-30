@@ -1,0 +1,52 @@
+baseURL: "https://quietbo.com/"
+languageCode: "zh-tw"
+hasCJKLanguage: true
+title: "Quietbo"
+theme: "hugo-theme-stack"
+
+params:
+  sidebar:
+    emoji: ""
+    subtitle: "你的部落格簡介"
+  
+  widgets:
+    homepage:
+      - type: search
+      - type: archives
+        params:
+          limit: 5
+      - type: categories
+        params:
+          limit: 10
+      - type: tag-cloud
+        params:
+          limit: 10
+
+  article:
+    readingTime: true
+    toc: true
+
+  colorScheme:
+    toggle: true
+    default: auto
+
+  homepage:
+    imageProcessor: true
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+      params:
+        icon: home
+    - name: 網誌
+      url: /posts/
+      weight: 10
+      params:
+        icon: archives
+    - name: 關於
+      url: /about/
+      weight: 20
+      params:
+        icon: user

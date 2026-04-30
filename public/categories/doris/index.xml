@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Doris on Quietbo</title>
+        <link>http://localhost:1313/categories/doris/</link>
+        <description>Recent content in Doris on Quietbo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Thu, 06 Feb 2025 10:52:03 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/doris/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>[Doris] 本機部署Doris</title>
+            <link>http://localhost:1313/2025/02/06/doris-%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2doris/</link>
+            <pubDate>Thu, 06 Feb 2025 10:52:03 +0000</pubDate>
+            <guid>http://localhost:1313/2025/02/06/doris-%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2doris/</guid>
+            <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;資料結構&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;docker-compose.yml 內容:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;docker-compose.yml儲存後下指令&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;運行成功後進入FE容器中：&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;h2 id=&#34;doris-web-ui-wp-block-heading&#34;&gt;Doris Web UI {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;&#xA;&lt;/h2&gt;&lt;p&gt;打瀏覽器&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;User:root&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;gui-8211-tableplus連線doris-wp-block-heading&#34;&gt;GUI – TablePlus連線Doris {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;&#xA;&lt;/h2&gt;&lt;p&gt;使用TablePlus連線資訊如下：&lt;br&gt;&#xA;選擇MySQL&lt;br&gt;&#xA;Host/IP: 127.0.0.1&lt;br&gt;&#xA;Port:9030&lt;br&gt;&#xA;User:root&lt;br&gt;&#xA;Database:test_db&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;p&gt;設置好後按Test，成功會呈現綠底&lt;br&gt;&#xA;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;</description>
+        </item></channel>
+</rss>

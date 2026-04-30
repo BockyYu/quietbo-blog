@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="我在開發web時使用VSCode，主要是寫前端、Python。(現在要多個C#了)\nVisual Studio是在大學、銀行專案和C++有使用過，這兩個我都有用過一段時間，\n最近發現，有些人把Visual Studio Code 和 Visual Studio誤會成同一個，可能是因為名稱和外型很像，所以會搞混，在這小說明這兩者之間的差異。\n">
+<title>Visual Studio Code 與 Visual Studio</title>
+
+
+<link rel="canonical" href="http://localhost:1313/2021/06/07/visual-studio-code-%E8%88%87-visual-studio/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="Visual Studio Code 與 Visual Studio">
+<meta property='og:description' content="我在開發web時使用VSCode，主要是寫前端、Python。(現在要多個C#了)\nVisual Studio是在大學、銀行專案和C++有使用過，這兩個我都有用過一段時間，\n最近發現，有些人把Visual Studio Code 和 Visual Studio誤會成同一個，可能是因為名稱和外型很像，所以會搞混，在這小說明這兩者之間的差異。\n">
+<meta property='og:url' content='http://localhost:1313/2021/06/07/visual-studio-code-%E8%88%87-visual-studio/'>
+<meta property='og:site_name' content='Quietbo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2021-06-07T15:38:03&#43;00:00'/><meta property='article:modified_time' content='2021-06-07T15:38:03&#43;00:00'/>
+<meta name="twitter:title" content="Visual Studio Code 與 Visual Studio">
+<meta name="twitter:description" content="我在開發web時使用VSCode，主要是寫前端、Python。(現在要多個C#了)\nVisual Studio是在大學、銀行專案和C++有使用過，這兩個我都有用過一段時間，\n最近發現，有些人把Visual Studio Code 和 Visual Studio誤會成同一個，可能是因為名稱和外型很像，所以會搞混，在這小說明這兩者之間的差異。\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Quietbo</a></h1>
+            <h2 class="site-description">你的部落格簡介</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>網誌</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>關於</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/categories/editoridegui/" style="background-color: hsl(187, 60%, 84%); color: hsl(187, 60%, 15%);">
+                Editor;IDE;GUI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2021/06/07/visual-studio-code-%E8%88%87-visual-studio/">Visual Studio Code 與 Visual Studio</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <footer class="article-meta">
+        
+            <div class="inline-meta">
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published" datetime='2021-06-07T15:38:03Z'>Monday, June 7, 2021</time>
+                
+
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        2 minutes read
+                    </time>
+                
+            </div>
+        
+
+        
+
+        
+    </footer>
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p>我在開發web時使用VSCode，主要是寫前端、Python。(現在要多個C#了)<br>
+Visual Studio是在大學、銀行專案和C++有使用過，這兩個我都有用過一段時間，<br>
+最近發現，有些人把Visual Studio Code 和 Visual Studio誤會成同一個，可能是因為名稱和外型很像，所以會搞混，在這小說明這兩者之間的差異。</p>
+<h2 id="visual-studio-code-wp-block-heading">Visual Studio Code {.wp-block-heading}<!-- raw HTML omitted -->
+</h2><p><!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><a class="link" href="https://zh.wikipedia.org/wiki/Visual_Studio_Code"  target="_blank" rel="noopener"
+    >Wiki:Visual Studio Code</a><br>
+下載點:<a class="link" href="https://azure.microsoft.com/zh-tw/products/visual-studio-code/"  target="_blank" rel="noopener"
+    >Visual Studio Code</a><br>
+Editor 編輯器<br>
+輕量化、快速、著重在寫程式碼編輯，<br>
+適用於Windows、MacOS及Linux，性能速度較快、可以各別擴充包且免費。<br>
+<!-- raw HTML omitted --></p>
+<p>事實上，我覺得VSCode不能與Visual Studio比較，能夠比較的對象應該是Sublime、Atom，因為這兩個都是Editor。</p>
+<h2 id="visual-studio-wp-block-heading">Visual Studio {.wp-block-heading}<!-- raw HTML omitted -->
+</h2><p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<p><a class="link" href="https://zh.wikipedia.org/wiki/%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"  target="_blank" rel="noopener"
+    >Wiki:IDE 整合開發環境</a><br>
+<a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_Visual_Studio"  target="_blank" rel="noopener"
+    >Wiki:Visual Studio</a><br>
+下載點:<a class="link" href="https://visualstudio.microsoft.com/zh-hant/"  target="_blank" rel="noopener"
+    >Visual Studio</a></p>
+<p>IDE 可以說是編輯器、編譯、介面設計、測試、佈署的工具…等等，很多在開發時會用到的工具都放在裡面。<br>
+屬於重量級的軟體。</p>
+<p>下載的話是分Community、Professional及Enterprise。除了社區版以外都要付費，在安裝的過程中，套件或工具這些選擇越多，明顯感受到安裝越多時間越久，光是安裝就跟VSCode有明顯的落差。<br>
+<!-- raw HTML omitted --></p>
+<p>小結:</p>
+<p>對我來說Visual Studio Code 與 Visual Studio是不一樣的東西，<br>
+所以並沒有特別覺得哪個較差，只是基於自己習慣和大多數人使用，還是VSCode較多。</p>
+
+</section>
+
+
+    <footer class="article-meta article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+
+        <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 Quietbo
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.9f49abbfb369d9c2dc399c16a26a5656ad1e148f32355578a0d3e13f6e31d6c1.js" defer></script>
+
+
+    </body>
+</html>

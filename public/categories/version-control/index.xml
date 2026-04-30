@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Version Control on Quietbo</title>
+        <link>http://localhost:1313/categories/version-control/</link>
+        <description>Recent content in Version Control on Quietbo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Tue, 02 Mar 2021 07:22:36 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/version-control/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>[Git] 常用指令</title>
+            <link>http://localhost:1313/2021/03/02/git-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link>
+            <pubDate>Tue, 02 Mar 2021 07:22:36 +0000</pubDate>
+            <guid>http://localhost:1313/2021/03/02/git-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid>
+            <description>&lt;p&gt;git checkout # 有兩個功能，一個是branch, HASH 間的切換，另外一個則是工作區檔案的還原。&lt;br&gt;&#xA;git checkout . # 還原所有檔案&lt;br&gt;&#xA;git checkout app.html # 還原一個檔案&lt;/p&gt;&#xA;&lt;p&gt;git remote update # 檢查遠端是否有更新&lt;br&gt;&#xA;git branch # 檢查local分支&lt;br&gt;&#xA;git branch -a # 檢查雲端最新分支&lt;/p&gt;&#xA;&lt;p&gt;git stash # 備份當前的工作區&lt;br&gt;&#xA;git stash save abcd # 將當前修改的檔案暫存起來並命名為abcd&lt;br&gt;&#xA;git stash list # 顯示git內的所有備份，可以利用這個列表來決定從那個地方恢復。&lt;br&gt;&#xA;git stash apply stash@{0} # 把Stash撿回來用&lt;br&gt;&#xA;git stash drop stash@{0} # 從列表裡刪掉暫存的Stash了&lt;br&gt;&#xA;git stash clear # 刪除所有暫存的操作&lt;/p&gt;&#xA;&lt;p&gt;git reset –hard # 回復到最新提交版本&lt;br&gt;&#xA;git reset e1d58ef^ # 拆掉commit的版本&lt;/p&gt;&#xA;&lt;p&gt;git add -u # 加入所有被更動的檔案（包含 modified 及 deleted）&lt;br&gt;&#xA;git log # 查看提交歷史紀錄&lt;/p&gt;&#xA;&lt;p&gt;git pull origin # 從遠端更新&lt;/p&gt;&#xA;&lt;p&gt;git push origin my-tag # push 指定標籤 (多個標籤以空白隔開)&lt;br&gt;&#xA;git push –tags # push 所有 tag&lt;/p&gt;&#xA;&lt;p&gt;git diff # 檢查修改內容&lt;br&gt;&#xA;git remote -v # 查詢遠端pull、push路徑&lt;/p&gt;&#xA;&lt;h2 id=&#34;tag相關&#34;&gt;tag相關&#xA;&lt;/h2&gt;&lt;p&gt;git tag -l # 查詢所有tag名稱&lt;br&gt;&#xA;git tag -a test_tag -m “” # 新增一個名為test_tag的tag&lt;br&gt;&#xA;git push origin test_tag # push 指定標籤 (多個標籤以空白隔開)&lt;/p&gt;&#xA;&lt;p&gt;git push origin –tag # push 所有 tag&lt;/p&gt;&#xA;&lt;p&gt;git push –tags # push 所有 tag&lt;/p&gt;&#xA;</description>
+        </item></channel>
+</rss>

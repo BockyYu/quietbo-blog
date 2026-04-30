@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>草稿(未完成) on Quietbo</title>
+        <link>http://localhost:1313/categories/%E8%8D%89%E7%A8%BF%E6%9C%AA%E5%AE%8C%E6%88%90/</link>
+        <description>Recent content in 草稿(未完成) on Quietbo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language><atom:link href="http://localhost:1313/categories/%E8%8D%89%E7%A8%BF%E6%9C%AA%E5%AE%8C%E6%88%90/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>OSI 七層模型</title>
+            <link>http://localhost:1313/?p=1173/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/?p=1173/</guid>
+            <description>&lt;p&gt;OSI（Open Systems Interconnection）是網路通訊的標準框架，將複雜的通訊過程切分為 7 層，旨在達成模組化、互通性、標準化與易維護的目標&lt;br&gt;&#xA;。&lt;/p&gt;&#xA;&lt;p&gt;OSI 七層模型總覽&lt;br&gt;&#xA;OSI（Open Systems Interconnection）是網路通訊的標準框架，將複雜的通訊過程切分為 7 層，旨在達成模組化、互通性、標準化與易維護的目標&lt;br&gt;&#xA;。&lt;/p&gt;&#xA;&lt;h1 id=&#34;為什麼要分層&#34;&gt;為什麼要分層？&#xA;&lt;/h1&gt;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;</description>
+        </item></channel>
+</rss>

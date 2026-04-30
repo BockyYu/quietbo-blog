@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Mssql on Quietbo</title>
+        <link>http://localhost:1313/tags/mssql/</link>
+        <description>Recent content in Mssql on Quietbo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Thu, 06 Jan 2022 08:33:23 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/mssql/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>[MSSQL] like %%中文不匹配問題(必知)</title>
+            <link>http://localhost:1313/2022/01/06/mssql-like-%E4%B8%AD%E6%96%87%E4%B8%8D%E5%8C%B9%E9%85%8D%E5%95%8F%E9%A1%8C%E5%BF%85%E7%9F%A5/</link>
+            <pubDate>Thu, 06 Jan 2022 08:33:23 +0000</pubDate>
+            <guid>http://localhost:1313/2022/01/06/mssql-like-%E4%B8%AD%E6%96%87%E4%B8%8D%E5%8C%B9%E9%85%8D%E5%95%8F%E9%A1%8C%E5%BF%85%E7%9F%A5/</guid>
+            <description>&lt;p&gt;新手常犯，常忘記的匹配問題。主要是轉碼，需要在like後面添加個N，&lt;br&gt;&#xA;N轉換字符串爲nchar,nvarchar。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;</description>
+        </item></channel>
+</rss>
