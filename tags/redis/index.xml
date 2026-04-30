@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on Quietbo</title><link>https://quietbo.com/tags/redis/</link><description>Recent content in Redis on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 10 Nov 2024 18:19:00 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>[Redis] 監控</title><link>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</link><pubDate>Sun, 10 Nov 2024 18:19:00 +0000</pubDate><guid>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</guid><description>&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;參考文章:&lt;a class="link" href="https://www.cnblogs.com/jingzh/p/18414550#13-redis%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener"
+ &gt;Redis維之監控指標，效能監控，監控方式，反應慢分析&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;先連接redis（本機默認端口6379）&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;如果不使用下方redis-cli的話，就使用bin/redis-cli info | grep mem&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;非交互模式下的指令&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h1 id="info-wp-block-heading"&gt;INFO {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;
+&lt;/h1&gt;&lt;p&gt;server:伺服器運行的環境參數&lt;br&gt;
+clients:客戶端相關訊息&lt;br&gt;
+memory：伺服器運行記憶體統計數據&lt;br&gt;
+persistence：持久化訊息&lt;br&gt;
+stats：通用統計數據&lt;br&gt;
+Replication：主從複製相關訊息&lt;br&gt;
+CPU：CPU使用情況&lt;br&gt;
+cluster：集群資訊&lt;br&gt;
+Keypass：鍵值對統計數量信息&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="info-stats-wp-block-heading"&gt;INFO STATS {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;p&gt;Redis的統計數據，主要包含命令執行、連接、網路等統計信息。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[Redis] 發佈(publish)&amp;訂閱(subscribe)</title><link>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</link><pubDate>Mon, 14 Feb 2022 10:51:45 +0000</pubDate><guid>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</guid><description>&lt;p&gt;環境:Windows 10&lt;br&gt;
+Redis: 5.0.7&lt;/p&gt;
+&lt;p&gt;Redis發布訂閱(pub/sub) 是一種消息通信模式：發送者(pub) 發送消息，訂閱者(sub) 接收消息。&lt;/p&gt;
+&lt;h2 id="範例.wp-block-heading"&gt;範例
+&lt;/h2&gt;&lt;p&gt;創建了訂閱頻道名為runoobChat&lt;br&gt;
+訂閱之後就無法在進行操作，只能點擊Stop Subscribe&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;開新的GUI連到redis內，查看訂閱數:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;返回頻道訂閱者的數量:&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;channels可創建多個，且可同時被多個client訂閱，client可訂閱多個channels(如下圖)&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;將信息發送到指定的頻道，下方是runoobChat發送訊息出去給所有訂閱者。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;下圖是我開啟3個redis，前面2個是client，最右方的是server，發送訊息給訂閱runoobChat這個channel的client。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://redis.io/topics/pubsub" target="_blank" rel="noopener"
+ &gt;Redis文檔&lt;/a&gt;&lt;br&gt;
+&lt;a class="link" href="https://www.runoob.com/redis/redis-pub-sub.html" target="_blank" rel="noopener"
+ &gt;Redis 發布訂閱&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

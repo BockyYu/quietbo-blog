@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>M1 on Quietbo</title><link>https://quietbo.com/tags/m1/</link><description>Recent content in M1 on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sat, 11 Dec 2021 18:24:19 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/m1/index.xml" rel="self" type="application/rss+xml"/><item><title>[Mac] 安裝Jenkins，並與github連接</title><link>https://quietbo.com/2021/12/12/mac-%E5%AE%89%E8%A3%9Djenkins%E4%B8%A6%E8%88%87github%E9%80%A3%E6%8E%A5/</link><pubDate>Sat, 11 Dec 2021 18:24:19 +0000</pubDate><guid>https://quietbo.com/2021/12/12/mac-%E5%AE%89%E8%A3%9Djenkins%E4%B8%A6%E8%88%87github%E9%80%A3%E6%8E%A5/</guid><description>&lt;p&gt;使用Mac M1&lt;br&gt;
+Jenkins 2.319.1&lt;/p&gt;
+&lt;h1 id="安裝jenkins"&gt;安裝Jenkins
+&lt;/h1&gt;&lt;p&gt;到&lt;a class="link" href="https://www.jenkins.io/" target="_blank" rel="noopener"
+ &gt;Jenkins網站&lt;/a&gt;下載對應的檔案。目前我是使用&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;安裝完成後，啟動jenkins&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;打開瀏覽器，輸入：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;一進去jenkins會要求使用密碼解鎖，初始密碼的路徑，就在提示上的紅色字。&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;解鎖後，選擇要安裝的套件&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;接下來是安裝時間，會稍微久一點。&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;安裝完成後，會要求輸入建立admin帳號，這些帳密都要記住，未來登入需要使用。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;成功進入jenkins！&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h1 id="設定-jenkins-與github-rerository連接"&gt;設定 jenkins 與Github Rerository連接
+&lt;/h1&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;注意：這次示範使用mac的shell，如果使用windows的Shell語法要注意更換。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;建置完成後，點擊「#1」並進入「console output」，就可以看到終端機的輸出了。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h2 id="jenkins檢查github"&gt;Jenkins檢查github
+&lt;/h2&gt;&lt;p&gt;不建議使用，基本上應該是github上有push新的程式後，jenkins再進行建置。&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Mac] Homebrew安裝tree(樹狀資料夾目錄結構)</title><link>https://quietbo.com/2021/11/10/mac-homebrew%E5%AE%89%E8%A3%9Dtree%E6%A8%B9%E7%8B%80%E8%B3%87%E6%96%99%E5%A4%BE%E7%9B%AE%E9%8C%84%E7%B5%90%E6%A7%8B/</link><pubDate>Tue, 09 Nov 2021 16:37:03 +0000</pubDate><guid>https://quietbo.com/2021/11/10/mac-homebrew%E5%AE%89%E8%A3%9Dtree%E6%A8%B9%E7%8B%80%E8%B3%87%E6%96%99%E5%A4%BE%E7%9B%AE%E9%8C%84%E7%B5%90%E6%A7%8B/</guid><description>&lt;p&gt;目的：使用homebrew來安裝tree，並顯示資料結構。&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h2 id="homebrew"&gt;Homebrew
+&lt;/h2&gt;&lt;p&gt;可以在 Mac 上安裝系統沒有的套件，例如 Wget (算是工程師滿常使用的軟體)&lt;/p&gt;
+&lt;p&gt;開啟終端機，輸入下方指令來安裝&lt;a class="link" href="https://brew.sh/index_zh-tw.html" target="_blank" rel="noopener"
+ &gt;Homebrew&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;更新套件&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;安裝tree&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;若在顯示列印資料夾目錄，中文檔名有亂碼時，加上 -N&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;有些資料夾層級太多時，可指定要印出的層數，後面加上層數的數字：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;依字母排序&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;關鍵字搜尋 Homebrew 套件(下方是搜尋tree)&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;查看更多tree的功能：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[Docker] Mac M1 – no matching manifest for linux/arm64/v8 in the manifest list entries(已解決)</title><link>https://quietbo.com/2021/09/27/docker-mac-m1-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries%E5%B7%B2%E8%A7%A3%E6%B1%BA/</link><pubDate>Mon, 27 Sep 2021 13:47:30 +0000</pubDate><guid>https://quietbo.com/2021/09/27/docker-mac-m1-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries%E5%B7%B2%E8%A7%A3%E6%B1%BA/</guid><description>&lt;p&gt;在 Mac M1的終端機，docker pull mysql image，出現如下的錯誤訊息：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;這個鏡像只有linux/amd64的架構，而M1是ARM芯片，所以pull下來的版本，沒有適用於arm64架構的mysql鏡像&lt;/p&gt;
+&lt;p&gt;到docker hub上看到的，也都是linux/amd64。&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;從&lt;a class="link" href="https://docs.docker.com/desktop/mac/apple-silicon/" target="_blank" rel="noopener"
+ &gt;docker的文檔&lt;/a&gt;有說到：&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;可以在終端機使用下方指令來&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;補充：&lt;br&gt;
+如果是dockerfile，加上下面這行，就可以正常運行了：&lt;br&gt;
+原本：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;修改後：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[解決]終端機的亂碼’?’</title><link>https://quietbo.com/2021/05/07/%E8%A7%A3%E6%B1%BA%E7%B5%82%E7%AB%AF%E6%A9%9F%E4%B8%8A%E7%9A%84%E4%BA%82%E7%A2%BC/</link><pubDate>Thu, 06 May 2021 16:35:47 +0000</pubDate><guid>https://quietbo.com/2021/05/07/%E8%A7%A3%E6%B1%BA%E7%B5%82%E7%AB%AF%E6%A9%9F%E4%B8%8A%E7%9A%84%E4%BA%82%E7%A2%BC/</guid><description>&lt;p&gt;最近買了一台mac，網路上找了安裝&lt;code&gt;iTerms2 + Oh-my-zsh&lt;/code&gt;的方法，順利完成安裝後，再回頭開原本的Terminal(終端機)，發現竟然有亂碼！？&lt;br&gt;
+雖然絕大部分都開iTerms2，但還是想把這問題解決，不然我晚上一定睡不著覺。&lt;br&gt;
+本篇不是要解決&lt;code&gt;終端機中文字出現亂碼&lt;/code&gt;問題。&lt;/p&gt;
+&lt;p&gt;下圖是終端機的樣子，有“？”&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;下圖為iTerm2&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;為什麼原本的終端機會有？但iTerms2沒有呢？&lt;/p&gt;
+&lt;p&gt;主要是因為一個叫&lt;code&gt;Powerline&lt;/code&gt;的字型，如果有興趣的人可以解決這問題後，自行去Google這個關鍵字．&lt;/p&gt;
+&lt;p&gt;以下為iTerms2設定．&lt;br&gt;
+Preferences -&amp;gt; Profiles -&amp;gt; Text -&amp;gt; Font -&amp;gt; Meslo LG S DZ for Powerline&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
+大家主要注意是&lt;code&gt;字型&lt;/code&gt;的位置。&lt;/p&gt;
+&lt;p&gt;下圖為原本終端機的設定，字體不是Powerline。&lt;br&gt;
+描述檔 -&amp;gt; 文字 -&amp;gt; 字體 -&amp;gt; 更改…&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;更改 -&amp;gt; 字體集：等寬字 -&amp;gt; XXXXX Powerline&lt;br&gt;
+選最後面有Powerline就可以了&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;顯示結果：&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;希望本篇有幫助到像我一樣不知道powerline是什麼的人～&lt;/p&gt;</description></item></channel></rss>

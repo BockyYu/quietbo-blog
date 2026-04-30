@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Django on Quietbo</title><link>https://quietbo.com/tags/django/</link><description>Recent content in Django on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 15 Nov 2021 16:08:12 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>[Python] 創建一個Django專案</title><link>https://quietbo.com/2021/11/16/python-%E5%89%B5%E5%BB%BA%E4%B8%80%E5%80%8Bdjango%E5%B0%88%E6%A1%88/</link><pubDate>Mon, 15 Nov 2021 16:08:12 +0000</pubDate><guid>https://quietbo.com/2021/11/16/python-%E5%89%B5%E5%BB%BA%E4%B8%80%E5%80%8Bdjango%E5%B0%88%E6%A1%88/</guid><description>&lt;p&gt;使用：Mac M1&lt;br&gt;
+Python 3.8&lt;br&gt;
+Django:3.2&lt;/p&gt;
+&lt;h2 id="建立環境"&gt;建立環境
+&lt;/h2&gt;&lt;p&gt;可參考：&lt;a class="link" href="https://quietbo.com/2021/06/27/mac-pro-m1-%e5%ae%89%e8%a3%9dvirtualenv/" target="_blank" rel="noopener"
+ &gt;安裝virtualenv&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;進入env後，安裝及查看Django版本：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h2 id="建立專案"&gt;建立專案
+&lt;/h2&gt;&lt;p&gt;尋找一個位置，建立第一個專案：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;執行方式：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;若想更改默認端口：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;執行成功如下圖：&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;開啟瀏覽器，輸入：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;第一次運行，會看到下圖畫面：&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;停止方式：Control + C&lt;/p&gt;
+&lt;p&gt;此時，會多出現一個檔案db.sqlite3&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;Django主要提供了四種數據庫引擎：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;打開setting.py會看到默認引擎是sqlite3，&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;MySQL設置方式:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;如果需要更多的配置信息，可以指定配置文件：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;配置文件：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;[client]&lt;/p&gt;
+&lt;p&gt;databases = djangodb user = root password = 12345 default-character-set=utf8&lt;/p&gt;
+&lt;p&gt;PostgreSQL數據庫配置:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;初始化：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h3 id="創建應用程序"&gt;創建應用程序
+&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;生成books，如下的資料結構&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;主要程式撰寫是在views及models&lt;/p&gt;</description></item></channel></rss>

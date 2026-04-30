@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>React on Quietbo</title><link>https://quietbo.com/categories/react/</link><description>Recent content in React on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 24 Apr 2022 14:21:02 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/react/index.xml" rel="self" type="application/rss+xml"/><item><title>[React|M1] 創建一個React</title><link>https://quietbo.com/2022/04/24/reactm1-%E5%89%B5%E5%BB%BA%E4%B8%80%E5%80%8Breact/</link><pubDate>Sun, 24 Apr 2022 14:21:02 +0000</pubDate><guid>https://quietbo.com/2022/04/24/reactm1-%E5%89%B5%E5%BB%BA%E4%B8%80%E5%80%8Breact/</guid><description>&lt;p&gt;Mac M1&lt;/p&gt;
+&lt;p&gt;參考&lt;a class="link" href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener"
+ &gt;github:create-react-app&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;點擊網站來安裝&lt;a class="link" href="https://nodejs.org/en/" target="_blank" rel="noopener"
+ &gt;Node.js&lt;/a&gt;&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;查看是否安裝成功&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;創建一個react&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;打開剛才創建的react&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;成功如下:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;打開瀏覽器填入http://localhost:3000/&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item></channel></rss>

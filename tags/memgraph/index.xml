@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Memgraph on Quietbo</title><link>https://quietbo.com/tags/memgraph/</link><description>Recent content in Memgraph on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 24 Mar 2024 06:42:36 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/memgraph/index.xml" rel="self" type="application/rss+xml"/><item><title>[Graph database] 使用docker安裝memgraph &amp; python簡易連線</title><link>https://quietbo.com/2024/03/24/graph-database-%E4%BD%BF%E7%94%A8docker%E5%AE%89%E8%A3%9Dmemgraph/</link><pubDate>Sun, 24 Mar 2024 06:42:36 +0000</pubDate><guid>https://quietbo.com/2024/03/24/graph-database-%E4%BD%BF%E7%94%A8docker%E5%AE%89%E8%A3%9Dmemgraph/</guid><description>&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;``&lt;/p&gt;
+&lt;h2 id="什麼是-graph-database-"&gt;什麼是 Graph database ？
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://zh.wikipedia.org/zh-tw/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93" target="_blank" rel="noopener"
+ &gt;Graph database簡稱GDB&lt;/a&gt;,是一個使用圖結構進行語意查詢的資料庫，它使用節點、邊和屬性來表示和儲存資料。 該系統的關鍵概念是圖，它直接將儲存中的資料項，與資料節點和節點間表示關係的邊的集合相關聯&lt;/p&gt;
+&lt;p&gt;目前有哪些GraphDB,排名:&lt;!-- raw HTML omitted --&gt;圖形資料庫排名&lt;!-- raw HTML omitted --&gt;以及所有&lt;!-- raw HTML omitted --&gt;受歡迎程度對資料庫管理系統進行排名&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h2 id="docker-desktop-安裝-memgraph-wp-block-heading"&gt;docker desktop 安裝 memgraph {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;以在 localhost:7687 看到 memgraph 的介面了。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;點擊左方的Datasets 找 CORA: Scientific publications classified into seven categories&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;執行完成後點擊 run query&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;會出現下方成功的結果&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h2 id="python連線"&gt;Python連線
+&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;官網教學:&lt;a class="link" href="https://pypi.org/project/pymgclient/0.1.0/" target="_blank" rel="noopener"
+ &gt;網址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;當memgraph建立成功後使用下方程式碼來建立Person&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;接著在memgraph下sql指令即可看到剛才創建的2筆資料&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description></item></channel></rss>

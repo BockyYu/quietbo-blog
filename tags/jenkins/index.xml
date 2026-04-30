@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jenkins on Quietbo</title><link>https://quietbo.com/tags/jenkins/</link><description>Recent content in Jenkins on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sat, 11 Dec 2021 18:24:19 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/jenkins/index.xml" rel="self" type="application/rss+xml"/><item><title>[Mac] 安裝Jenkins，並與github連接</title><link>https://quietbo.com/2021/12/12/mac-%E5%AE%89%E8%A3%9Djenkins%E4%B8%A6%E8%88%87github%E9%80%A3%E6%8E%A5/</link><pubDate>Sat, 11 Dec 2021 18:24:19 +0000</pubDate><guid>https://quietbo.com/2021/12/12/mac-%E5%AE%89%E8%A3%9Djenkins%E4%B8%A6%E8%88%87github%E9%80%A3%E6%8E%A5/</guid><description>&lt;p&gt;使用Mac M1&lt;br&gt;
+Jenkins 2.319.1&lt;/p&gt;
+&lt;h1 id="安裝jenkins"&gt;安裝Jenkins
+&lt;/h1&gt;&lt;p&gt;到&lt;a class="link" href="https://www.jenkins.io/" target="_blank" rel="noopener"
+ &gt;Jenkins網站&lt;/a&gt;下載對應的檔案。目前我是使用&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;安裝完成後，啟動jenkins&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;打開瀏覽器，輸入：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;一進去jenkins會要求使用密碼解鎖，初始密碼的路徑，就在提示上的紅色字。&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;解鎖後，選擇要安裝的套件&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;接下來是安裝時間，會稍微久一點。&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;安裝完成後，會要求輸入建立admin帳號，這些帳密都要記住，未來登入需要使用。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;成功進入jenkins！&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h1 id="設定-jenkins-與github-rerository連接"&gt;設定 jenkins 與Github Rerository連接
+&lt;/h1&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;注意：這次示範使用mac的shell，如果使用windows的Shell語法要注意更換。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;建置完成後，點擊「#1」並進入「console output」，就可以看到終端機的輸出了。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h2 id="jenkins檢查github"&gt;Jenkins檢查github
+&lt;/h2&gt;&lt;p&gt;不建議使用，基本上應該是github上有push新的程式後，jenkins再進行建置。&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item></channel></rss>

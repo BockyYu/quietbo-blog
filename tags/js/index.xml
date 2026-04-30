@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JS on Quietbo</title><link>https://quietbo.com/tags/js/</link><description>Recent content in JS on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Fri, 05 Mar 2021 06:55:55 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/js/index.xml" rel="self" type="application/rss+xml"/><item><title>HTML、CSS、JavaScript 簡易介紹</title><link>https://quietbo.com/2021/03/05/html%E3%80%81css%E3%80%81javascript-%E7%B0%A1%E6%98%93%E4%BB%8B%E7%B4%B9/</link><pubDate>Fri, 05 Mar 2021 06:55:55 +0000</pubDate><guid>https://quietbo.com/2021/03/05/html%E3%80%81css%E3%80%81javascript-%E7%B0%A1%E6%98%93%E4%BB%8B%E7%B4%B9/</guid><description>&lt;p&gt;寫網頁時常聽到的三大名稱:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&amp;gt;
+ &amp;lt;a class=&amp;quot;ez-toc-link ez-toc-heading-5&amp;quot; href=&amp;quot;https://quietbo.com/2021/03/05/html%e3%80%81css%e3%80%81javascript-%e7%b0%a1%e6%98%93%e4%bb%8b%e7%b4%b9/#CSS&amp;quot; &amp;gt;CSS&amp;lt;/a&amp;gt;
+&amp;lt;/li&amp;gt;
+&amp;lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&amp;gt;
+ &amp;lt;a class=&amp;quot;ez-toc-link ez-toc-heading-6&amp;quot; href=&amp;quot;https://quietbo.com/2021/03/05/html%e3%80%81css%e3%80%81javascript-%e7%b0%a1%e6%98%93%e4%bb%8b%e7%b4%b9/#JavaScript_%E2%80%93_JS&amp;quot; &amp;gt;JavaScript &amp;amp;#8211; JS&amp;lt;/a&amp;gt;
+&amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="html-基本觀念"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;HTML 基本觀念&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id="巢狀結構"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;巢狀結構&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h3&gt;&lt;p&gt;簡單來說就是一層一層的概念&lt;br&gt;
+範例:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;因為巢狀結構有分層級，上層稱為&lt;code&gt;父元素&lt;/code&gt;，下層稱為&lt;code&gt;子元素&lt;/code&gt;。&lt;br&gt;
+而層級之間有一定上下、左右的規則，會透過&lt;code&gt;Document Object Model (DOM)&lt;/code&gt;來進行遍歷的順序。&lt;/p&gt;
+&lt;h3 id="元素element"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;元素(element)&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h3&gt;&lt;p&gt;使用過程中，需要用 &amp;lt;&amp;gt; 括起來。&lt;br&gt;
+&lt;a class="link" href="https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element" target="_blank" rel="noopener"
+ &gt;HTML元素網址&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="屬性attribute"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;屬性(attribute)&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h3&gt;&lt;p&gt;可以藉由各種方式去設定元素或調整它們的行為。&lt;br&gt;
+簡單來說，除了最開頭的元素以外，中間都是屬性。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://developer.mozilla.org/zh-TW/docs/Web/HTML/Attributes" target="_blank" rel="noopener"
+ &gt;HTML屬性網址&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="css"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;CSS&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;p&gt;CSS就是管理網頁的外貌。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="javascript-8211-js"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;JavaScript – JS&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;p&gt;JavaScript 就是管理網頁的內容以及使用者的操作行為，為了要控制網頁的內容。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;就是實做JavaScript的地方。&lt;/p&gt;</description></item></channel></rss>

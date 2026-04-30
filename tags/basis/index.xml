@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Basis on Quietbo</title><link>https://quietbo.com/tags/basis/</link><description>Recent content in Basis on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Wed, 06 Oct 2021 06:44:00 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/basis/index.xml" rel="self" type="application/rss+xml"/><item><title>[基礎]命名規則</title><link>https://quietbo.com/2021/10/06/%E5%9F%BA%E7%A4%8E%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87/</link><pubDate>Wed, 06 Oct 2021 06:44:00 +0000</pubDate><guid>https://quietbo.com/2021/10/06/%E5%9F%BA%E7%A4%8E%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87/</guid><description>&lt;p&gt;剛出來寫程式，還是一張超級白紙時，覺得命名就是讓人看得懂變數就好啦~現在好想回頭揍自己 ಠ▃ಠ&lt;/p&gt;
+&lt;p&gt;命名有兩個關鍵是:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Snake Case, Pascal Case, Camel Case 這三種是較常被採用的命名方式，像像在目前專案上，變數則是使用Snake Case，但在Function則使用Pascal或Camel Case&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="snake-case"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Snake Case&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;p&gt;單字皆為小寫，單字以底線_分離。例如:user_name&lt;/p&gt;
+&lt;h2 id="pascal-case"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Pascal Case&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;p&gt;跟 Camel Case 類似，只是第一個字要大寫。例如:UserName&lt;/p&gt;
+&lt;h2 id="camel-case駝峰式"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Camel Case(駝峰式)&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;p&gt;第一個字母為小寫，之後每一個單字的開頭為大寫，不包含空格。&lt;br&gt;
+例如:userName&lt;/p&gt;
+&lt;h2 id="kebab-case"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Kebab Case&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;p&gt;跟Snake Case類似，單字以減號-分離。例如:user-name&lt;br&gt;
+較常在html裡面的class、div、id看到&lt;/p&gt;
+&lt;h2 id="screaming-case"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Screaming Case&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;p&gt;跟Snake Case類似，單字皆為全大寫。例如:PROJECT_NAME&lt;br&gt;
+常用地方:全域變數或設定檔內的變數。&lt;/p&gt;
+&lt;p&gt;我在取名字會盡量保持幾個原則&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description></item></channel></rss>
