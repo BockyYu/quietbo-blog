@@ -14,7 +14,8 @@ tags:
 toc: true
 ---
 
-前言  
+## 前言  
+
 原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。 
 
 相關連結：
@@ -23,17 +24,16 @@ toc: true
 - [gitHub-kafka-ui](https://github.com/provectus/kafka-ui)
 - [kafka:3.9.1 image](https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead)
 
+## 什麼是 KRaft 模式？
 
-# 什麼是 KRaft 模式？
-
-KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：</p> 
+KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：
 
 不需要 ZooKeeper：簡化部署和維護  
 內建 Controller：metadata 管理更高效  
-更好的效能：減少網路延遲和複雜度</p> 
+更好的效能：減少網路延遲和複雜度
 
 快速開始 (推薦使用 docker-compose)  
-如果你想快速開始，可以直接跳到 docker-compose.yml 章節。</p> 
+如果你想快速開始，可以直接跳到 docker-compose.yml 章節。
 
 1. 創建自定義網路
 
@@ -74,7 +74,7 @@ docker run -d \
 
 重要提醒： KAFKA\_ADVERTISED\_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！
 
-### kafka-ui
+## kafka-ui
 
 ```
 docker run -d \
@@ -95,6 +95,7 @@ docker run -d \
 | KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=broker:9092 | 必須與 KAFKA_ADVERTISED_LISTENERS 一致 |
 
 ### 測試是否正常
+
 檢查服務狀態
 
 ```

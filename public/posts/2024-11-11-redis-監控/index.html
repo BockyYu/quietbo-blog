@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="-&ndash; title: &lsquo;[Redis] 監控&rsquo; author: Bocky type: post date: 2024-11-10T18:19:00+00:00 url: /2024/11/11/redis-監控/ categories: - Redis tags: - redis &mdash;\n">
+<title>Quietbo</title>
+
+
+<link rel="canonical" href="http://localhost:1313/posts/2024-11-11-redis-%E7%9B%A3%E6%8E%A7/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="Quietbo">
+<meta property='og:description' content="-&ndash; title: &lsquo;[Redis] 監控&rsquo; author: Bocky type: post date: 2024-11-10T18:19:00+00:00 url: /2024/11/11/redis-監控/ categories: - Redis tags: - redis &mdash;\n">
+<meta property='og:url' content='http://localhost:1313/posts/2024-11-11-redis-%E7%9B%A3%E6%8E%A7/'>
+<meta property='og:site_name' content='Quietbo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' />
+<meta name="twitter:title" content="Quietbo">
+<meta name="twitter:description" content="-&ndash; title: &lsquo;[Redis] 監控&rsquo; author: Bocky type: post date: 2024-11-10T18:19:00+00:00 url: /2024/11/11/redis-監控/ categories: - Redis tags: - redis &mdash;\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Quietbo</a></h1>
+            <h2 class="site-description">你的部落格簡介</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>網誌</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>關於</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/2024-11-11-redis-%E7%9B%A3%E6%8E%A7/"></a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <footer class="article-meta">
+        
+            <div class="inline-meta">
+                
+
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        2 minutes read
+                    </time>
+                
+            </div>
+        
+
+        
+
+        
+    </footer>
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    <p>-&ndash; title: &lsquo;[Redis] 監控&rsquo; author: Bocky type: post date: 2024-11-10T18:19:00+00:00 url: /2024/11/11/redis-監控/ categories: - Redis tags: - redis &mdash;</p>
+<p>參考文章:[Redis維之監控指標，效能監控，監控方式，反應慢分析][1]</p>
+<p>先連接redis（本機默認端口6379）</p>
+<pre tabindex="0"><code>redis-cli
+</code></pre><p>如果不使用下方redis-cli的話，就使用bin/redis-cli info | grep mem</p>
+<pre tabindex="0"><code>INFO # 查看當前狀態（可以一次獲取所有的信息，也可以按塊獲取信息）
+INFO &lt;子集&gt; # 例如 CPU,memory 
+INFO memory # INFO 命令的子集，只會顯示與記憶體相關的資訊
+INFO stats # Redis的統計數據，主要包含命令執行、連接、網路等統計信息。
+LATENCY LATEST # 查看最近的延遲峰值
+LATENCY HISTORY command # 顯示 command 事件的延遲歷史記錄
+SLOWLOG GET [n] # 獲取慢查詢日誌（默認獲取所有）
+</code></pre><p>非交互模式下的指令</p>
+<pre tabindex="0"><code>redis-cli --latency # 基本延遲測試
+redis-cli --latency-history # 延遲歷史記錄（每15秒輸出一次）
+redis-cli --latency-dist # 延遲分佈圖
+</code></pre><p>-&ndash; server:伺服器運行的環境參數 clients:客戶端相關訊息 memory：伺服器運行記憶體統計數據 persistence：持久化訊息 stats：通用統計數據 Replication：主從複製相關訊息 CPU：CPU使用情況 cluster：集群資訊 Keypass：鍵值對統計數量信息</p>
+<pre tabindex="0"><code>./redis-cli info 按块获取信息 | grep 需要过滤的参数
+./redis-cli info stats | grep ops
+./redis-cli &gt; info server
+</code></pre><p>-&ndash; Redis的統計數據，主要包含命令執行、連接、網路等統計信息。</p>
+<pre tabindex="0"><code># Stats
+total_connections_received:12345     # 總共接受的連接數
+total_commands_processed:123456      # 總共處理的命令數
+instantaneous_ops_per_sec:1000      # 每秒執行的命令數
+total_net_input_bytes:12345678      # 總網路輸入流量(bytes)
+total_net_output_bytes:12345678     # 總網路輸出流量(bytes)
+instantaneous_input_kbps:12.34      # 即時輸入流量(KB/s)
+instantaneous_output_kbps:12.34     # 即時輸出流量(KB/s)
+rejected_connections:0              # 由於maxclients限制而被拒絕的連接數
+sync_full:2                        # 全量同步次數
+sync_partial_ok:1                  # 成功的部分同步次數
+sync_partial_err:0                 # 失敗的部分同步次數
+expired_keys:12345                 # 過期的key數量
+expired_stale_perc:0.12           # 過期key的百分比
+expired_time_cap_reached_count:0   # 達到過期時間上限的次數
+expire_cycle_cpu_milliseconds:123  # 過期循環佔用CPU的毫秒數
+evicted_keys:0                    # 由於maxmemory限制而被驅逐的key數量
+keyspace_hits:123456             # key命中次數
+keyspace_misses:12345           # key未命中次數
+pubsub_channels:1               # 目前使用中的發布/訂閱頻道數
+pubsub_patterns:0              # 目前使用中的發布/訂閱模式數
+latest_fork_usec:1234         # 最近一次fork操作耗時(微秒)
+migrate_cached_sockets:0      # 快取的遷移socket數量
+</code></pre><p>[1]: <a class="link" href="https://www.cnblogs.com/jingzh/p/18414550#13-redis%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4"  target="_blank" rel="noopener"
+    >https://www.cnblogs.com/jingzh/p/18414550#13-redis%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4</a></p>
+
+</section>
+
+
+    <footer class="article-meta article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+
+        <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 Quietbo
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.9f49abbfb369d9c2dc399c16a26a5656ad1e148f32355578a0d3e13f6e31d6c1.js" defer></script>
+
+
+    </body>
+</html>

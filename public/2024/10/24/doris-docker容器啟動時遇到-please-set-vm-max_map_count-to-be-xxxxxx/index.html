@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="\n如果在docker 中遇到下方字串\nPlease set vm.max_map_count to be 2000000 under root using 'sysctl -w vm.max_map_count=2000000'\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="如果在docker 中遇到下方字串\nPlease set vm.max_map_count to be 2000000 under root using &#39;sysctl -w vm.max_map_count=2000000&#39; 使用下方指令\n">
 <title>[Doris] docker容器啟動時遇到 Please set vm.max_map_count to be xxxxxx</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Doris] docker容器啟動時遇到 Please set vm.max_map_count to be xxxxxx">
-<meta property='og:description' content="\n如果在docker 中遇到下方字串\nPlease set vm.max_map_count to be 2000000 under root using 'sysctl -w vm.max_map_count=2000000'\n">
+<meta property='og:description' content="如果在docker 中遇到下方字串\nPlease set vm.max_map_count to be 2000000 under root using &#39;sysctl -w vm.max_map_count=2000000&#39; 使用下方指令\n">
 <meta property='og:url' content='http://localhost:1313/2024/10/24/doris-docker%E5%AE%B9%E5%99%A8%E5%95%9F%E5%8B%95%E6%99%82%E9%81%87%E5%88%B0-please-set-vm-max_map_count-to-be-xxxxxx/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:tag' content='doris' /><meta property='article:published_time' content='2024-10-24T07:51:39&#43;00:00'/><meta property='article:modified_time' content='2024-10-24T07:51:39&#43;00:00'/>
 <meta name="twitter:title" content="[Doris] docker容器啟動時遇到 Please set vm.max_map_count to be xxxxxx">
-<meta name="twitter:description" content="\n如果在docker 中遇到下方字串\nPlease set vm.max_map_count to be 2000000 under root using 'sysctl -w vm.max_map_count=2000000'\n">
+<meta name="twitter:description" content="如果在docker 中遇到下方字串\nPlease set vm.max_map_count to be 2000000 under root using &#39;sysctl -w vm.max_map_count=2000000&#39; 使用下方指令\n">
     </head>
     <body class="
     article-page
@@ -225,16 +225,16 @@
     <section class="article-content">
     
     
-    </p> 
-<p>如果在docker 中遇到下方字串</p></p>
-<pre class="wp-block-code"><code lang="bash" class="language-bash">Please set vm.max_map_count to be 2000000 under root using 'sysctl -w vm.max_map_count=2000000'</code></pre></p> 
-<p>使用下方指令</p></p>
-<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">docker run -it --privileged --pid=host --name=change_count debian nsenter -t 1 -m -u -n -i sh</code></pre></p> 
-<p>進入到容器後再執行指令：</p></p>
-<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">sysctl -w vm.max_map_count=2000000</code></pre></p> 
-<p>然後exit退出並建立Doris Docker叢集。</p></p>
-<p>來源來自:<a class="link" href="https://doris.apache.org/docs/1.2/install/construct-docker/run-docker-cluster/#deploy-doris-docker"  target="_blank" rel="noopener"
-    >doris官方文件-#Docker部署Doris</a></p></p>
+    <p>如果在docker 中遇到下方字串</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Please <span class="nb">set</span> vm.max_map_count to be <span class="m">2000000</span> under root using <span class="s1">&#39;sysctl -w vm.max_map_count=2000000&#39;</span>
+</span></span></code></pre></div><p>使用下方指令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -it --privileged --pid<span class="o">=</span>host --name<span class="o">=</span>change_count debian nsenter -t <span class="m">1</span> -m -u -n -i sh
+</span></span></code></pre></div><p>進入到容器後再執行指令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sysctl -w vm.max_map_count<span class="o">=</span><span class="m">2000000</span>
+</span></span></code></pre></div><p>然後exit退出並建立Doris Docker叢集。</p>
+<p>來源來自:[doris官方文件-#Docker部署Doris][1]</p>
+<p>[1]: <a class="link" href="https://doris.apache.org/docs/1.2/install/construct-docker/run-docker-cluster/#deploy-doris-docker"  target="_blank" rel="noopener"
+    >https://doris.apache.org/docs/1.2/install/construct-docker/run-docker-cluster/#deploy-doris-docker</a></p>
 
 </section>
 

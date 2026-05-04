@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="前言 原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
 <title>[Kafka] 使用docker在本機部署KRaft模式 &#43; kafka-ui (簡易版)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)">
-<meta property='og:description' content="前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
+<meta property='og:description' content="前言 原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
 <meta property='og:url' content='http://localhost:1313/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:tag' content='kafka' /><meta property='article:tag' content='kraft' /><meta property='article:published_time' content='2025-07-06T21:09:56&#43;00:00'/><meta property='article:modified_time' content='2025-07-06T21:09:56&#43;00:00'/>
 <meta name="twitter:title" content="[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)">
-<meta name="twitter:description" content="前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
+<meta name="twitter:description" content="前言 原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
     </head>
     <body class="
     article-page
@@ -232,8 +232,8 @@
     <section class="article-content">
     
     
-    <p>前言<br>
-原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。</p>
+    <h2 id="前言">前言
+</h2><p>原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。</p>
 <p>相關連結：</p>
 <ul>
 <li><a class="link" href="https://hub.docker.com/r/apache/kafka"  target="_blank" rel="noopener"
@@ -245,13 +245,13 @@
 <li><a class="link" href="https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead"  target="_blank" rel="noopener"
     >kafka:3.9.1 image</a></li>
 </ul>
-<h1 id="什麼是-kraft-模式">什麼是 KRaft 模式？
-</h1><p>KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：</p></p>
+<h2 id="什麼是-kraft-模式">什麼是 KRaft 模式？
+</h2><p>KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：</p>
 <p>不需要 ZooKeeper：簡化部署和維護<br>
 內建 Controller：metadata 管理更高效<br>
-更好的效能：減少網路延遲和複雜度</p></p>
+更好的效能：減少網路延遲和複雜度</p>
 <p>快速開始 (推薦使用 docker-compose)<br>
-如果你想快速開始，可以直接跳到 docker-compose.yml 章節。</p></p>
+如果你想快速開始，可以直接跳到 docker-compose.yml 章節。</p>
 <ol>
 <li>創建自定義網路</li>
 </ol>
@@ -313,8 +313,8 @@
   </tbody>
 </table></div>
 <p>重要提醒： KAFKA_ADVERTISED_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！</p>
-<h3 id="kafka-ui">kafka-ui
-</h3><pre tabindex="0"><code>docker run -d \
+<h2 id="kafka-ui">kafka-ui
+</h2><pre tabindex="0"><code>docker run -d \
   --name kafka-ui \
   --network kafka-network \
   -p 8080:8080 \
