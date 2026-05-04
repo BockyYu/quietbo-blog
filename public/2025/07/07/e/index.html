@@ -157,8 +157,8 @@
             
             
             
-            <a href="/categories/dockeramp-docker-compose/" style="background-color: hsl(299, 60%, 84%); color: hsl(299, 60%, 15%);">
-                Docker&amp;amp; Docker-Compose
+            <a href="/categories/docker/" style="background-color: hsl(205, 60%, 84%); color: hsl(205, 60%, 15%);">
+                Docker
             </a>
         
             
@@ -212,7 +212,7 @@
 
 
                     <time class="article-time--reading">
-                        3 minutes read
+                        2 minutes read
                     </time>
                 
             </div>
@@ -251,13 +251,7 @@
   </li>
 </ul></p> 
 <div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction">
-  <div class="ez-toc-title-container">
-    <p class="ez-toc-title" style="cursor:inherit">
-      Table of Contents
-    </p>
-<pre><code>&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot; aria-label=&quot;顯示/隱藏內容目錄&quot;&gt;&lt;span class=&quot;ez-toc-js-icon-con&quot;&gt;&lt;span class=&quot;&quot;&gt;&lt;span class=&quot;eztoc-hide&quot; style=&quot;display:none;&quot;&gt;Toggle&lt;/span&gt;&lt;span class=&quot;ez-toc-icon-toggle-span&quot;&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;list-377408&quot; width=&quot;20px&quot; height=&quot;20px&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; class=&quot;arrow-unsorted-368013&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;10px&quot; height=&quot;10px&quot; viewBox=&quot;0 0 24 24&quot; version=&quot;1.2&quot; baseProfile=&quot;tiny&quot;&gt;&lt;path d=&quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;
-</code></pre>
-  </div><nav>
+<nav>
   <ul class='ez-toc-list ez-toc-list-level-1 ' >
     <li class='ez-toc-page-1 ez-toc-heading-level-1'>
       <a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2025/07/07/e/#%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F" >什麼是 KRaft 模式？</a><ul class='ez-toc-list-level-3' >
@@ -271,12 +265,8 @@
             </li>
           </ul>
         </li>
-<pre><code>    &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
-      &lt;a class=&quot;ez-toc-link ez-toc-heading-4&quot; href=&quot;https://quietbo.com/2025/07/07/e/#docker-composeyml_%E6%8E%A8%E8%96%A6%E6%96%B9%E5%BC%8F&quot; &gt;docker-compose.yml (推薦方式)&lt;/a&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/li&gt;
-</code></pre>
+      </ul>
+    </li>
   </ul></nav>
 </div>
 <h1 id="什麼是-kraft-模式"><span class="ez-toc-section" id="%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F"></span>什麼是 KRaft 模式？<span class="ez-toc-section-end"></span> </p>
@@ -415,7 +405,7 @@ docker exec --workdir /opt/kafka/bin/ -it broker sh
 ./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test-topic
 &gt; hello kafka
 &gt; this is a test message
-&gt; ^C
+
 
 # 啟動 Consumer (讀取所有訊息)
 ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning</code></pre></p> 

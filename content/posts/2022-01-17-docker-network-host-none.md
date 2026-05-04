@@ -5,7 +5,8 @@ type: post
 date: 2022-01-17T15:17:52+00:00
 url: /2022/01/17/docker-network-host-none/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
 

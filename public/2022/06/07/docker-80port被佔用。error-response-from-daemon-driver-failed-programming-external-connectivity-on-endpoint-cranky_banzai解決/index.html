@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="當我在docker創建containerd時, 出現被佔用訊息, 如下:\ndocker: Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai (6e53d887b7e49120d6eb6d061196c5f4edd36e5527a9554dfed718184081a0a2): Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use. 網路上很多都是把docker restart就解決了, 如果沒解決, 可能是被其他佔用了。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="當我在docker創建containerd時, 出現被佔用訊息, 如下:\n">
 <title>[Docker] 80port被佔用。Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai(解決)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] 80port被佔用。Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai(解決)">
-<meta property='og:description' content="當我在docker創建containerd時, 出現被佔用訊息, 如下:\ndocker: Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai (6e53d887b7e49120d6eb6d061196c5f4edd36e5527a9554dfed718184081a0a2): Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use. 網路上很多都是把docker restart就解決了, 如果沒解決, 可能是被其他佔用了。\n">
+<meta property='og:description' content="當我在docker創建containerd時, 出現被佔用訊息, 如下:\n">
 <meta property='og:url' content='http://localhost:1313/2022/06/07/docker-80port%E8%A2%AB%E4%BD%94%E7%94%A8%E3%80%82error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-cranky_banzai%E8%A7%A3%E6%B1%BA/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2022-06-07T10:23:23&#43;00:00'/><meta property='article:modified_time' content='2022-06-07T10:23:23&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] 80port被佔用。Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai(解決)">
-<meta name="twitter:description" content="當我在docker創建containerd時, 出現被佔用訊息, 如下:\ndocker: Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai (6e53d887b7e49120d6eb6d061196c5f4edd36e5527a9554dfed718184081a0a2): Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use. 網路上很多都是把docker restart就解決了, 如果沒解決, 可能是被其他佔用了。\n">
+<meta name="twitter:description" content="當我在docker創建containerd時, 出現被佔用訊息, 如下:\n">
     </head>
     <body class="
     article-page
@@ -157,8 +157,15 @@
             
             
             
-            <a href="/categories/dockeramp-docker-compose/" style="background-color: hsl(299, 60%, 84%); color: hsl(299, 60%, 15%);">
-                Docker&amp;amp; Docker-Compose
+            <a href="/categories/docker/" style="background-color: hsl(205, 60%, 84%); color: hsl(205, 60%, 15%);">
+                Docker
+            </a>
+        
+            
+            
+            
+            <a href="/categories/docker-compose/" style="background-color: hsl(188, 60%, 84%); color: hsl(188, 60%, 15%);">
+                Docker-Compose
             </a>
         
     </header>

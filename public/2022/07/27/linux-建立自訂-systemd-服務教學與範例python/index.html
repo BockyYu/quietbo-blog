@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Linux 建立自訂 Systemd 服務教學與範例\n部屬方式 本次範例程式使用FastAPI,\n檔名為main.py\nimport platform import os os_type = platform.system() if os_type == 'Linux': # print('in Linux') os.chdir('/home/ubuntu/Dev') import sys sys.path.append(\"/home/ubuntu/.local/lib/python3.8/site-packages\") from fastapi import FastAPI import uvicorn app = FastAPI() @app.get(\"/\") async def root(): return {\"message\": \"Hello World\"} if __name__ == \"__main__\": uvicorn.run(\"main:app\", host='0.0.0.0', port=8080, workers=1, reload=True) Linux 建立自訂 Systemd 服務教學與範例 到/etc建立或rc.local並輸入下列內容(如果沒有的話自行建立) 更改檔案路徑 python執行檔路徑, 有些是/bin/python, 請自行更改(若想包成docker就寫執行docker容器的指令) #!/bin/sh -e cd /home/ubuntu/Dev/myPython /usr/bin/python3 main.py exit 0 確定輸入的python路徑正確, 使程式正常運行:\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Linux 建立自訂 Systemd 服務教學與範例\n部屬方式 本次範例程式使用FastAPI,\n檔名為main.py\n">
 <title>[Linux]  建立自訂 Systemd 服務教學與範例(Python)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Linux]  建立自訂 Systemd 服務教學與範例(Python)">
-<meta property='og:description' content="Linux 建立自訂 Systemd 服務教學與範例\n部屬方式 本次範例程式使用FastAPI,\n檔名為main.py\nimport platform import os os_type = platform.system() if os_type == 'Linux': # print('in Linux') os.chdir('/home/ubuntu/Dev') import sys sys.path.append(\"/home/ubuntu/.local/lib/python3.8/site-packages\") from fastapi import FastAPI import uvicorn app = FastAPI() @app.get(\"/\") async def root(): return {\"message\": \"Hello World\"} if __name__ == \"__main__\": uvicorn.run(\"main:app\", host='0.0.0.0', port=8080, workers=1, reload=True) Linux 建立自訂 Systemd 服務教學與範例 到/etc建立或rc.local並輸入下列內容(如果沒有的話自行建立) 更改檔案路徑 python執行檔路徑, 有些是/bin/python, 請自行更改(若想包成docker就寫執行docker容器的指令) #!/bin/sh -e cd /home/ubuntu/Dev/myPython /usr/bin/python3 main.py exit 0 確定輸入的python路徑正確, 使程式正常運行:\n">
+<meta property='og:description' content="Linux 建立自訂 Systemd 服務教學與範例\n部屬方式 本次範例程式使用FastAPI,\n檔名為main.py\n">
 <meta property='og:url' content='http://localhost:1313/2022/07/27/linux-%E5%BB%BA%E7%AB%8B%E8%87%AA%E8%A8%82-systemd-%E6%9C%8D%E5%8B%99%E6%95%99%E5%AD%B8%E8%88%87%E7%AF%84%E4%BE%8Bpython/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='linux' /><meta property='article:tag' content='systemd' /><meta property='article:published_time' content='2022-07-27T07:33:45&#43;00:00'/><meta property='article:modified_time' content='2022-07-27T07:33:45&#43;00:00'/>
 <meta name="twitter:title" content="[Linux]  建立自訂 Systemd 服務教學與範例(Python)">
-<meta name="twitter:description" content="Linux 建立自訂 Systemd 服務教學與範例\n部屬方式 本次範例程式使用FastAPI,\n檔名為main.py\nimport platform import os os_type = platform.system() if os_type == 'Linux': # print('in Linux') os.chdir('/home/ubuntu/Dev') import sys sys.path.append(\"/home/ubuntu/.local/lib/python3.8/site-packages\") from fastapi import FastAPI import uvicorn app = FastAPI() @app.get(\"/\") async def root(): return {\"message\": \"Hello World\"} if __name__ == \"__main__\": uvicorn.run(\"main:app\", host='0.0.0.0', port=8080, workers=1, reload=True) Linux 建立自訂 Systemd 服務教學與範例 到/etc建立或rc.local並輸入下列內容(如果沒有的話自行建立) 更改檔案路徑 python執行檔路徑, 有些是/bin/python, 請自行更改(若想包成docker就寫執行docker容器的指令) #!/bin/sh -e cd /home/ubuntu/Dev/myPython /usr/bin/python3 main.py exit 0 確定輸入的python路徑正確, 使程式正常運行:\n">
+<meta name="twitter:description" content="Linux 建立自訂 Systemd 服務教學與範例\n部屬方式 本次範例程式使用FastAPI,\n檔名為main.py\n">
     </head>
     <body class="
     article-page

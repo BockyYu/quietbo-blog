@@ -5,7 +5,8 @@ type: post
 date: 2022-02-01T18:11:04+00:00
 url: /2022/02/02/docker-compose-服務的更新/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker-compose
 

@@ -5,7 +5,8 @@ type: post
 date: 2021-12-22T17:29:36+00:00
 url: /2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-，找不到var-lib-docker-volumes-已解決/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
   - mac

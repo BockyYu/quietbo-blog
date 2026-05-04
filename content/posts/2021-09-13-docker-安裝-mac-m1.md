@@ -5,7 +5,8 @@ type: post
 date: 2021-09-13T13:07:20+00:00
 url: /2021/09/13/docker-安裝-mac-m1/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
   - 安裝

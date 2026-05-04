@@ -5,7 +5,8 @@ type: post
 date: 2022-02-01T13:52:15+00:00
 url: /2022/02/01/docker-compose-image-build與pullbuild非dockerfile名稱/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker-compose
 

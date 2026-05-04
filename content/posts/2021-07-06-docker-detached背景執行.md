@@ -5,7 +5,8 @@ type: post
 date: 2021-07-05T19:17:38+00:00
 url: /2021/07/06/docker-detached背景執行/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
 

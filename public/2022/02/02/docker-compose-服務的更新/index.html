@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="服務更新 下方為目錄結構:\n$ tree . ├── docker-compose.yml └── my_flask ├── app.py └── dockerfile app.py檔如下\nfrom flask import Flask from redis import Redis import os import socket app = Flask(__name__) redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379) @app.route('/') def hello(): redis.incr('hits') return f\"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\\n\" dockerfile如下:\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="服務更新 下方為目錄結構:\n$ tree . ├── docker-compose.yml └── my_flask ├── app.py └── dockerfile app.py檔如下\n">
 <title>[docker-compose] 服務的更新</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[docker-compose] 服務的更新">
-<meta property='og:description' content="服務更新 下方為目錄結構:\n$ tree . ├── docker-compose.yml └── my_flask ├── app.py └── dockerfile app.py檔如下\nfrom flask import Flask from redis import Redis import os import socket app = Flask(__name__) redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379) @app.route('/') def hello(): redis.incr('hits') return f\"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\\n\" dockerfile如下:\n">
+<meta property='og:description' content="服務更新 下方為目錄結構:\n$ tree . ├── docker-compose.yml └── my_flask ├── app.py └── dockerfile app.py檔如下\n">
 <meta property='og:url' content='http://localhost:1313/2022/02/02/docker-compose-%E6%9C%8D%E5%8B%99%E7%9A%84%E6%9B%B4%E6%96%B0/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker-compose' /><meta property='article:published_time' content='2022-02-01T18:11:04&#43;00:00'/><meta property='article:modified_time' content='2022-02-01T18:11:04&#43;00:00'/>
 <meta name="twitter:title" content="[docker-compose] 服務的更新">
-<meta name="twitter:description" content="服務更新 下方為目錄結構:\n$ tree . ├── docker-compose.yml └── my_flask ├── app.py └── dockerfile app.py檔如下\nfrom flask import Flask from redis import Redis import os import socket app = Flask(__name__) redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379) @app.route('/') def hello(): redis.incr('hits') return f\"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\\n\" dockerfile如下:\n">
+<meta name="twitter:description" content="服務更新 下方為目錄結構:\n$ tree . ├── docker-compose.yml └── my_flask ├── app.py └── dockerfile app.py檔如下\n">
     </head>
     <body class="
     article-page
@@ -157,8 +157,15 @@
             
             
             
-            <a href="/categories/dockeramp-docker-compose/" style="background-color: hsl(299, 60%, 84%); color: hsl(299, 60%, 15%);">
-                Docker&amp;amp; Docker-Compose
+            <a href="/categories/docker/" style="background-color: hsl(205, 60%, 84%); color: hsl(205, 60%, 15%);">
+                Docker
+            </a>
+        
+            
+            
+            
+            <a href="/categories/docker-compose/" style="background-color: hsl(188, 60%, 84%); color: hsl(188, 60%, 15%);">
+                Docker-Compose
             </a>
         
     </header>

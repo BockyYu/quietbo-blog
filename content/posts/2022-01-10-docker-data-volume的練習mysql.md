@@ -5,7 +5,8 @@ type: post
 date: 2022-01-10T15:05:46+00:00
 url: /2022/01/10/docker-data-volume的練習mysql/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
 

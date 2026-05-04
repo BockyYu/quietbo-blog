@@ -5,7 +5,8 @@ type: post
 date: 2022-02-03T13:08:42+00:00
 url: /2022/02/03/docker-compose-環境設置/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker-compose
 

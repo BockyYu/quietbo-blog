@@ -5,7 +5,8 @@ type: post
 date: 2022-01-21T19:48:54+00:00
 url: /2022/01/22/docker-mac-python-flaskredis練習/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
 

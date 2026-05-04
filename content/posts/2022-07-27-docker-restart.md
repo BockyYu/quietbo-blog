@@ -5,7 +5,8 @@ type: post
 date: 2022-07-27T07:06:09+00:00
 url: /2022/07/27/docker-restart/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
 

@@ -3,7 +3,7 @@ languageCode: "zh-tw"
 hasCJKLanguage: true
 title: "Quietbo"
 theme: "hugo-theme-stack"
-summaryLength: 50 
+summaryLength: 20 
 
 params:
   sidebar:

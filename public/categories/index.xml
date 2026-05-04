@@ -6,10 +6,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
         <lastBuildDate>Sun, 06 Jul 2025 21:09:56 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-            <title>Docker&amp;amp; Docker-Compose</title>
-            <link>http://localhost:1313/categories/dockeramp-docker-compose/</link>
+            <title>Docker</title>
+            <link>http://localhost:1313/categories/docker/</link>
             <pubDate>Sun, 06 Jul 2025 21:09:56 +0000</pubDate>
-            <guid>http://localhost:1313/categories/dockeramp-docker-compose/</guid>
+            <guid>http://localhost:1313/categories/docker/</guid>
             <description></description>
         </item><item>
             <title>Kafka</title>
@@ -94,6 +94,12 @@
             <link>http://localhost:1313/categories/bot/</link>
             <pubDate>Mon, 19 Sep 2022 10:00:42 +0000</pubDate>
             <guid>http://localhost:1313/categories/bot/</guid>
+            <description></description>
+        </item><item>
+            <title>Docker-Compose</title>
+            <link>http://localhost:1313/categories/docker-compose/</link>
+            <pubDate>Wed, 03 Aug 2022 10:27:42 +0000</pubDate>
+            <guid>http://localhost:1313/categories/docker-compose/</guid>
             <description></description>
         </item><item>
             <title>Linux</title>

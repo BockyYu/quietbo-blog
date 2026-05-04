@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="pull image 先pull兩個image:\npython:3.9.5-slim\ndocker image pull python:3.9.5-slim redis\ndocker image pull redis 新增2個dockerfile\nFROM python:3.9.5-slim RUN pip install flask redis && \\ groupadd -r flask && useradd -r -g flask flask && \\ mkdir /src && \\ chown -R flask:flask /src USER flask COPY startup.py /src/startup.py WORKDIR /src ENV FLASK_APP=startup.py REDIS_HOST=redis #EXPOSE 5000 CMD [\"flask\", \"run\", \"-h\", \"0.0.0.0\"] 用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="pull image 先pull兩個image:\npython:3.9.5-slim\ndocker image pull python:3.9.5-slim redis\n">
 <title>[Docker] dockerfile端口轉發</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] dockerfile端口轉發">
-<meta property='og:description' content="pull image 先pull兩個image:\npython:3.9.5-slim\ndocker image pull python:3.9.5-slim redis\ndocker image pull redis 新增2個dockerfile\nFROM python:3.9.5-slim RUN pip install flask redis && \\ groupadd -r flask && useradd -r -g flask flask && \\ mkdir /src && \\ chown -R flask:flask /src USER flask COPY startup.py /src/startup.py WORKDIR /src ENV FLASK_APP=startup.py REDIS_HOST=redis #EXPOSE 5000 CMD [\"flask\", \"run\", \"-h\", \"0.0.0.0\"] 用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：\n">
+<meta property='og:description' content="pull image 先pull兩個image:\npython:3.9.5-slim\ndocker image pull python:3.9.5-slim redis\n">
 <meta property='og:url' content='http://localhost:1313/2022/01/17/docker-dockerfile%E7%AB%AF%E5%8F%A3%E8%BD%89%E7%99%BC/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2022-01-17T14:21:35&#43;00:00'/><meta property='article:modified_time' content='2022-01-17T14:21:35&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] dockerfile端口轉發">
-<meta name="twitter:description" content="pull image 先pull兩個image:\npython:3.9.5-slim\ndocker image pull python:3.9.5-slim redis\ndocker image pull redis 新增2個dockerfile\nFROM python:3.9.5-slim RUN pip install flask redis && \\ groupadd -r flask && useradd -r -g flask flask && \\ mkdir /src && \\ chown -R flask:flask /src USER flask COPY startup.py /src/startup.py WORKDIR /src ENV FLASK_APP=startup.py REDIS_HOST=redis #EXPOSE 5000 CMD [\"flask\", \"run\", \"-h\", \"0.0.0.0\"] 用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：\n">
+<meta name="twitter:description" content="pull image 先pull兩個image:\npython:3.9.5-slim\ndocker image pull python:3.9.5-slim redis\n">
     </head>
     <body class="
     article-page
@@ -157,8 +157,15 @@
             
             
             
-            <a href="/categories/dockeramp-docker-compose/" style="background-color: hsl(299, 60%, 84%); color: hsl(299, 60%, 15%);">
-                Docker&amp;amp; Docker-Compose
+            <a href="/categories/docker/" style="background-color: hsl(205, 60%, 84%); color: hsl(205, 60%, 15%);">
+                Docker
+            </a>
+        
+            
+            
+            
+            <a href="/categories/docker-compose/" style="background-color: hsl(188, 60%, 84%); color: hsl(188, 60%, 15%);">
+                Docker-Compose
             </a>
         
     </header>

@@ -5,7 +5,8 @@ type: post
 date: 2022-01-17T14:21:35+00:00
 url: /2022/01/17/docker-dockerfile端口轉發/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
 

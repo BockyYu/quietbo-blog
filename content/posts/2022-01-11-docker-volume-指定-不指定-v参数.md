@@ -5,7 +5,8 @@ type: post
 date: 2022-01-10T16:21:51+00:00
 url: /2022/01/11/docker-volume-指定-不指定-v参数/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 
 ---
 下方為dockerfile的內容

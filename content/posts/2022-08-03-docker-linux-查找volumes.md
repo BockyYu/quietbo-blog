@@ -5,7 +5,8 @@ type: post
 date: 2022-08-03T10:27:42+00:00
 url: /2022/08/03/docker-linux-查找volumes/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
   - Linux
 tags:
   - docker

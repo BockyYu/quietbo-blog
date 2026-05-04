@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境:\nwindows10 mysql Ver 8.0.28 python3.7, mysql+pymysql 開發時要連線到MySQL時出錯，錯誤訊息如下:\ncryptography' package is required for sha256_password or caching_sha2_password auth methods\" RuntimeError: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods 去google才得知:\nMySQL 自8.0+ 版本後，默認的身份認證插件由mysql_native_password 變為了caching_sha2_password,\n網上提供的作法，有些答案都是去MySQL中更改默認的認證方式，但我不建議這麼做，原因就是未來部屬時，問題仍有可能會再次出現。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境:\nwindows10 mysql Ver 8.0.28 python3.7, mysql+pymysql 開發時要連線到MySQL時出錯，錯誤訊息如下:\n">
 <title>[Python] ‘cryptography’ package is required for sha256_password or caching_sha2_password auth methods</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Python] ‘cryptography’ package is required for sha256_password or caching_sha2_password auth methods">
-<meta property='og:description' content="環境:\nwindows10 mysql Ver 8.0.28 python3.7, mysql+pymysql 開發時要連線到MySQL時出錯，錯誤訊息如下:\ncryptography' package is required for sha256_password or caching_sha2_password auth methods\" RuntimeError: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods 去google才得知:\nMySQL 自8.0+ 版本後，默認的身份認證插件由mysql_native_password 變為了caching_sha2_password,\n網上提供的作法，有些答案都是去MySQL中更改默認的認證方式，但我不建議這麼做，原因就是未來部屬時，問題仍有可能會再次出現。\n">
+<meta property='og:description' content="環境:\nwindows10 mysql Ver 8.0.28 python3.7, mysql+pymysql 開發時要連線到MySQL時出錯，錯誤訊息如下:\n">
 <meta property='og:url' content='http://localhost:1313/2022/03/30/python-cryptography-package-is-required-for-sha256_password-or-caching_sha2_password-auth-methods/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2022-03-30T02:56:35&#43;00:00'/><meta property='article:modified_time' content='2022-03-30T02:56:35&#43;00:00'/>
 <meta name="twitter:title" content="[Python] ‘cryptography’ package is required for sha256_password or caching_sha2_password auth methods">
-<meta name="twitter:description" content="環境:\nwindows10 mysql Ver 8.0.28 python3.7, mysql+pymysql 開發時要連線到MySQL時出錯，錯誤訊息如下:\ncryptography' package is required for sha256_password or caching_sha2_password auth methods\" RuntimeError: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods 去google才得知:\nMySQL 自8.0+ 版本後，默認的身份認證插件由mysql_native_password 變為了caching_sha2_password,\n網上提供的作法，有些答案都是去MySQL中更改默認的認證方式，但我不建議這麼做，原因就是未來部屬時，問題仍有可能會再次出現。\n">
+<meta name="twitter:description" content="環境:\nwindows10 mysql Ver 8.0.28 python3.7, mysql+pymysql 開發時要連線到MySQL時出錯，錯誤訊息如下:\n">
     </head>
     <body class="
     article-page

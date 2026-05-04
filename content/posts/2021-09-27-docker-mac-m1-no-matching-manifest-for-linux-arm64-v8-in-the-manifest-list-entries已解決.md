@@ -5,7 +5,8 @@ type: post
 date: 2021-09-27T13:47:30+00:00
 url: /2021/09/27/docker-mac-m1-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries已解決/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
   - m1

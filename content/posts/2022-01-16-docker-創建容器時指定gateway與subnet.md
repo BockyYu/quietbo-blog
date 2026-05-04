@@ -5,7 +5,8 @@ type: post
 date: 2022-01-15T18:49:32+00:00
 url: /2022/01/16/docker-創建容器時指定gateway與subnet/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
 

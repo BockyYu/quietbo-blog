@@ -5,7 +5,8 @@ type: post
 date: 2021-05-11T17:56:00+00:00
 url: /2021/05/12/docke-ubuntu-安裝/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
   - ubuntu

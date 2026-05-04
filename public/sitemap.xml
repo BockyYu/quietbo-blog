@@ -11,10 +11,10 @@
     <loc>http://localhost:1313/categories/</loc>
     <lastmod>2025-07-06T21:09:56+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
+    <loc>http://localhost:1313/categories/docker/</loc>
     <lastmod>2025-07-06T21:09:56+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/dockeramp-docker-compose/</loc>
+    <loc>http://localhost:1313/tags/docker/</loc>
     <lastmod>2025-07-06T21:09:56+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/kafka/</loc>
@@ -201,6 +201,9 @@
     <lastmod>2022-08-08T08:39:55+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2022/08/03/docker-linux-%E6%9F%A5%E6%89%BEvolumes/</loc>
+    <lastmod>2022-08-03T10:27:42+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/docker-compose/</loc>
     <lastmod>2022-08-03T10:27:42+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/linux/</loc>

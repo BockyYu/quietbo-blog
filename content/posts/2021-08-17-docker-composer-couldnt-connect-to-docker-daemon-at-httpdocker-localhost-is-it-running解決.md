@@ -5,7 +5,8 @@ type: post
 date: 2021-08-17T07:22:02+00:00
 url: /2021/08/17/docker-composer-couldnt-connect-to-docker-daemon-at-httpdocker-localhost-is-it-running解決/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 
 ---
 部屬的環境是用docker-composer，某天用ssh連回去，要下docker指令就出現下面訊息:

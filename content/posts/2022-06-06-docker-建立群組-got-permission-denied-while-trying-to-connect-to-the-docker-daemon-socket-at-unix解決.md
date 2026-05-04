@@ -5,7 +5,8 @@ type: post
 date: 2022-06-06T07:43:23+00:00
 url: /2022/06/06/docker-建立群組-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket-at-unix解決/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker
 

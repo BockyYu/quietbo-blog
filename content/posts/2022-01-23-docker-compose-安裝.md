@@ -5,7 +5,8 @@ type: post
 date: 2022-01-23T15:01:47+00:00
 url: /2022/01/23/docker-compose-安裝/
 categories:
-  - 'Docker&amp; Docker-compose'
+  - Docker
+  - Docker-Compose
 tags:
   - docker-compose
 
