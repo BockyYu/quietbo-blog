@@ -1,59 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Quietbo</title><link>https://quietbo.com/tags/docker/</link><description>Recent content in Docker on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 06 Jul 2025 21:09:56 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)</title><link>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</link><pubDate>Sun, 06 Jul 2025 21:09:56 +0000</pubDate><guid>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</guid><description>&lt;/p&gt; 
-&lt;p&gt;前言&lt;br&gt;
-原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。&lt;/p&gt;&lt;/p&gt;
-&lt;p&gt;相關連結：&lt;/p&gt;&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
- &lt;li&gt;
- &lt;a href="https://hub.docker.com/r/apache/kafka"&gt;docker-kafka&lt;/a&gt;
- &lt;/li&gt;&lt;/p&gt; 
- &lt;li&gt;
- &lt;a href="https://docs.docker.net.tw/guides/kafka/"&gt;dockerdocs&lt;/a&gt;
- &lt;/li&gt;&lt;/p&gt; 
- &lt;li&gt;
- &lt;a href="https://github.com/provectus/kafka-ui"&gt;gitHub-kafka-ui&lt;/a&gt;
- &lt;/li&gt;&lt;/p&gt; 
- &lt;li&gt;
- &lt;a href="https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead"&gt;kafka:3.9.1 image&lt;/a&gt;
- &lt;/li&gt;
-&lt;/ul&gt;&lt;/p&gt; 
-&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
-&lt;nav&gt;
- &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
- &lt;li class='ez-toc-page-1 ez-toc-heading-level-1'&gt;
- &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2025/07/07/e/#%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F" &gt;什麼是 KRaft 模式？&lt;/a&gt;&lt;ul class='ez-toc-list-level-3' &gt;
- &lt;li class='ez-toc-heading-level-3'&gt;
- &lt;ul class='ez-toc-list-level-3' &gt;
- &lt;li class='ez-toc-heading-level-3'&gt;
- &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2025/07/07/e/#kafka-ui" &gt;kafka-ui&lt;/a&gt;
- &lt;/li&gt;
- &lt;li class='ez-toc-page-1 ez-toc-heading-level-3'&gt;
- &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2025/07/07/e/#%E6%B8%AC%E8%A9%A6%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8" &gt;測試是否正常&lt;/a&gt;
- &lt;/li&gt;
- &lt;/ul&gt;
- &lt;/li&gt;
- &lt;/ul&gt;
- &lt;/li&gt;
- &lt;/ul&gt;&lt;/nav&gt;
-&lt;/div&gt;
-&lt;h1 id="什麼是-kraft-模式"&gt;&lt;span class="ez-toc-section" id="%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F"&gt;&lt;/span&gt;什麼是 KRaft 模式？&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt; &lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Quietbo</title><link>https://quietbo.com/tags/docker/</link><description>Recent content in Docker on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 06 Jul 2025 21:09:56 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)</title><link>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</link><pubDate>Sun, 06 Jul 2025 21:09:56 +0000</pubDate><guid>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</guid><description>&lt;p&gt;前言&lt;br&gt;
+原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。&lt;/p&gt;
+&lt;p&gt;相關連結：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://hub.docker.com/r/apache/kafka" target="_blank" rel="noopener"
+ &gt;docker-kafka&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.docker.net.tw/guides/kafka/" target="_blank" rel="noopener"
+ &gt;dockerdocs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://github.com/provectus/kafka-ui" target="_blank" rel="noopener"
+ &gt;gitHub-kafka-ui&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead" target="_blank" rel="noopener"
+ &gt;kafka:3.9.1 image&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="什麼是-kraft-模式"&gt;什麼是 KRaft 模式？
 &lt;/h1&gt;&lt;p&gt;KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：&lt;/p&gt;&lt;/p&gt;
 &lt;p&gt;不需要 ZooKeeper：簡化部署和維護&lt;br&gt;
 內建 Controller：metadata 管理更高效&lt;br&gt;
 更好的效能：減少網路延遲和複雜度&lt;/p&gt;&lt;/p&gt;
 &lt;p&gt;快速開始 (推薦使用 docker-compose)&lt;br&gt;
 如果你想快速開始，可以直接跳到 docker-compose.yml 章節。&lt;/p&gt;&lt;/p&gt;
-&lt;ol class="wp-block-list"&gt;
- &lt;li&gt;
- 創建自定義網路
- &lt;/li&gt;
-&lt;/ol&gt;&lt;/p&gt; 
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker network create kafka-network&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;ol start="2" class="wp-block-list"&gt;
- &lt;li&gt;
- 部署 Kafka Broker&lt;br /&gt;為什麼選擇 3.9.1 而不是 latest？&lt;br /&gt;版本固定，確保環境一致性，避免 latest 版本可能帶來的不穩定性
- &lt;/li&gt;
-&lt;/ol&gt;&lt;/p&gt; 
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -d \
+&lt;ol&gt;
+&lt;li&gt;創建自定義網路&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker network create kafka-network
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start="2"&gt;
+&lt;li&gt;部署 Kafka Broker
+為什麼選擇 3.9.1 而不是 latest？
+版本固定，確保環境一致性，避免 latest 版本可能帶來的不穩定性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d \
  --name broker \
  --network kafka-network \
  -p 9092:9092 \
@@ -64,8 +38,8 @@
  -e KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER \
  -e KAFKA_CONTROLLER_QUORUM_VOTERS=1@broker:9093 \
  -e KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT \
- apache/kafka:3.9.1&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;環境變數詳解&lt;/p&gt; &lt;figure class="wp-block-table"&gt;&lt;/p&gt;
+ apache/kafka:3.9.1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;環境變數詳解&lt;/p&gt;
 &lt;table&gt;
  &lt;thead&gt;
  &lt;tr&gt;
@@ -104,16 +78,16 @@
  &lt;/tr&gt;
  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;重要提醒： KAFKA_ADVERTISED_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！&lt;/p&gt;&lt;/p&gt;
-&lt;h3 id="kafka-ui"&gt;&lt;span class="ez-toc-section" id="kafka-ui"&gt;&lt;/span&gt;kafka-ui&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt; &lt;/p&gt;
-&lt;/h3&gt;&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -d \
+&lt;p&gt;重要提醒： KAFKA_ADVERTISED_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！&lt;/p&gt;
+&lt;h3 id="kafka-ui"&gt;kafka-ui
+&lt;/h3&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d \
  --name kafka-ui \
  --network kafka-network \
  -p 8080:8080 \
  -e KAFKA_CLUSTERS_0_NAME=local \
  -e KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=broker:9092 \
- provectuslabs/kafka-ui:latest&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;環境變數的解說:&lt;/p&gt; &lt;figure class="wp-block-table"&gt;&lt;/p&gt;
+ provectuslabs/kafka-ui:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;環境變數的解說:&lt;/p&gt;
 &lt;table&gt;
  &lt;thead&gt;
  &lt;tr&gt;
@@ -132,26 +106,17 @@
  &lt;/tr&gt;
  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id="測試是否正常"&gt;&lt;span class="ez-toc-section" id="%E6%B8%AC%E8%A9%A6%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8"&gt;&lt;/span&gt;測試是否正常&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt; &lt;/p&gt;
-&lt;/h3&gt;&lt;ol class="wp-block-list"&gt;
- &lt;li&gt;
- 檢查服務狀態
- &lt;/li&gt;
-&lt;/ol&gt;&lt;/p&gt; 
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;bash# 檢查容器運行狀態
+&lt;h3 id="測試是否正常"&gt;測試是否正常
+&lt;/h3&gt;&lt;p&gt;檢查服務狀態&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;bash# 檢查容器運行狀態
 docker ps
 
 # 檢查 kafka-ui 日誌
 docker logs kafka-ui
 
 # 檢查 broker 日誌
-docker logs broker&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;ol start="2" class="wp-block-list"&gt;
- &lt;li&gt;
- 進入 Kafka 容器測試
- &lt;/li&gt;
-&lt;/ol&gt;&lt;/p&gt; 
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;# 進入 Kafka 容器
+docker logs broker
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;# 進入 Kafka 容器
 docker exec --workdir /opt/kafka/bin/ -it broker sh
 
 # 創建測試 Topic
@@ -161,46 +126,33 @@ docker exec --workdir /opt/kafka/bin/ -it broker sh
 ./kafka-topics.sh --bootstrap-server localhost:9092 --list
 
 # 查看 Topic 詳細資訊
-./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic test-topic&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;ol start="3" class="wp-block-list"&gt;
- &lt;li&gt;
- 測試 Producer/Consumer
- &lt;/li&gt;
-&lt;/ol&gt;&lt;/p&gt; 
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;# 啟動 Producer (會出現 &amp;gt; 提示符)
+./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic test-topic
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;測試 Producer/Consumer&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;# 啟動 Producer (會出現 &amp;gt; 提示符)
 ./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test-topic
 &amp;gt; hello kafka
 &amp;gt; this is a test message
 
-
 # 啟動 Consumer (讀取所有訊息)
-./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;ol start="4" class="wp-block-list"&gt;
- &lt;li&gt;
- 透過 kafka-ui 驗證&lt;br /&gt;開啟瀏覽器訪問：http://localhost:8080&lt;br /&gt;你應該能看到：
- &lt;/li&gt;
-&lt;/ol&gt;&lt;/p&gt; 
-&lt;ul class="wp-block-list"&gt;
- &lt;li&gt;
- Kafka 集群狀態
- &lt;/li&gt;&lt;/p&gt; 
- &lt;li&gt;
- Topics 列表
- &lt;/li&gt;&lt;/p&gt; 
- &lt;li&gt;
- 剛才發送的訊息
- &lt;/li&gt;
-&lt;/ul&gt;&lt;/p&gt; 
-&lt;h2 id="docker-composeyml-推薦方式"&gt;&lt;span class="ez-toc-section" id="docker-composeyml_%E6%8E%A8%E8%96%A6%E6%96%B9%E5%BC%8F"&gt;&lt;/span&gt;docker-compose.yml (推薦方式)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;&lt;/p&gt;
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;透過 kafka-ui 驗證
+開啟瀏覽器訪問：http://localhost:8080
+你應該能看到：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Kafka 集群狀態&lt;/li&gt;
+&lt;li&gt;Topics 列表&lt;/li&gt;
+&lt;li&gt;剛才發送的訊息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="docker-composeyml-推薦方式"&gt;docker-compose.yml (推薦方式)
 &lt;/h2&gt;&lt;p&gt;請使用docker-compose.yml來儲存下方內容，&lt;br&gt;
-並下指令docker-compose up即可正常運行&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;version: '3.8'
+並下指令docker-compose up即可正常運行&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;version: &amp;#39;3.8&amp;#39;
 services:
  broker:
  image: apache/kafka:3.9.1
  container_name: broker
  ports:
- - "9092:9092"
+ - &amp;#34;9092:9092&amp;#34;
  environment:
  KAFKA_NODE_ID: 1
  KAFKA_PROCESS_ROLES: broker,controller
@@ -216,7 +168,7 @@ services:
  image: provectuslabs/kafka-ui:latest
  container_name: kafka-ui
  ports:
- - "8080:8080"
+ - &amp;#34;8080:8080&amp;#34;
  environment:
  KAFKA_CLUSTERS_0_NAME: local
  KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: broker:9092
@@ -227,9 +179,9 @@ services:
 
 networks:
  kafka-network:
- driver: bridge&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;啟動服務&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;bash# 啟動所有服務
+ driver: bridge
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;啟動服務&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;bash# 啟動所有服務
 docker-compose up -d
 
 # 查看服務狀態
@@ -239,11 +191,12 @@ docker-compose ps
 docker-compose logs -f
 
 # 停止服務
-docker-compose down&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;查看當前版本&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker exec -it broker /opt/kafka/bin/kafka-topics.sh --version&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;輸出範例：&lt;br&gt;
-4.0.0&lt;/p&gt; &lt;/p&gt;&lt;/p&gt;&lt;/p&gt;</description></item><item><title>[Doris] docker容器啟動時遇到 Please set vm.max_map_count to be xxxxxx</title><link>https://quietbo.com/2024/10/24/doris-docker%E5%AE%B9%E5%99%A8%E5%95%9F%E5%8B%95%E6%99%82%E9%81%87%E5%88%B0-please-set-vm-max_map_count-to-be-xxxxxx/</link><pubDate>Thu, 24 Oct 2024 07:51:39 +0000</pubDate><guid>https://quietbo.com/2024/10/24/doris-docker%E5%AE%B9%E5%99%A8%E5%95%9F%E5%8B%95%E6%99%82%E9%81%87%E5%88%B0-please-set-vm-max_map_count-to-be-xxxxxx/</guid><description>&lt;/p&gt; 
+docker-compose down
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查看當前版本&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker exec -it broker /opt/kafka/bin/kafka-topics.sh --version
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;輸出範例：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;4.0.0
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Doris] docker容器啟動時遇到 Please set vm.max_map_count to be xxxxxx</title><link>https://quietbo.com/2024/10/24/doris-docker%E5%AE%B9%E5%99%A8%E5%95%9F%E5%8B%95%E6%99%82%E9%81%87%E5%88%B0-please-set-vm-max_map_count-to-be-xxxxxx/</link><pubDate>Thu, 24 Oct 2024 07:51:39 +0000</pubDate><guid>https://quietbo.com/2024/10/24/doris-docker%E5%AE%B9%E5%99%A8%E5%95%9F%E5%8B%95%E6%99%82%E9%81%87%E5%88%B0-please-set-vm-max_map_count-to-be-xxxxxx/</guid><description>&lt;/p&gt; 
 &lt;p&gt;如果在docker 中遇到下方字串&lt;/p&gt;&lt;/p&gt;
 &lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;Please set vm.max_map_count to be 2000000 under root using 'sysctl -w vm.max_map_count=2000000'&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
 &lt;p&gt;使用下方指令&lt;/p&gt;&lt;/p&gt;
