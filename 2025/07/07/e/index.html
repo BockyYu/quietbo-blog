@@ -1,14 +1,293 @@
-<!doctype html><html lang=zh-tw dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="\n前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n"><title>[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)</title><link rel=canonical href=https://quietbo.com/2025/07/07/e/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css><meta property='og:title' content="[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)"><meta property='og:description' content="\n前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n"><meta property='og:url' content='https://quietbo.com/2025/07/07/e/'><meta property='og:site_name' content='Quietbo'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='docker'><meta property='article:tag' content='kafka'><meta property='article:tag' content='kraft'><meta property='article:published_time' content='2025-07-06T21:09:56+00:00'><meta property='article:modified_time' content='2025-07-06T21:09:56+00:00'><meta name=twitter:title content="[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)"><meta name=twitter:description content="\n前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><div class=site-meta><h1 class=site-name><a href=/>Quietbo</a></h1><h2 class=site-description>你的部落格簡介</h2></div></header><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
-<span>Home</span></a></li><li><a href=/posts/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-<span>網誌</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
-<span>關於</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/docker/ style=background-color:#bedaef;color:#0f2a3d>Docker
-</a><a href=/categories/kafka/ style=background-color:#efe6be;color:#3d350f>Kafka</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2025/07/07/e/>[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published datetime=2025-07-06T21:09:56Z>Sunday, July 6, 2025</time>
-<svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>2 minutes read</time></div></footer></div></header><section class=article-content></p><p>前言<br>原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。</p></p><p>相關連結：</p></p><ul class=wp-block-list><li><a href=https://hub.docker.com/r/apache/kafka>docker-kafka</a></li></p><li><a href=https://docs.docker.net.tw/guides/kafka/>dockerdocs</a></li></p><li><a href=https://github.com/provectus/kafka-ui>gitHub-kafka-ui</a></li></p><li><a href=https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead>kafka:3.9.1 image</a></li></ul></p><div id=ez-toc-container class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"><nav><ul class='ez-toc-list ez-toc-list-level-1'><li class='ez-toc-page-1 ez-toc-heading-level-1'><a class="ez-toc-link ez-toc-heading-1" href=https://quietbo.com/2025/07/07/e/#%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F>什麼是 KRaft 模式？</a><ul class=ez-toc-list-level-3><li class=ez-toc-heading-level-3><ul class=ez-toc-list-level-3><li class=ez-toc-heading-level-3><a class="ez-toc-link ez-toc-heading-2" href=https://quietbo.com/2025/07/07/e/#kafka-ui>kafka-ui</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-3" href=https://quietbo.com/2025/07/07/e/#%E6%B8%AC%E8%A9%A6%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8>測試是否正常</a></li></ul></li></ul></li></ul></nav></div><h1 id=什麼是-kraft-模式><span class=ez-toc-section id=%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F></span>什麼是 KRaft 模式？<span class=ez-toc-section-end></span></p></h1><p>KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：</p></p><p>不需要 ZooKeeper：簡化部署和維護<br>內建 Controller：metadata 管理更高效<br>更好的效能：減少網路延遲和複雜度</p></p><p>快速開始 (推薦使用 docker-compose)<br>如果你想快速開始，可以直接跳到 docker-compose.yml 章節。</p></p><ol class=wp-block-list><li>創建自定義網路</li></ol></p><pre class=wp-block-code><code>docker network create kafka-network</code></pre></p><ol start=2 class=wp-block-list><li>部署 Kafka Broker<br>為什麼選擇 3.9.1 而不是 latest？<br>版本固定，確保環境一致性，避免 latest 版本可能帶來的不穩定性</li></ol></p><pre class=wp-block-code><code>docker run -d \
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="\n前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
+<title>[Kafka] 使用docker在本機部署KRaft模式 &#43; kafka-ui (簡易版)</title>
+
+
+<link rel="canonical" href="http://localhost:1313/2025/07/07/e/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)">
+<meta property='og:description' content="\n前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
+<meta property='og:url' content='http://localhost:1313/2025/07/07/e/'>
+<meta property='og:site_name' content='Quietbo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:tag' content='kafka' /><meta property='article:tag' content='kraft' /><meta property='article:published_time' content='2025-07-06T21:09:56&#43;00:00'/><meta property='article:modified_time' content='2025-07-06T21:09:56&#43;00:00'/>
+<meta name="twitter:title" content="[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)">
+<meta name="twitter:description" content="\n前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Quietbo</a></h1>
+            <h2 class="site-description">你的部落格簡介</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>網誌</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>關於</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/categories/docker/" style="background-color: hsl(205, 60%, 84%); color: hsl(205, 60%, 15%);">
+                Docker
+            </a>
+        
+            
+            
+            
+            <a href="/categories/kafka/" style="background-color: hsl(49, 60%, 84%); color: hsl(49, 60%, 15%);">
+                Kafka
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/07/07/e/">[Kafka] 使用docker在本機部署KRaft模式 &#43; kafka-ui (簡易版)</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <footer class="article-meta">
+        
+            <div class="inline-meta">
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published" datetime='2025-07-06T21:09:56Z'>Sunday, July 6, 2025</time>
+                
+
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        2 minutes read
+                    </time>
+                
+            </div>
+        
+
+        
+
+        
+    </footer>
+    
+</div>
+
+</header>
+
+    
+
+    <section class="article-content">
+    
+    
+    </p> 
+<p>前言<br>
+原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。</p></p>
+<p>相關連結：</p></p>
+<ul class="wp-block-list">
+  <li>
+    <a href="https://hub.docker.com/r/apache/kafka">docker-kafka</a>
+  </li></p> 
+  <li>
+    <a href="https://docs.docker.net.tw/guides/kafka/">dockerdocs</a>
+  </li></p> 
+  <li>
+    <a href="https://github.com/provectus/kafka-ui">gitHub-kafka-ui</a>
+  </li></p> 
+  <li>
+    <a href="https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead">kafka:3.9.1 image</a>
+  </li>
+</ul></p> 
+<div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction">
+<nav>
+  <ul class='ez-toc-list ez-toc-list-level-1 ' >
+    <li class='ez-toc-page-1 ez-toc-heading-level-1'>
+      <a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2025/07/07/e/#%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F" >什麼是 KRaft 模式？</a><ul class='ez-toc-list-level-3' >
+        <li class='ez-toc-heading-level-3'>
+          <ul class='ez-toc-list-level-3' >
+            <li class='ez-toc-heading-level-3'>
+              <a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2025/07/07/e/#kafka-ui" >kafka-ui</a>
+            </li>
+            <li class='ez-toc-page-1 ez-toc-heading-level-3'>
+              <a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2025/07/07/e/#%E6%B8%AC%E8%A9%A6%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8" >測試是否正常</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul></nav>
+</div>
+<h1 id="什麼是-kraft-模式"><span class="ez-toc-section" id="%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F"></span>什麼是 KRaft 模式？<span class="ez-toc-section-end"></span> </p>
+</h1><p>KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：</p></p>
+<p>不需要 ZooKeeper：簡化部署和維護<br>
+內建 Controller：metadata 管理更高效<br>
+更好的效能：減少網路延遲和複雜度</p></p>
+<p>快速開始 (推薦使用 docker-compose)<br>
+如果你想快速開始，可以直接跳到 docker-compose.yml 章節。</p></p>
+<ol class="wp-block-list">
+  <li>
+    創建自定義網路
+  </li>
+</ol></p> 
+<pre class="wp-block-code"><code class="">docker network create kafka-network</code></pre></p> 
+<ol start="2" class="wp-block-list">
+  <li>
+    部署 Kafka Broker<br />為什麼選擇 3.9.1 而不是 latest？<br />版本固定，確保環境一致性，避免 latest 版本可能帶來的不穩定性
+  </li>
+</ol></p> 
+<pre class="wp-block-code"><code class="">docker run -d \
   --name broker \
   --network kafka-network \
   -p 9092:9092 \
@@ -19,20 +298,94 @@
   -e KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER \
   -e KAFKA_CONTROLLER_QUORUM_VOTERS=1@broker:9093 \
   -e KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT \
-  apache/kafka:3.9.1</code></pre></p><p>環境變數詳解</p><figure class=wp-block-table></p><div class=table-wrapper><table><thead><tr><th>變數</th><th>說明</th></tr></thead><tbody><tr><td>KAFKA_NODE_ID=1</td><td>節點唯一 ID，KRaft 模式必需</td></tr><tr><td>KAFKA_PROCESS_ROLES=broker,controller</td><td>同時扮演 broker 和 controller 角色</td></tr><tr><td>KAFKA_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093</td><td>監聽接口：9092（客戶端）、9093（內部管理）</td></tr><tr><td>KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://broker:9092</td><td>重要：告訴客戶端如何連接</td></tr><tr><td>KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER</td><td>監聽器名稱</td></tr><tr><td>KAFKA_CONTROLLER_QUORUM_VOTERS=1@broker:9093</td><td>選舉投票設定</td></tr><tr><td>KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT</td><td>Broker 間通信協定</td></tr></tbody></table></div><p>重要提醒： KAFKA_ADVERTISED_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！</p></p><h3 id=kafka-ui><span class=ez-toc-section id=kafka-ui></span>kafka-ui<span class=ez-toc-section-end></span></p></h3><pre class=wp-block-code><code>docker run -d \
+  apache/kafka:3.9.1</code></pre></p> 
+<p>環境變數詳解</p> <figure class="wp-block-table"></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>變數</th>
+          <th>說明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>KAFKA_NODE_ID=1</td>
+          <td>節點唯一 ID，KRaft 模式必需</td>
+      </tr>
+      <tr>
+          <td>KAFKA_PROCESS_ROLES=broker,controller</td>
+          <td>同時扮演 broker 和 controller 角色</td>
+      </tr>
+      <tr>
+          <td>KAFKA_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093</td>
+          <td>監聽接口：9092（客戶端）、9093（內部管理）</td>
+      </tr>
+      <tr>
+          <td>KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://broker:9092</td>
+          <td>重要：告訴客戶端如何連接</td>
+      </tr>
+      <tr>
+          <td>KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER</td>
+          <td>監聽器名稱</td>
+      </tr>
+      <tr>
+          <td>KAFKA_CONTROLLER_QUORUM_VOTERS=1@broker:9093</td>
+          <td>選舉投票設定</td>
+      </tr>
+      <tr>
+          <td>KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT</td>
+          <td>Broker 間通信協定</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>重要提醒： KAFKA_ADVERTISED_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！</p></p>
+<h3 id="kafka-ui"><span class="ez-toc-section" id="kafka-ui"></span>kafka-ui<span class="ez-toc-section-end"></span> </p>
+</h3><pre class="wp-block-code"><code class="">docker run -d \
   --name kafka-ui \
   --network kafka-network \
   -p 8080:8080 \
   -e KAFKA_CLUSTERS_0_NAME=local \
   -e KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=broker:9092 \
-  provectuslabs/kafka-ui:latest</code></pre></p><p>環境變數的解說:</p><figure class=wp-block-table></p><div class=table-wrapper><table><thead><tr><th>變數</th><th>說明</th></tr></thead><tbody><tr><td>KAFKA_CLUSTERS_0_NAME=local</td><td>集群顯示名稱</td></tr><tr><td>KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=broker:9092</td><td>必須與 KAFKA_ADVERTISED_LISTENERS 一致</td></tr></tbody></table></div><h3 id=測試是否正常><span class=ez-toc-section id=%E6%B8%AC%E8%A9%A6%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8></span>測試是否正常<span class=ez-toc-section-end></span></p></h3><ol class=wp-block-list><li>檢查服務狀態</li></ol></p><pre class=wp-block-code><code>bash# 檢查容器運行狀態
+  provectuslabs/kafka-ui:latest</code></pre></p> 
+<p>環境變數的解說:</p> <figure class="wp-block-table"></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>變數</th>
+          <th>說明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>KAFKA_CLUSTERS_0_NAME=local</td>
+          <td>集群顯示名稱</td>
+      </tr>
+      <tr>
+          <td>KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=broker:9092</td>
+          <td>必須與 KAFKA_ADVERTISED_LISTENERS 一致</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="測試是否正常"><span class="ez-toc-section" id="%E6%B8%AC%E8%A9%A6%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8"></span>測試是否正常<span class="ez-toc-section-end"></span> </p>
+</h3><ol class="wp-block-list">
+  <li>
+    檢查服務狀態
+  </li>
+</ol></p> 
+<pre class="wp-block-code"><code class="">bash# 檢查容器運行狀態
 docker ps
 
 # 檢查 kafka-ui 日誌
 docker logs kafka-ui
 
 # 檢查 broker 日誌
-docker logs broker</code></pre></p><ol start=2 class=wp-block-list><li>進入 Kafka 容器測試</li></ol></p><pre class=wp-block-code><code># 進入 Kafka 容器
+docker logs broker</code></pre></p> 
+<ol start="2" class="wp-block-list">
+  <li>
+    進入 Kafka 容器測試
+  </li>
+</ol></p> 
+<pre class="wp-block-code"><code class=""># 進入 Kafka 容器
 docker exec --workdir /opt/kafka/bin/ -it broker sh
 
 # 創建測試 Topic
@@ -42,14 +395,40 @@ docker exec --workdir /opt/kafka/bin/ -it broker sh
 ./kafka-topics.sh --bootstrap-server localhost:9092 --list
 
 # 查看 Topic 詳細資訊
-./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic test-topic</code></pre></p><ol start=3 class=wp-block-list><li>測試 Producer/Consumer</li></ol></p><pre class=wp-block-code><code># 啟動 Producer (會出現 &gt; 提示符)
+./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic test-topic</code></pre></p> 
+<ol start="3" class="wp-block-list">
+  <li>
+    測試 Producer/Consumer
+  </li>
+</ol></p> 
+<pre class="wp-block-code"><code class=""># 啟動 Producer (會出現 &gt; 提示符)
 ./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test-topic
 &gt; hello kafka
 &gt; this is a test message
 
 
 # 啟動 Consumer (讀取所有訊息)
-./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning</code></pre></p><ol start=4 class=wp-block-list><li>透過 kafka-ui 驗證<br>開啟瀏覽器訪問：http://localhost:8080<br>你應該能看到：</li></ol></p><ul class=wp-block-list><li>Kafka 集群狀態</li></p><li>Topics 列表</li></p><li>剛才發送的訊息</li></ul></p><h2 id=docker-composeyml-推薦方式><span class=ez-toc-section id=docker-composeyml_%E6%8E%A8%E8%96%A6%E6%96%B9%E5%BC%8F></span>docker-compose.yml (推薦方式)<span class=ez-toc-section-end></span></p></h2><p>請使用docker-compose.yml來儲存下方內容，<br>並下指令docker-compose up即可正常運行</p></p><pre class=wp-block-code><code>version: '3.8'
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning</code></pre></p> 
+<ol start="4" class="wp-block-list">
+  <li>
+    透過 kafka-ui 驗證<br />開啟瀏覽器訪問：http://localhost:8080<br />你應該能看到：
+  </li>
+</ol></p> 
+<ul class="wp-block-list">
+  <li>
+    Kafka 集群狀態
+  </li></p> 
+  <li>
+    Topics 列表
+  </li></p> 
+  <li>
+    剛才發送的訊息
+  </li>
+</ul></p> 
+<h2 id="docker-composeyml-推薦方式"><span class="ez-toc-section" id="docker-composeyml_%E6%8E%A8%E8%96%A6%E6%96%B9%E5%BC%8F"></span>docker-compose.yml (推薦方式)<span class="ez-toc-section-end"></span></p>
+</h2><p>請使用docker-compose.yml來儲存下方內容，<br>
+並下指令docker-compose up即可正常運行</p></p>
+<pre class="wp-block-code"><code class="">version: '3.8'
 services:
   broker:
     image: apache/kafka:3.9.1
@@ -82,7 +461,9 @@ services:
 
 networks:
   kafka-network:
-    driver: bridge</code></pre></p><p>啟動服務</p></p><pre class=wp-block-code><code>bash# 啟動所有服務
+    driver: bridge</code></pre></p> 
+<p>啟動服務</p></p>
+<pre class="wp-block-code"><code class="">bash# 啟動所有服務
 docker-compose up -d
 
 # 查看服務狀態
@@ -92,10 +473,150 @@ docker-compose ps
 docker-compose logs -f
 
 # 停止服務
-docker-compose down</code></pre></p><p>查看當前版本</p></p><pre class=wp-block-code><code>docker exec -it broker /opt/kafka/bin/kafka-topics.sh --version</code></pre></p><p>輸出範例：<br>4.0.0</p></p></p></p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/docker/>Docker</a>
-<a href=/tags/kafka/>Kafka</a>
-<a href=/tags/kraft/>Kraft</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2024/10/24/doris-docker%E5%AE%B9%E5%99%A8%E5%95%9F%E5%8B%95%E6%99%82%E9%81%87%E5%88%B0-please-set-vm-max_map_count-to-be-xxxxxx/><div class=article-details><h2 class=article-title>[Doris] docker容器啟動時遇到 Please set vm.max_map_count to be xxxxxx</h2></div></a></article><article><a href=/2024/03/22/kafka-mac%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2kafkazookeeper/><div class=article-details><h2 class=article-title>[Kafka] Mac上使用Docker部署kafka+zookeeper</h2></div></a></article><article><a href=/2022/08/03/docker-linux-%E6%9F%A5%E6%89%BEvolumes/><div class=article-details><h2 class=article-title>[Docker] Linux 查找volumes</h2></div></a></article><article><a href=/2022/07/27/docker-restart/><div class=article-details><h2 class=article-title>[Docker] restart</h2></div></a></article><article><a href=/2022/06/07/docker-80port%E8%A2%AB%E4%BD%94%E7%94%A8%E3%80%82error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-cranky_banzai%E8%A7%A3%E6%B1%BA/><div class=article-details><h2 class=article-title>[Docker] 80port被佔用。Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai(解決)</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
-2026 Quietbo</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.1>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
+docker-compose down</code></pre></p> 
+<p>查看當前版本</p></p>
+<pre class="wp-block-code"><code class="">docker exec -it broker /opt/kafka/bin/kafka-topics.sh --version</code></pre></p> 
+<p>輸出範例：<br>
+4.0.0</p> </p></p></p>
+
+</section>
+
+
+    <footer class="article-meta article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/docker/">Docker</a>
+        
+            <a href="/tags/kafka/">Kafka</a>
+        
+            <a href="/tags/kraft/">Kraft</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside>
+    <h2 class="section-title">Related content</h2>
+    <div class="subsection-list">
+        <div class="article-list--tile">
+            
+                
+<article class="">
+    <a href="/2024/10/24/doris-docker%E5%AE%B9%E5%99%A8%E5%95%9F%E5%8B%95%E6%99%82%E9%81%87%E5%88%B0-please-set-vm-max_map_count-to-be-xxxxxx/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Doris] docker容器啟動時遇到 Please set vm.max_map_count to be xxxxxx</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/2024/03/22/kafka-mac%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2kafkazookeeper/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Kafka] Mac上使用Docker部署kafka&#43;zookeeper</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/2022/08/03/docker-linux-%E6%9F%A5%E6%89%BEvolumes/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Docker] Linux 查找volumes</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/2022/07/27/docker-restart/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Docker] restart</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="">
+    <a href="/2022/06/07/docker-80port%E8%A2%AB%E4%BD%94%E7%94%A8%E3%80%82error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-cranky_banzai%E8%A7%A3%E6%B1%BA/">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Docker] 80port被佔用。Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai(解決)</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+
+        <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 Quietbo
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.1">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
     import gallery from '\/ts\/gallery.js';
 
     const articleContent = document.querySelector('.article-content');
@@ -119,4 +640,15 @@ docker-compose down</code></pre></p><p>查看當前版本</p></p><pre class=wp-b
         });
         lightbox.init();
     }
-</script></main></div><script type=text/javascript src=/ts/main.1ff1e5fdc4e178ed422e50aa407526dc552f26342d729343fded19416194382c.js defer></script></body></html>
+</script>
+
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.9f49abbfb369d9c2dc399c16a26a5656ad1e148f32355578a0d3e13f6e31d6c1.js" defer></script>
+
+
+    </body>
+</html>
