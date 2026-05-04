@@ -10,7 +10,7 @@ tags:
   - docker
 
 ---
-## 容器間通信 {.wp-block-heading}
+## 容器間通信 
 
 容器都連接到了一個叫 docker0 的Linux bridge上
 
@@ -94,4 +94,4 @@ d1465da885e1   host      host      local
 
 並且Containers都默認的連接到docker0，如下圖。<figure class="wp-block-image">
 
-<img decoding="async" src="https://i.imgur.com/mqnWun0.png" alt="" /> </figure> <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="668" src="https://quietbo.com/wp-content/uploads/2022/01/image-1024x668.png" alt="" class="wp-image-693" srcset="https://quietbo.com/wp-content/uploads/2022/01/image-1024x668.png 1024w, https://quietbo.com/wp-content/uploads/2022/01/image-300x196.png 300w, https://quietbo.com/wp-content/uploads/2022/01/image-768x501.png 768w, https://quietbo.com/wp-content/uploads/2022/01/image.png 1316w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+<img decoding="async" src="https://i.imgur.com/mqnWun0.png" alt="" /> </figure> <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="668" src="/uploads/2022/01/image-1024x668.png" alt="" class="wp-image-693" srcset="/uploads/2022/01/image-1024x668.png 1024w, /uploads/2022/01/image-300x196.png 300w, /uploads/2022/01/image-768x501.png 768w, /uploads/2022/01/image.png 1316w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>

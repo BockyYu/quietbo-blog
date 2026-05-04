@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Microsoft： Exception 類別\n程式執行期間發生的錯誤，會丟出異常或丟出例外。\n例外處理是所有開發工程師必學的，以下介紹比較常見的 Exception\n&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot; aria-label=&quot;顯示/隱藏內容目錄&quot;&gt;&lt;span class=&quot;ez-toc-js-icon-con&quot;&gt;&lt;span class=&quot;&quot;&gt;&lt;span class=&quot;eztoc-hide&quot; style=&quot;display:none;&quot;&gt;Toggle&lt;/span&gt;&lt;span class=&quot;ez-toc-icon-toggle-span&quot;&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;list-377408&quot; width=&quot;20px&quot; height=&quot;20px&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; class=&quot;arrow-unsorted-368013&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;10px&quot; height=&quot;10px&quot; viewBox=&quot;0 0 24 24&quot; version=&quot;1.2&quot; baseProfile=&quot;tiny&quot;&gt;&lt;path d=&quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; NullReferenceException 當嘗試對Null 物件取值時，所擲回的例外狀況。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Microsoft： Exception 類別\n程式執行期間發生的錯誤，會丟出異常或丟出例外。\n例外處理是所有開發工程師必學的，以下介紹比較常見的 Exception\n">
 <title>[C#]例外處理Exception</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[C#]例外處理Exception">
-<meta property='og:description' content="Microsoft： Exception 類別\n程式執行期間發生的錯誤，會丟出異常或丟出例外。\n例外處理是所有開發工程師必學的，以下介紹比較常見的 Exception\n&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot; aria-label=&quot;顯示/隱藏內容目錄&quot;&gt;&lt;span class=&quot;ez-toc-js-icon-con&quot;&gt;&lt;span class=&quot;&quot;&gt;&lt;span class=&quot;eztoc-hide&quot; style=&quot;display:none;&quot;&gt;Toggle&lt;/span&gt;&lt;span class=&quot;ez-toc-icon-toggle-span&quot;&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;list-377408&quot; width=&quot;20px&quot; height=&quot;20px&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; class=&quot;arrow-unsorted-368013&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;10px&quot; height=&quot;10px&quot; viewBox=&quot;0 0 24 24&quot; version=&quot;1.2&quot; baseProfile=&quot;tiny&quot;&gt;&lt;path d=&quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; NullReferenceException 當嘗試對Null 物件取值時，所擲回的例外狀況。\n">
+<meta property='og:description' content="Microsoft： Exception 類別\n程式執行期間發生的錯誤，會丟出異常或丟出例外。\n例外處理是所有開發工程師必學的，以下介紹比較常見的 Exception\n">
 <meta property='og:url' content='http://localhost:1313/2021/11/01/%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86exception/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='C#' /><meta property='article:published_time' content='2021-10-31T16:22:08&#43;00:00'/><meta property='article:modified_time' content='2021-10-31T16:22:08&#43;00:00'/>
 <meta name="twitter:title" content="[C#]例外處理Exception">
-<meta name="twitter:description" content="Microsoft： Exception 類別\n程式執行期間發生的錯誤，會丟出異常或丟出例外。\n例外處理是所有開發工程師必學的，以下介紹比較常見的 Exception\n&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot; aria-label=&quot;顯示/隱藏內容目錄&quot;&gt;&lt;span class=&quot;ez-toc-js-icon-con&quot;&gt;&lt;span class=&quot;&quot;&gt;&lt;span class=&quot;eztoc-hide&quot; style=&quot;display:none;&quot;&gt;Toggle&lt;/span&gt;&lt;span class=&quot;ez-toc-icon-toggle-span&quot;&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;list-377408&quot; width=&quot;20px&quot; height=&quot;20px&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; class=&quot;arrow-unsorted-368013&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;10px&quot; height=&quot;10px&quot; viewBox=&quot;0 0 24 24&quot; version=&quot;1.2&quot; baseProfile=&quot;tiny&quot;&gt;&lt;path d=&quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; NullReferenceException 當嘗試對Null 物件取值時，所擲回的例外狀況。\n">
+<meta name="twitter:description" content="Microsoft： Exception 類別\n程式執行期間發生的錯誤，會丟出異常或丟出例外。\n例外處理是所有開發工程師必學的，以下介紹比較常見的 Exception\n">
     </head>
     <body class="
     article-page
@@ -205,7 +205,7 @@
 
 
                     <time class="article-time--reading">
-                        1 minute read
+                        2 minutes read
                     </time>
                 
             </div>
@@ -229,50 +229,103 @@
     >Microsoft： Exception 類別</a><br>
 程式執行期間發生的錯誤，會丟出異常或丟出例外。</p>
 <p>例外處理是所有開發工程師必學的，以下介紹比較常見的 Exception</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<ul class="wp-block-list">
+  <li>
+    確認例外的什麼類型
+  </li>
+  <li>
+    透過debug來檢查是第幾行造成異常
+  </li>
+</ul>
+<div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction">
+  <div class="ez-toc-title-container">
+    <p class="ez-toc-title" style="cursor:inherit">
+      Table of Contents
+    </p>
 <pre><code>&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot; aria-label=&quot;顯示/隱藏內容目錄&quot;&gt;&lt;span class=&quot;ez-toc-js-icon-con&quot;&gt;&lt;span class=&quot;&quot;&gt;&lt;span class=&quot;eztoc-hide&quot; style=&quot;display:none;&quot;&gt;Toggle&lt;/span&gt;&lt;span class=&quot;ez-toc-icon-toggle-span&quot;&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;list-377408&quot; width=&quot;20px&quot; height=&quot;20px&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; class=&quot;arrow-unsorted-368013&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;10px&quot; height=&quot;10px&quot; viewBox=&quot;0 0 24 24&quot; version=&quot;1.2&quot; baseProfile=&quot;tiny&quot;&gt;&lt;path d=&quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;
 </code></pre>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h2 id="nullreferenceexception"><!-- raw HTML omitted --><!-- raw HTML omitted -->NullReferenceException<!-- raw HTML omitted --><!-- raw HTML omitted -->
+  </div><nav>
+  <ul class='ez-toc-list ez-toc-list-level-1 ' >
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#NullReferenceException" >NullReferenceException</a>
+    </li>
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#DivideByZeroException" >DivideByZeroException</a>
+    </li>
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#ArgumentOutOfRangeException" >ArgumentOutOfRangeException</a>
+    </li>
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#ArgumentNullException" >ArgumentNullException</a>
+    </li>
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#FormatException" >FormatException</a>
+    </li>
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#try%E2%80%A6catch%E2%80%A6finally" >try…catch…finally</a>
+    </li>
+  </ul></nav>
+</div>
+<h2 id="nullreferenceexception"><span class="ez-toc-section" id="NullReferenceException"></span>NullReferenceException<span class="ez-toc-section-end"></span>
 </h2><p>當嘗試對Null 物件取值時，所擲回的例外狀況。</p>
 <p>尋找字串裡，B在第幾個位置出現，由於name是null, 所以程式時會丟出例外，範例如下：</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="csharp" class="language-csharp line-numbers">string name = null;
+int position = name.IndexOf('B');</code></pre>
 <p>錯誤如下：</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h2 id="dividebyzeroexception"><!-- raw HTML omitted --><!-- raw HTML omitted -->DivideByZeroException<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">Unhandled Exception:
+System.NullReferenceException: Object reference not set to an instance of an object</code></pre>
+<h2 id="dividebyzeroexception"><span class="ez-toc-section" id="DivideByZeroException"></span>DivideByZeroException<span class="ez-toc-section-end"></span>
 </h2><p>嘗試將整數或 Decimal 值除以零時，所擲回的例外狀況。</p>
 <p>分母不可以為零，程式在執行時, 會丟出例外，範例如下：</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="csharp" class="language-csharp">int i = 100;
+int ans = i/0;</code></pre>
 <p>錯誤如下：</p>
-<!-- raw HTML omitted -->
-<h2 id="argumentoutofrangeexception"><!-- raw HTML omitted --><!-- raw HTML omitted -->ArgumentOutOfRangeException<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">System.DivideByZeroException: Attempted to divide by zero.</code></pre>
+<h2 id="argumentoutofrangeexception"><span class="ez-toc-section" id="ArgumentOutOfRangeException"></span>ArgumentOutOfRangeException<span class="ez-toc-section-end"></span>
 </h2><p>引數超出有效值的範圍。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="csharp" class="language-csharp line-numbers">string value = "0123456789";
+
+// 字串長度10, 叫用 Substring時, 傳入 100, 會丟出 ArgumentOutOfRangeException 例外
+string result = value.Substring(100);</code></pre>
 <p>錯誤訊息如下：</p>
-<!-- raw HTML omitted -->
-<h2 id="argumentnullexception"><!-- raw HTML omitted --><!-- raw HTML omitted -->ArgumentNullException<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">System.ArgumentOutOfRangeException: startIndex cannot be larger than length of string.</code></pre>
+<h2 id="argumentnullexception"><span class="ez-toc-section" id="ArgumentNullException"></span>ArgumentNullException<span class="ez-toc-section-end"></span>
 </h2><p><a class="link" href="https://docs.microsoft.com/zh-tw/dotnet/api/system.argumentnullexception?view=net-5.0"  target="_blank" rel="noopener"
     >ArgumentNullException</a><br>
 當 Null 參考 (在 Visual Basic 中為 Nothing) 傳遞給不接受其為有效引數的方法時，所擲回的例外狀況。</p>
 <p>不允許參數是null時,就會丟出ArgumentNullException</p>
-<h2 id="formatexception"><!-- raw HTML omitted --><!-- raw HTML omitted -->FormatException<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<h2 id="formatexception"><span class="ez-toc-section" id="FormatException"></span>FormatException<span class="ez-toc-section-end"></span>
 </h2><p>引數格式無效或複合格式字串格式不正確時所擲回的例外狀況。</p>
 <p>此用法是想使用字串插值，但因為語法錯誤，導致異常。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="csharp" class="language-csharp line-numbers">string template = "user_name: {bocky}"; 
+string result = string.Format(template, "bocky");</code></pre>
 <p>錯誤如下：</p>
-<!-- raw HTML omitted -->
-<h2 id="trycatchfinally"><!-- raw HTML omitted --><!-- raw HTML omitted -->try…catch…finally<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">System.FormatException: Input string was not in a correct format.</code></pre>
+<h2 id="trycatchfinally"><span class="ez-toc-section" id="try%E2%80%A6catch%E2%80%A6finally"></span>try…catch…finally<span class="ez-toc-section-end"></span>
 </h2><p>不要太依賴，若是能在開發時就想到需要檢查/判斷的地方，就先做好。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<ul class="wp-block-list">
+  <li>
+    <a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/keywords/try-catch">Microsoft：try-catch</a>
+  </li>
+  <li>
+    <a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/keywords/try-finally">Microsoft：try-finally</a>
+  </li>
+  <li>
+    <a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/keywords/try-catch-finally">Microsoft：try-catch-finally</a>
+  </li>
+</ul>
+<pre class="wp-block-code"><code lang="csharp" class="language-csharp line-numbers">try
+{
+//程式執行區或可能發生異常的地方
+}
+catch (Exception ex)
+{
+//例外的處理方法，如秀出警告
+}
+finally
+{
+//無論是否有發生例外事件，都會執行這區塊
+}</code></pre>
 
 </section>
 

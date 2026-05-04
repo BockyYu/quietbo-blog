@@ -21,7 +21,7 @@ ControlCe 96400 bocky   37u  IPv6 0xb3652d5dec3e630b      0t0  TCP *:commplex-ma
 
 查詢結果已經在使用了
 
-## 解決方式1. {.wp-block-heading}
+## 解決方式1. 
 
 左上角[系統偏好設定]<figure class="wp-block-image">
 
@@ -33,6 +33,6 @@ ControlCe 96400 bocky   37u  IPv6 0xb3652d5dec3e630b      0t0  TCP *:commplex-ma
 將AirPlay接收器關閉。  
 <img decoding="async" src="https://i.imgur.com/umGw5mx.png" alt="" /> 
 
-## 解決方式2. {.wp-block-heading}
+## 解決方式2. 
 
 將flask更換其他port號，更換port方式請自行搜尋。

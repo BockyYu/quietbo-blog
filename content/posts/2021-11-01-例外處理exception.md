@@ -55,7 +55,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="NullReferenceException"></span>NullReferenceException<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="NullReferenceException"></span>NullReferenceException<span class="ez-toc-section-end"></span> 
 
 當嘗試對Null 物件取值時，所擲回的例外狀況。
 
@@ -69,7 +69,7 @@ int position = name.IndexOf('B');</code></pre>
 <pre class="wp-block-code"><code class="">Unhandled Exception:
 System.NullReferenceException: Object reference not set to an instance of an object</code></pre>
 
-## <span class="ez-toc-section" id="DivideByZeroException"></span>DivideByZeroException<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="DivideByZeroException"></span>DivideByZeroException<span class="ez-toc-section-end"></span> 
 
 嘗試將整數或 Decimal 值除以零時，所擲回的例外狀況。
 
@@ -82,7 +82,7 @@ int ans = i/0;</code></pre>
 
 <pre class="wp-block-code"><code class="">System.DivideByZeroException: Attempted to divide by zero.</code></pre>
 
-## <span class="ez-toc-section" id="ArgumentOutOfRangeException"></span>ArgumentOutOfRangeException<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="ArgumentOutOfRangeException"></span>ArgumentOutOfRangeException<span class="ez-toc-section-end"></span> 
 
 引數超出有效值的範圍。
 
@@ -95,14 +95,14 @@ string result = value.Substring(100);</code></pre>
 
 <pre class="wp-block-code"><code class="">System.ArgumentOutOfRangeException: startIndex cannot be larger than length of string.</code></pre>
 
-## <span class="ez-toc-section" id="ArgumentNullException"></span>ArgumentNullException<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="ArgumentNullException"></span>ArgumentNullException<span class="ez-toc-section-end"></span> 
 
 [ArgumentNullException][2]  
 當 Null 參考 (在 Visual Basic 中為 Nothing) 傳遞給不接受其為有效引數的方法時，所擲回的例外狀況。
 
 不允許參數是null時,就會丟出ArgumentNullException
 
-## <span class="ez-toc-section" id="FormatException"></span>FormatException<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="FormatException"></span>FormatException<span class="ez-toc-section-end"></span> 
 
 引數格式無效或複合格式字串格式不正確時所擲回的例外狀況。
 
@@ -115,7 +115,7 @@ string result = string.Format(template, "bocky");</code></pre>
 
 <pre class="wp-block-code"><code class="">System.FormatException: Input string was not in a correct format.</code></pre>
 
-## <span class="ez-toc-section" id="try%E2%80%A6catch%E2%80%A6finally"></span>try…catch…finally<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="try%E2%80%A6catch%E2%80%A6finally"></span>try…catch…finally<span class="ez-toc-section-end"></span> 
 
 不要太依賴，若是能在開發時就想到需要檢查/判斷的地方，就先做好。
 

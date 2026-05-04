@@ -27,7 +27,7 @@ tags:
   </li>
 </ol>
 
-# 建立 docker 群組 {.wp-block-heading}
+# 建立 docker 群組 
 
 <pre class="wp-block-code"><code lang="bash" class="language-bash">sudo groupadd docker</code></pre>
 
@@ -35,7 +35,7 @@ tags:
 
 <pre class="wp-block-code"><code class="">groupadd: group 'docker' already exists</code></pre>
 
-## 將非 root 帳號加上 docker 群組中 {.wp-block-heading}
+## 將非 root 帳號加上 docker 群組中 
 
 將連接的用戶&#8221;$USER&#8221;添加到docker組。  
 如果不想使用當前用戶，請更改用戶名
@@ -53,7 +53,7 @@ group 的資訊並不會立刻更新，為了要能立刻產生作用，執行 n
 
 <pre class="wp-block-code"><code class="">newgrp docker</code></pre>
 
-# 重新啟動 docker 服務 {.wp-block-heading}
+# 重新啟動 docker 服務 
 
 重啟 docker 服務之後，所有的變動就完成了：
 

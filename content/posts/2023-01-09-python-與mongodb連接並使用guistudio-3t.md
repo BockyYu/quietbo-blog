@@ -42,7 +42,7 @@ Windows使用GUI [Studio 3T][1]
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="ubuntu%E5%AE%89%E8%A3%9Ddocker_mongodb"></span>ubuntu安裝docker mongodb<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="ubuntu%E5%AE%89%E8%A3%9Ddocker_mongodb"></span>ubuntu安裝docker mongodb<span class="ez-toc-section-end"></span> 
 
 下載image
 
@@ -76,12 +76,12 @@ docker start {CONTAINER_ID}</code></pre>
 up正常為下圖:  
 <img decoding="async" src="https://i.imgur.com/2loo39c.png" alt="" /> 
 
-## <span class="ez-toc-section" id="%E6%9F%A5%E8%A9%A2%E8%A9%B2ubuntu%E7%9A%84IP%E4%BD%8D%E5%9D%80"></span>查詢該ubuntu的IP位址<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%9F%A5%E8%A9%A2%E8%A9%B2ubuntu%E7%9A%84IP%E4%BD%8D%E5%9D%80"></span>查詢該ubuntu的IP位址<span class="ez-toc-section-end"></span> 
 
 右上角網路資訊點進去到這頁面會看到ubnutu的ip  
 <img decoding="async" src="https://i.imgur.com/mtAd6ZL.png" alt="" /> 
 
-## <span class="ez-toc-section" id="Windows%E5%AE%89%E8%A3%9DStudio_3T"></span>Windows安裝Studio 3T<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="Windows%E5%AE%89%E8%A3%9DStudio_3T"></span>Windows安裝Studio 3T<span class="ez-toc-section-end"></span> 
 
 GUI [Studio 3T][1]
 
@@ -94,7 +94,7 @@ GUI [Studio 3T][1]
 成功會出現下圖  
 <img decoding="async" src="https://i.imgur.com/oAkMC9W.png" alt="" /> 
 
-## <span class="ez-toc-section" id="%E5%A6%82%E4%BD%95%E9%80%B2%E5%85%A5docker%E5%85%A7%E7%9A%84mongodb"></span>如何進入docker內的mongodb?<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%A6%82%E4%BD%95%E9%80%B2%E5%85%A5docker%E5%85%A7%E7%9A%84mongodb"></span>如何進入docker內的mongodb?<span class="ez-toc-section-end"></span> 
 
 <ol class="wp-block-list">
   <li>

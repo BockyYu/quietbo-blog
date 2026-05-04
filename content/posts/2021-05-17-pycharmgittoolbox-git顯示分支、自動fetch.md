@@ -10,7 +10,7 @@ categories:
 ---
 GitToolBox 是IDE插件，我個人是滿推薦安裝的，下方有一些截圖和功能說明，如果這是你想要的工具，你想安裝的話，可以參考下方的安裝、設定方式。
 
-## 顯示git Branch、Fetch和最後commit的時間和訊息 {.wp-block-heading}
+## 顯示git Branch、Fetch和最後commit的時間和訊息 
 
 <img decoding="async" src="https://i.imgur.com/Lz0pHKL.png" alt="" />  
 Δ-表示有變化  
@@ -24,7 +24,7 @@ Fetch會自動檢查，若不想要太常檢查可以自行設定。
 下圖是我隨便截的一段程式碼，在26行是我光標停放的位置，會顯示該行git最後commit的時間和訊息，這也是能夠自己設定格式。  
 <img decoding="async" src="https://i.imgur.com/61gLzih.png" alt="" /> 
 
-## 安裝、使用方式 {.wp-block-heading}
+## 安裝、使用方式 
 
 本次操作版本為:11.0.6  
 安裝方法:  

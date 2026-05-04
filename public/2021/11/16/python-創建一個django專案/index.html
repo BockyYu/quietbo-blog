@@ -205,7 +205,7 @@
 
 
                     <time class="article-time--reading">
-                        1 minute read
+                        2 minutes read
                     </time>
                 
             </div>
@@ -232,56 +232,134 @@ Django:3.2</p>
 </h2><p>可參考：<a class="link" href="https://quietbo.com/2021/06/27/mac-pro-m1-%e5%ae%89%e8%a3%9dvirtualenv/"  target="_blank" rel="noopener"
     >安裝virtualenv</a></p>
 <p>進入env後，安裝及查看Django版本：</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code class="">pip install django
+pip list</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/YDA0rRK.png" alt="" /> </figure></p>
 <h2 id="建立專案">建立專案
 </h2><p>尋找一個位置，建立第一個專案：</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">django-admin startproject mydjango</code></pre>
+<img decoding="async" src="https://i.imgur.com/33w2bsR.png" alt="" />  
+創建的資料結構如下：  
+<img decoding="async" src="https://i.imgur.com/AREpKuM.png" alt="" /> 
 <p>執行方式：</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">python manage.py runserver</code></pre>
 <p>若想更改默認端口：</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">python manage.py runserver 0.0.0.0:8899</code></pre>
 <p>執行成功如下圖：<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/T83LNyC.png" alt="" /></p>
 <p>開啟瀏覽器，輸入：</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">http://127.0.0.1:8000/</code></pre>
 <p>第一次運行，會看到下圖畫面：<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/xIuSCBD.png" alt="" /></p>
 <p>停止方式：Control + C</p>
 <p>此時，會多出現一個檔案db.sqlite3<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/2pFmXot.png" alt="" /></p>
 <p>Django主要提供了四種數據庫引擎：</p>
-<!-- raw HTML omitted -->
+<ol class="wp-block-list">
+  <li>
+    django.db.backends.postgresql
+  </li>
+  <li>
+    django.db.backends.mysql
+  </li>
+  <li>
+    django.db.backends.sqlite3
+  </li>
+  <li>
+    django.db.backends.oracle
+  </li>
+</ol>
 <p>打開setting.py會看到默認引擎是sqlite3，</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code class=""># Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/pcR3yH3.png" alt="" /> </figure></p>
 <p>MySQL設置方式:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangodb',
+        'USER': 'root',
+        'PASSWORD': '12345',
+        'HOST': '127.0.0.1',
+    }
+}</code></pre>
 <p>如果需要更多的配置信息，可以指定配置文件：</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS':{
+            'read_default_file': '/path/to/my.cnf',
+        },
+    }
+}</code></pre>
 <p>配置文件：</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class=""># my.cnf
+</code></pre>
 <p>[client]</p>
 <p>databases = djangodb user = root password = 12345 default-character-set=utf8</p>
 <p>PostgreSQL數據庫配置:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydatabase',
+        'USER': 'mydatabaseuser',
+        'PASSWORD': 'mypassword',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}</code></pre>
 <p>初始化：</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code class="">python manage.py migrate</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/udBptue.png" alt="" /> </figure></p>
 <h3 id="創建應用程序">創建應用程序
-</h3><!-- raw HTML omitted -->
+</h3><pre class="wp-block-code"><code class="">python manage.py startapp books</code></pre>
 <p>生成books，如下的資料結構</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">.
+├── books
+│&nbsp;&nbsp; ├── __init__.py
+│&nbsp;&nbsp; ├── admin.py
+│&nbsp;&nbsp; ├── apps.py
+│&nbsp;&nbsp; ├── migrations
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── __init__.py
+│&nbsp;&nbsp; ├── models.py
+│&nbsp;&nbsp; ├── tests.py
+│&nbsp;&nbsp; └── views.py
+├── db.sqlite3
+├── manage.py
+└── mydjango
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/RbOLpWV.png" alt="" /> </figure></p>
+<ul class="wp-block-list">
+  <li>
+    admin :網站管理設置
+  </li>
+  <li>
+    apps :註冊應用相關
+  </li>
+  <li>
+    migration ：數據庫的升級文件包，會自動升級專案的數據庫
+  </li>
+  <li>
+    models ：定義模型
+  </li>
+  <li>
+    tests :測試相關代碼
+  </li>
+  <li>
+    views ：定義視圖函式
+  </li>
+</ul>
 <p>主要程式撰寫是在views及models</p>
 
 </section>

@@ -49,15 +49,15 @@ VM運行時可以刪除快照，回收硬碟空間。
   </ul></nav>
 </div>
 
-# <span class="ez-toc-section" id="%E8%A3%BD%E4%BD%9C%E5%BF%AB%E7%85%A7%E8%A3%BD%E4%BD%9C%E9%82%84%E5%8E%9F%E7%8B%80%E6%85%8B"></span>製作快照(製作還原狀態)<span class="ez-toc-section-end"></span> {.wp-block-heading}
+# <span class="ez-toc-section" id="%E8%A3%BD%E4%BD%9C%E5%BF%AB%E7%85%A7%E8%A3%BD%E4%BD%9C%E9%82%84%E5%8E%9F%E7%8B%80%E6%85%8B"></span>製作快照(製作還原狀態)<span class="ez-toc-section-end"></span> 
 
-## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%95%E4%B8%80"></span>方法一:<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%95%E4%B8%80"></span>方法一:<span class="ez-toc-section-end"></span> 
 
 開啟Virtualbox的快照畫面。  
 <img decoding="async" src="https://i.imgur.com/3YVBpqh.png" alt="" />  
 <img decoding="async" src="https://i.imgur.com/ZlSpZIQ.png" alt="" /> 
 
-## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%95%E4%BA%8C"></span>方法二:<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%95%E4%BA%8C"></span>方法二:<span class="ez-toc-section-end"></span> 
 
 方法二限於ubuntu開啟時: 機器 -> 取得快照  
 <img decoding="async" src="https://i.imgur.com/3BSyHRP.png" alt="" /> 
@@ -75,7 +75,7 @@ VM運行時可以刪除快照，回收硬碟空間。
 紅框就是剛才做出來的快照。  
 <img decoding="async" src="https://i.imgur.com/IpxjzCL.png" alt="" /> 
 
-# <span class="ez-toc-section" id="%E9%82%84%E5%8E%9F"></span>還原<span class="ez-toc-section-end"></span> {.wp-block-heading}
+# <span class="ez-toc-section" id="%E9%82%84%E5%8E%9F"></span>還原<span class="ez-toc-section-end"></span> 
 
 只要在ubuntu內的任意處增、刪、改檔案，然後正常關機。
 

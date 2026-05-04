@@ -23,7 +23,7 @@ tags:
 
 只要重開機後, 就要手動去開啟容器, 雖然有GUI很方便按個按鈕就好, 可是有時候還是會忘記要啟動必要容器…
 
-## 設置重啟策略 {.wp-block-heading}
+## 設置重啟策略 
 
 <pre class="wp-block-code"><code lang="bash" class="language-bash">docker run --restart={Policy} {Container Name}</code></pre>
 
@@ -40,7 +40,7 @@ tags:
 | always                   | 無論退出狀態如何，始終重新啟動容器。                                                          |
 | unless-stopped           | 無論退出狀態如何，始終重啟容器，包括在守護進程啟動時，除非容器在 Docker 守護進程停止之前進入停止狀態。                     |</figure> 
 
-## 查看容器設置 {.wp-block-heading}
+## 查看容器設置 
 
 <pre class="wp-block-code"><code lang="bash" class="language-bash">$ docker inspect {Container Name}</code></pre>
 

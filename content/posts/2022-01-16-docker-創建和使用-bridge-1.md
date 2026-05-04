@@ -33,7 +33,7 @@ categories:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E8%87%AA%E8%A8%82%E5%90%8D%E7%A8%B1%E7%9A%84_docker_network"></span>建立一個自訂名稱的 docker network<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E8%87%AA%E8%A8%82%E5%90%8D%E7%A8%B1%E7%9A%84_docker_network"></span>建立一個自訂名稱的 docker network<span class="ez-toc-section-end"></span> 
 
 建立一個自訂名稱的 docker network，這邊取名為mybridge:
 
@@ -79,7 +79,7 @@ categories:
     }
 ]</code></pre>
 
-## <span class="ez-toc-section" id="%E5%89%B5%E5%BB%BA%E4%B8%80%E5%80%8B%E5%AE%B9%E5%99%A8"></span>創建一個容器<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%89%B5%E5%BB%BA%E4%B8%80%E5%80%8B%E5%AE%B9%E5%99%A8"></span>創建一個容器<span class="ez-toc-section-end"></span> 
 
 將容器指定network在mybridge
 
@@ -157,7 +157,7 @@ categories:
     }
 ]</code></pre>
 
-## <span class="ez-toc-section" id="%E8%AE%93%E4%B8%80%E5%80%8B%E5%AE%B9%E5%99%A8%E9%80%A3%E6%8E%A52%E5%80%8B%E7%B6%B2%E8%B7%AF"></span>讓一個容器連接2個網路<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E8%AE%93%E4%B8%80%E5%80%8B%E5%AE%B9%E5%99%A8%E9%80%A3%E6%8E%A52%E5%80%8B%E7%B6%B2%E8%B7%AF"></span>讓一個容器連接2個網路<span class="ez-toc-section-end"></span> 
 
 原本的box1與box2是連接預設的docker0(就是bridge)，而box3是連接mybridge
 
@@ -214,7 +214,7 @@ docker inspect box3</code></pre>
 eth0屬於mybridge，eth1屬於bridge。  
 <img decoding="async" src="https://i.imgur.com/XGrrGgI.png" alt="" /> 
 
-## <span class="ez-toc-section" id="%E6%96%B7%E9%96%8B%E5%AE%B9%E5%99%A8%E8%88%87%E7%B6%B2%E7%B5%A1%E7%9A%84%E9%80%A3%E6%8E%A5"></span>斷開容器與網絡的連接<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%96%B7%E9%96%8B%E5%AE%B9%E5%99%A8%E8%88%87%E7%B6%B2%E7%B5%A1%E7%9A%84%E9%80%A3%E6%8E%A5"></span>斷開容器與網絡的連接<span class="ez-toc-section-end"></span> 
 
 查看網路相關命令：
 

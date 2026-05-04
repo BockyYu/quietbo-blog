@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境:ubuntu20.04\n輸入:\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境:ubuntu20.04\n下載meld sudo apt-get install meld 設置git git config --global diff.external meld 在自己的的目錄下建立一個git-meld.sh 的script: vi ~/git-meld.sh 輸入:\n">
 <title>[Git]使用Meld作為git diff tool</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Git]使用Meld作為git diff tool">
-<meta property='og:description' content="環境:ubuntu20.04\n輸入:\n">
+<meta property='og:description' content="環境:ubuntu20.04\n下載meld sudo apt-get install meld 設置git git config --global diff.external meld 在自己的的目錄下建立一個git-meld.sh 的script: vi ~/git-meld.sh 輸入:\n">
 <meta property='og:url' content='http://localhost:1313/2021/10/18/%E4%BD%BF%E7%94%A8meld%E4%BD%9C%E7%82%BAgit-diff-tool%E5%92%8Cmergetool/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='GIT' /><meta property='article:published_time' content='2021-10-18T10:52:18&#43;00:00'/><meta property='article:modified_time' content='2021-10-18T10:52:18&#43;00:00'/>
 <meta name="twitter:title" content="[Git]使用Meld作為git diff tool">
-<meta name="twitter:description" content="環境:ubuntu20.04\n輸入:\n">
+<meta name="twitter:description" content="環境:ubuntu20.04\n下載meld sudo apt-get install meld 設置git git config --global diff.external meld 在自己的的目錄下建立一個git-meld.sh 的script: vi ~/git-meld.sh 輸入:\n">
     </head>
     <body class="
     article-page
@@ -226,25 +226,52 @@
     
     
     <p>環境:ubuntu20.04</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<ol class="wp-block-list">
+  <li>
+    下載meld
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">sudo apt-get install meld</code></pre>
+<ol class="wp-block-list" start="2">
+  <li>
+    設置git
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">git config --global diff.external meld </code></pre>
+<ol class="wp-block-list" start="3">
+  <li>
+    在自己的的目錄下建立一個git-meld.sh 的script:
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">vi ~/git-meld.sh </code></pre>
 <p>輸入:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-
+<pre class="wp-block-code"><code class="">#!/bin/sh
+meld $2 $5</code></pre>
+<ol class="wp-block-list" start="4">
+  <li>
+    查看是否有存入
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">cat ~/git-meld.sh</code></pre>
+<ol class="wp-block-list" start="5">
+  <li>
+    改變檔案的屬性:
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">chmod 777 ~/git-meld.sh</code></pre>
+<ol class="wp-block-list" start="6">
+  <li>
+    把external diff 改成這個shell script:
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">git config --global diff.external ~/git-meld.sh</code></pre>
+<ol class="wp-block-list" start="7">
+  <li>
+    使用git diff
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">git log # 複製選取要查看的commit_id
+git diff [commit_id]</code></pre>
 </section>
 
 

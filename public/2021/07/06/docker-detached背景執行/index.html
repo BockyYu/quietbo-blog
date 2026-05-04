@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本機:mac M1 11.2.3\ndocker: 20.10.7\n先讓容器在背景保持運作中，不進入shell介面。\n建立完後會跳出一串英數的字串，這是CONTAINER ID，顯示完就會直接回來，且不會卡在shell。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本機:mac M1 11.2.3\ndocker: 20.10.7\n先讓容器在背景保持運作中，不進入shell介面。\nrun 是pull(下載 image) 和 create（創建容器）和 start（啟動容器）組合在一起的功能。 -d 代表 detach，將docker在背景執行。 -p 80:80是將主機的80port轉到web這個Container的80 port。 docker run -d -p 80:80 nginx docker ps -a 建立完後會跳出一串英數的字串，這是CONTAINER ID，顯示完就會直接回來，且不會卡在shell。\n">
 <title>[Docker] Run container in the background – detached背景執行</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] Run container in the background – detached背景執行">
-<meta property='og:description' content="本機:mac M1 11.2.3\ndocker: 20.10.7\n先讓容器在背景保持運作中，不進入shell介面。\n建立完後會跳出一串英數的字串，這是CONTAINER ID，顯示完就會直接回來，且不會卡在shell。\n">
+<meta property='og:description' content="本機:mac M1 11.2.3\ndocker: 20.10.7\n先讓容器在背景保持運作中，不進入shell介面。\nrun 是pull(下載 image) 和 create（創建容器）和 start（啟動容器）組合在一起的功能。 -d 代表 detach，將docker在背景執行。 -p 80:80是將主機的80port轉到web這個Container的80 port。 docker run -d -p 80:80 nginx docker ps -a 建立完後會跳出一串英數的字串，這是CONTAINER ID，顯示完就會直接回來，且不會卡在shell。\n">
 <meta property='og:url' content='http://localhost:1313/2021/07/06/docker-detached%E8%83%8C%E6%99%AF%E5%9F%B7%E8%A1%8C/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2021-07-05T19:17:38&#43;00:00'/><meta property='article:modified_time' content='2021-07-05T19:17:38&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] Run container in the background – detached背景執行">
-<meta name="twitter:description" content="本機:mac M1 11.2.3\ndocker: 20.10.7\n先讓容器在背景保持運作中，不進入shell介面。\n建立完後會跳出一串英數的字串，這是CONTAINER ID，顯示完就會直接回來，且不會卡在shell。\n">
+<meta name="twitter:description" content="本機:mac M1 11.2.3\ndocker: 20.10.7\n先讓容器在背景保持運作中，不進入shell介面。\nrun 是pull(下載 image) 和 create（創建容器）和 start（啟動容器）組合在一起的功能。 -d 代表 detach，將docker在背景執行。 -p 80:80是將主機的80port轉到web這個Container的80 port。 docker run -d -p 80:80 nginx docker ps -a 建立完後會跳出一串英數的字串，這是CONTAINER ID，顯示完就會直接回來，且不會卡在shell。\n">
     </head>
     <body class="
     article-page
@@ -205,7 +205,7 @@
 
 
                     <time class="article-time--reading">
-                        1 minute read
+                        2 minutes read
                     </time>
                 
             </div>
@@ -228,26 +228,36 @@
     <p>本機:mac M1 11.2.3<br>
 docker: 20.10.7</p>
 <p>先讓容器在背景保持運作中，不進入shell介面。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>建立完後會跳出一串英數的字串，這是CONTAINER ID，顯示完就會直接回來，且不會卡在shell。<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<ul class="wp-block-list">
+  <li>
+    run 是pull(下載 image) 和 create（創建容器）和 start（啟動容器）組合在一起的功能。
+  </li>
+  <li>
+    -d 代表 detach，將docker在背景執行。
+  </li>
+  <li>
+    -p 80:80是將主機的80port轉到web這個Container的80 port。
+  </li>
+</ul>
+<pre class="wp-block-code"><code lang="docker" class="language-docker line-numbers">docker run -d -p 80:80 nginx
+docker ps -a</code></pre>
+<p>建立完後會跳出一串英數的字串，這是CONTAINER ID，顯示完就會直接回來，且不會卡在shell。<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/iWcc1M4.png" alt="" /> </figure></p>
 <p>用本機的瀏覽器打開網頁，輸入127.0.0.1會看到下圖。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/Ev40ddq.png" alt="" /></p>
 <p>回到終端機，會看到終端機還是維持原本的畫面，但正常來說只要有進到網頁，就會有log，如果想要看到log的話，就可以輸入：</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="docker" class="language-docker">docker container logs CONTAINER_ID</code></pre>
 <p>這樣就會印出該container的log。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/3uYrAXB.png" alt="" /></p>
 <p>但這樣也很麻煩，因為想看log的話就要一直來下指令，下方為自動顯示log的指令：</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="docker" class="language-docker">docker container logs -f CONTAINER_ID</code></pre>
 <p>若是在這時候使用control+C的話，不會將container關閉。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/R8MUnzJ.png" alt="" /></p>
 <p>下方指令用attach來連接運行中的container。<br>
 回到container的shell，之後的log會顯示出來。（如果想看之前的紀錄就開另一個終端機去執行logs)</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="docker" class="language-docker">docker attach CONTAINER_ID</code></pre>
 <p>在attach時使用<code>control+C</code>就直接被關閉。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/9NaYIbX.png" alt="" /></p>
 
 </section>
 

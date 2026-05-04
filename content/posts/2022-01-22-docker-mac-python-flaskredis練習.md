@@ -129,7 +129,7 @@ CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS    
 
 <pre class="wp-block-code"><code class="">Hello Container World! I have been seen 2 times and my hostname is a426b16a8d01.</code></pre>
 
-## 總結 {.wp-block-heading}
+## 總結 
 
 如果把上面的步驟合併到一起，成為一個部署腳本:
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="use:\n一開始在學log時, 會使用標準庫 logging。\n設置上較爲繁瑣, 甚至有些在多進程多線程等特殊處理時, 還會導致日誌記錄會出現異常, 還有幾次都在找為什麼logg會印兩次…\n現在單純開發時都會使用Loguru來做一些log的紀錄,下方提供簡單的範例\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="use:\npycharm, FastAPI, Loguru 一開始在學log時, 會使用標準庫 logging。\n設置上較爲繁瑣, 甚至有些在多進程多線程等特殊處理時, 還會導致日誌記錄會出現異常, 還有幾次都在找為什麼logg會印兩次…\n現在單純開發時都會使用Loguru來做一些log的紀錄,下方提供簡單的範例\n">
 <title>[Python] 日誌記錄第三方庫 – Loguru(附簡單的範例)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Python] 日誌記錄第三方庫 – Loguru(附簡單的範例)">
-<meta property='og:description' content="use:\n一開始在學log時, 會使用標準庫 logging。\n設置上較爲繁瑣, 甚至有些在多進程多線程等特殊處理時, 還會導致日誌記錄會出現異常, 還有幾次都在找為什麼logg會印兩次…\n現在單純開發時都會使用Loguru來做一些log的紀錄,下方提供簡單的範例\n">
+<meta property='og:description' content="use:\npycharm, FastAPI, Loguru 一開始在學log時, 會使用標準庫 logging。\n設置上較爲繁瑣, 甚至有些在多進程多線程等特殊處理時, 還會導致日誌記錄會出現異常, 還有幾次都在找為什麼logg會印兩次…\n現在單純開發時都會使用Loguru來做一些log的紀錄,下方提供簡單的範例\n">
 <meta property='og:url' content='http://localhost:1313/2022/08/12/python-%E6%97%A5%E8%AA%8C%E8%A8%98%E9%8C%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%AB-loguru%E9%99%84%E7%B0%A1%E5%96%AE%E7%9A%84%E7%AF%84%E4%BE%8B/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2022-08-12T11:01:01&#43;00:00'/><meta property='article:modified_time' content='2022-08-12T11:01:01&#43;00:00'/>
 <meta name="twitter:title" content="[Python] 日誌記錄第三方庫 – Loguru(附簡單的範例)">
-<meta name="twitter:description" content="use:\n一開始在學log時, 會使用標準庫 logging。\n設置上較爲繁瑣, 甚至有些在多進程多線程等特殊處理時, 還會導致日誌記錄會出現異常, 還有幾次都在找為什麼logg會印兩次…\n現在單純開發時都會使用Loguru來做一些log的紀錄,下方提供簡單的範例\n">
+<meta name="twitter:description" content="use:\npycharm, FastAPI, Loguru 一開始在學log時, 會使用標準庫 logging。\n設置上較爲繁瑣, 甚至有些在多進程多線程等特殊處理時, 還會導致日誌記錄會出現異常, 還有幾次都在找為什麼logg會印兩次…\n現在單純開發時都會使用Loguru來做一些log的紀錄,下方提供簡單的範例\n">
     </head>
     <body class="
     article-page
@@ -226,29 +226,52 @@
     
     
     <p>use:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">pycharm, FastAPI, Loguru</code></pre>
 <p>一開始在學log時, 會使用標準庫 logging。<br>
 設置上較爲繁瑣, 甚至有些在多進程多線程等特殊處理時, 還會導致日誌記錄會出現異常, 還有幾次都在找為什麼logg會印兩次…<br>
 現在單純開發時都會使用Loguru來做一些log的紀錄,下方提供簡單的範例</p>
 <h2 id="安裝">安裝
 </h2><p>使用 pip 安裝即可，Python 3 版本的安裝如下：</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">pip3 install loguru</code></pre>
 <p>log.py</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="python" class="language-python line-numbers">from loguru import logger
+logger.add("./logs/test.log", rotation="00:00", enqueue=True, retention="30 days")
+
+#logger.info(1)
+#logger.error(2)
+#logger.warning(3)</code></pre>
 <p>main.py</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="python" class="language-python line-numbers">import uvicorn
+from log import logger
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.on_event("startup")
+async def startup_event():
+    logger.info('Hi startup')
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host='127.0.0.1', port=8000, reload=True)</code></pre>
 <p>執行python main.py</p>
 <p>會看到下方的</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">INFO:     Will watch for changes in these directories: ['C:\\Dev\\FastAPI_demo']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [21476] using watchgod
+INFO:     Started server process [4168]
+INFO:     Waiting for application startup.
+2022-08-12 18:53:32.579 | INFO     | main:startup_event:9 - Hi startup
+INFO:     Application startup complete.</code></pre>
 <p>打開瀏覽器輸入下方:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">127.0.0.1/</code></pre>
 <p>打開logs資料夾會看到已經有印出來的檔案。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">2022-08-12 18:56:21.419 | INFO     | main:startup_event:9 - Hi startup
+2022-08-12 18:56:27.969 | INFO     | main:root:13 - {'message': 'Hello World'}</code></pre>
 </section>
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="以下測試環境使用:\n一、創建Sandbox帳號 測試流程文件網址\n填入下方訊息, 及使用中的信箱, 此處我是使用與line相同的信箱，若是以有相同信箱會跳出:此email已註冊過Sandbox ID。請輸入其他email以註冊Sandbox。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="以下測試環境使用:\nSandbox 一、創建Sandbox帳號 測試流程文件網址\nLinePay建立Sandbox:Sandbox網址 正式LinePay商戶請使用:網址 填入下方訊息, 及使用中的信箱, 此處我是使用與line相同的信箱，若是以有相同信箱會跳出:此email已註冊過Sandbox ID。請輸入其他email以註冊Sandbox。\n">
 <title>[Python] LinePay串接Online APIs – 申請測試帳號 (1/5)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Python] LinePay串接Online APIs – 申請測試帳號 (1/5)">
-<meta property='og:description' content="以下測試環境使用:\n一、創建Sandbox帳號 測試流程文件網址\n填入下方訊息, 及使用中的信箱, 此處我是使用與line相同的信箱，若是以有相同信箱會跳出:此email已註冊過Sandbox ID。請輸入其他email以註冊Sandbox。\n">
+<meta property='og:description' content="以下測試環境使用:\nSandbox 一、創建Sandbox帳號 測試流程文件網址\nLinePay建立Sandbox:Sandbox網址 正式LinePay商戶請使用:網址 填入下方訊息, 及使用中的信箱, 此處我是使用與line相同的信箱，若是以有相同信箱會跳出:此email已註冊過Sandbox ID。請輸入其他email以註冊Sandbox。\n">
 <meta property='og:url' content='http://localhost:1313/2022/03/14/python-linepay%E4%B8%B2%E6%8E%A5online-apis-%E7%94%B3%E8%AB%8B%E6%B8%AC%E8%A9%A6%E5%B8%B3%E8%99%9F-1-5/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='linepay' /><meta property='article:published_time' content='2022-03-13T17:17:51&#43;00:00'/><meta property='article:modified_time' content='2022-03-13T17:17:51&#43;00:00'/>
 <meta name="twitter:title" content="[Python] LinePay串接Online APIs – 申請測試帳號 (1/5)">
-<meta name="twitter:description" content="以下測試環境使用:\n一、創建Sandbox帳號 測試流程文件網址\n填入下方訊息, 及使用中的信箱, 此處我是使用與line相同的信箱，若是以有相同信箱會跳出:此email已註冊過Sandbox ID。請輸入其他email以註冊Sandbox。\n">
+<meta name="twitter:description" content="以下測試環境使用:\nSandbox 一、創建Sandbox帳號 測試流程文件網址\nLinePay建立Sandbox:Sandbox網址 正式LinePay商戶請使用:網址 填入下方訊息, 及使用中的信箱, 此處我是使用與line相同的信箱，若是以有相同信箱會跳出:此email已註冊過Sandbox ID。請輸入其他email以註冊Sandbox。\n">
     </head>
     <body class="
     article-page
@@ -226,29 +226,40 @@
     
     
     <p>以下測試環境使用:</p>
-<!-- raw HTML omitted -->
+<ul class="wp-block-list">
+  <li>
+    Sandbox
+  </li>
+</ul>
 <h2 id="一創建sandbox帳號">一、創建Sandbox帳號
 </h2><p><a class="link" href="https://pay.line.me/tw/developers/techsupport/sandbox/testflow?locale=zh_TW"  target="_blank" rel="noopener"
     >測試流程文件網址</a></p>
-<!-- raw HTML omitted -->
+<ul class="wp-block-list">
+  <li>
+    LinePay建立Sandbox:<a href="https://pay.line.me/tw/developers/techsupport/sandbox/testflow?locale=zh_TW">Sandbox網址</a>
+  </li>
+  <li>
+    正式LinePay商戶請使用:<a href="https://pay.line.me/portal/tw/main?isFooterConventionChanged=true">網址</a>
+  </li>
+</ul>
 <p>填入下方訊息, 及使用中的信箱, 此處我是使用與line相同的信箱，若是以有相同信箱會跳出:此email已註冊過Sandbox ID。請輸入其他email以註冊Sandbox。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/wxZlyNd.png" alt="" /></p>
 <p>創建成功如下圖(有興趣可自行點擊後查看)<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/TyR7AIv.png" alt="" /></p>
 <h2 id="二收信並登入商家">二、收信並登入商家
 </h2><p>到信箱收信如下:<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/agbkGVt.png" alt="" /></p>
 <p>使用剛才收到的來登入Merchant Center:<a class="link" href="https://pay.line.me/portal/tw/auth/login#"  target="_blank" rel="noopener"
     >網址</a></p>
 <p>使用收到的測試帳號及密碼登入<br>
-<!-- raw HTML omitted --></p>
-<h2 id="三取得channel-id及channel-secret-key-wp-block-heading">三、取得Channel ID及Channel Secret Key {.wp-block-heading}<!-- raw HTML omitted -->
-</h2><p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/ABRSthV.png" alt="" /></p>
+<h2 id="三取得channel-id及channel-secret-key">三、取得Channel ID及Channel Secret Key <figure class="wp-block-image">
+</h2><p><img decoding="async" src="https://i.imgur.com/xVp3hpJ.png" alt="" /> </figure></p>
 <p>紅框內的要保留好, 不要外流。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/hcN9p8I.png" alt="" /></p>
 <p>補充:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">Sandbox: 指測試帳號的url及後台等等環境
+v2/v3指的是在串接api時的linepay版本</code></pre>
 
 </section>
 

@@ -124,7 +124,7 @@ tags:
     }
 ]</code></pre>
 
-## 讓一個容器連接2個網路 {.wp-block-heading}
+## 讓一個容器連接2個網路 
 
 原本的box1與box2是連接預設的docker0(就是bridge)，而box3是連接mybridge
 
@@ -181,7 +181,7 @@ docker inspect box3</code></pre>
 eth0屬於mybridge，eth1屬於bridge。  
 <img decoding="async" src="https://i.imgur.com/XGrrGgI.png" alt="" /> 
 
-## 斷開容器與網絡的連接 {.wp-block-heading}
+## 斷開容器與網絡的連接 
 
 查看網路相關命令：
 

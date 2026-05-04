@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="為何需要使用到Mock?\n可參考這篇[面試][後端]在正式 API 完成前，如何讓要串接的工程師不要空等？\n不只是前端可能會遇到要等後端API完成，有時候後端要與其他Server對接API拿資料時，也會使用到。\n當不只是一個部門再開發時，可能需要與其他部門合作，等待對接API資料時，也能有效提高開發速度，避免在那等來等去的。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="為何需要使用到Mock?\n可參考這篇[面試][後端]在正式 API 完成前，如何讓要串接的工程師不要空等？\n">
 <title>[Postman] Mock Servers(含圖和Json)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Postman] Mock Servers(含圖和Json)">
-<meta property='og:description' content="為何需要使用到Mock?\n可參考這篇[面試][後端]在正式 API 完成前，如何讓要串接的工程師不要空等？\n不只是前端可能會遇到要等後端API完成，有時候後端要與其他Server對接API拿資料時，也會使用到。\n當不只是一個部門再開發時，可能需要與其他部門合作，等待對接API資料時，也能有效提高開發速度，避免在那等來等去的。\n">
+<meta property='og:description' content="為何需要使用到Mock?\n可參考這篇[面試][後端]在正式 API 完成前，如何讓要串接的工程師不要空等？\n">
 <meta property='og:url' content='http://localhost:1313/2023/01/19/postman-mock-servers%E5%90%AB%E5%9C%96%E5%92%8Cjson/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='mock servers' /><meta property='article:tag' content='Postman' /><meta property='article:published_time' content='2023-01-19T09:32:19&#43;00:00'/><meta property='article:modified_time' content='2023-01-19T09:32:19&#43;00:00'/>
 <meta name="twitter:title" content="[Postman] Mock Servers(含圖和Json)">
-<meta name="twitter:description" content="為何需要使用到Mock?\n可參考這篇[面試][後端]在正式 API 完成前，如何讓要串接的工程師不要空等？\n不只是前端可能會遇到要等後端API完成，有時候後端要與其他Server對接API拿資料時，也會使用到。\n當不只是一個部門再開發時，可能需要與其他部門合作，等待對接API資料時，也能有效提高開發速度，避免在那等來等去的。\n">
+<meta name="twitter:description" content="為何需要使用到Mock?\n可參考這篇[面試][後端]在正式 API 完成前，如何讓要串接的工程師不要空等？\n">
     </head>
     <body class="
     article-page
@@ -230,58 +230,123 @@
     >[面試][後端]在正式 API 完成前，如何讓要串接的工程師不要空等？</a></p>
 <p>不只是前端可能會遇到要等後端API完成，有時候後端要與其他Server對接API拿資料時，也會使用到。<br>
 當不只是一個部門再開發時，可能需要與其他部門合作，等待對接API資料時，也能有效提高開發速度，避免在那等來等去的。</p>
-<!-- raw HTML omitted -->
+<div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction">
+  <div class="ez-toc-title-container">
+    <p class="ez-toc-title" style="cursor:inherit">
+      Table of Contents
+    </p>
 <pre><code>&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot; aria-label=&quot;顯示/隱藏內容目錄&quot;&gt;&lt;span class=&quot;ez-toc-js-icon-con&quot;&gt;&lt;span class=&quot;&quot;&gt;&lt;span class=&quot;eztoc-hide&quot; style=&quot;display:none;&quot;&gt;Toggle&lt;/span&gt;&lt;span class=&quot;ez-toc-icon-toggle-span&quot;&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;list-377408&quot; width=&quot;20px&quot; height=&quot;20px&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; class=&quot;arrow-unsorted-368013&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;10px&quot; height=&quot;10px&quot; viewBox=&quot;0 0 24 24&quot; version=&quot;1.2&quot; baseProfile=&quot;tiny&quot;&gt;&lt;path d=&quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;
 </code></pre>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h2 id="建立-mock-server-wp-block-heading"><!-- raw HTML omitted --><!-- raw HTML omitted -->建立 Mock Server<!-- raw HTML omitted --><!-- raw HTML omitted --> {.wp-block-heading}<!-- raw HTML omitted -->
-</h2><p><!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+  </div><nav>
+  <ul class='ez-toc-list ez-toc-list-level-1 ' >
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2023/01/19/postman-mock-servers%e5%90%ab%e5%9c%96%e5%92%8cjson/#%E5%BB%BA%E7%AB%8B_Mock_Server" >建立 Mock Server</a>
+    </li>
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2023/01/19/postman-mock-servers%e5%90%ab%e5%9c%96%e5%92%8cjson/#%E8%A8%AD%E8%A8%88_Mock_Server_Response" >設計 Mock Server Response</a>
+    </li>
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2023/01/19/postman-mock-servers%e5%90%ab%e5%9c%96%e5%92%8cjson/#response_%E7%B5%A6%E9%9A%A8%E6%A9%9F%E8%B3%87%E6%96%99" >response 給隨機資料</a>
+    </li>
+    <li class='ez-toc-page-1 ez-toc-heading-level-2'>
+      <a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2023/01/19/postman-mock-servers%e5%90%ab%e5%9c%96%e5%92%8cjson/#%E4%BE%9D%E7%8B%80%E6%B3%81%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84Response" >依狀況返回不同的Response</a><ul class='ez-toc-list-level-3' >
+        <li class='ez-toc-heading-level-3'>
+          <a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2023/01/19/postman-mock-servers%e5%90%ab%e5%9c%96%e5%92%8cjson/#%E6%88%90%E5%8A%9F%E5%A4%B1%E6%95%97%E7%9A%84%E8%BF%94%E5%9B%9E%E6%96%B9%E5%BC%8F" >成功/失敗的返回方式</a>
+        </li>
+      </ul>
+    </li>
+  </ul></nav>
+</div>
+<h2 id="建立-mock-server"><span class="ez-toc-section" id="%E5%BB%BA%E7%AB%8B_Mock_Server"></span>建立 Mock Server<span class="ez-toc-section-end"></span> <figure class="wp-block-image">
+</h2><p><img decoding="async" src="https://i.imgur.com/tlZXWGc.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/DtEhwsl.png" alt="" /></figure></p>
 <p>建議勾選儲存 mock server URL 到環境變數的選項。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/HYsA4d3.png" alt="" /></p>
 <p>創建成功左方會新增一個Mock及mock server URL<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/Lw4845M.png" alt="" /></p>
 <p>點擊左方的Environments會有剛才建立的Mock Server Name，會自動將mock server URL帶入到url內，<br>
 後續只要打{{url}}就會取得資訊。<br>
-<!-- raw HTML omitted --></p>
-<h2 id="設計-mock-server-response"><!-- raw HTML omitted --><!-- raw HTML omitted -->設計 Mock Server Response<!-- raw HTML omitted --><!-- raw HTML omitted -->
-</h2><!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/K34Mzma.png" alt="" /></p>
+<h2 id="設計-mock-server-response"><span class="ez-toc-section" id="%E8%A8%AD%E8%A8%88_Mock_Server_Response"></span>設計 Mock Server Response<span class="ez-toc-section-end"></span>
+</h2><ol class="wp-block-list">
+  <li>
+    到Collections的分頁
+  </li>
+  <li>
+    找到剛剛初始化的 Request，{{url}}會自動帶入
+  </li>
+  <li>
+    環境變數右上角請選擇剛剛建立的「User」
+  </li>
+  <li>
+    按下Send後
+  </li>
+  <li>
+    下面的Response一片空白是正常的，因為還沒設定 Mock Server Response
+  </li>
+</ol><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/w1RrUNa.png" alt="" /> </figure></p>
 <p>左側 Request 下面有一個「Default」，它就是用來自訂Response example，<br>
 最下方改為Json輸入完後儲存:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="json" class="language-json line-numbers">{
+    "id":1,
+    "user": "bocky"
+}</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/56BeBvI.png" alt="" /> </figure></p>
 <p>回到Request，按下Send後，Response會跟剛剛填寫Json相同:<br>
-<!-- raw HTML omitted --></p>
-<h2 id="response-給隨機資料"><!-- raw HTML omitted --><!-- raw HTML omitted -->response 給隨機資料<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/7ba9mw3.png" alt="" /></p>
+<h2 id="response-給隨機資料"><span class="ez-toc-section" id="response_%E7%B5%A6%E9%9A%A8%E6%A9%9F%E8%B3%87%E6%96%99"></span>response 給隨機資料<span class="ez-toc-section-end"></span>
 </h2><p>Postman 本身就有提供給隨機資料的參數，主要在 example response 那邊把固定值改填參數就行，在 <a class="link" href="https://learning.postman.com/docs/designing-and-developing-your-api/mocking-data/mocking-with-examples/"  target="_blank" rel="noopener"
     >文件</a> 中給的範例是這樣：</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="json" class="language-json line-numbers">{
+  "name": "{{$randomFullName}}",
+  "userName": "{{$randomUserName}}",
+  "location": "{{$randomCity}}",
+  "company": "{{$randomCompanyName}}",
+  "jobTitle": "{{$randomJobTitle}}",
+  "updatedAt": "{{$timestamp}}"
+}</code></pre>
 <p>收到的 response 就會像這樣：<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/3Y6wP1r.png" alt="" /></p>
+<pre class="wp-block-code"><code lang="json" class="language-json line-numbers">{
+    "name": "Mrs. Dana Berge",
+    "userName": "Natalie.Moen85",
+    "location": "South Orlando",
+    "company": "Bergstrom, Schultz and O'Conner",
+    "jobTitle": "Forward Data Manager",
+    "updatedAt": "1674070363"
+}</code></pre>
 <p>Postman 有的隨機參數官方都整理在這：<a class="link" href="https://learning.postman.com/docs/writing-scripts/script-references/variables-list/"  target="_blank" rel="noopener"
     >Dynamic variables</a></p>
-<h2 id="依狀況返回不同的response"><!-- raw HTML omitted --><!-- raw HTML omitted -->依狀況返回不同的Response<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<h2 id="依狀況返回不同的response"><span class="ez-toc-section" id="%E4%BE%9D%E7%8B%80%E6%B3%81%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84Response"></span>依狀況返回不同的Response<span class="ez-toc-section-end"></span>
 </h2><p>通常在不同狀況會有不同的Response，例如成功或失敗。</p>
-<h3 id="成功失敗的返回方式"><!-- raw HTML omitted --><!-- raw HTML omitted -->成功/失敗的返回方式<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<h3 id="成功失敗的返回方式"><span class="ez-toc-section" id="%E6%88%90%E5%8A%9F%E5%A4%B1%E6%95%97%E7%9A%84%E8%BF%94%E5%9B%9E%E6%96%B9%E5%BC%8F"></span>成功/失敗的返回方式<span class="ez-toc-section-end"></span>
 </h3><p>再新增一個Explore為失敗的UserNume(success)。<br>
 當data為success時，返回:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="json" class="language-json line-numbers">{
+    "status": "success",
+    "msg": "成功",
+    "data": {
+        "name": "{{$randomFullName}}",
+        "userName": "{{$randomUserName}}",
+        "location": "{{$randomCity}}",
+        "company": "{{$randomCompanyName}}",
+        "jobTitle": "{{$randomJobTitle}}",
+        "updatedAt": "{{$timestamp}}"
+    }
+}</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/173Jsgi.png" alt="" /> </figure></p>
 <p>再新增一個Explore為失敗的UserNume(Error)。<br>
 當data為error時的Response為</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="json" class="language-json line-numbers">{
+    "status": "error",
+    "msg": "失敗",
+    "data": {}
+}</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/gXVklT2.png" alt="" /> </figure></p>
 <p>測試成功Response:<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/DqSzD5e.png" alt="" /></p>
 <p>測試失敗的Response:<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/VsbOQJm.png" alt="" /></p>
 
 </section>
 

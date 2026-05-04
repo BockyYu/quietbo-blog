@@ -93,7 +93,7 @@ PROPERTIES (
 --建立一筆資料
 INSERT INTO employees VALUES (1001, 'John Doe', 'IT', 50000.00);</code></pre></p> 
 
-## Doris Web UI {.wp-block-heading}</p> 
+## Doris Web UI </p> 
 
 打瀏覽器</p> 
 
@@ -101,7 +101,7 @@ INSERT INTO employees VALUES (1001, 'John Doe', 'IT', 50000.00);</code></pre></p
 
 User:root</p> 
 
-## GUI &#8211; TablePlus連線Doris {.wp-block-heading}</p> 
+## GUI &#8211; TablePlus連線Doris </p> 
 
 使用TablePlus連線資訊如下：  
 選擇MySQL  

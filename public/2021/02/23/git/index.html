@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Linux 安裝git\n驗證git是否已安裝成功\n查詢git版本\ngit 產生SSH Key\n查看SSH Key\n查詢目錄的狀態\n查詢目前的設定\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Linux 安裝git\n$ sudo apt-get install git 驗證git是否已安裝成功\n$ which git 查詢git版本\n$ git --version git 產生SSH Key\nssh-keygen 查看SSH Key\n$ cat ~/.ssh/id_rsa.pub 查詢目錄的狀態\n">
 <title>[Git] 安裝及簡單設定</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Git] 安裝及簡單設定">
-<meta property='og:description' content="Linux 安裝git\n驗證git是否已安裝成功\n查詢git版本\ngit 產生SSH Key\n查看SSH Key\n查詢目錄的狀態\n查詢目前的設定\n">
+<meta property='og:description' content="Linux 安裝git\n$ sudo apt-get install git 驗證git是否已安裝成功\n$ which git 查詢git版本\n$ git --version git 產生SSH Key\nssh-keygen 查看SSH Key\n$ cat ~/.ssh/id_rsa.pub 查詢目錄的狀態\n">
 <meta property='og:url' content='http://localhost:1313/2021/02/23/git/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='GIT' /><meta property='article:published_time' content='2021-02-23T10:43:38&#43;00:00'/><meta property='article:modified_time' content='2021-02-23T10:43:38&#43;00:00'/>
 <meta name="twitter:title" content="[Git] 安裝及簡單設定">
-<meta name="twitter:description" content="Linux 安裝git\n驗證git是否已安裝成功\n查詢git版本\ngit 產生SSH Key\n查看SSH Key\n查詢目錄的狀態\n查詢目前的設定\n">
+<meta name="twitter:description" content="Linux 安裝git\n$ sudo apt-get install git 驗證git是否已安裝成功\n$ which git 查詢git版本\n$ git --version git 產生SSH Key\nssh-keygen 查看SSH Key\n$ cat ~/.ssh/id_rsa.pub 查詢目錄的狀態\n">
     </head>
     <body class="
     article-page
@@ -205,7 +205,7 @@
 
 
                     <time class="article-time--reading">
-                        4 minutes read
+                        5 minutes read
                     </time>
                 
             </div>
@@ -226,60 +226,69 @@
     
     
     <p>Linux 安裝git</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ sudo apt-get install git</code></pre>
 <p>驗證git是否已安裝成功</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ which git</code></pre>
 <p>查詢git版本</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git --version</code></pre>
 <p>git 產生SSH Key</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">ssh-keygen</code></pre>
 <p>查看SSH Key</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ cat ~/.ssh/id_rsa.pub</code></pre>
 <p>查詢目錄的狀態</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git status</code></pre>
 <p>查詢目前的設定</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git config --list</code></pre>
 <p>查詢特定檔案的commit</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git log XXXXX.py</code></pre>
 <p>注意:需要有副檔名</p>
 <p>查看特定檔案修改什麼</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git log -p XXXXX.py</code></pre>
 <p>+代表新增</p>
 <p>-代表刪除</p>
 <p>SourceTree的話也可以看到:</p>
-<p>在commit時點選:Log Selected 則會另外彈出一個視窗<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<p>在commit時點選:Log Selected 則會另外彈出一個視窗<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/Fylt22D.png" alt="" /> </figure></p>
 <p>查詢”單行”代碼作者及修改時間</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git blame XXXX.py</code></pre>
 <p>組合內容為:</p>
 <p>commit的識別碼 、 修改人名 、修改日期及時間 該行號(上圖我僅擷取2016行~2023行)</p>
 <p>如果檔案太多行了，你只想看某而已，就加入-L 開始行號~結束行號</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git blame -L 2010,2030 XXXX.py</code></pre>
 <p>有些檔案不想放在Git裡面</p>
 <p>先建立檔名為:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">.gitignore</code></pre>
 <p>然後編輯這個檔案的內容:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">#忽略 test.py 檔案
+test.py
+
+#忽略 log目錄下的所有檔案
+log/*
+
+#忽略所有附檔名是 .tmp的檔案
+.tmp
+
+#忽略所有檔名為settings的檔案
+settings.*</code></pre>
 <p>若不知道使用的工具或程式語言通常會忽略哪些檔案，可以至此<a class="link" href="https://github.com/github/gitignore"  target="_blank" rel="noopener"
     >連結</a>查看</p>
 <p>清出忽略</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git clean -fx</code></pre>
 <p>忽略部分補充</p>
 <p>如果要忽略的檔案在編輯.gitignore時就已經存在，需要先移出Git控管，之後就會被忽略了。</p>
 <p>舉例:在3月1號時已經將test.py加入Git控管中，在3月5號才將.gitignore內新增要將test.py忽略，但此時Git已經在控管了，所以3月5號加的忽略不會進行，必須先將目前控管中的test.py移除。</p>
 <h6 id="救回被刪除的檔案">救回被刪除的檔案
-</h6><p>此三個檔案被我不小心刪掉了<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+</h6><p>此三個檔案被我不小心刪掉了<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/Rz8vGTd.png" alt="" /> </figure></p>
 <p>救回方式(等同於還原所有檔案):</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git checkout .</code></pre>
 <p>如果想救一個檔案:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git checkout S01.py</code></pre>
 <p>SourceTree用法</p>
-<p>打開SourceTree會看到上面有被誤刪的檔案，點選最右邊的-，讓誤刪的檔案下去Unstaged files的位置。<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<p>鼠標移至誤刪的檔案位置，右建點選discard(丟棄)<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<p>打開SourceTree會看到上面有被誤刪的檔案，點選最右邊的-，讓誤刪的檔案下去Unstaged files的位置。<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/Ec1u6hc.png" alt="" /> </figure></p>
+<p>鼠標移至誤刪的檔案位置，右建點選discard(丟棄)<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/NWnqI8L.png" alt="" /> </figure></p>
 <p>然後會問你:您確定要放棄對這些文件的更改嗎？</p>
 <p>意思就是⇒你不要刪除嗎</p>
 <p>按下OK!!!!完成後就會看到誤刪的檔案回來了</p>
@@ -287,49 +296,59 @@
 <p>並不是所有檔案都能救出來，如果.git的目錄被刪除了，代表歷史紀錄也被刪除，會救不回來。</p>
 <p>修改commit描述的訊息文字</p>
 <p>修改最後一筆</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git commit --amend -m "fix commit msg"</code></pre>
 <p>退版方式</p>
 <p>先查看版本號</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git log --oneline</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/UNXTYK1.png" alt="" /> </figure></p>
 <p>方法一:相對位置</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git reset d7ea967^</code></pre>
 <p>最後加的^代表前一次的意思，所以是指da824b4的commit，如果是d7ea967^^，就是前兩個版本，如果超過5個，可以寫成d7ea967~5，畢竟太多^很容易看得眼花。</p>
 <p>相對位置也可以用另一種來表示:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git reset master^</code></pre>
 <p>或</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git reset HEAD^</code></pre>
 <p>因為HEAD和master目前都是指向d7ea967這個commit，而且d7ea967這數字很難記，所以通常都不會用commit的英數來做，都已以上兩個方式，且都會一樣的結果。</p>
 <p>方法二:絕對位置</p>
 <p>直接指明在git log的版本號</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git reset d9d68f9(版本號)</code></pre>
 <p>sourceTree用法</p>
-<p>回到History，點選右鍵<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<p>回到History，點選右鍵<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/p0tUkjF.png" alt="" /> </figure></p>
 <h5 id="已經退版但想再回一開始的版本">已經退版但想再回一開始的版本
 </h5><p>git reset HEAD~2，現在要在把他reset回到一開始(d7ea967)的commit。</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git reset d7ea967 --hard</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/r881Fqn.png" alt="" /> </figure></p>
 <p>忘記版本的數字</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git reflog</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/Oa1tiHR.png" alt="" /> </figure></p>
 <p>顯示HEAD有移動時的所有位置，目前HEAD的位置就是在執行完”reset”的位置，所以可以猜測，d7ea967是在reset前的位置，</p>
 <p>Reset 的模式</p>
 <p>Reset英文單字翻譯為”重新設定”，但事實上Git的Reset指令用中文來說比較像是”前往”或”變成”的概念，事實上並沒有真的把這個commit”拆掉”(放心，所有commit都在)</p>
 <p>比較正確的解讀應該是”我要前往兩個commit之前的狀態”，因為實際上git reset指令也不是真的刪除或是重新設定，只是”前往”到指定的commit。</p>
 <p>git reset 指令可以搭配參數使用，常見的三種參數，分別:</p>
-<!-- raw HTML omitted -->
+<ul class="wp-block-list">
+  <li>
+    mixed
+  </li>
+  <li>
+    soft
+  </li>
+  <li>
+    hard
+  </li>
+</ul>
 <p>HEAD是什麼?</p>
 <p>HEAD 是一個指標，指向某一個分支，通常你可以把 HEAD 當做「目前所在分支」看待。</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ cat .git/HEAD</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/KlJ9Qat.png" alt="" /> </figure></p>
 <p>從這個檔案看起來，HEAD 目前正指向著 master 分支。</p>
-<p>如果有興趣再深入看一下 refs/heads/master 的內容就會發現，其實所謂的 Master 分支也不過就是一個 40 個字元的檔案罷了：<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<p>如果有興趣再深入看一下 refs/heads/master 的內容就會發現，其實所謂的 Master 分支也不過就是一個 40 個字元的檔案罷了：<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/ZDlPkRN.png" alt="" /> </figure></p>
 <p>切換分支，在看看HEAD檔案內容</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git checkout dog
+$ git cat .git/HEAD</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/7CMHriu.png" alt="" /> </figure></p>
 <p>HEAD 通常會指向目前所在的分支。不過 HEAD 也不一定總是會指向某個分支，當 HEAD 沒有指向某個分支的時候便會造成「detached HEAD」的狀態，詳情請參閱，待補。</p>
 <p>在 SourceTree 的介面裡，HEAD 是以一個「空心的小圈圈」圖示呈現</p>
 <p>在切換分支的同時，除了 HEAD 的內容會改變之外，在Reflog，當 HEAD 的內容改變的時候也會留下紀錄。</p>
@@ -338,35 +357,36 @@
 <p>在開發軟體時，可能同時會有多人在開發同一功能或修復錯誤，也可能會有多個發佈版本的存在，並且需要針對每個版本進行維護。</p>
 <p>為了能支援同時進行數個功能的增加或版本控制，Git具備了分支的功能。</p>
 <p>建立分支</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git branch 新的分支名稱</code></pre>
 <p>查詢現在的分支</p>
-<!-- raw HTML omitted -->
-<p>前方有*代表目前所在分支<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git branch</code></pre>
+<p>前方有*代表目前所在分支<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/s2izE2I.png" alt="" /> </figure></p>
 <p>切換分支</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git checkout 分支名稱</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/uiPREaH.png" alt="" /> </figure></p>
 <p>在 checkout 命令給定 -b 參數執行，可以同時建立分支和切換。</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ git checkout -b 分支名稱</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/7Odrckh.png" alt="" /> </figure></p>
 <p>rebase</p>
 <p>離開rebase</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">git rebase --abort</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/R2K6gvb.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/8sUwHTd.png" alt="" /></figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/hFRJdTs.png" alt="" /></figure></p>
 <p>在.git目錄裡面有什麼</p>
 <p>此處先建立一個index.html檔案，再add後查看狀態。</p>
-<p>利用hash來確認該檔案的值，來對照資料夾是否有這個檔案名。<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<p>.git\objects\30<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<p>利用hash來確認該檔案的值，來對照資料夾是否有這個檔案名。<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/LO7XNbT.png" alt="" /> </figure></p>
+<p>.git\objects\30<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/kALGpX9.png" alt="" /> </figure></p>
 <p>Git會用40個字的SHA-1值的前面2字作為目錄，剩下38字是檔案名字</p>
 <p>檢視差異</p>
 <p><a class="link" href="https://t.codebug.vip/questions-1743912.htm"  target="_blank" rel="noopener"
     >參考網址</a></p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">git difftool --dir-diff --tool=meld HEAD~ HEAD</code></pre>
 <p>建立一個方便的Bash函式：</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">git-diff-meld() (
+  git difftool --dir-diff --tool=meld "${1:-HEAD~}" "${2:-HEAD}"
+)</code></pre>
 
 </section>
 

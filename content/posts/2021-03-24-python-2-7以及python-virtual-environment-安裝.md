@@ -37,7 +37,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9Dpython27"></span>安裝python2.7<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9Dpython27"></span>安裝python2.7<span class="ez-toc-section-end"></span> 
 
 <pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">sudo apt update
 sudo apt install python2.7 -y</code></pre>
@@ -49,7 +49,7 @@ sudo apt install python2.7 -y</code></pre>
 輸出結果:  
 <img decoding="async" src="https://i.imgur.com/w4o7c6Q.png" alt="" /> 
 
-## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9Dpip%E5%A5%97%E4%BB%B6"></span>安裝pip套件<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9Dpip%E5%A5%97%E4%BB%B6"></span>安裝pip套件<span class="ez-toc-section-end"></span> 
 
 這邊的作法是下載`get-pip.py`來安裝。
 
@@ -78,7 +78,7 @@ pip2 -V</code></pre>
 
 <pre class="wp-block-code"><code lang="bash" class="language-bash">pip 20.3.4 from /home/ubuntu/.local/lib/python2.7/site-packages/pip (python 2.7)</code></pre>
 
-## <span class="ez-toc-section" id="%E4%BD%BF%E7%94%A8pip%E5%AE%89%E8%A3%9Dvirtualenv"></span>使用pip安裝virtualenv<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E4%BD%BF%E7%94%A8pip%E5%AE%89%E8%A3%9Dvirtualenv"></span>使用pip安裝virtualenv<span class="ez-toc-section-end"></span> 
 
 日後為每個專案製作一個專屬的python environment
 
@@ -87,7 +87,7 @@ pip2 -V</code></pre>
 
 <img decoding="async" src="https://i.imgur.com/u9rTOFG.png" alt="" /> </figure> 
 
-## <span class="ez-toc-section" id="%E7%82%BAvirtualenv%E8%A3%BD%E4%BD%9C%E5%88%A5%E5%90%8D"></span>為virtualenv製作別名<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E7%82%BAvirtualenv%E8%A3%BD%E4%BD%9C%E5%88%A5%E5%90%8D"></span>為virtualenv製作別名<span class="ez-toc-section-end"></span> 
 
 這是因為如果安裝其他python版本的virtualenv，用別名來區分使用的版本。**也可以略過，後續指令virtialenv2.7自行替換成virtualenv**
 

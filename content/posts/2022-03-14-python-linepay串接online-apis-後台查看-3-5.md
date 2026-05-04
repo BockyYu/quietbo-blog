@@ -10,7 +10,7 @@ tags:
   - linepay
 
 ---
-<figure class="wp-block-gallery has-nested-images columns-default is-cropped wp-block-gallery-3 is-layout-flex wp-block-gallery-is-layout-flex"> <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="334" height="119" data-id="793" src="https://quietbo.com/wp-content/uploads/2022/03/chrome_iLlqqg3OhM.png" alt="" class="wp-image-793" srcset="https://quietbo.com/wp-content/uploads/2022/03/chrome_iLlqqg3OhM.png 334w, https://quietbo.com/wp-content/uploads/2022/03/chrome_iLlqqg3OhM-300x107.png 300w" sizes="auto, (max-width: 334px) 100vw, 334px" /></figure> </figure> 
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped wp-block-gallery-3 is-layout-flex wp-block-gallery-is-layout-flex"> <figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="334" height="119" data-id="793" src="/uploads/2022/03/chrome_iLlqqg3OhM.png" alt="" class="wp-image-793" srcset="/uploads/2022/03/chrome_iLlqqg3OhM.png 334w, /uploads/2022/03/chrome_iLlqqg3OhM-300x107.png 300w" sizes="auto, (max-width: 334px) 100vw, 334px" /></figure> </figure> 
 
 [linepay測試用後台][1]<figure class="wp-block-image">
 

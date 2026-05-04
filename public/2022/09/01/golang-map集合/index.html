@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="宣告方式:\nvar name map[keyType]valueType\n賦值與刪除\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="宣告方式:\nvar name map[keyType]valueType\nvar map1 map[string]int // 使用 make 建立 Map。 // Key 的型別是 string，Value 是 int map2 := make(map[string]int) 賦值與刪除\npackage main import \"fmt\" func main() { // map 無序的鍵, 無法決定它的返回順序。通過key來檢索數據 //var name map[keyType]valueType var map1 map[string]int map1 = map[string]int{\"A\": 1, \"B\": 2} fmt.Println(map1[\"B\"]) //2 //map1[\"C\"] = \"3\" //會報錯 map2 := make(map[string]float32) map2[\"k1\"] = 2.345 map2[\"k2\"] = 1.3 fmt.Println(map2[\"k1\"]) // 2.345 // 提前指定空間 //map3 := make(map[string]int, 10) for k, v := range map1 { fmt.Println(k, v) //A 1 //B 2 } // 刪除方式 // delete(map, key) delete(map2, \"k1\") for k, v := range map2 { fmt.Println(k, v) //k2 1.3 } }">
 <title>[Golang] map</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Golang] map">
-<meta property='og:description' content="宣告方式:\nvar name map[keyType]valueType\n賦值與刪除\n">
+<meta property='og:description' content="宣告方式:\nvar name map[keyType]valueType\nvar map1 map[string]int // 使用 make 建立 Map。 // Key 的型別是 string，Value 是 int map2 := make(map[string]int) 賦值與刪除\npackage main import \"fmt\" func main() { // map 無序的鍵, 無法決定它的返回順序。通過key來檢索數據 //var name map[keyType]valueType var map1 map[string]int map1 = map[string]int{\"A\": 1, \"B\": 2} fmt.Println(map1[\"B\"]) //2 //map1[\"C\"] = \"3\" //會報錯 map2 := make(map[string]float32) map2[\"k1\"] = 2.345 map2[\"k2\"] = 1.3 fmt.Println(map2[\"k1\"]) // 2.345 // 提前指定空間 //map3 := make(map[string]int, 10) for k, v := range map1 { fmt.Println(k, v) //A 1 //B 2 } // 刪除方式 // delete(map, key) delete(map2, \"k1\") for k, v := range map2 { fmt.Println(k, v) //k2 1.3 } }">
 <meta property='og:url' content='http://localhost:1313/2022/09/01/golang-map%E9%9B%86%E5%90%88/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='golang' /><meta property='article:published_time' content='2022-09-01T08:30:28&#43;00:00'/><meta property='article:modified_time' content='2022-09-01T08:30:28&#43;00:00'/>
 <meta name="twitter:title" content="[Golang] map">
-<meta name="twitter:description" content="宣告方式:\nvar name map[keyType]valueType\n賦值與刪除\n">
+<meta name="twitter:description" content="宣告方式:\nvar name map[keyType]valueType\nvar map1 map[string]int // 使用 make 建立 Map。 // Key 的型別是 string，Value 是 int map2 := make(map[string]int) 賦值與刪除\npackage main import \"fmt\" func main() { // map 無序的鍵, 無法決定它的返回順序。通過key來檢索數據 //var name map[keyType]valueType var map1 map[string]int map1 = map[string]int{\"A\": 1, \"B\": 2} fmt.Println(map1[\"B\"]) //2 //map1[\"C\"] = \"3\" //會報錯 map2 := make(map[string]float32) map2[\"k1\"] = 2.345 map2[\"k2\"] = 1.3 fmt.Println(map2[\"k1\"]) // 2.345 // 提前指定空間 //map3 := make(map[string]int, 10) for k, v := range map1 { fmt.Println(k, v) //A 1 //B 2 } // 刪除方式 // delete(map, key) delete(map2, \"k1\") for k, v := range map2 { fmt.Println(k, v) //k2 1.3 } }">
     </head>
     <body class="
     article-page
@@ -227,12 +227,49 @@
     
     <p>宣告方式:</p>
 <p>var name map[keyType]valueType</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>賦值與刪除</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="go" class="language-go line-numbers">var map1 map[string]int
 
+// 使用 make 建立 Map。
+// Key 的型別是 string，Value 是 int
+map2 := make(map[string]int)</code></pre>
+<p>賦值與刪除</p>
+<pre class="wp-block-code"><code lang="go" class="language-go line-numbers">package main
+
+import "fmt"
+
+func main() {
+    // map 無序的鍵, 無法決定它的返回順序。通過key來檢索數據
+
+    //var name map[keyType]valueType
+
+    var map1 map[string]int
+    map1 = map[string]int{"A": 1, "B": 2}
+    fmt.Println(map1["B"]) //2
+    //map1["C"] = "3" //會報錯
+
+    map2 := make(map[string]float32)
+    map2["k1"] = 2.345
+    map2["k2"] = 1.3
+    fmt.Println(map2["k1"]) // 2.345
+
+    // 提前指定空間
+    //map3 := make(map[string]int, 10)
+
+    for k, v := range map1 {
+        fmt.Println(k, v)
+        //A 1
+        //B 2
+    }
+
+    // 刪除方式
+    // delete(map, key)
+    delete(map2, "k1")
+    for k, v := range map2 {
+        fmt.Println(k, v)
+        //k2 1.3
+    }
+
+}</code></pre>
 </section>
 
 

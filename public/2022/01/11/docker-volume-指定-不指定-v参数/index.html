@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="下方為dockerfile的內容\n此時Docker會自動創建一個隨機名字的volume，存儲在Dockerfile定義的volume\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="下方為dockerfile的內容\nFROM alpine:latest RUN apk update RUN apk --no-cache add curl ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64 \\ SUPERCRONIC=supercronic-linux-amd64 \\ SUPERCRONIC_SHA1SUM=048b95b48b708983effb2e5c935a1ef8483d9e3e RUN curl -fsSLO \"$SUPERCRONIC_URL\" \\ && echo \"${SUPERCRONIC_SHA1SUM} ${SUPERCRONIC}\" | sha1sum -c - \\ && chmod +x \"$SUPERCRONIC\" \\ && mv \"$SUPERCRONIC\" \"/usr/local/bin/${SUPERCRONIC}\" \\ && ln -s \"/usr/local/bin/${SUPERCRONIC}\" /usr/local/bin/supercronic COPY my-cron /app/my-cron WORKDIR /app VOLUME [\"/app\"] # RUN cron job CMD [\"/usr/local/bin/supercronic\", \"/app/my-cron\"] 構建鏡像\n在終端機執行： docker image build -t my-cron . docker image ls ">
 <title>[Docker] volume 指定/ 不指定-v参数</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] volume 指定/ 不指定-v参数">
-<meta property='og:description' content="下方為dockerfile的內容\n此時Docker會自動創建一個隨機名字的volume，存儲在Dockerfile定義的volume\n">
+<meta property='og:description' content="下方為dockerfile的內容\nFROM alpine:latest RUN apk update RUN apk --no-cache add curl ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64 \\ SUPERCRONIC=supercronic-linux-amd64 \\ SUPERCRONIC_SHA1SUM=048b95b48b708983effb2e5c935a1ef8483d9e3e RUN curl -fsSLO \"$SUPERCRONIC_URL\" \\ && echo \"${SUPERCRONIC_SHA1SUM} ${SUPERCRONIC}\" | sha1sum -c - \\ && chmod +x \"$SUPERCRONIC\" \\ && mv \"$SUPERCRONIC\" \"/usr/local/bin/${SUPERCRONIC}\" \\ && ln -s \"/usr/local/bin/${SUPERCRONIC}\" /usr/local/bin/supercronic COPY my-cron /app/my-cron WORKDIR /app VOLUME [\"/app\"] # RUN cron job CMD [\"/usr/local/bin/supercronic\", \"/app/my-cron\"] 構建鏡像\n在終端機執行： docker image build -t my-cron . docker image ls ">
 <meta property='og:url' content='http://localhost:1313/2022/01/11/docker-volume-%E6%8C%87%E5%AE%9A-%E4%B8%8D%E6%8C%87%E5%AE%9A-v%E5%8F%82%E6%95%B0/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2022-01-10T16:21:51&#43;00:00'/><meta property='article:modified_time' content='2022-01-10T16:21:51&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] volume 指定/ 不指定-v参数">
-<meta name="twitter:description" content="下方為dockerfile的內容\n此時Docker會自動創建一個隨機名字的volume，存儲在Dockerfile定義的volume\n">
+<meta name="twitter:description" content="下方為dockerfile的內容\nFROM alpine:latest RUN apk update RUN apk --no-cache add curl ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64 \\ SUPERCRONIC=supercronic-linux-amd64 \\ SUPERCRONIC_SHA1SUM=048b95b48b708983effb2e5c935a1ef8483d9e3e RUN curl -fsSLO \"$SUPERCRONIC_URL\" \\ && echo \"${SUPERCRONIC_SHA1SUM} ${SUPERCRONIC}\" | sha1sum -c - \\ && chmod +x \"$SUPERCRONIC\" \\ && mv \"$SUPERCRONIC\" \"/usr/local/bin/${SUPERCRONIC}\" \\ && ln -s \"/usr/local/bin/${SUPERCRONIC}\" /usr/local/bin/supercronic COPY my-cron /app/my-cron WORKDIR /app VOLUME [\"/app\"] # RUN cron job CMD [\"/usr/local/bin/supercronic\", \"/app/my-cron\"] 構建鏡像\n在終端機執行： docker image build -t my-cron . docker image ls ">
     </head>
     <body class="
     article-page
@@ -226,32 +226,72 @@
     
     
     <p>下方為dockerfile的內容</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">FROM alpine:latest
+RUN apk update
+RUN apk --no-cache add curl
+ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64 \
+    SUPERCRONIC=supercronic-linux-amd64 \
+    SUPERCRONIC_SHA1SUM=048b95b48b708983effb2e5c935a1ef8483d9e3e
+RUN curl -fsSLO "$SUPERCRONIC_URL" \
+    && echo "${SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - \
+    && chmod +x "$SUPERCRONIC" \
+    && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
+    && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+COPY my-cron /app/my-cron
+WORKDIR /app
+
+VOLUME ["/app"]
+
+# RUN cron job
+CMD ["/usr/local/bin/supercronic", "/app/my-cron"]</code></pre>
+<ol class="wp-block-list">
+  <li>
+    構建鏡像<br />在終端機執行：
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">docker image build -t my-cron .
+docker image ls</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/MquvGsa.png" alt="" /> </figure></p>
+<ol class="wp-block-list" start="2">
+  <li>
+    創建容器(不指定-v參數)
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">docker run -d my-cron
+docker volume ls</code></pre>
 <p>此時Docker會自動創建一個隨機名字的volume，存儲在Dockerfile定義的volume</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code class="">VOLUME ["/app"]</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/Flj1Mdr.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/0gKd2fc.png" alt="" /></figure></p>
 <h2 id="創建容器指定-v參數">創建容器(指定-v參數)
 </h2><p>在創建容器的時候通過 -v 參數，我們可以手動的指定<strong>需要創建Volume的名字</strong>，以及<strong>對應於容器內的路徑</strong>，這個路徑是可以任意的，不必需要在Dockerfile裡通過VOLUME來定義。</p>
 <p>把原本Dockerfile裡的VOLUME刪除(如下)</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">FROM alpine:latest
+RUN apk update
+RUN apk --no-cache add curl
+ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64 \
+    SUPERCRONIC=supercronic-linux-amd64 \
+    SUPERCRONIC_SHA1SUM=048b95b48b708983effb2e5c935a1ef8483d9e3e
+RUN curl -fsSLO "$SUPERCRONIC_URL" \
+    && echo "${SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - \
+    && chmod +x "$SUPERCRONIC" \
+    && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
+    && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+COPY my-cron /app/my-cron
+WORKDIR /app
+
+# RUN cron job
+CMD ["/usr/local/bin/supercronic", "/app/my-cron"]</code></pre>
 <p>重新build鏡像，然後創建容器，加-v參數:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code class="">docker image build -t my-cron .
+docker container run -d -v cron-data:/app my-cron
+docker volume ls
+docker volume inspect cron-data  </code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/HSkWhf0.png" alt="" /> </figure></p>
 <h2 id="環境清理">環境清理
 </h2><p>強制刪除所有容器，系統清理和volume清理</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-
+<pre class="wp-block-code"><code class="">docker rm -f $(docker container ps -aq)
+docker system prune -f
+docker volume prune -f</code></pre>
 </section>
 
 

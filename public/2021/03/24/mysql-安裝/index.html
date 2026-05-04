@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="apt套件管理器安裝:\n安裝完應會自動啟動:\n檢查redis服務狀態:\n停止redis server:\n啟動redis server:\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="apt套件管理器安裝:\nsudo apt update sudo apt install mysql-server -y 安裝完應會自動啟動:\n檢查redis服務狀態:\nservice mysql status 停止redis server:\n">
 <title>[MySQL] 快速安裝</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[MySQL] 快速安裝">
-<meta property='og:description' content="apt套件管理器安裝:\n安裝完應會自動啟動:\n檢查redis服務狀態:\n停止redis server:\n啟動redis server:\n">
+<meta property='og:description' content="apt套件管理器安裝:\nsudo apt update sudo apt install mysql-server -y 安裝完應會自動啟動:\n檢查redis服務狀態:\nservice mysql status 停止redis server:\n">
 <meta property='og:url' content='http://localhost:1313/2021/03/24/mysql-%E5%AE%89%E8%A3%9D/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='安裝' /><meta property='article:published_time' content='2021-03-24T09:14:15&#43;00:00'/><meta property='article:modified_time' content='2021-03-24T09:14:15&#43;00:00'/>
 <meta name="twitter:title" content="[MySQL] 快速安裝">
-<meta name="twitter:description" content="apt套件管理器安裝:\n安裝完應會自動啟動:\n檢查redis服務狀態:\n停止redis server:\n啟動redis server:\n">
+<meta name="twitter:description" content="apt套件管理器安裝:\nsudo apt update sudo apt install mysql-server -y 安裝完應會自動啟動:\n檢查redis服務狀態:\nservice mysql status 停止redis server:\n">
     </head>
     <body class="
     article-page
@@ -226,19 +226,19 @@
     
     
     <p>apt套件管理器安裝:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">sudo apt update
+sudo apt install mysql-server -y</code></pre>
 <p>安裝完應會自動啟動:<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/SE8x1aZ.png" alt="" /></p>
 <p>檢查redis服務狀態:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">service mysql status</code></pre>
 <p>停止redis server:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">service mysql stop</code></pre>
 <p>啟動redis server:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">service mysql start</code></pre>
 <p>進入Mysql:</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">mysql -u root -p</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/WeiyuQw.png" alt="" /> </figure></p>
 <p>若出現則登入成功。<br>
 mysql&gt;</p>
 

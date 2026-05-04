@@ -11,7 +11,7 @@ tags:
   - golang
 
 ---
-## 創建BOT，加入好友並取得token {.wp-block-heading}
+## 創建BOT，加入好友並取得token 
 
 打開Telegram搜尋:  
 @BotFather  
@@ -37,7 +37,7 @@ tags:
 藍框: 用來加該機器人好友的，建議直接點擊加入，先成為好友。  
 紅框: 該bot的token，主要用來操控BOT，要記住!!
 
-## 取得chat id {.wp-block-heading}
+## 取得chat id 
 
 需要chat id，bot才知道要傳送訊息給哪個使用者或群組。
 
@@ -57,7 +57,7 @@ https://api.telegram.org/bot5630000628:AAH2XXXXXXXXXXXXXXXXXXXXXXXXXXXXn2zo/getU
 
 取得那段數字就好。
 
-## 使用程式發送訊息 {.wp-block-heading}
+## 使用程式發送訊息 
 
 把chat id和token帶入下方的const內。
 

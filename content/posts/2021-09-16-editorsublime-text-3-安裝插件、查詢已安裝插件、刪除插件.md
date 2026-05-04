@@ -35,7 +35,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9D%E6%8F%92%E4%BB%B6"></span>安裝插件<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9D%E6%8F%92%E4%BB%B6"></span>安裝插件<span class="ez-toc-section-end"></span> 
 
 <ol class="wp-block-list">
   <li>
@@ -49,7 +49,7 @@ tags:
   </li>
 </ol>
 
-## <span class="ez-toc-section" id="%E6%9F%A5%E8%A9%A2%E5%B7%B2%E5%AE%89%E8%A3%9D%E6%8F%92%E4%BB%B6"></span>查詢已安裝插件<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%9F%A5%E8%A9%A2%E5%B7%B2%E5%AE%89%E8%A3%9D%E6%8F%92%E4%BB%B6"></span>查詢已安裝插件<span class="ez-toc-section-end"></span> 
 
 步骤如下:
 
@@ -65,7 +65,7 @@ tags:
   </li>
 </ol>
 
-## <span class="ez-toc-section" id="%E6%9B%B4%E6%96%B0%E6%8F%92%E4%BB%B6"></span>更新插件<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%9B%B4%E6%96%B0%E6%8F%92%E4%BB%B6"></span>更新插件<span class="ez-toc-section-end"></span> 
 
 <ol class="wp-block-list">
   <li>
@@ -76,7 +76,7 @@ tags:
   </li>
 </ol>
 
-## <span class="ez-toc-section" id="%E5%88%AA%E9%99%A4%E6%8F%92%E4%BB%B6"></span>刪除插件<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%88%AA%E9%99%A4%E6%8F%92%E4%BB%B6"></span>刪除插件<span class="ez-toc-section-end"></span> 
 
 <ol class="wp-block-list">
   <li>

@@ -46,7 +46,7 @@ tags:
   </div>
 </div>
 
-# 從Registry取得Image {.wp-block-heading}
+# 從Registry取得Image 
 
 如果沒有提供registry名稱的話，預設是從[DockerHub][1]取得。  
 如果不指定的話會下載lates。
@@ -73,7 +73,7 @@ tags:
 
 <pre class="wp-block-code"><code class="">docker image rm IMAGE_ID</code></pre>
 
-# 文件導入Image {.wp-block-heading}
+# 文件導入Image 
 
 其他兩種都是要在有網路的狀況下才可以使用，若是電腦沒有網路的話，可以使用導入的方式。
 
@@ -89,7 +89,7 @@ tags:
 
 <img decoding="async" src="https://i.imgur.com/ODhSf7a.png" alt="" /> </figure> 
 
-# 從Dockerfile建造 {.wp-block-heading}
+# 從Dockerfile建造 
 
 [Dockerfile參考][2]
 

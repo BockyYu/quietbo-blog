@@ -10,7 +10,7 @@ tags:
   - docker
 
 ---
-## pull image {.wp-block-heading}
+## pull image 
 
 先pull兩個image:  
 python:3.9.5-slim

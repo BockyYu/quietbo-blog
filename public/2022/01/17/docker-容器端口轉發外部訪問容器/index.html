@@ -229,24 +229,39 @@
 當使用 -P 標記時，Docker 會隨機映射一個端口到內部容器開放的網絡端口。</p>
 <p>使用:Mac M1。</p>
 <p>創建容器，注意port已將80轉出到8888</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">docker container run -d --rm --name web -p 8888:80 nginx</code></pre>
 <p>查看IP:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">$ docker inspect --format '{{ .NetworkSettings.IPAddress }}' web
+172.17.0.3</code></pre>
 <p>創建image busybox，名為client的容器:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">docker run -d --rm --name client busybox /bin/sh -c "while true; do sleep 3600; done"</code></pre>
 <p>下載web的index.html:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">$ docker exec -it client wget http://172.17.0.3
+Connecting to 172.17.0.3 (172.17.0.3:80)
+saving to 'index.html'
+index.html           100% |********************************|   615  0:00:00 ETA
+'index.html' saved</code></pre>
 <p>輸入:ifconfig，查找自己的IP，如下:192.168.1.108</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">en0: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500
+    options=6463&lt;RXCSUM,TXCSUM,TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM&gt;
+    ether a0:78:17:a6:e9:f5
+    inet6 fe80::c75:fc71:85f1:6b48%en0 prefixlen 64 secured scopeid 0xb
+    inet 192.168.1.108 netmask 0xffffff00 broadcast 192.168.1.255
+    inet6 2001:b011:7:1540:c2b:e11f:4b75:5eed prefixlen 64 autoconf secured
+    inet6 2001:b011:7:1540:cc5b:e1c7:11df:d59e prefixlen 64 autoconf temporary
+    nd6 options=201&lt;PERFORMNUD,DAD&gt;
+    media: autoselect
+    status: active</code></pre>
 <p>開啟瀏覽器輸入:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">192.168.1.108:8888</code></pre>
 <p>會看到nging的頁面</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">Welcome to nginx!
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
 
+For online documentation and support please refer to nginx.org.
+Commercial support is available at nginx.com.
+
+Thank you for using nginx.</code></pre>
 </section>
 
 

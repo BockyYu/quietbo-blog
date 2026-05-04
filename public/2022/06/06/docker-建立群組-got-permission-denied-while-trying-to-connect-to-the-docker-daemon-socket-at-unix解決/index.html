@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境:linux\n下方錯誤訊息，表示目前的使用者身分沒有權限。\n解決方式:\n建立 docker 群組 如果一開始就已經有群組的話，就則會告知下方訊息\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境:linux\n下方錯誤訊息，表示目前的使用者身分沒有權限。\nGot permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post \"http://%2Fvar%2Frun%2Fdocker.sock/v1.24/build?buildargs=%7B%7D&cachefrom=%5B%5D&cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&labels=%7B%7D&memory=0&memswap=0&networkmode=default&rm=1&shmsize=0&t=ocms_server&target=&ulimits=null&version=1\": dial unix /var/run/docker.sock: connect: permission denied 解決方式:\n">
 <title>[Docker] 建立群組 – Got permission denied while trying to connect to the Docker daemon socket at unix(解決)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] 建立群組 – Got permission denied while trying to connect to the Docker daemon socket at unix(解決)">
-<meta property='og:description' content="環境:linux\n下方錯誤訊息，表示目前的使用者身分沒有權限。\n解決方式:\n建立 docker 群組 如果一開始就已經有群組的話，就則會告知下方訊息\n">
+<meta property='og:description' content="環境:linux\n下方錯誤訊息，表示目前的使用者身分沒有權限。\nGot permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post \"http://%2Fvar%2Frun%2Fdocker.sock/v1.24/build?buildargs=%7B%7D&cachefrom=%5B%5D&cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&labels=%7B%7D&memory=0&memswap=0&networkmode=default&rm=1&shmsize=0&t=ocms_server&target=&ulimits=null&version=1\": dial unix /var/run/docker.sock: connect: permission denied 解決方式:\n">
 <meta property='og:url' content='http://localhost:1313/2022/06/06/docker-%E5%BB%BA%E7%AB%8B%E7%BE%A4%E7%B5%84-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket-at-unix%E8%A7%A3%E6%B1%BA/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2022-06-06T07:43:23&#43;00:00'/><meta property='article:modified_time' content='2022-06-06T07:43:23&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] 建立群組 – Got permission denied while trying to connect to the Docker daemon socket at unix(解決)">
-<meta name="twitter:description" content="環境:linux\n下方錯誤訊息，表示目前的使用者身分沒有權限。\n解決方式:\n建立 docker 群組 如果一開始就已經有群組的話，就則會告知下方訊息\n">
+<meta name="twitter:description" content="環境:linux\n下方錯誤訊息，表示目前的使用者身分沒有權限。\nGot permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post \"http://%2Fvar%2Frun%2Fdocker.sock/v1.24/build?buildargs=%7B%7D&cachefrom=%5B%5D&cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&labels=%7B%7D&memory=0&memswap=0&networkmode=default&rm=1&shmsize=0&t=ocms_server&target=&ulimits=null&version=1\": dial unix /var/run/docker.sock: connect: permission denied 解決方式:\n">
     </head>
     <body class="
     article-page
@@ -227,27 +227,33 @@
     
     <p>環境:linux</p>
 <p>下方錯誤訊息，表示目前的使用者身分沒有權限。</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/build?buildargs=%7B%7D&cachefrom=%5B%5D&cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&labels=%7B%7D&memory=0&memswap=0&networkmode=default&rm=1&shmsize=0&t=ocms_server&target=&ulimits=null&version=1": dial unix /var/run/docker.sock: connect: permission denied</code></pre>
 <p>解決方式:</p>
-<!-- raw HTML omitted -->
+<ol class="wp-block-list">
+  <li>
+    最前方加入sudo(每次都需要加sudo有點麻煩)
+  </li>
+  <li>
+    將目前使用者加到docker群組裡面(本篇使用的方法)
+  </li>
+</ol>
 <h1 id="建立-docker-群組">建立 docker 群組
-</h1><!-- raw HTML omitted -->
+</h1><pre class="wp-block-code"><code lang="bash" class="language-bash">sudo groupadd docker</code></pre>
 <p>如果一開始就已經有群組的話，就則會告知下方訊息</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">groupadd: group 'docker' already exists</code></pre>
 <h2 id="將非-root-帳號加上-docker-群組中">將非 root 帳號加上 docker 群組中
 </h2><p>將連接的用戶”$USER”添加到docker組。<br>
 如果不想使用當前用戶，請更改用戶名</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">sudo gpasswd -a $USER docker</code></pre>
 <p>成功則返回:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">Adding user admins to group docker</code></pre>
 <p>group 的資訊並不會立刻更新，為了要能立刻產生作用，執行 newgrp docker，</p>
 <p>讓這個帳號立刻改成使用 docker 這個群組 (或是你要登出登入也行)：<br>
 執行下方指令, 或注銷/進入以激活對組的更改:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">newgrp docker</code></pre>
 <h1 id="重新啟動-docker-服務">重新啟動 docker 服務
 </h1><p>重啟 docker 服務之後，所有的變動就完成了：</p>
-<!-- raw HTML omitted -->
-
+<pre class="wp-block-code"><code lang="bash" class="language-bash">sudo systemctl restart docker</code></pre>
 </section>
 
 

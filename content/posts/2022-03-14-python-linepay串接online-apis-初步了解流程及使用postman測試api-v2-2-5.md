@@ -64,7 +64,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A"></span>基本設定<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A"></span>基本設定<span class="ez-toc-section-end"></span> 
 
 請先下載[postman][2]
 
@@ -80,7 +80,7 @@ X-LINE-ChannelSecret:商戶的Channel Secret</code></pre><figure class="wp-block
 
 <img decoding="async" src="https://i.imgur.com/xwo8UJj.png" alt="" /> </figure> 
 
-## <span class="ez-toc-section" id="request_%E8%AB%8B%E6%B1%82%E8%A8%82%E5%96%AE"></span>request 請求訂單<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="request_%E8%AB%8B%E6%B1%82%E8%A8%82%E5%96%AE"></span>request 請求訂單<span class="ez-toc-section-end"></span> 
 
 API:
 
@@ -137,7 +137,7 @@ Reference Detailed Explanation and Exceptional Case of ConfirmUrl</code></pre>
 
 簡單來說就是:想讓結帳完的顧客看到什麼畫面。
 
-## <span class="ez-toc-section" id="confirm_%E7%A2%BA%E8%AA%8D"></span>confirm 確認<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="confirm_%E7%A2%BA%E8%AA%8D"></span>confirm 確認<span class="ez-toc-section-end"></span> 
 
 API:
 
@@ -182,7 +182,7 @@ Response成功的Json如下:
 
 若失敗或是orderId有重複, 則會告知錯誤。
 
-## <span class="ez-toc-section" id="Check_Payment_Status_%E6%9F%A5%E7%9C%8B%E8%A8%82%E5%96%AE%E7%8B%80%E6%85%8B"></span>Check Payment Status 查看訂單狀態<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="Check_Payment_Status_%E6%9F%A5%E7%9C%8B%E8%A8%82%E5%96%AE%E7%8B%80%E6%85%8B"></span>Check Payment Status 查看訂單狀態<span class="ez-toc-section-end"></span> 
 
 API
 
@@ -225,7 +225,7 @@ Response成功的Json如下:
 
 若是使用v3則可正常先進行Check Payment Status 後再進行確認。
 
-## <span class="ez-toc-section" id="refurnd_%E9%80%80%E6%AC%BE"></span>refurnd 退款<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="refurnd_%E9%80%80%E6%AC%BE"></span>refurnd 退款<span class="ez-toc-section-end"></span> 
 
 取消已付款的交易。
 

@@ -45,13 +45,13 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="Windows%E5%AE%89%E8%A3%9D"></span>Windows安裝<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="Windows%E5%AE%89%E8%A3%9D"></span>Windows安裝<span class="ez-toc-section-end"></span> 
 
 以下為安裝連結:  
 [安裝Golang][1]  
 [VSCode][2]
 
-### <span class="ez-toc-section" id="%E5%9F%B7%E8%A1%8C%E7%AC%AC%E4%B8%80%E6%94%AF%E7%A8%8B%E5%BC%8Fhellogo"></span>執行第一支程式hello.go<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E5%9F%B7%E8%A1%8C%E7%AC%AC%E4%B8%80%E6%94%AF%E7%A8%8B%E5%BC%8Fhellogo"></span>執行第一支程式hello.go<span class="ez-toc-section-end"></span> 
 
 下方為hello.go內的code
 
@@ -82,7 +82,7 @@ func main() {
 補充:  
 若是package main出現紅色底線, 重新開機即可。
 
-## <span class="ez-toc-section" id="ubuntu_%E5%AE%89%E8%A3%9D_golang_118"></span>[ubuntu] 安裝 golang 1.18<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="ubuntu_%E5%AE%89%E8%A3%9D_golang_118"></span>[ubuntu] 安裝 golang 1.18<span class="ez-toc-section-end"></span> 
 
 下載golang壓縮檔(如果要其他版本則自行把18換成其他版本號)
 
@@ -114,7 +114,7 @@ export PATH=$PATH:/usr/local/go/bin</code></pre>
 <pre class="wp-block-code"><code lang="bash" class="language-bash">$ go version
 go version go1.18 linux/amd64</code></pre>
 
-### <span class="ez-toc-section" id="%E5%B7%B2%E8%A7%A3%E6%B1%BA_%E9%97%9C%E6%8E%89%E7%B5%82%E7%AB%AF%E6%A9%9F%E6%89%BE%E4%B8%8D%E5%88%B0go"></span>[已解決] 關掉終端機找不到go<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E5%B7%B2%E8%A7%A3%E6%B1%BA_%E9%97%9C%E6%8E%89%E7%B5%82%E7%AB%AF%E6%A9%9F%E6%89%BE%E4%B8%8D%E5%88%B0go"></span>[已解決] 關掉終端機找不到go<span class="ez-toc-section-end"></span> 
 
 開啟profile檔案
 
@@ -133,7 +133,7 @@ $ go version</code></pre>
 加入環境變量後但仍出現找不到go, 或是關閉終端機就會出現找不到go, 重新開啟VM試試看  
 [參考此處][3]
 
-### <span class="ez-toc-section" id="%E5%9F%B7%E8%A1%8Cgo%E6%AA%94%E6%A1%88"></span>執行go檔案<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E5%9F%B7%E8%A1%8Cgo%E6%AA%94%E6%A1%88"></span>執行go檔案<span class="ez-toc-section-end"></span> 
 
 上方安裝及環境沒問題後, 可執行一隻hello.go試試看
 
@@ -156,7 +156,7 @@ Hello, World
 
 [連結][4]
 
-## <span class="ez-toc-section" id="%E6%A8%99%E6%BA%96%E5%91%BD%E4%BB%A4_%E2%80%93_run_%E8%88%87_build%E5%B7%AE%E7%95%B0"></span>標準命令 &#8211; run 與 build差異<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%A8%99%E6%BA%96%E5%91%BD%E4%BB%A4_%E2%80%93_run_%E8%88%87_build%E5%B7%AE%E7%95%B0"></span>標準命令 &#8211; run 與 build差異<span class="ez-toc-section-end"></span> 
 
 <ul class="wp-block-list">
   <li>

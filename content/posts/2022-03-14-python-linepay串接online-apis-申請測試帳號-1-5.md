@@ -18,7 +18,7 @@ tags:
   </li>
 </ul>
 
-## 一、創建Sandbox帳號 {.wp-block-heading}
+## 一、創建Sandbox帳號 
 
 [測試流程文件網址][1]
 
@@ -37,7 +37,7 @@ tags:
 創建成功如下圖(有興趣可自行點擊後查看)  
 <img decoding="async" src="https://i.imgur.com/TyR7AIv.png" alt="" /> 
 
-## 二、收信並登入商家 {.wp-block-heading}
+## 二、收信並登入商家 
 
 到信箱收信如下:  
 <img decoding="async" src="https://i.imgur.com/agbkGVt.png" alt="" /> 
@@ -47,7 +47,7 @@ tags:
 使用收到的測試帳號及密碼登入  
 <img decoding="async" src="https://i.imgur.com/ABRSthV.png" alt="" /> 
 
-## 三、取得Channel ID及Channel Secret Key {.wp-block-heading}<figure class="wp-block-image">
+## 三、取得Channel ID及Channel Secret Key <figure class="wp-block-image">
 
 <img decoding="async" src="https://i.imgur.com/xVp3hpJ.png" alt="" /> </figure> 
 

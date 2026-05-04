@@ -13,7 +13,7 @@ tags:
 目的：使用homebrew來安裝tree，並顯示資料結構。  
 <img decoding="async" src="https://i.imgur.com/P7VqLcb.png" alt="" /> 
 
-## Homebrew {.wp-block-heading}
+## Homebrew 
 
 可以在 Mac 上安裝系統沒有的套件，例如 Wget (算是工程師滿常使用的軟體)
 

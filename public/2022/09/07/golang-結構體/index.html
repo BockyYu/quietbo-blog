@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="定義&amp;實例化 定義方式:\n實例化方式:\n初始化成員變量\nGo中的方法與接收器 (必學) 將函數與結構體綁定\n格式:\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="定義&amp;實例化 定義方式:\ntype 類別名 struct { 名稱1 類型 Age int Color Color //可定義別的結構體或自己 } 實例化方式:\nvar instance T instance := new(T) instance *T instance := &T{} package main import \"fmt\" //結構體 type User struct { Name string Age int Color Color //可定義別的結構體或自己 } type Color struct { R, G, B string } func main() { var user User user.Age = 20 user.Name = \"bocky\" user.Color.R = \"red\" print(user.Color.R, user.Age) // red20 user := new(User) user.Age = 25 user.Name = \"Abby\" user1 := &User{} user1.Name = \"Car\" user1.Age = 30 //下方利用function來實例化 user2 := NewUser(\"NAME1\", 100) fmt.Println(user2.Name) //NAME1 fmt.Println(user2.Age) //100 } func NewUser(name string, age int) *User { return &User{ Name: name, Age: age, } } 初始化成員變量\n">
 <title>[Golang] 結構體struct &amp;方法接收器</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Golang] 結構體struct &方法接收器">
-<meta property='og:description' content="定義&amp;實例化 定義方式:\n實例化方式:\n初始化成員變量\nGo中的方法與接收器 (必學) 將函數與結構體綁定\n格式:\n">
+<meta property='og:description' content="定義&amp;實例化 定義方式:\ntype 類別名 struct { 名稱1 類型 Age int Color Color //可定義別的結構體或自己 } 實例化方式:\nvar instance T instance := new(T) instance *T instance := &T{} package main import \"fmt\" //結構體 type User struct { Name string Age int Color Color //可定義別的結構體或自己 } type Color struct { R, G, B string } func main() { var user User user.Age = 20 user.Name = \"bocky\" user.Color.R = \"red\" print(user.Color.R, user.Age) // red20 user := new(User) user.Age = 25 user.Name = \"Abby\" user1 := &User{} user1.Name = \"Car\" user1.Age = 30 //下方利用function來實例化 user2 := NewUser(\"NAME1\", 100) fmt.Println(user2.Name) //NAME1 fmt.Println(user2.Age) //100 } func NewUser(name string, age int) *User { return &User{ Name: name, Age: age, } } 初始化成員變量\n">
 <meta property='og:url' content='http://localhost:1313/2022/09/07/golang-%E7%B5%90%E6%A7%8B%E9%AB%94/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='golang' /><meta property='article:published_time' content='2022-09-06T17:07:53&#43;00:00'/><meta property='article:modified_time' content='2022-09-06T17:07:53&#43;00:00'/>
 <meta name="twitter:title" content="[Golang] 結構體struct &方法接收器">
-<meta name="twitter:description" content="定義&amp;實例化 定義方式:\n實例化方式:\n初始化成員變量\nGo中的方法與接收器 (必學) 將函數與結構體綁定\n格式:\n">
+<meta name="twitter:description" content="定義&amp;實例化 定義方式:\ntype 類別名 struct { 名稱1 類型 Age int Color Color //可定義別的結構體或自己 } 實例化方式:\nvar instance T instance := new(T) instance *T instance := &T{} package main import \"fmt\" //結構體 type User struct { Name string Age int Color Color //可定義別的結構體或自己 } type Color struct { R, G, B string } func main() { var user User user.Age = 20 user.Name = \"bocky\" user.Color.R = \"red\" print(user.Color.R, user.Age) // red20 user := new(User) user.Age = 25 user.Name = \"Abby\" user1 := &User{} user1.Name = \"Car\" user1.Age = 30 //下方利用function來實例化 user2 := NewUser(\"NAME1\", 100) fmt.Println(user2.Name) //NAME1 fmt.Println(user2.Age) //100 } func NewUser(name string, age int) *User { return &User{ Name: name, Age: age, } } 初始化成員變量\n">
     </head>
     <body class="
     article-page
@@ -205,7 +205,7 @@
 
 
                     <time class="article-time--reading">
-                        1 minute read
+                        2 minutes read
                     </time>
                 
             </div>
@@ -227,27 +227,170 @@
     
     <h2 id="定義實例化">定義&amp;實例化
 </h2><p>定義方式:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">type 類別名 struct {
+    名稱1  類型
+    Age   int
+    Color Color //可定義別的結構體或自己
+}</code></pre>
 <p>實例化方式:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">var instance T
+instance := new(T)
+instance *T
+instance := &T{}</code></pre>
+<pre class="wp-block-code"><code lang="go" class="language-go line-numbers">package main
+
+import "fmt"
+
+//結構體
+type User struct {
+    Name  string
+    Age   int
+    Color Color //可定義別的結構體或自己
+}
+
+type Color struct {
+    R, G, B string
+}
+
+func main() {
+
+
+    var user User
+    user.Age = 20
+    user.Name = "bocky"
+    user.Color.R = "red"
+    print(user.Color.R, user.Age) // red20
+
+    user := new(User)
+    user.Age = 25
+    user.Name = "Abby"
+
+    user1 := &User{}
+    user1.Name = "Car"
+    user1.Age = 30
+
+
+    //下方利用function來實例化
+    user2 := NewUser("NAME1", 100)
+    fmt.Println(user2.Name) //NAME1
+    fmt.Println(user2.Age)  //100
+}
+
+func NewUser(name string, age int) *User {
+    return &User{
+        Name: name,
+        Age:  age,
+    }
+}</code></pre>
 <p>初始化成員變量</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="go" class="language-go line-numbers">package main
+
+import "fmt"
+
+type Person struct {
+    name  string
+    chile *Person
+}
+
+type User struct {
+    Name   string
+    Sex    int
+    Email  string
+    Mobile string
+}
+
+func main() {
+
+    Person := &Person{name: "奶奶", chile: &Person{name: "媽媽", chile: &Person{name: "我"}}}
+
+    fmt.Println(Person.chile.chile.name) // 我
+
+    user1 := User{
+        "Bocky",
+        1,
+        "a123456@gmail.com",
+        "0123456789",
+    }
+    fmt.Println(user1) //{Bocky 1 shty@gmail.com 0123456789}
+
+    //定義完後馬上初始化
+    user2 := &struct { //1.定義
+        id   int
+        name string
+    }{ //2.初始化
+        22222333333,
+        "Amy",
+    }
+    fmt.Println(user2) //&{22222333333 Amy}
+}</code></pre>
 <h2 id="go中的方法與接收器-必學">Go中的方法與接收器 (必學)
 </h2><p>將函數與結構體綁定<br>
 格式:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>印出結果:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">func (接收器變量 接收器類型) 函數名(參數列表) (返回参数){
+        函數體
+}</code></pre>
+<pre class="wp-block-code"><code lang="go" class="language-go line-numbers">package main
 
+import "fmt"
+
+
+type User struct {
+    Name string
+    Age  int
+}
+
+func main() {
+    user1 := &User{
+        Name: "AAAA",
+        Age:  30,
+    }
+    fmt.Println("===有指標的類型===")
+    user1.PprintName() //Name: Bocky
+    user1.PprintAge()  //Age: 30
+    user1.PprintName() //Name: BBB
+
+    fmt.Println("===沒有指標類型===")
+
+    user2 := &User{
+        Name: "AAAA",
+        Age:  30,
+    }
+    user2.printName() //Name: AAAA
+    user2.printAge()
+    //Name: BBB
+    //Age: 30
+    user2.printName() //Name: AAAA
+}
+
+// 由此function調用, 可使用指針來修改值
+func (user *User) PprintName() {
+    fmt.Println("Name:", user.Name)
+}
+
+func (user *User) PprintAge() { // 使用*User 指針類型是可改值的
+    user.Name = "BBB" // 原本是AAAA改成BBB
+    fmt.Println("Age:", user.Age)
+}
+
+// 非指針類型的接收器
+func (user User) printName() {
+    fmt.Println("Name:", user.Name)
+}
+func (user User) printAge() { // 使用*User 指針類型是可改值的
+    user.Name = "BBB"
+    fmt.Println("Name:", user.Name) // 原本是AAAA改成BBB, Name: BBB
+    fmt.Println("Age:", user.Age)   //Age: 30
+}</code></pre>
+<p>印出結果:</p>
+<pre class="wp-block-code"><code class="">===有指標的類型===
+Name: AAAA
+Age: 30
+Name: BBB
+===沒有指標類型===
+Name: AAAA
+Name: BBB
+Age: 30
+Name: AAAA</code></pre>
 </section>
 
 

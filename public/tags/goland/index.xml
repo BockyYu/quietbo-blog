@@ -10,6 +10,6 @@
             <link>http://localhost:1313/2022/08/23/goland-toolbar/</link>
             <pubDate>Tue, 23 Aug 2022 10:37:28 +0000</pubDate>
             <guid>http://localhost:1313/2022/08/23/goland-toolbar/</guid>
-            <description>&lt;p&gt;goland:2020 3.5&lt;/p&gt;&#xA;&lt;p&gt;預期結果如下:&lt;br&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;p&gt;view -&amp;gt; Appearandce -&amp;gt; Toolbar&lt;br&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;p&gt;基本上JetBrains開發出來的IDE會有Toolbar, 只是位置可能不會在一樣的地方。&lt;/p&gt;&#xA;</description>
+            <description>&lt;p&gt;goland:2020 3.5&lt;/p&gt;&#xA;&lt;p&gt;預期結果如下:&lt;br&gt;&#xA;&lt;img decoding=&#34;async&#34; src=&#34;https://i.imgur.com/04cb1xb.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;view -&amp;gt; Appearandce -&amp;gt; Toolbar&lt;br&gt;&#xA;&lt;img decoding=&#34;async&#34; src=&#34;https://i.imgur.com/d9HBCMh.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;基本上JetBrains開發出來的IDE會有Toolbar, 只是位置可能不會在一樣的地方。&lt;/p&gt;&#xA;</description>
         </item></channel>
 </rss>

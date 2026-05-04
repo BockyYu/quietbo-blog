@@ -11,7 +11,7 @@ tags:
   - python
 
 ---
-#  {.wp-block-heading}
+#  
 
 本篇提到的「**背景**」指的是: 在終端機模式下使用 [ctrl]-c, 並不會中斷的一個情境!
 
@@ -46,7 +46,7 @@ while(1):
     logger.info(str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
     # print(1/0) # 輸出錯誤時使用</code></pre>
 
-# <span class="ez-toc-section" id="%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%B4%B9"></span>指令介紹<span class="ez-toc-section-end"></span> {.wp-block-heading}
+# <span class="ez-toc-section" id="%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%B4%B9"></span>指令介紹<span class="ez-toc-section-end"></span> 
 
 <ul class="wp-block-list">
   <li>
@@ -63,7 +63,7 @@ while(1):
   </li>
 </ul>
 
-## <span class="ez-toc-section" id="%E8%83%8C%E6%99%AF%E5%9F%B7%E8%A1%8Cnohup"></span>背景執行(nohup, &)<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E8%83%8C%E6%99%AF%E5%9F%B7%E8%A1%8Cnohup"></span>背景執行(nohup, &)<span class="ez-toc-section-end"></span> 
 
 <pre class="wp-block-code"><code lang="bash" class="language-bash">nohup python3 my_nohup.py &</code></pre>
 
@@ -87,7 +87,7 @@ Dev  get-pip.py  mylog.log  my_nohup.py  nohup.out  Python-3.7.9</code></pre>
 
 離開該終端機後, 背景仍會繼續執行這個服務, 可使用ps aux來查看。
 
-## <span class="ez-toc-section" id="%E8%A7%A3%E6%B1%BA_nohupout%E6%89%93%E9%96%8B%E6%98%AF%E7%A9%BA%E7%99%BD%E5%95%8F%E9%A1%8C"></span>[解決] nohup.out打開是空白問題<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E8%A7%A3%E6%B1%BA_nohupout%E6%89%93%E9%96%8B%E6%98%AF%E7%A9%BA%E7%99%BD%E5%95%8F%E9%A1%8C"></span>[解決] nohup.out打開是空白問題<span class="ez-toc-section-end"></span> 
 
 如果沒有指定導出的地方, 會在nohup.out檔案內, 但在執行時需使用  
 python -u  
@@ -97,7 +97,7 @@ python -u
 
 這樣print內的訊息都會在nohup.out了, 而log則是logger寫入的資料, 是分開的檔案。
 
-## <span class="ez-toc-section" id="%E6%8C%87%E5%AE%9A%E8%BC%B8%E5%87%BA%E6%AA%94%E6%A1%88%E5%B0%8E%E5%87%BA%E6%AA%94%E6%A1%88"></span>指定輸出檔案(導出檔案)<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%8C%87%E5%AE%9A%E8%BC%B8%E5%87%BA%E6%AA%94%E6%A1%88%E5%B0%8E%E5%87%BA%E6%AA%94%E6%A1%88"></span>指定輸出檔案(導出檔案)<span class="ez-toc-section-end"></span> 
 
 可以指定導到其他檔案, 下方是導到my_print.txt
 
@@ -121,7 +121,7 @@ nohup python3 -u my_nohup.py &gt; logs/command.log 2&gt;&1 &</code></pre>
 
 2>&1 是將「標準錯誤輸出(2)」重定向到「標準輸出(1)」, 簡單來說就是**標準輸出和標準錯誤輸出都在同一份檔案**, 導入logs文件夾下的command.log日誌文件。
 
-## <span class="ez-toc-section" id="%E6%A8%99%E6%BA%96%E8%BC%B8%E5%87%BA%E8%88%87%E6%A8%99%E6%BA%96%E9%8C%AF%E8%AA%A4%E8%BC%B8%E5%87%BA%E5%88%86%E9%96%8B%E5%84%B2%E5%AD%98"></span>標準輸出與標準錯誤輸出分開儲存<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%A8%99%E6%BA%96%E8%BC%B8%E5%87%BA%E8%88%87%E6%A8%99%E6%BA%96%E9%8C%AF%E8%AA%A4%E8%BC%B8%E5%87%BA%E5%88%86%E9%96%8B%E5%84%B2%E5%AD%98"></span>標準輸出與標準錯誤輸出分開儲存<span class="ez-toc-section-end"></span> 
 
 如果想要把錯誤輸出存到另一份檔案,把最後一行的註解拿掉， print(1/0)在最後運行時會出錯, 下方指令, 會把標準輸出到out.log, 標準錯誤輸出err.log
 

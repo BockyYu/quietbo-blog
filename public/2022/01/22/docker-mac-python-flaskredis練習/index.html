@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境\n輸入:\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境\nMac M1 docker:Version 20.10.11 建立app.py from flask import Flask from redis import Redis import os import socket app = Flask(__name__) redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379) @app.route('/') def hello(): redis.incr('hits') return f\"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\\n\" 同一層建立dockerfile FROM python:3.9.5-slim RUN pip install flask redis && \\ groupadd -r flask && useradd -r -g flask flask && \\ mkdir /src && \\ chown -R flask:flask /src USER flask COPY app.py /src/app.py WORKDIR /src ENV FLASK_APP=app.py REDIS_HOST=redis EXPOSE 5000 CMD [\"flask\", \"run\", \"-h\", \"0.0.0.0\"] image 的準備 $ docker image pull redis $ docker image build -t flask-demo . $ docker image ls REPOSITORY TAG IMAGE ID CREATED SIZE flask-demo latest d92f7778af76 9 minutes ago 123MB redis latest f16c30136ff3 4 weeks ago 107MB 創建一個docker bridge $ docker network create -d bridge demo-network 960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7 $ docker network ls NETWORK ID NAME DRIVER SCOPE b2077f8151cb bridge bridge local caf0f586ef79 demo-network bridge local d1465da885e1 host host local 創建redis container\n創建一個叫 redis-server 的container，連到demo-network上 $ docker container run -d --name redis-server --network demo-network redis 960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7 $ docker container ls CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 960a617c97c6 redis \"docker-entrypoint.s…\" 12 minutes ago Up 12 minutes 6379/tcp redis-server 創建flask container $ docker container run -d --network demo-network --name flask-demo --env REDIS_HOST=redis-server -p 5000:5000 flask-demo 打開瀏覽器 輸入:\n">
 <title>[Docker] Mac -Python Flask&#43;Redis(練習)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] Mac -Python Flask+Redis(練習)">
-<meta property='og:description' content="環境\n輸入:\n">
+<meta property='og:description' content="環境\nMac M1 docker:Version 20.10.11 建立app.py from flask import Flask from redis import Redis import os import socket app = Flask(__name__) redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379) @app.route('/') def hello(): redis.incr('hits') return f\"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\\n\" 同一層建立dockerfile FROM python:3.9.5-slim RUN pip install flask redis && \\ groupadd -r flask && useradd -r -g flask flask && \\ mkdir /src && \\ chown -R flask:flask /src USER flask COPY app.py /src/app.py WORKDIR /src ENV FLASK_APP=app.py REDIS_HOST=redis EXPOSE 5000 CMD [\"flask\", \"run\", \"-h\", \"0.0.0.0\"] image 的準備 $ docker image pull redis $ docker image build -t flask-demo . $ docker image ls REPOSITORY TAG IMAGE ID CREATED SIZE flask-demo latest d92f7778af76 9 minutes ago 123MB redis latest f16c30136ff3 4 weeks ago 107MB 創建一個docker bridge $ docker network create -d bridge demo-network 960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7 $ docker network ls NETWORK ID NAME DRIVER SCOPE b2077f8151cb bridge bridge local caf0f586ef79 demo-network bridge local d1465da885e1 host host local 創建redis container\n創建一個叫 redis-server 的container，連到demo-network上 $ docker container run -d --name redis-server --network demo-network redis 960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7 $ docker container ls CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 960a617c97c6 redis \"docker-entrypoint.s…\" 12 minutes ago Up 12 minutes 6379/tcp redis-server 創建flask container $ docker container run -d --network demo-network --name flask-demo --env REDIS_HOST=redis-server -p 5000:5000 flask-demo 打開瀏覽器 輸入:\n">
 <meta property='og:url' content='http://localhost:1313/2022/01/22/docker-mac-python-flaskredis%E7%B7%B4%E7%BF%92/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2022-01-21T19:48:54&#43;00:00'/><meta property='article:modified_time' content='2022-01-21T19:48:54&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] Mac -Python Flask+Redis(練習)">
-<meta name="twitter:description" content="環境\n輸入:\n">
+<meta name="twitter:description" content="環境\nMac M1 docker:Version 20.10.11 建立app.py from flask import Flask from redis import Redis import os import socket app = Flask(__name__) redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379) @app.route('/') def hello(): redis.incr('hits') return f\"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\\n\" 同一層建立dockerfile FROM python:3.9.5-slim RUN pip install flask redis && \\ groupadd -r flask && useradd -r -g flask flask && \\ mkdir /src && \\ chown -R flask:flask /src USER flask COPY app.py /src/app.py WORKDIR /src ENV FLASK_APP=app.py REDIS_HOST=redis EXPOSE 5000 CMD [\"flask\", \"run\", \"-h\", \"0.0.0.0\"] image 的準備 $ docker image pull redis $ docker image build -t flask-demo . $ docker image ls REPOSITORY TAG IMAGE ID CREATED SIZE flask-demo latest d92f7778af76 9 minutes ago 123MB redis latest f16c30136ff3 4 weeks ago 107MB 創建一個docker bridge $ docker network create -d bridge demo-network 960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7 $ docker network ls NETWORK ID NAME DRIVER SCOPE b2077f8151cb bridge bridge local caf0f586ef79 demo-network bridge local d1465da885e1 host host local 創建redis container\n創建一個叫 redis-server 的container，連到demo-network上 $ docker container run -d --name redis-server --network demo-network redis 960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7 $ docker container ls CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 960a617c97c6 redis \"docker-entrypoint.s…\" 12 minutes ago Up 12 minutes 6379/tcp redis-server 創建flask container $ docker container run -d --network demo-network --name flask-demo --env REDIS_HOST=redis-server -p 5000:5000 flask-demo 打開瀏覽器 輸入:\n">
     </head>
     <body class="
     article-page
@@ -226,35 +226,117 @@
     
     
     <p>環境</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<ul class="wp-block-list">
+  <li>
+    Mac M1
+  </li>
+  <li>
+    docker:Version 20.10.11
+  </li>
+</ul>
+<ol class="wp-block-list">
+  <li>
+    建立app.py
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="python" class="language-python line-numbers">from flask import Flask
+from redis import Redis
+import os
+import socket
+
+app = Flask(__name__)
+redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379)
+
+
+@app.route('/')
+def hello():
+    redis.incr('hits')
+    return f"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\n"</code></pre>
+<ol class="wp-block-list" start="2">
+  <li>
+    同一層建立dockerfile
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="docker" class="language-docker line-numbers">FROM python:3.9.5-slim
+
+RUN pip install flask redis && \
+    groupadd -r flask && useradd -r -g flask flask && \
+    mkdir /src && \
+    chown -R flask:flask /src
+
+USER flask
+
+COPY app.py /src/app.py
+
+WORKDIR /src
+
+ENV FLASK_APP=app.py REDIS_HOST=redis
+
+EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]</code></pre>
+<ol class="wp-block-list" start="3">
+  <li>
+    image 的準備
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">$ docker image pull redis
+$ docker image build -t flask-demo .
+$ docker image ls
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+flask-demo   latest    d92f7778af76   9 minutes ago   123MB
+redis        latest    f16c30136ff3   4 weeks ago     107MB</code></pre>
+<ol class="wp-block-list" start="4">
+  <li>
+    創建一個docker bridge
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">$ docker network create -d bridge demo-network
+960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7
+$ docker network ls
+NETWORK ID     NAME           DRIVER    SCOPE
+b2077f8151cb   bridge         bridge    local
+caf0f586ef79   demo-network   bridge    local
+d1465da885e1   host           host      local</code></pre>
+<ol class="wp-block-list" start="5">
+  <li>
+    創建redis container<br />創建一個叫 redis-server 的container，連到demo-network上
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">$ docker container run -d --name redis-server --network demo-network redis
+960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7
+
+$ docker container ls
+CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS          PORTS                    NAMES
+960a617c97c6   redis        "docker-entrypoint.s…"   12 minutes ago   Up 12 minutes   6379/tcp                 redis-server</code></pre>
+<ol class="wp-block-list" start="6">
+  <li>
+    創建flask container
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">$ docker container run -d --network demo-network --name flask-demo --env REDIS_HOST=redis-server -p 5000:5000 flask-demo</code></pre>
+<ol class="wp-block-list" start="7">
+  <li>
+    打開瀏覽器
+  </li>
+</ol>
 <p>輸入:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">127.0.0.1:5000</code></pre>
 <p>會看到下圖，每次刷新頁面，計數加1:ㄋ<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/iCAiHPA.png" alt="" /></p>
+<pre class="wp-block-code"><code class="">Hello Container World! I have been seen 2 times and my hostname is a426b16a8d01.</code></pre>
 <h2 id="總結">總結
 </h2><p>如果把上面的步驟合併到一起，成為一個部署腳本:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class=""># prepare image
+docker image pull redis
+docker image build -t flask-demo .
 
+# create network
+docker network create -d bridge demo-network
+
+# create container
+docker container run -d --name redis-server --network demo-network redis
+docker container run -d --network demo-network --name flask-demo --env REDIS_HOST=redis-server -p 5000:5000 flask-demo</code></pre>
 </section>
 
 

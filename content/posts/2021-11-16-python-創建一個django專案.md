@@ -15,7 +15,7 @@ tags:
 Python 3.8  
 Django:3.2
 
-## 建立環境 {.wp-block-heading}
+## 建立環境 
 
 可參考：[安裝virtualenv][1]
 
@@ -26,7 +26,7 @@ pip list</code></pre><figure class="wp-block-image">
 
 <img decoding="async" src="https://i.imgur.com/YDA0rRK.png" alt="" /> </figure> 
 
-## 建立專案 {.wp-block-heading}
+## 建立專案 
 
 尋找一個位置，建立第一個專案：
 
@@ -141,7 +141,7 @@ PostgreSQL數據庫配置:
 
 <img decoding="async" src="https://i.imgur.com/udBptue.png" alt="" /> </figure> 
 
-### 創建應用程序 {.wp-block-heading}
+### 創建應用程序 
 
 <pre class="wp-block-code"><code class="">python manage.py startapp books</code></pre>
 

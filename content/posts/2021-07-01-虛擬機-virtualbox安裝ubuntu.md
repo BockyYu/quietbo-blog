@@ -42,7 +42,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9D"></span>安裝<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9D"></span>安裝<span class="ez-toc-section-end"></span> 
 
 1. 先新增虛擬機的名稱  
 <img decoding="async" src="https://i.imgur.com/pflnAFT.png" alt="" />  
@@ -85,14 +85,14 @@ tags:
 登入成功!!!  
 <img decoding="async" src="https://i.imgur.com/O3lFH3a.png" alt="" /> 
 
-## <span class="ez-toc-section" id="%E8%A7%A3%E6%9E%90%E5%BA%A6%E8%A8%AD%E5%AE%9A"></span>解析度設定<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E8%A7%A3%E6%9E%90%E5%BA%A6%E8%A8%AD%E5%AE%9A"></span>解析度設定<span class="ez-toc-section-end"></span> 
 
 畫面超級小,先把他調大一點…  
 右上角->系統設定->顯示器->解析度(自行調整)  
 我是用1680*1050(16:10)  
 <img decoding="async" src="https://i.imgur.com/gQ6zMul.png" alt="" /> 
 
-## <span class="ez-toc-section" id="%E8%A8%AD%E5%AE%9A%E5%8F%AF%E4%BB%A5%E9%9B%99%E5%90%91%E5%89%AA%E8%B2%BC"></span>設定可以雙向剪貼<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E8%A8%AD%E5%AE%9A%E5%8F%AF%E4%BB%A5%E9%9B%99%E5%90%91%E5%89%AA%E8%B2%BC"></span>設定可以雙向剪貼<span class="ez-toc-section-end"></span> 
 
 沒用的話會無法貼上從windows複製的文字
 
@@ -117,7 +117,7 @@ tags:
 
 完成
 
-## <span class="ez-toc-section" id="%E5%85%B1%E4%BA%AB%E8%B3%87%E6%96%99%E5%A4%BE"></span>共享資料夾<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%85%B1%E4%BA%AB%E8%B3%87%E6%96%99%E5%A4%BE"></span>共享資料夾<span class="ez-toc-section-end"></span> 
 
 終端機輸入這串:
 
@@ -142,12 +142,12 @@ tags:
 
 
 
-## <span class="ez-toc-section" id="%E7%95%AB%E9%9D%A2%E5%A4%A7%E5%B0%8F"></span>畫面大小<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E7%95%AB%E9%9D%A2%E5%A4%A7%E5%B0%8F"></span>畫面大小<span class="ez-toc-section-end"></span> 
 
 自動調整客體顯示大小  
 <img decoding="async" src="https://i.imgur.com/0JyDeEU.png" alt="" /> 
 
-##### 補充:無法使用客體大小 {.wp-block-heading}
+##### 補充:無法使用客體大小 
 
 某次安裝的ubuntu20.04無法使用客體大小。在網路上查了三個小時終於找到解決方式。
 

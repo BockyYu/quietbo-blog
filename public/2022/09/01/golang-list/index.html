@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="List由多個節點所組成的, 節點之間透過一些變數紀錄彼此的關係\n宣告方式\n顯示結果\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="List由多個節點所組成的, 節點之間透過一些變數紀錄彼此的關係\na -&gt; next -&gt; b -&gt; next -&gt; c a &lt;- pre &lt;- b &lt;- pre &lt;- c 宣告方式\n">
 <title>[Golang] List</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Golang] List">
-<meta property='og:description' content="List由多個節點所組成的, 節點之間透過一些變數紀錄彼此的關係\n宣告方式\n顯示結果\n">
+<meta property='og:description' content="List由多個節點所組成的, 節點之間透過一些變數紀錄彼此的關係\na -&gt; next -&gt; b -&gt; next -&gt; c a &lt;- pre &lt;- b &lt;- pre &lt;- c 宣告方式\n">
 <meta property='og:url' content='http://localhost:1313/2022/09/01/golang-list/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='golang' /><meta property='article:published_time' content='2022-09-01T09:44:37&#43;00:00'/><meta property='article:modified_time' content='2022-09-01T09:44:37&#43;00:00'/>
 <meta name="twitter:title" content="[Golang] List">
-<meta name="twitter:description" content="List由多個節點所組成的, 節點之間透過一些變數紀錄彼此的關係\n宣告方式\n顯示結果\n">
+<meta name="twitter:description" content="List由多個節點所組成的, 節點之間透過一些變數紀錄彼此的關係\na -&gt; next -&gt; b -&gt; next -&gt; c a &lt;- pre &lt;- b &lt;- pre &lt;- c 宣告方式\n">
     </head>
     <body class="
     article-page
@@ -226,18 +226,63 @@
     
     
     <p>List由多個節點所組成的, 節點之間透過一些變數紀錄彼此的關係</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">a -&gt; next -&gt; b -&gt; next -&gt; c
+a &lt;- pre &lt;- b &lt;- pre &lt;- c</code></pre>
 <p>宣告方式</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>顯示結果</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="go" class="language-go line-numbers">name:=list.New()
+//var name list.List</code></pre>
+<ul class="wp-block-list">
+  <li>
+    PushBack:插入元素直接放入結尾
+  </li>
+  <li>
+    PushFront:插入元素直接放入開頭
+  </li>
+  <li>
+    InsertBefore:被標記的元素前增加元素
+  </li>
+  <li>
+    InsertAfter:被標記的元素後增加元素
+  </li>
+</ul>
+<pre class="wp-block-code"><code lang="go" class="language-go line-numbers">package main
 
+import (
+    "container/list"
+    "fmt"
+)
+
+func main() {
+    //List
+
+
+
+
+    list1 := list.New()
+    list1.PushBack("Back_1") //插入元素直接放入結尾
+    list1.PushFront(111)     //插入元素直接放入最前   111 Back_1
+    list1.PushBack("Back_2") //插入元素直接放入結尾 111 Back_1 Back_2
+
+    el := list1.PushBack("Back_3") // 111 Back_1 Back_2 Back_3
+    //在Back_3的後方加入After
+    list1.InsertAfter("After", el) // 111 Back_1 Back_2 Back_3 After
+    // 在Back_3的前方加入Before
+    list1.InsertBefore("Before", el) // 111 Back_1 Back_2 Before Back_3 After
+
+    // 移除 Back_3
+    //list1.Remove(el)
+    for i := list1.Front(); i != nil; i = i.Next() {
+        fmt.Println(i.Value)
+    }
+
+}</code></pre>
+<p>顯示結果</p>
+<pre class="wp-block-code"><code class=" line-numbers">111
+Back_1
+Back_2
+Before
+Back_3
+After</code></pre>
 </section>
 
 

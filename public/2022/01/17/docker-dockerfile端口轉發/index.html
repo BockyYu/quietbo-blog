@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="pull image 先pull兩個image:\npython:3.9.5-slim\nredis\n新增2個dockerfile\n用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="pull image 先pull兩個image:\npython:3.9.5-slim\ndocker image pull python:3.9.5-slim redis\ndocker image pull redis 新增2個dockerfile\nFROM python:3.9.5-slim RUN pip install flask redis && \\ groupadd -r flask && useradd -r -g flask flask && \\ mkdir /src && \\ chown -R flask:flask /src USER flask COPY startup.py /src/startup.py WORKDIR /src ENV FLASK_APP=startup.py REDIS_HOST=redis #EXPOSE 5000 CMD [\"flask\", \"run\", \"-h\", \"0.0.0.0\"] 用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：\n">
 <title>[Docker] dockerfile端口轉發</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] dockerfile端口轉發">
-<meta property='og:description' content="pull image 先pull兩個image:\npython:3.9.5-slim\nredis\n新增2個dockerfile\n用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：\n">
+<meta property='og:description' content="pull image 先pull兩個image:\npython:3.9.5-slim\ndocker image pull python:3.9.5-slim redis\ndocker image pull redis 新增2個dockerfile\nFROM python:3.9.5-slim RUN pip install flask redis && \\ groupadd -r flask && useradd -r -g flask flask && \\ mkdir /src && \\ chown -R flask:flask /src USER flask COPY startup.py /src/startup.py WORKDIR /src ENV FLASK_APP=startup.py REDIS_HOST=redis #EXPOSE 5000 CMD [\"flask\", \"run\", \"-h\", \"0.0.0.0\"] 用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：\n">
 <meta property='og:url' content='http://localhost:1313/2022/01/17/docker-dockerfile%E7%AB%AF%E5%8F%A3%E8%BD%89%E7%99%BC/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2022-01-17T14:21:35&#43;00:00'/><meta property='article:modified_time' content='2022-01-17T14:21:35&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] dockerfile端口轉發">
-<meta name="twitter:description" content="pull image 先pull兩個image:\npython:3.9.5-slim\nredis\n新增2個dockerfile\n用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：\n">
+<meta name="twitter:description" content="pull image 先pull兩個image:\npython:3.9.5-slim\ndocker image pull python:3.9.5-slim redis\ndocker image pull redis 新增2個dockerfile\nFROM python:3.9.5-slim RUN pip install flask redis && \\ groupadd -r flask && useradd -r -g flask flask && \\ mkdir /src && \\ chown -R flask:flask /src USER flask COPY startup.py /src/startup.py WORKDIR /src ENV FLASK_APP=startup.py REDIS_HOST=redis #EXPOSE 5000 CMD [\"flask\", \"run\", \"-h\", \"0.0.0.0\"] 用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：\n">
     </head>
     <body class="
     article-page
@@ -228,26 +228,59 @@
     <h2 id="pull-image">pull image
 </h2><p>先pull兩個image:<br>
 python:3.9.5-slim</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">docker image pull python:3.9.5-slim</code></pre>
 <p>redis</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">docker image pull redis</code></pre>
 <p>新增2個dockerfile</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="docker" class="language-docker line-numbers">FROM python:3.9.5-slim
+
+RUN pip install flask redis && \
+    groupadd -r flask && useradd -r -g flask flask && \
+    mkdir /src && \
+    chown -R flask:flask /src
+
+USER flask
+
+COPY startup.py /src/startup.py
+
+WORKDIR /src
+
+ENV FLASK_APP=startup.py REDIS_HOST=redis
+
+#EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]</code></pre>
 <p>用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">docker image build -t flask-demo .</code></pre>
 <p>再建立一個image，這個image只是把EXPOSE 5000打開。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="docker" class="language-docker line-numbers">FROM python:3.9.5-slim
+
+RUN pip install flask redis && \
+    groupadd -r flask && useradd -r -g flask flask && \
+    mkdir /src && \
+    chown -R flask:flask /src
+
+USER flask
+
+COPY startup.py /src/startup.py
+
+WORKDIR /src
+
+ENV FLASK_APP=startup.py REDIS_HOST=redis
+
+EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]</code></pre>
 <p>打開EXPOSE的image名為flask-demo-new。</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">docker image build -t flask-demo-new .</code></pre>
 <p>建立後查看image</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">docker image inspect flask-demo
+docker image inspect flask-demo-new</code></pre>
 <p>裡面的Config只有flask-demo-new的有多出</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code class="">"ExposedPorts": {
+                "5000/tcp": {}
+            },</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/jvFogBK.png" alt="" /> </figure></p>
 
 </section>
 

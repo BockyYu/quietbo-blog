@@ -62,7 +62,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="1%E8%A7%A3%E6%B1%BA%E9%96%83%E9%80%80%E5%95%8F%E9%A1%8C%E6%96%B9%E5%BC%8F"></span>1.解決閃退問題方式<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="1%E8%A7%A3%E6%B1%BA%E9%96%83%E9%80%80%E5%95%8F%E9%A1%8C%E6%96%B9%E5%BC%8F"></span>1.解決閃退問題方式<span class="ez-toc-section-end"></span> 
 
 詳細可參考此篇：[Where is /var/lib/docker on Mac/OS X][1]  
 mac下docker實際是在vm裡又加了一層，因此需要進入vm 才能進行操作。
@@ -75,7 +75,7 @@ mac下docker實際是在vm裡又加了一層，因此需要進入vm 才能進行
 
 <pre class="wp-block-code"><code class="">docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh</code></pre>
 
-## <span class="ez-toc-section" id="2%E6%AA%A2%E8%A6%96volumes"></span>2.檢視volumes<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="2%E6%AA%A2%E8%A6%96volumes"></span>2.檢視volumes<span class="ez-toc-section-end"></span> 
 
 解決閃退問題後，會進入VM內，輸入ls，檢視當前路徑下目錄資訊。
 
@@ -88,9 +88,9 @@ mac下docker實際是在vm裡又加了一層，因此需要進入vm 才能進行
 
 
 
-## <span class="ez-toc-section" id="%E8%A3%9C%E5%85%85%EF%BC%9A"></span>補充：<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E8%A3%9C%E5%85%85%EF%BC%9A"></span>補充：<span class="ez-toc-section-end"></span> 
 
-### <span class="ez-toc-section" id="%E9%80%B2%E5%85%A5Mountpoint%E5%B0%8D%E6%87%89%E7%9A%84%E8%B3%87%E6%96%99%E5%A4%BE_Linux"></span>進入Mountpoint對應的資料夾 (Linux)<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E9%80%B2%E5%85%A5Mountpoint%E5%B0%8D%E6%87%89%E7%9A%84%E8%B3%87%E6%96%99%E5%A4%BE_Linux"></span>進入Mountpoint對應的資料夾 (Linux)<span class="ez-toc-section-end"></span> 
 
 如果使用Linux，可以直接找到Mountpoint對應的目錄，就是和container連接的地方，這裡面的改動和container內是同步的。  
 但如果是Mac，用同樣的方式想要進入Mountpoint對應的目錄，會不存在，

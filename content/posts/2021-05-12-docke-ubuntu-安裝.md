@@ -45,7 +45,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="Linux_%E5%AE%89%E8%A3%9Ddocker"></span>Linux 安裝docker<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="Linux_%E5%AE%89%E8%A3%9Ddocker"></span>Linux 安裝docker<span class="ez-toc-section-end"></span> 
 
 在 Ubuntu Linux 中，使用 apt 安裝 Docker 比較方便：
 
@@ -68,7 +68,7 @@ tags:
 
 <img decoding="async" src="https://i.imgur.com/QvrXKqq.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/B5QPKn6.png" alt="" /></figure> 
 
-## <span class="ez-toc-section" id="Linux_%E5%AE%89%E8%A3%9Ddocker_Compose"></span>Linux 安裝docker Compose<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="Linux_%E5%AE%89%E8%A3%9Ddocker_Compose"></span>Linux 安裝docker Compose<span class="ez-toc-section-end"></span> 
 
 <pre class="wp-block-code"><code lang="bash" class="language-bash">sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose</code></pre>
@@ -77,7 +77,7 @@ sudo chmod +x /usr/local/bin/docker-compose</code></pre>
 
 <img decoding="async" src="https://i.imgur.com/L9WTE0i.png" alt="" /> </figure> 
 
-## <span class="ez-toc-section" id="docker_%E5%88%87%E6%8F%9B%E4%BD%BF%E7%94%A8%E8%80%85"></span>docker 切換使用者<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="docker_%E5%88%87%E6%8F%9B%E4%BD%BF%E7%94%A8%E8%80%85"></span>docker 切換使用者<span class="ez-toc-section-end"></span> 
 
 <ol class="wp-block-list">
   <li>
@@ -103,11 +103,11 @@ sudo chmod +x /usr/local/bin/docker-compose</code></pre>
 
 <pre class="wp-block-code"><code class="">su ubuntu</code></pre>
 
-## <span class="ez-toc-section" id="%E6%9B%B4%E6%96%B0apt%E5%8C%85%E8%B5%84%E6%BA%90%E7%B4%A2%E5%BC%95"></span>更新apt包资源索引<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%9B%B4%E6%96%B0apt%E5%8C%85%E8%B5%84%E6%BA%90%E7%B4%A2%E5%BC%95"></span>更新apt包资源索引<span class="ez-toc-section-end"></span> 
 
 <pre class="wp-block-code"><code class="">sudo apt-get update</code></pre>
 
-## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9D%E8%BB%9F%E4%BB%B6%E5%8C%85%E4%BB%A5%E5%85%81%E8%A8%B1apt%E9%80%9A%E9%81%8EHTTPS%E4%BD%BF%E7%94%A8%E5%AD%98%E5%84%B2%E5%BA%AB"></span>安裝軟件包以允許apt通過HTTPS使用存儲庫:<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%AE%89%E8%A3%9D%E8%BB%9F%E4%BB%B6%E5%8C%85%E4%BB%A5%E5%85%81%E8%A8%B1apt%E9%80%9A%E9%81%8EHTTPS%E4%BD%BF%E7%94%A8%E5%AD%98%E5%84%B2%E5%BA%AB"></span>安裝軟件包以允許apt通過HTTPS使用存儲庫:<span class="ez-toc-section-end"></span> 
 
 <pre class="wp-block-code"><code class="">sudo apt-get install \
     apt-transport-https \
@@ -117,7 +117,7 @@ sudo chmod +x /usr/local/bin/docker-compose</code></pre>
 
 
 
-## <span class="ez-toc-section" id="%E9%87%8D%E6%96%B0%E9%96%8B%E5%95%9Fdocker"></span>重新開啟docker<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E9%87%8D%E6%96%B0%E9%96%8B%E5%95%9Fdocker"></span>重新開啟docker<span class="ez-toc-section-end"></span> 
 
   
 有次早上要執行docker-compose的時候無法正常開啟，出現下方錯誤訊息

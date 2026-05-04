@@ -13,13 +13,13 @@ tags:
 多窗口如下:  
 <img decoding="async" src="https://i.imgur.com/T32W7Qv.png" alt="" /> 
 
-## Terminator {.wp-block-heading}
+## Terminator 
 
 <pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">$ #sudo add-apt-repository ppa:gnome-terminator
 $ sudo apt update
 $ sudo apt install terminator</code></pre>
 
-## zsh {.wp-block-heading}
+## zsh 
 
 更新apt-get
 

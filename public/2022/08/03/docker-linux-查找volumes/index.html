@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="以下為linux在查找volumes範例\n查看已建立的volume\n查看該volume資訊, 會看到Mountpoint, 這是存放的路徑\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="以下為linux在查找volumes範例\n查看已建立的volume\n$ docker volume list DRIVER VOLUME NAME local mysql-data 查看該volume資訊, 會看到Mountpoint, 這是存放的路徑\n">
 <title>[Docker] Linux 查找volumes</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] Linux 查找volumes">
-<meta property='og:description' content="以下為linux在查找volumes範例\n查看已建立的volume\n查看該volume資訊, 會看到Mountpoint, 這是存放的路徑\n">
+<meta property='og:description' content="以下為linux在查找volumes範例\n查看已建立的volume\n$ docker volume list DRIVER VOLUME NAME local mysql-data 查看該volume資訊, 會看到Mountpoint, 這是存放的路徑\n">
 <meta property='og:url' content='http://localhost:1313/2022/08/03/docker-linux-%E6%9F%A5%E6%89%BEvolumes/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:tag' content='linux' /><meta property='article:published_time' content='2022-08-03T10:27:42&#43;00:00'/><meta property='article:modified_time' content='2022-08-03T10:27:42&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] Linux 查找volumes">
-<meta name="twitter:description" content="以下為linux在查找volumes範例\n查看已建立的volume\n查看該volume資訊, 會看到Mountpoint, 這是存放的路徑\n">
+<meta name="twitter:description" content="以下為linux在查找volumes範例\n查看已建立的volume\n$ docker volume list DRIVER VOLUME NAME local mysql-data 查看該volume資訊, 會看到Mountpoint, 這是存放的路徑\n">
     </head>
     <body class="
     article-page
@@ -234,15 +234,26 @@
     
     <p>以下為linux在查找volumes範例</p>
 <p>查看已建立的volume</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">$ docker volume list
+DRIVER    VOLUME NAME
+local     mysql-data</code></pre>
 <p>查看該volume資訊, 會看到Mountpoint, 這是存放的路徑</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">$ docker inspect mysql-data
+[
+    {
+        "CreatedAt": "2022-08-03T05:59:51Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/mysql-data/_data",
+        "Name": "mysql-data",
+        "Options": null,
+        "Scope": "local"
+    }
+]</code></pre>
 <p>會發現使用找不到, 因為該路徑下需要使用root</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">$ cd /var/lib/docker/volumes/mysql-data/_data</code></pre>
+<pre class="wp-block-code"><code class="">$ sudo -s
+$ cd /var/lib/docker/volumes/mysql-data/_data</code></pre>
 <p>該路徑下會看到database, 內容會有tableName.ibd</p>
 
 </section>

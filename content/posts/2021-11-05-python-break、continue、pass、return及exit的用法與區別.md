@@ -57,7 +57,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="break"></span>break<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="break"></span>break<span class="ez-toc-section-end"></span> 
 
 用來終止循環語句，即使循環條件沒有False或者序列還沒被完全遞歸完，也會停止執行循環語句。
 
@@ -80,7 +80,7 @@ config()</code></pre>
 
 
 
-## <span class="ez-toc-section" id="continue"></span>continue<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="continue"></span>continue<span class="ez-toc-section-end"></span> 
 
 continue 語句跳出**本次**循環，然後繼續進行下一輪循環。
 
@@ -105,7 +105,7 @@ config()</code></pre>
 
 
 
-## <span class="ez-toc-section" id="pass"></span>pass<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="pass"></span>pass<span class="ez-toc-section-end"></span> 
 
 空語句，pass 不做任何事情，一般用做佔位語句，是為了保持程序結構的完整性。
 
@@ -140,7 +140,7 @@ config()</code></pre>
 
 
 
-## <span class="ez-toc-section" id="return"></span>return<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="return"></span>return<span class="ez-toc-section-end"></span> 
 
 return 語句就是將結果返回到調用的地方，並把控制權也一起返回。
 
@@ -165,7 +165,7 @@ for迴圈在 3 時回傳了
 
 
 
-## <span class="ez-toc-section" id="exit"></span>exit<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="exit"></span>exit<span class="ez-toc-section-end"></span> 
 
 用來結束整個程序（進程）。
 

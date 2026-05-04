@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" &lt;div class=&quot;wp-block-group&quot;&gt; &lt;div class=&quot;wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow&quot;&gt; &lt;ol class=&quot;wp-block-list&quot;&gt; &lt;li&gt; 從Registry取得Image &amp;#8211; &lt;a href=&quot;https://docs.docker.com/registry/&quot;&gt;registry&lt;/a&gt;&lt;ul&gt; &lt;li&gt; public（公開的，任何人都可以使用） &lt;/li&gt; &lt;li&gt; private（私有） &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt; 文件導入(可離線時使用） &lt;/li&gt; &lt;li&gt; 從Dockerfile建造 &lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; 從Registry取得Image 如果沒有提供registry名稱的話，預設是從DockerHub取得。\n如果不指定的話會下載lates。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 獲取Image的三種方式: &lt;div class=&quot;wp-block-group&quot;&gt; &lt;div class=&quot;wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow&quot;&gt; &lt;ol class=&quot;wp-block-list&quot;&gt; &lt;li&gt; 從Registry取得Image &amp;#8211; &lt;a href=&quot;https://docs.docker.com/registry/&quot;&gt;registry&lt;/a&gt;&lt;ul&gt; &lt;li&gt; public（公開的，任何人都可以使用） &lt;/li&gt; &lt;li&gt; private（私有） &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt; 文件導入(可離線時使用） &lt;/li&gt; &lt;li&gt; 從Dockerfile建造 &lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; 從Registry取得Image 如果沒有提供registry名稱的話，預設是從DockerHub取得。\n如果不指定的話會下載lates。\n">
 <title>[Docker] 獲取Image的三種方式</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] 獲取Image的三種方式">
-<meta property='og:description' content=" &lt;div class=&quot;wp-block-group&quot;&gt; &lt;div class=&quot;wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow&quot;&gt; &lt;ol class=&quot;wp-block-list&quot;&gt; &lt;li&gt; 從Registry取得Image &amp;#8211; &lt;a href=&quot;https://docs.docker.com/registry/&quot;&gt;registry&lt;/a&gt;&lt;ul&gt; &lt;li&gt; public（公開的，任何人都可以使用） &lt;/li&gt; &lt;li&gt; private（私有） &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt; 文件導入(可離線時使用） &lt;/li&gt; &lt;li&gt; 從Dockerfile建造 &lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; 從Registry取得Image 如果沒有提供registry名稱的話，預設是從DockerHub取得。\n如果不指定的話會下載lates。\n">
+<meta property='og:description' content=" 獲取Image的三種方式: &lt;div class=&quot;wp-block-group&quot;&gt; &lt;div class=&quot;wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow&quot;&gt; &lt;ol class=&quot;wp-block-list&quot;&gt; &lt;li&gt; 從Registry取得Image &amp;#8211; &lt;a href=&quot;https://docs.docker.com/registry/&quot;&gt;registry&lt;/a&gt;&lt;ul&gt; &lt;li&gt; public（公開的，任何人都可以使用） &lt;/li&gt; &lt;li&gt; private（私有） &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt; 文件導入(可離線時使用） &lt;/li&gt; &lt;li&gt; 從Dockerfile建造 &lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; 從Registry取得Image 如果沒有提供registry名稱的話，預設是從DockerHub取得。\n如果不指定的話會下載lates。\n">
 <meta property='og:url' content='http://localhost:1313/2021/07/12/docker-%E7%8D%B2%E5%8F%96image%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2021-07-12T09:12:25&#43;00:00'/><meta property='article:modified_time' content='2021-07-12T09:12:25&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] 獲取Image的三種方式">
-<meta name="twitter:description" content=" &lt;div class=&quot;wp-block-group&quot;&gt; &lt;div class=&quot;wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow&quot;&gt; &lt;ol class=&quot;wp-block-list&quot;&gt; &lt;li&gt; 從Registry取得Image &amp;#8211; &lt;a href=&quot;https://docs.docker.com/registry/&quot;&gt;registry&lt;/a&gt;&lt;ul&gt; &lt;li&gt; public（公開的，任何人都可以使用） &lt;/li&gt; &lt;li&gt; private（私有） &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt; 文件導入(可離線時使用） &lt;/li&gt; &lt;li&gt; 從Dockerfile建造 &lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; 從Registry取得Image 如果沒有提供registry名稱的話，預設是從DockerHub取得。\n如果不指定的話會下載lates。\n">
+<meta name="twitter:description" content=" 獲取Image的三種方式: &lt;div class=&quot;wp-block-group&quot;&gt; &lt;div class=&quot;wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow&quot;&gt; &lt;ol class=&quot;wp-block-list&quot;&gt; &lt;li&gt; 從Registry取得Image &amp;#8211; &lt;a href=&quot;https://docs.docker.com/registry/&quot;&gt;registry&lt;/a&gt;&lt;ul&gt; &lt;li&gt; public（公開的，任何人都可以使用） &lt;/li&gt; &lt;li&gt; private（私有） &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt; 文件導入(可離線時使用） &lt;/li&gt; &lt;li&gt; 從Dockerfile建造 &lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; 從Registry取得Image 如果沒有提供registry名稱的話，預設是從DockerHub取得。\n如果不指定的話會下載lates。\n">
     </head>
     <body class="
     article-page
@@ -205,7 +205,7 @@
 
 
                     <time class="article-time--reading">
-                        1 minute read
+                        2 minutes read
                     </time>
                 
             </div>
@@ -225,7 +225,13 @@
     <section class="article-content">
     
     
-    <!-- raw HTML omitted -->
+    <div class="wp-block-group">
+  <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
+    <div class="wp-block-group">
+      <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
+        <p>
+          獲取Image的三種方式:
+        </p>
 <pre><code>    &lt;div class=&quot;wp-block-group&quot;&gt;
       &lt;div class=&quot;wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow&quot;&gt;
         &lt;ol class=&quot;wp-block-list&quot;&gt;
@@ -252,51 +258,59 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<!-- raw HTML omitted -->
+  </div>
+</div>
 <h1 id="從registry取得image">從Registry取得Image
 </h1><p>如果沒有提供registry名稱的話，預設是從<a class="link" href="https://hub.docker.com/"  target="_blank" rel="noopener"
     >DockerHub</a>取得。<br>
 如果不指定的話會下載lates。</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">docker image pull nginx</code></pre>
 <p>如果想指定版本的話就加入:tag名稱</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code class="">docker image pull nginx:1.20.1</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/Kj3d9t4.png" alt="" /> </figure></p>
 <p>查看已下載的Image</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">docker image ls</code></pre>
 <p>顯示Image的相關訊息</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">docker image inspect IMAGE_ID</code></pre>
 <p>刪除Image</p>
 <p>如果有容器正在使用，無論是運行中或是關閉狀態，會無法刪除。</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">docker image rm IMAGE_ID</code></pre>
 <h1 id="文件導入image">文件導入Image
 </h1><p>其他兩種都是要在有網路的狀況下才可以使用，若是電腦沒有網路的話，可以使用導入的方式。</p>
 <p>建構Image指令如下:</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code class="">docker image save nginx[:版本] -o 檔案名稱</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/OmxitSX.png" alt="" /> </figure></p>
 <p>導入Image</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code class="">docker image load -i 檔案路徑</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/ODhSf7a.png" alt="" /> </figure></p>
 <h1 id="從dockerfile建造">從Dockerfile建造
 </h1><p><a class="link" href="https://docs.docker.com/engine/reference/builder/"  target="_blank" rel="noopener"
     >Dockerfile參考</a></p>
 <p>將下方兩個檔案存在同一個資料夾：<br>
 檔名：hello.py</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="python" class="language-python">print("Hello this python!")</code></pre>
 <p>檔名：dockerfile</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="docker" class="language-docker line-numbers">FROM ubuntu:20.04
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y python3.9 python3-pip python3.9-dev
+ADD hello.py /
+CMD ["python3", "/hello.py"]</code></pre>
 <p>我把這兩個檔案放在名為coding的資料夾裡面。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/ZZQiUBP.png" alt="" /></p>
 <p>接下來從dockerfile建構Image:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<ul class="wp-block-list">
+  <li>
+    -t :替image命名所需帶入
+  </li>
+</ul>
+<pre class="wp-block-code"><code lang="docker" class="language-docker line-numbers">docker image build -t hello dockerfile路徑
+docker image ls # 查看是否有名為hello的image</code></pre>
 <p>下圖紅框是我們想要為這個image的命名。<br>
 黃框是dockerfile的路徑。<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/4EiTOQO.png" alt="" /></p>
+<pre class="wp-block-code"><code lang="docker" class="language-docker">docker run -it hello</code></pre>
 <p>看看有沒有顯示hello.py的字串。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/NjapyIi.png" alt="" /></p>
 
 </section>
 

@@ -12,7 +12,7 @@ categories:
 Visual Studio是在大學、銀行專案和C++有使用過，這兩個我都有用過一段時間，  
 最近發現，有些人把Visual Studio Code 和 Visual Studio誤會成同一個，可能是因為名稱和外型很像，所以會搞混，在這小說明這兩者之間的差異。
 
-## Visual Studio Code {.wp-block-heading}<figure class="wp-block-image">
+## Visual Studio Code <figure class="wp-block-image">
 
 <img decoding="async" src="https://i.imgur.com/U9qsiXS.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/3QWvWax.png" alt="" /></figure> 
 
@@ -25,7 +25,7 @@ Editor 編輯器
 
 事實上，我覺得VSCode不能與Visual Studio比較，能夠比較的對象應該是Sublime、Atom，因為這兩個都是Editor。
 
-## Visual Studio {.wp-block-heading}<figure class="wp-block-image">
+## Visual Studio <figure class="wp-block-image">
 
 <img decoding="async" src="https://i.imgur.com/Jqy4iSQ.png" alt="" /> </figure> 
 

@@ -65,7 +65,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="HTML_%E5%9F%BA%E6%9C%AC%E8%A7%80%E5%BF%B5"></span>HTML 基本觀念<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="HTML_%E5%9F%BA%E6%9C%AC%E8%A7%80%E5%BF%B5"></span>HTML 基本觀念<span class="ez-toc-section-end"></span> 
 
 <ul class="wp-block-list">
   <li>
@@ -79,7 +79,7 @@ tags:
   </li>
 </ul>
 
-### <span class="ez-toc-section" id="%E5%B7%A2%E7%8B%80%E7%B5%90%E6%A7%8B"></span>巢狀結構<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E5%B7%A2%E7%8B%80%E7%B5%90%E6%A7%8B"></span>巢狀結構<span class="ez-toc-section-end"></span> 
 
 簡單來說就是一層一層的概念  
 範例:
@@ -96,19 +96,19 @@ tags:
 因為巢狀結構有分層級，上層稱為`父元素`，下層稱為`子元素`。  
 而層級之間有一定上下、左右的規則，會透過`Document Object Model (DOM)`來進行遍歷的順序。
 
-### <span class="ez-toc-section" id="%E5%85%83%E7%B4%A0element"></span>元素(element)<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E5%85%83%E7%B4%A0element"></span>元素(element)<span class="ez-toc-section-end"></span> 
 
 使用過程中，需要用 <> 括起來。  
 [HTML元素網址][1]
 
-### <span class="ez-toc-section" id="%E5%B1%AC%E6%80%A7attribute"></span>屬性(attribute)<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E5%B1%AC%E6%80%A7attribute"></span>屬性(attribute)<span class="ez-toc-section-end"></span> 
 
 可以藉由各種方式去設定元素或調整它們的行為。  
 簡單來說，除了最開頭的元素以外，中間都是屬性。
 
 [HTML屬性網址][2]
 
-## <span class="ez-toc-section" id="CSS"></span>CSS<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="CSS"></span>CSS<span class="ez-toc-section-end"></span> 
 
 CSS就是管理網頁的外貌。
 
@@ -123,7 +123,7 @@ CSS就是管理網頁的外貌。
     background-color: #214D8A;
 }</code></pre>
 
-## <span class="ez-toc-section" id="JavaScript_%E2%80%93_JS"></span>JavaScript &#8211; JS<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="JavaScript_%E2%80%93_JS"></span>JavaScript &#8211; JS<span class="ez-toc-section-end"></span> 
 
 JavaScript 就是管理網頁的內容以及使用者的操作行為，為了要控制網頁的內容。
 

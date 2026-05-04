@@ -25,7 +25,6 @@ tags:
 
 <pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">sysctl -w vm.max_map_count=2000000</code></pre></p> 
 
-\`  
 然後exit退出並建立Doris Docker叢集。</p> 
 
 來源來自:[doris官方文件-#Docker部署Doris][1]</p>

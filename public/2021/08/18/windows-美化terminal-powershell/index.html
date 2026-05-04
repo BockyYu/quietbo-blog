@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 都輸入:Y\n添加下方程式(除了前3個，其他可選用)後儲存，關閉PowerShell\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 打開PowerShell\n如果都沒有改過的話，windows預設的cmd是黑底白字，而PowerShell是藍底白字。\noh-my-posh 安裝\n打開 PowerShell，輸入下方兩行指令 Install-Module posh-git -Scope CurrentUser Install-Module oh-my-posh -Scope CurrentUser 都輸入:Y\n">
 <title>[Windows] 美化Terminal- powershell</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Windows] 美化Terminal- powershell">
-<meta property='og:description' content=" 都輸入:Y\n添加下方程式(除了前3個，其他可選用)後儲存，關閉PowerShell\n">
+<meta property='og:description' content=" 打開PowerShell\n如果都沒有改過的話，windows預設的cmd是黑底白字，而PowerShell是藍底白字。\noh-my-posh 安裝\n打開 PowerShell，輸入下方兩行指令 Install-Module posh-git -Scope CurrentUser Install-Module oh-my-posh -Scope CurrentUser 都輸入:Y\n">
 <meta property='og:url' content='http://localhost:1313/2021/08/18/windows-%E7%BE%8E%E5%8C%96terminal-powershell/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='terminal' /><meta property='article:tag' content='Windows' /><meta property='article:published_time' content='2021-08-18T12:13:27&#43;00:00'/><meta property='article:modified_time' content='2021-08-18T12:13:27&#43;00:00'/>
 <meta name="twitter:title" content="[Windows] 美化Terminal- powershell">
-<meta name="twitter:description" content=" 都輸入:Y\n添加下方程式(除了前3個，其他可選用)後儲存，關閉PowerShell\n">
+<meta name="twitter:description" content=" 打開PowerShell\n如果都沒有改過的話，windows預設的cmd是黑底白字，而PowerShell是藍底白字。\noh-my-posh 安裝\n打開 PowerShell，輸入下方兩行指令 Install-Module posh-git -Scope CurrentUser Install-Module oh-my-posh -Scope CurrentUser 都輸入:Y\n">
     </head>
     <body class="
     article-page
@@ -225,61 +225,101 @@
     <section class="article-content">
     
     
-    <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+    <ol class="wp-block-list">
+  <li>
+    打開PowerShell<br />如果都沒有改過的話，windows預設的cmd是黑底白字，而PowerShell是藍底白字。<br /><img decoding="async" src="https://i.imgur.com/zS7p3tE.png" alt="" />
+  </li>
+  <li>
+    oh-my-posh 安裝<br />打開 PowerShell，輸入下方兩行指令
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="" class="">Install-Module posh-git -Scope CurrentUser
+Install-Module oh-my-posh -Scope CurrentUser</code></pre>
 <p>都輸入:Y<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/dINg6hQ.png" alt="" /></p>
+<ol class="wp-block-list" start="3">
+  <li>
+    在 PowerShell 上輸入 $PROFILE後輸入下列<br />用途:有檔案的話就開啟，沒有自動新增。
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">if (!(Test-Path -Path $PROFILE )) { New-Item -Type File -Path $PROFILE -Force }</code></pre>
+<ol class="wp-block-list" start="4">
+  <li>
+    使用VSCode開啟檔案:
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">code $PROFILE</code></pre>
 <p>添加下方程式(除了前3個，其他可選用)後儲存，關閉PowerShell</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">Import-Module posh-git
+Import-Module oh-my-posh
+Set-PoshPrompt -Theme Paradox</code></pre>
 <p>如果沒有安裝VSCode也沒關係，可以用其他文字編輯<br>
 檔案路徑在，找到後再把剛才那三行複製貼上進去該檔案。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">C:\Users\你的電腦名稱\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1，器去打開它並新增。</code></pre>
+<ol class="wp-block-list" start="5">
+  <li>
+    使用系統管理員開啟PowerShell<br />執行命令:
+  </li>
+</ol>
+<pre class="wp-block-code"><code class="">Set-ExecutionPolicy RemoteSigned</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/sLa8q2l.png" alt="" /> </figure></p>
+<ol class="wp-block-list" start="6">
+  <li>
+    開啟Microsoft store<br />在放大鏡搜尋<code>Windows Terminal Preview</code><br /><img decoding="async" src="https://i.imgur.com/kxrtSlr.png" alt="" />
+  </li>
+</ol>
 <p>注意:在這裡要使用微軟的帳號登入才能下載，這邊沒有附上登入過程，請自行登入後再下載。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/HdYBhyB.png" alt="" /></p>
 <p>成功後按啟動。<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/32LeuZc.png" alt="" /></p>
+<ol class="wp-block-list" start="7">
+  <li>
+    啟動
+  </li>
+</ol>
 <p>打開可能會像下圖這一樣，有?的符號，下方會解決。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/YWiZNFE.png" alt="" /></p>
 <p>目標是解決成下圖:<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/lCOlq7j.png" alt="" /></p>
 <p>如果過程有出現紅字:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">警告: git command could not be found. Please create an alias or add it to your PATH.</code></pre>
 <p>是找不到路徑，解決方式:安裝Git(請自行上網搜尋)</p>
-<!-- raw HTML omitted -->
+<ol class="wp-block-list" start="7">
+  <li>
+    下載字型包
+  </li>
+</ol>
 <p>到 powerline fonts 的 <a class="link" href="https://github.com/powerline/fonts"  target="_blank" rel="noopener"
     >github page</a> 下載字形包，用git下載或直接下載Zip檔後直接壓縮，都可以。</p>
 <p>打開在資料夾的fonts-master\SourceCodePro，會看到很多.otf檔</p>
 <p>找到Source Code Pro for Powerline.otf檔後，右鍵安裝。<br>
-<!-- raw HTML omitted --></p>
-<p>再開啟控制台-&gt;外觀及個人化-&gt;字型<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/IJjenqL.png" alt="" /></p>
+<p>再開啟控制台-&gt;外觀及個人化-&gt;字型<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/rxPd1hn.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/imHhkRd.png" alt="" /></figure></p>
 <p>打開後會看到很多字型<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/IBC0gGY.png" alt="" /></p>
 <p>直接點放大鏡來搜尋，用Powerline來搜尋看看，<br>
 確認是否安裝成功。<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/qAVUwSL.png" alt="" /></p>
+<ol class="wp-block-list" start="8">
+  <li>
+    設定字型
+  </li>
+</ol>
 <p>打開設定<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/QA7ta1V.png" alt="" /></p>
 <p>點選左排的Windows PowerShell-&gt;外觀-&gt; 顯示所有字型 -&gt; 剛才安裝的字型:Source Code Pro for Powerline -&gt; 儲存<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/HAS43eC.png" alt="" /></p>
+<ol class="wp-block-list" start="9">
+  <li>
+    完成<br />回到Windows PowerShell按+後會出現一個新的<br /><img decoding="async" src="https://i.imgur.com/r4pK0kc.png" alt="" /><br /><img decoding="async" src="https://i.imgur.com/fR88Cd5.png" alt="" />
+  </li>
+</ol>
 <p>在8的步驟時，其實就可以做很多設定了，<br>
 也可以直接去改setting.json檔<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/qakySt0.png" alt="" /></p>
 <p>如果想要看其他主題，可以輸入:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">Get-PoshThemes</code></pre>
 
 </section>
 

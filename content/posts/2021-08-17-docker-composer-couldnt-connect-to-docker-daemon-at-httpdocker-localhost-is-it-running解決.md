@@ -25,7 +25,7 @@ make: *** [Makefile:26: restart] Error 1</code></pre>
   其實就是<strong>忘記加入docker群組</strong>呀!!!
 </p>
 
-## 解決方式 {.wp-block-heading}
+## 解決方式 
 
 <ol class="wp-block-list">
   <li>

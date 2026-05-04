@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 資料結構\ndocker-compose.yml 內容:\ndocker-compose.yml儲存後下指令\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="\n資料結構\n. ├── be_data ├── be_log ├── docker-compose.yml ├── doris-be ├── doris-fe ├── fe_data └── fe_log\ndocker-compose.yml 內容:\n# version: '3' services: doris-fe: image: selectdb/doris.fe-ubuntu:2.1.6 container_name: doris_fe environment: - FE_SERVERS=fe1:10.5.0.2:9010 - FE_ID=1 volumes: - ./fe_data:/opt/apache-doris/fe/doris-meta - ./fe_log:/opt/apache-doris/fe/log ports: - \"8030:8030\" # Web UI - \"9030:9030\" # MySQL client - \"9020:9020\" # JDBC networks: doris_net: ipv4_address: 10.5.0.2 doris-be: image: selectdb/doris.be-ubuntu:2.1.6 container_name: doris_be depends_on: - doris-fe environment: - FE_SERVERS=fe1:10.5.0.2:9010 - BE_ADDR=10.5.0.3:9050 volumes: - ./be_data:/opt/apache-doris/be/storage - ./be_log:/opt/apache-doris/be/log ports: - \"8040:8040\" networks: doris_net: ipv4_address: 10.5.0.3 networks: doris_net: driver: bridge ipam: config: - subnet: 10.5.0.0/24\n">
 <title>[Doris] 本機部署Doris</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Doris] 本機部署Doris">
-<meta property='og:description' content=" 資料結構\ndocker-compose.yml 內容:\ndocker-compose.yml儲存後下指令\n">
+<meta property='og:description' content="\n資料結構\n. ├── be_data ├── be_log ├── docker-compose.yml ├── doris-be ├── doris-fe ├── fe_data └── fe_log\ndocker-compose.yml 內容:\n# version: '3' services: doris-fe: image: selectdb/doris.fe-ubuntu:2.1.6 container_name: doris_fe environment: - FE_SERVERS=fe1:10.5.0.2:9010 - FE_ID=1 volumes: - ./fe_data:/opt/apache-doris/fe/doris-meta - ./fe_log:/opt/apache-doris/fe/log ports: - \"8030:8030\" # Web UI - \"9030:9030\" # MySQL client - \"9020:9020\" # JDBC networks: doris_net: ipv4_address: 10.5.0.2 doris-be: image: selectdb/doris.be-ubuntu:2.1.6 container_name: doris_be depends_on: - doris-fe environment: - FE_SERVERS=fe1:10.5.0.2:9010 - BE_ADDR=10.5.0.3:9050 volumes: - ./be_data:/opt/apache-doris/be/storage - ./be_log:/opt/apache-doris/be/log ports: - \"8040:8040\" networks: doris_net: ipv4_address: 10.5.0.3 networks: doris_net: driver: bridge ipam: config: - subnet: 10.5.0.0/24\n">
 <meta property='og:url' content='http://localhost:1313/2025/02/06/doris-%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2doris/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2025-02-06T10:52:03&#43;00:00'/><meta property='article:modified_time' content='2025-02-06T10:52:03&#43;00:00'/>
 <meta name="twitter:title" content="[Doris] 本機部署Doris">
-<meta name="twitter:description" content=" 資料結構\ndocker-compose.yml 內容:\ndocker-compose.yml儲存後下指令\n">
+<meta name="twitter:description" content="\n資料結構\n. ├── be_data ├── be_log ├── docker-compose.yml ├── doris-be ├── doris-fe ├── fe_data └── fe_log\ndocker-compose.yml 內容:\n# version: '3' services: doris-fe: image: selectdb/doris.fe-ubuntu:2.1.6 container_name: doris_fe environment: - FE_SERVERS=fe1:10.5.0.2:9010 - FE_ID=1 volumes: - ./fe_data:/opt/apache-doris/fe/doris-meta - ./fe_log:/opt/apache-doris/fe/log ports: - \"8030:8030\" # Web UI - \"9030:9030\" # MySQL client - \"9020:9020\" # JDBC networks: doris_net: ipv4_address: 10.5.0.2 doris-be: image: selectdb/doris.be-ubuntu:2.1.6 container_name: doris_be depends_on: - doris-fe environment: - FE_SERVERS=fe1:10.5.0.2:9010 - BE_ADDR=10.5.0.3:9050 volumes: - ./be_data:/opt/apache-doris/be/storage - ./be_log:/opt/apache-doris/be/log ports: - \"8040:8040\" networks: doris_net: ipv4_address: 10.5.0.3 networks: doris_net: driver: bridge ipam: config: - subnet: 10.5.0.0/24\n">
     </head>
     <body class="
     article-page
@@ -225,32 +225,94 @@
     <section class="article-content">
     
     
-    <!-- raw HTML omitted -->
-<p>資料結構<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>docker-compose.yml 內容:<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>docker-compose.yml儲存後下指令<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p>運行成功後進入FE容器中：<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h2 id="doris-web-ui-wp-block-heading">Doris Web UI {.wp-block-heading}<!-- raw HTML omitted -->
-</h2><p>打瀏覽器<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p>User:root<!-- raw HTML omitted --></p>
-<h2 id="gui-8211-tableplus連線doris-wp-block-heading">GUI – TablePlus連線Doris {.wp-block-heading}<!-- raw HTML omitted -->
+    </p> 
+<p>資料結構</p></p>
+<pre class="wp-block-code"><code class="">.
+├── be_data
+├── be_log
+├── docker-compose.yml
+├── doris-be
+├── doris-fe
+├── fe_data
+└── fe_log</code></pre></p> 
+<p>docker-compose.yml 內容:</p></p>
+<pre class="wp-block-code"><code class=""># version: '3'
+services:
+  doris-fe:
+    image: selectdb/doris.fe-ubuntu:2.1.6
+    container_name: doris_fe
+    environment:
+      - FE_SERVERS=fe1:10.5.0.2:9010
+      - FE_ID=1
+    volumes:
+      - ./fe_data:/opt/apache-doris/fe/doris-meta
+      - ./fe_log:/opt/apache-doris/fe/log
+    ports:
+      - "8030:8030"  # Web UI
+      - "9030:9030"  # MySQL client
+      - "9020:9020"  # JDBC
+    networks:
+      doris_net:
+        ipv4_address: 10.5.0.2
+
+  doris-be:
+    image: selectdb/doris.be-ubuntu:2.1.6
+    container_name: doris_be
+    depends_on:
+      - doris-fe
+    environment:
+      - FE_SERVERS=fe1:10.5.0.2:9010
+      - BE_ADDR=10.5.0.3:9050
+    volumes:
+      - ./be_data:/opt/apache-doris/be/storage
+      - ./be_log:/opt/apache-doris/be/log
+    ports:
+      - "8040:8040"
+    networks:
+      doris_net:
+        ipv4_address: 10.5.0.3
+
+networks:
+  doris_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/24</code></pre></p> 
+<p>docker-compose.yml儲存後下指令</p></p>
+<pre class="wp-block-code"><code class="">docker compose up -d</code></pre></p> 
+<p>運行成功後進入FE容器中：</p></p>
+<pre class="wp-block-code"><code class="">mysql -h 127.0.0.1 -P 9030 -u root</code></pre></p> 
+<pre class="wp-block-code"><code class="">-- 建立資料庫
+CREATE DATABASE test_db;
+USE test_db;
+
+CREATE TABLE employees (
+    emp_id INT,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary DECIMAL(10,2)
+) ENGINE=OLAP
+DUPLICATE KEY(emp_id)
+DISTRIBUTED BY HASH(emp_id) BUCKETS 1
+PROPERTIES (
+    "replication_num" = "1"
+);
+
+--建立一筆資料
+INSERT INTO employees VALUES (1001, 'John Doe', 'IT', 50000.00);</code></pre></p> 
+<h2 id="doris-web-ui">Doris Web UI </p>
+</h2><p>打瀏覽器</p></p>
+<pre class="wp-block-code"><code class="">http://localhost:8030</code></pre></p> 
+<p>User:root</p></p>
+<h2 id="gui-8211-tableplus連線doris">GUI – TablePlus連線Doris </p>
 </h2><p>使用TablePlus連線資訊如下：<br>
 選擇MySQL<br>
 Host/IP: 127.0.0.1<br>
 Port:9030<br>
 User:root<br>
-Database:test_db<!-- raw HTML omitted --></p>
+Database:test_db</p></p>
 <p>設置好後按Test，成功會呈現綠底<br>
-<!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<img decoding="async" src="https://hackmd.io/_uploads/Hk_XlGfY1x.png" alt="image" /> </p></p>
 
 </section>
 

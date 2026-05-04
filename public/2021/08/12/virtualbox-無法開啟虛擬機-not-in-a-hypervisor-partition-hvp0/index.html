@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="最近公司電腦壞掉，換了一台同型號的筆電，把舊筆電的VM備份起來，到新的電腦裡面繼續使用，結果才剛開始就出現問題:\nNot in a hypervisor partition (HVP=0) (VERR_NEM_NOT_AVAILBLE). VT-x is disabled in the BIOS for all CPU modes (VERR_VMX_MSR_ALL_VMX_DISABLED)\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="最近公司電腦壞掉，換了一台同型號的筆電，把舊筆電的VM備份起來，到新的電腦裡面繼續使用，結果才剛開始就出現問題:\n">
 <title>[VirtualBox] 無法開啟虛擬機 Not in a hypervisor partition (HVP=0)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[VirtualBox] 無法開啟虛擬機 Not in a hypervisor partition (HVP=0)">
-<meta property='og:description' content="最近公司電腦壞掉，換了一台同型號的筆電，把舊筆電的VM備份起來，到新的電腦裡面繼續使用，結果才剛開始就出現問題:\nNot in a hypervisor partition (HVP=0) (VERR_NEM_NOT_AVAILBLE). VT-x is disabled in the BIOS for all CPU modes (VERR_VMX_MSR_ALL_VMX_DISABLED)\n">
+<meta property='og:description' content="最近公司電腦壞掉，換了一台同型號的筆電，把舊筆電的VM備份起來，到新的電腦裡面繼續使用，結果才剛開始就出現問題:\n">
 <meta property='og:url' content='http://localhost:1313/2021/08/12/virtualbox-%E7%84%A1%E6%B3%95%E9%96%8B%E5%95%9F%E8%99%9B%E6%93%AC%E6%A9%9F-not-in-a-hypervisor-partition-hvp0/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2021-08-12T09:09:32&#43;00:00'/><meta property='article:modified_time' content='2021-08-12T09:09:32&#43;00:00'/>
 <meta name="twitter:title" content="[VirtualBox] 無法開啟虛擬機 Not in a hypervisor partition (HVP=0)">
-<meta name="twitter:description" content="最近公司電腦壞掉，換了一台同型號的筆電，把舊筆電的VM備份起來，到新的電腦裡面繼續使用，結果才剛開始就出現問題:\nNot in a hypervisor partition (HVP=0) (VERR_NEM_NOT_AVAILBLE). VT-x is disabled in the BIOS for all CPU modes (VERR_VMX_MSR_ALL_VMX_DISABLED)\n">
+<meta name="twitter:description" content="最近公司電腦壞掉，換了一台同型號的筆電，把舊筆電的VM備份起來，到新的電腦裡面繼續使用，結果才剛開始就出現問題:\n">
     </head>
     <body class="
     article-page
@@ -226,8 +226,8 @@
     
     
     <p>最近公司電腦壞掉，換了一台同型號的筆電，把舊筆電的VM備份起來，到新的電腦裡面繼續使用，結果才剛開始就出現問題:</p>
-<p>Not in a hypervisor partition (HVP=0) (VERR_NEM_NOT_AVAILBLE). VT-x is disabled in the BIOS for all CPU modes (VERR_VMX_MSR_ALL_VMX_DISABLED)<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<p>Not in a hypervisor partition (HVP=0) (VERR_NEM_NOT_AVAILBLE). VT-x is disabled in the BIOS for all CPU modes (VERR_VMX_MSR_ALL_VMX_DISABLED)<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/p9sTP6W.png" alt="" /> </figure></p>
 <p>解決方式:<br>
 1.重新開機進入BIOS，每個廠牌的筆電，進BIOS的按鍵都不一樣，請自行查詢。<br>
 2.找到Intel(R) Virtualization Technology<br>

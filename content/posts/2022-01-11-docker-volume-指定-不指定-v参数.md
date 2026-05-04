@@ -55,7 +55,7 @@ docker volume ls</code></pre>
 
 <img decoding="async" src="https://i.imgur.com/Flj1Mdr.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/0gKd2fc.png" alt="" /></figure> 
 
-## 創建容器(指定-v參數) {.wp-block-heading}
+## 創建容器(指定-v參數) 
 
 在創建容器的時候通過 -v 參數，我們可以手動的指定**需要創建Volume的名字**，以及**對應於容器內的路徑**，這個路徑是可以任意的，不必需要在Dockerfile裡通過VOLUME來定義。
 
@@ -87,7 +87,7 @@ docker volume inspect cron-data  </code></pre><figure class="wp-block-image">
 
 <img decoding="async" src="https://i.imgur.com/HSkWhf0.png" alt="" /> </figure> 
 
-## 環境清理 {.wp-block-heading}
+## 環境清理 
 
 強制刪除所有容器，系統清理和volume清理
 

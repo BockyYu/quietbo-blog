@@ -234,22 +234,37 @@ VPN：shadowsocks 4.1.9.2<br>
 VM: virtualbox 6.1.0<br>
 Client:ubuntu20.04</p>
 <p>注:這裡不教設定方式，請自行上網設定完成及確認正確ip</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<ol class="wp-block-list">
+  <li>
+    啟用windows的shadowsocks<br />shadowsocks右鍵 -> 系統代理 -> 全局模式<br /><img decoding="async" src="https://i.imgur.com/3ngWvhP.png" alt="" />
+  </li>
+  <li>
+    顯示ubumtu路由的設定<br />在ubuntu打開終端機，執行:
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">ip route show</code></pre>
 <p>我們要的是紅框內的IP(每台可能不一樣，不要抄我的IP)<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/F1UQmfu.png" alt="" /></p>
+<ol class="wp-block-list" start="3">
+  <li>
+    設置Virtualbox 使用 NAT 網絡<br />之前我一直設定成橋接模式<br />設定 -> 網路 -> 附加到:NAT<br /><img decoding="async" src="https://i.imgur.com/G4Xgwb8.png" alt="" />
+  </li>
+</ol>
 <p>這邊設定完我會重開一次ubuntu。</p>
-<!-- raw HTML omitted -->
+<ol class="wp-block-list" start="4">
+  <li>
+    設置ubuntu網絡代理伺服器
+  </li>
+</ol>
 <p>打開ubuntu設定，<br>
-網路 -&gt; 網路代理伺服器 -&gt; 手動 -&gt; 填入在第二步驟時的ip<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+網路 -&gt; 網路代理伺服器 -&gt; 手動 -&gt; 填入在第二步驟時的ip<figure class="wp-block-image"></p>
+<p><img decoding="async" src="https://i.imgur.com/ZYge3iA.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/lnwpSOT.png" alt="" /></figure></p>
 <p>設定完後，網路代理伺服器會變成:手動<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/ziZGQRy.png" alt="" /></p>
 <p>在ubuntu開啟測試IP網址:https://www.whatismyip.com.tw<br>
 注意:此時windows的shadowsocks是開著，ubuntu有網路連線，代理伺服器是手動。</p>
 <p>如果IP是原本shadowsocks-windows的IP就成功了。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/NoQWLvk.png" alt="" /></p>
 <p>如果開發結束，想用回原本的IP，只要把網路代理伺服器會變成:關閉<br>
 就不會用shadowsocks-windows的IP了。</p>
 <p>來自:<a class="link" href="https://stackoverflow.com/questions/49941543/how-to-set-virtualbox-centos-7-client-to-share-host-vpn"  target="_blank" rel="noopener"

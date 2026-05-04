@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 範例:\n顯示\n空接口類型 ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="type 類型名 struct{ 字段1 類型 字段2 類型 } 定義接口 type interface_name interface{ 方法名 method_name1 方法名 method_name2 .... } 定義結構體 type struct_name struct{ } func(struct_name_var struct_name) method_name1() [返回類型]{ //方法實現 } func(struct_name_var struct_name) method_nam2() [返回類型]{ //方法實現 } 範例:\n">
 <title>[Golang] 接口interface</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Golang] 接口interface">
-<meta property='og:description' content=" 範例:\n顯示\n空接口類型 ">
+<meta property='og:description' content="type 類型名 struct{ 字段1 類型 字段2 類型 } 定義接口 type interface_name interface{ 方法名 method_name1 方法名 method_name2 .... } 定義結構體 type struct_name struct{ } func(struct_name_var struct_name) method_name1() [返回類型]{ //方法實現 } func(struct_name_var struct_name) method_nam2() [返回類型]{ //方法實現 } 範例:\n">
 <meta property='og:url' content='http://localhost:1313/2022/09/10/golang-%E6%8E%A5%E5%8F%A3interface/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='golang' /><meta property='article:published_time' content='2022-09-10T15:10:52&#43;00:00'/><meta property='article:modified_time' content='2022-09-10T15:10:52&#43;00:00'/>
 <meta name="twitter:title" content="[Golang] 接口interface">
-<meta name="twitter:description" content=" 範例:\n顯示\n空接口類型 ">
+<meta name="twitter:description" content="type 類型名 struct{ 字段1 類型 字段2 類型 } 定義接口 type interface_name interface{ 方法名 method_name1 方法名 method_name2 .... } 定義結構體 type struct_name struct{ } func(struct_name_var struct_name) method_name1() [返回類型]{ //方法實現 } func(struct_name_var struct_name) method_nam2() [返回類型]{ //方法實現 } 範例:\n">
     </head>
     <body class="
     article-page
@@ -225,20 +225,108 @@
     <section class="article-content">
     
     
-    <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>範例:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>顯示</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h2 id="空接口類型">空接口類型
-</h2><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+    <pre class="wp-block-code"><code class="">type 類型名 struct{
+    字段1 類型
+    字段2 類型
+}
 
+定義接口
+type interface_name interface{
+    方法名 method_name1
+    方法名 method_name2
+    ....
+}
+
+定義結構體
+type struct_name struct{
+
+}
+
+
+func(struct_name_var struct_name) method_name1() [返回類型]{
+    //方法實現
+}
+
+
+func(struct_name_var struct_name) method_nam2() [返回類型]{
+    //方法實現
+}</code></pre>
+<p>範例:</p>
+<pre class="wp-block-code"><code lang="go" class="language-go line-numbers">package main
+
+import "fmt"
+
+
+type Mobile interface {
+    call()
+    message()
+}
+
+type Iphone struct {
+}
+
+type Samsung struct{
+}
+
+func (iphone13 Iphone) call(){
+    fmt.Println("iphone13, call phone number")
+}
+
+func (iphone13 Iphone) message(){
+    fmt.Println("iphone13, use message")
+}
+
+func (s22 Samsung) call(){
+    fmt.Println("samsung, call phone number")
+}
+
+func (s22 Samsung) message(){
+    fmt.Println("samsung, use message")
+}
+
+func main() {
+    var mobile Mobile
+    mobile=new(Iphone)
+    mobile.call()
+    mobile.message()
+
+
+    var mobile2 Mobile
+    mobile2=new(Samsung)
+    mobile2.call()
+    mobile2.message()
+}</code></pre>
+<p>顯示</p>
+<pre class="wp-block-code"><code class=" line-numbers">iphone13, call phone number
+iphone13, use message
+samsung, call phone number
+samsung, use message</code></pre>
+<h2 id="空接口類型">空接口類型
+</h2><pre class="wp-block-code"><code lang="go" class="language-go line-numbers">package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    var any interface{}
+    any = 100
+    fmt.Printf("value:%d type:%T \n", any, any)
+
+    any = "aaa"
+    fmt.Printf("value:%s type:%T \n", any, any)
+
+    testFunc(100)
+    testFunc("test")
+}
+
+func testFunc(par interface{}){
+    fmt.Println(par)
+}</code></pre>
+<pre class="wp-block-code"><code class=" line-numbers">value:100 type:int 
+value:aaa type:string 
+100
+test</code></pre>
 </section>
 
 

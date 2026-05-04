@@ -20,7 +20,7 @@ tags:
 
 <img decoding="async" src="https://i.imgur.com/OJh6RUm.png" alt="" /> </figure> 
 
-## &#8211;network host {.wp-block-heading}
+## &#8211;network host 
 
 創建4個容器:
 
@@ -43,7 +43,7 @@ docker logs -f web5</code></pre>
 <pre class="wp-block-code"><code class="">bind() to 0.0.0.0:80 failed (98: Address already in use)
 nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)</code></pre>
 
-## &#8211;network none {.wp-block-heading}
+## &#8211;network none 
 
 無法對內，對外進行通訊
 

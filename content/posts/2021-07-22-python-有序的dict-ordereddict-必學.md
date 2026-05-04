@@ -13,7 +13,7 @@ tags:
 特性:**依據key被插入的先後做排序，如果更新了某個key的值，不會影響排序位置，除非是把key刪除後又重新插入。後續加入的key都會從最末做添加**。  
 本篇沒做增刪查改的範例。
 
-## dict(一般常用的) {.wp-block-heading}
+## dict(一般常用的) 
 
 一般常用的dict都會說是無序，但其實還是有一定的順序，是**按照hash來存儲的，和存儲的數據結構有關**(本篇不多說明)，但通常這個跟我們一般認真的序列有一點不一樣，因為不是填入時的順序。
 
@@ -29,7 +29,7 @@ print(example_dict)</code></pre>
 
 <pre class="wp-block-code"><code lang="" class=" line-numbers">{'phone': '0912-345-678', 'age': '18', 'name': 'Bocky', 'address': 'Taiwan-Taipei'}</code></pre>
 
-## OrderedDict {.wp-block-heading}
+## OrderedDict 
 
 <pre class="wp-block-code"><code lang="python" class="language-python line-numbers">from collections import OrderedDict
 import json

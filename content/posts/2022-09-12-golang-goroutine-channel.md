@@ -44,7 +44,7 @@ tags:
   </ul></nav>
 </div>
 
-# <span class="ez-toc-section" id="Golang_goroutine_channel"></span>[Golang] goroutine & channel<span class="ez-toc-section-end"></span> {.wp-block-heading}
+# <span class="ez-toc-section" id="Golang_goroutine_channel"></span>[Golang] goroutine & channel<span class="ez-toc-section-end"></span> 
 
 <ul class="wp-block-list">
   <li>
@@ -52,20 +52,20 @@ tags:
   </li>
 </ul>
 
-## <span class="ez-toc-section" id="Channel"></span>Channel<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="Channel"></span>Channel<span class="ez-toc-section-end"></span> 
 
 Channel 是 Go 語言中用於 goroutine 之間通信的管道，是 Go 並發編程模型的核心組件之一。  
 基本概念  
 Channel 提供了一種 goroutine 之間的通信機制，使一個 goroutine 可以向另一個 goroutine 發送數據，而無需顯式的鎖或條件變量。
 
-### <span class="ez-toc-section" id="%E9%A1%9E%E5%9E%8B%E8%88%87%E5%89%B5%E5%BB%BA"></span>類型與創建<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E9%A1%9E%E5%9E%8B%E8%88%87%E5%89%B5%E5%BB%BA"></span>類型與創建<span class="ez-toc-section-end"></span> 
 
 <pre class="wp-block-code"><code class="">// 創建不同類型的 channel
 ch1 := make(chan int)         // 無緩衝的整數 channel
 ch2 := make(chan string, 10)  // 有 10 個緩衝區的字符串 channel
 ch3 := make(chan interface{}) // 任意類型的 channel</code></pre>
 
-### <span class="ez-toc-section" id="%E7%99%BC%E9%80%81%E8%88%87%E6%8E%A5%E6%94%B6"></span>發送與接收<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E7%99%BC%E9%80%81%E8%88%87%E6%8E%A5%E6%94%B6"></span>發送與接收<span class="ez-toc-section-end"></span> 
 
 <pre class="wp-block-code"><code class="">// 發送數據
 ch &lt;- value
@@ -174,11 +174,11 @@ output:
 fmt.Println(<-c)與fmt.Println(data)之前，print隨便一個數值，  
 就可以看到，輸出模式取決於 Go 調度器如何在這兩個 goroutine 之間切換
 
-## <span class="ez-toc-section" id="select"></span>select<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="select"></span>select<span class="ez-toc-section-end"></span> 
 
 select 是 Go 語言中的一個控制結構，專門用於處理多個通道操作。它的主要用途是同時等待多個通道的操作（發送或接收），並在其中一個操作可以進行時執行對應的代碼。
 
-### <span class="ez-toc-section" id="%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95"></span>基本語法<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95"></span>基本語法<span class="ez-toc-section-end"></span> 
 
 <pre class="wp-block-code"><code class="">select {
 case &lt;-chan1:

@@ -37,7 +37,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="%E5%A6%82%E4%BD%95%E6%AA%A2%E6%9F%A5%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%9Dpytest%E7%9A%84package"></span>如何檢查是否已安裝pytest的package?<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E5%A6%82%E4%BD%95%E6%AA%A2%E6%9F%A5%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%9Dpytest%E7%9A%84package"></span>如何檢查是否已安裝pytest的package?<span class="ez-toc-section-end"></span> 
 
 File -> settings -> Project:xxxx -> Project Interpreter<figure class="wp-block-image">
 
@@ -45,7 +45,7 @@ File -> settings -> Project:xxxx -> Project Interpreter<figure class="wp-block-i
 
 如果需要移除，就點右方的&#8221;-&#8220;
 
-## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%951%E7%9F%AD%E6%9C%9F%E8%A7%A3%E6%B1%BA%E5%95%8F%E9%A1%8C%E7%94%A8"></span>方法1(短期解決問題用):<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%951%E7%9F%AD%E6%9C%9F%E8%A7%A3%E6%B1%BA%E5%95%8F%E9%A1%8C%E7%94%A8"></span>方法1(短期解決問題用):<span class="ez-toc-section-end"></span> 
 
 指定一般執行模式上方run -> Run…
 
@@ -53,14 +53,14 @@ File -> settings -> Project:xxxx -> Project Interpreter<figure class="wp-block-i
 
 <img decoding="async" src="https://i.imgur.com/ig2F7pt.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/KhiWAZs.png" alt="" /></figure> 
 
-## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%952"></span>方法2:<span class="ez-toc-section-end"></span> {.wp-block-heading}<figure class="wp-block-image is-resized">
+## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%952"></span>方法2:<span class="ez-toc-section-end"></span> <figure class="wp-block-image is-resized">
 
 <img loading="lazy" decoding="async" src="https://i.imgur.com/ig2F7pt.png" alt="" width="804" height="88" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/j1qkHAa.png" alt="" /></figure> 
 
 將Python test內想去掉的文件點選後點擊上面的&#8217;-&#8216;號。  
 <img decoding="async" src="https://i.imgur.com/X2dw0WI.png" alt="" /> 
 
-## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%953"></span>方法3:<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E6%96%B9%E6%B3%953"></span>方法3:<span class="ez-toc-section-end"></span> 
 
 File -> settings -> Tools -> Python Integrated Tools
 

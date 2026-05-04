@@ -62,7 +62,7 @@ urlpatterns = [
 
 <img decoding="async" src="https://i.imgur.com/cjoWs3K.png" alt="" /> </figure> 
 
-## URL配置 {.wp-block-heading}
+## URL配置 
 
 <ol class="wp-block-list">
   <li>

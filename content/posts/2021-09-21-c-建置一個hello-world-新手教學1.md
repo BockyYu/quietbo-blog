@@ -13,7 +13,7 @@ tags:
 環境:Windows  
 IDE: VS2019
 
-## 建置一個C#專案來顯示Hello world {.wp-block-heading}
+## 建置一個C#專案來顯示Hello world 
 
 <ol class="wp-block-list">
   <li>

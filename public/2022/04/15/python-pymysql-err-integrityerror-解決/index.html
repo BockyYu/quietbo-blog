@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="通常遇到這狀況代表有設定unique的欄位, 被重複了,\n而且要新增的一筆資料又與該欄位有重複的值,則會報錯,\n假設我的欄位id已經有202204150012的資料時, 要再增加一筆id是202204150012的資料, 錯誤訊息如下, 會告知是哪個欄位重複與重複的value\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="通常遇到這狀況代表有設定unique的欄位, 被重複了,\n而且要新增的一筆資料又與該欄位有重複的值,則會報錯,\n">
 <title>[Python] pymysql.err.IntegrityError 解決</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Python] pymysql.err.IntegrityError 解決">
-<meta property='og:description' content="通常遇到這狀況代表有設定unique的欄位, 被重複了,\n而且要新增的一筆資料又與該欄位有重複的值,則會報錯,\n假設我的欄位id已經有202204150012的資料時, 要再增加一筆id是202204150012的資料, 錯誤訊息如下, 會告知是哪個欄位重複與重複的value\n">
+<meta property='og:description' content="通常遇到這狀況代表有設定unique的欄位, 被重複了,\n而且要新增的一筆資料又與該欄位有重複的值,則會報錯,\n">
 <meta property='og:url' content='http://localhost:1313/2022/04/15/python-pymysql-err-integrityerror-%E8%A7%A3%E6%B1%BA/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2022-04-15T03:19:05&#43;00:00'/><meta property='article:modified_time' content='2022-04-15T03:19:05&#43;00:00'/>
 <meta name="twitter:title" content="[Python] pymysql.err.IntegrityError 解決">
-<meta name="twitter:description" content="通常遇到這狀況代表有設定unique的欄位, 被重複了,\n而且要新增的一筆資料又與該欄位有重複的值,則會報錯,\n假設我的欄位id已經有202204150012的資料時, 要再增加一筆id是202204150012的資料, 錯誤訊息如下, 會告知是哪個欄位重複與重複的value\n">
+<meta name="twitter:description" content="通常遇到這狀況代表有設定unique的欄位, 被重複了,\n而且要新增的一筆資料又與該欄位有重複的值,則會報錯,\n">
     </head>
     <body class="
     article-page
@@ -228,17 +228,31 @@
     <p>通常遇到這狀況代表有設定unique的欄位, 被重複了,<br>
 而且要新增的一筆資料又與該欄位有重複的值,則會報錯,</p>
 <p>假設我的欄位id已經有202204150012的資料時, 要再增加一筆id是202204150012的資料, 錯誤訊息如下, 會告知是哪個欄位重複與重複的value</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash">(pymysql.err.IntegrityError) (1062, "Duplicate entry '202204150012' for key 'tb_order.id'")</code></pre>
 <p>解決方式1:<br>
 將該欄位的unique拿掉</p>
 <p>解決方式2:<br>
 做異常處理與回滾(rollback)</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-
+<pre class="wp-block-code"><code lang="python" class="language-python line-numbers">try:
+    db.commit()
+except:
+    # 回滾
+    db.rollback()
+finally:
+# 關閉數據庫連接
+db.close()</code></pre>
+<pre class="wp-block-preformatted">解決方式3:例外處理時跳過</pre>
+<pre class="wp-block-code"><code lang="python" class="language-python line-numbers">try:
+    .... 
+except IntegrityError as error:
+    # 獨立處理重複
+    result1 = re.search('Duplicate entry', str(error))
+    if result1:
+        logger.error('Duplicate entry')
+        pass
+except Exception as error:
+    # 其他例外處理 ...
+    </code></pre>
 </section>
 
 

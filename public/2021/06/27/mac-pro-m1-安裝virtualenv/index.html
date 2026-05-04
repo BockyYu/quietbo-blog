@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="目前自帶版本有:\nPython 2.7.16\nPython 3.8.2\n查詢路徑：\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="目前自帶版本有:\nPython 2.7.16\nPython 3.8.2\n查詢路徑：\nwhich python3 # which python 安裝virtualenv\n用pip就可以安裝 virtualenv，可以同時用在 Python 2 和 3， pip install virtualenv 創建虛擬環境 mkdir work_venv # 建立一個名為work_venv的資料夾 python3 -m virtualenv XXXvenv # 創建名為XXvenv的虛擬機 ">
 <title>[安裝]Mac pro M1 安裝virtualenv</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[安裝]Mac pro M1 安裝virtualenv">
-<meta property='og:description' content="目前自帶版本有:\nPython 2.7.16\nPython 3.8.2\n查詢路徑：\n">
+<meta property='og:description' content="目前自帶版本有:\nPython 2.7.16\nPython 3.8.2\n查詢路徑：\nwhich python3 # which python 安裝virtualenv\n用pip就可以安裝 virtualenv，可以同時用在 Python 2 和 3， pip install virtualenv 創建虛擬環境 mkdir work_venv # 建立一個名為work_venv的資料夾 python3 -m virtualenv XXXvenv # 創建名為XXvenv的虛擬機 ">
 <meta property='og:url' content='http://localhost:1313/2021/06/27/mac-pro-m1-%E5%AE%89%E8%A3%9Dvirtualenv/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='安裝' /><meta property='article:published_time' content='2021-06-27T11:55:45&#43;00:00'/><meta property='article:modified_time' content='2021-06-27T11:55:45&#43;00:00'/>
 <meta name="twitter:title" content="[安裝]Mac pro M1 安裝virtualenv">
-<meta name="twitter:description" content="目前自帶版本有:\nPython 2.7.16\nPython 3.8.2\n查詢路徑：\n">
+<meta name="twitter:description" content="目前自帶版本有:\nPython 2.7.16\nPython 3.8.2\n查詢路徑：\nwhich python3 # which python 安裝virtualenv\n用pip就可以安裝 virtualenv，可以同時用在 Python 2 和 3， pip install virtualenv 創建虛擬環境 mkdir work_venv # 建立一個名為work_venv的資料夾 python3 -m virtualenv XXXvenv # 創建名為XXvenv的虛擬機 ">
     </head>
     <body class="
     article-page
@@ -229,21 +229,35 @@
 Python 2.7.16<br>
 Python 3.8.2</p>
 <p>查詢路徑：</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">which python3  # which python</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/cjtmWq2.png" alt="" /> </figure></p>
+<ol class="wp-block-list">
+  <li>
+    安裝virtualenv<br />用pip就可以安裝 virtualenv，可以同時用在 Python 2 和 3，
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">pip install virtualenv</code></pre>
+<ol class="wp-block-list" start="2">
+  <li>
+    創建虛擬環境
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">mkdir work_venv # 建立一個名為work_venv的資料夾
+python3 -m virtualenv XXXvenv # 創建名為XXvenv的虛擬機</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/PXPLVuo.png" alt="" /> </figure></p>
+<ol class="wp-block-list" start="3">
+  <li>
+    進入/安裝模組/離開虛擬環境
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">source XXvenv/bin/activate
 
+# 進到虛擬環境，最前面就會多（XXvenv）
+pip list</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/unecAMW.png" alt="" /> </figure></p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">pip install XXXX # 安裝模組
+pip install -r requirements.txt  # 導入requirements.txt(路徑自行填寫)
+deactivate # 離開虛擬環境</code></pre>
 </section>
 
 

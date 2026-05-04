@@ -1,0 +1,30 @@
+<b>5.3.9  SINGLE DOMAIN SSL 1 - https://quietbo.com</b>
+[21-10-2021 07:20:26] :
+LEClient finished constructing
+
+[21-10-2021 07:20:26] :
+Order data for 'quietbo.com' invalid. Deleting order data and creating new order.
+
+[21-10-2021 07:20:30] :
+Created order for 'quietbo.com'.
+
+Offering manual verification procedure. 
+
+[21-10-2021 07:34:12] :
+LEClient finished constructing
+
+[21-10-2021 07:34:15] :
+HTTP challenge for 'quietbo.com' valid.
+
+[21-10-2021 07:34:18] :
+HTTP challenge for 'www.quietbo.com' valid.
+
+Finalizing the order
+[21-10-2021 07:34:27] :
+Order for 'quietbo.com' finalized.
+
+Getting SSL certificates
+[21-10-2021 07:34:29] :
+Certificate for 'quietbo.com' saved
+
+<h2>SSL Certificate generated successfully!</h2>

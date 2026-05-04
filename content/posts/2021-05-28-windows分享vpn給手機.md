@@ -42,7 +42,7 @@ categories:
   </ul></nav>
 </div>
 
-# <span class="ez-toc-section" id="%E9%96%8B%E5%95%9F%E7%B6%B2%E8%B7%AF%E9%80%A3%E7%B7%9A%E7%95%AB%E9%9D%A2"></span>開啟網路連線畫面<span class="ez-toc-section-end"></span> {.wp-block-heading}
+# <span class="ez-toc-section" id="%E9%96%8B%E5%95%9F%E7%B6%B2%E8%B7%AF%E9%80%A3%E7%B7%9A%E7%95%AB%E9%9D%A2"></span>開啟網路連線畫面<span class="ez-toc-section-end"></span> 
 
 先到下圖的畫面(如果找到了就可以跳過找這畫面的過程)  
 <img decoding="async" src="https://i.imgur.com/oYrfG7N.png" alt="" /> 
@@ -52,13 +52,13 @@ categories:
 <img decoding="async" src="https://i.imgur.com/dlQtPLh.png" alt="" />  
 <img decoding="async" src="https://i.imgur.com/j8d2ED8.png" alt="" /> 
 
-# <span class="ez-toc-section" id="VPN%E6%98%AF%E5%93%AA%E5%8F%B0%E6%80%8E%E9%BA%BC%E5%88%A4%E6%96%B7"></span>VPN是哪台?怎麼判斷?<span class="ez-toc-section-end"></span> {.wp-block-heading}
+# <span class="ez-toc-section" id="VPN%E6%98%AF%E5%93%AA%E5%8F%B0%E6%80%8E%E9%BA%BC%E5%88%A4%E6%96%B7"></span>VPN是哪台?怎麼判斷?<span class="ez-toc-section-end"></span> 
 
 看到後找尋有TAP-Windows Adapter V9 字的就是VPN。  
 但若有2台以上，沒辦法判斷哪台才是真正要分享的VPN時，打開VPN的程式，再回來看網路連線，有連線上的就是正確的。  
 <img decoding="async" src="https://i.imgur.com/vCaVmQK.png" alt="" /> 
 
-# <span class="ez-toc-section" id="%E5%A6%82%E4%BD%95%E9%96%8B%E5%95%9F%E8%A1%8C%E5%8B%95%E7%86%B1%E9%BB%9E%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%B7"></span>如何開啟行動熱點?如何判斷?<span class="ez-toc-section-end"></span> {.wp-block-heading}
+# <span class="ez-toc-section" id="%E5%A6%82%E4%BD%95%E9%96%8B%E5%95%9F%E8%A1%8C%E5%8B%95%E7%86%B1%E9%BB%9E%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%B7"></span>如何開啟行動熱點?如何判斷?<span class="ez-toc-section-end"></span> 
 
 回到下面設定位置，開啟行動熱點，藍色框就是手機連線要找的Wifi名稱和密碼。  
 <img decoding="async" src="https://i.imgur.com/oJg9ufU.png" alt="" /> 
@@ -66,7 +66,7 @@ categories:
 回到網路連線畫面，會看到多了一個熱點分享的區域連線，這台就是要分享出去的網路，等等要設定，所以要記得名字。  
 <img decoding="async" src="https://i.imgur.com/edYmhzv.png" alt="" /> 
 
-# <span class="ez-toc-section" id="%E8%A8%AD%E5%AE%9A%E5%88%86%E4%BA%ABVPN%E6%AD%A5%E9%A9%9F"></span>設定分享VPN步驟<span class="ez-toc-section-end"></span> {.wp-block-heading}
+# <span class="ez-toc-section" id="%E8%A8%AD%E5%AE%9A%E5%88%86%E4%BA%ABVPN%E6%AD%A5%E9%A9%9F"></span>設定分享VPN步驟<span class="ez-toc-section-end"></span> 
 
 把已知VPN右鍵 -> 內容  
 <img decoding="async" src="https://i.imgur.com/Kbdbsnm.png" alt="" /> 
@@ -74,7 +74,7 @@ categories:
 共用 -> 第一個框打勾 -> 選擇行動熱點的區域連線  
 <img decoding="async" src="https://i.imgur.com/1RcIzrL.png" alt="" /> 
 
-# <span class="ez-toc-section" id="%E6%B8%AC%E8%A9%A6"></span>測試<span class="ez-toc-section-end"></span> {.wp-block-heading}
+# <span class="ez-toc-section" id="%E6%B8%AC%E8%A9%A6"></span>測試<span class="ez-toc-section-end"></span> 
 
 把筆電和手機開啟<a href="https://www.whatismyip.com.tw/" target="_blank" rel="noreferrer noopener">測試網路IP的連結</a>，若IP一樣，就是分享成功!
 

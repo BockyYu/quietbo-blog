@@ -91,7 +91,7 @@ iphone13, use message
 samsung, call phone number
 samsung, use message</code></pre>
 
-## 空接口類型 {.wp-block-heading}
+## 空接口類型 
 
 <pre class="wp-block-code"><code lang="go" class="language-go line-numbers">package main
 

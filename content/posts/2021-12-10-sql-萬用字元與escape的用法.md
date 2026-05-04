@@ -37,7 +37,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="%E8%90%AC%E7%94%A8%E5%AD%97%E5%85%83%E7%94%A8%E6%B3%95"></span>萬用字元用法<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E8%90%AC%E7%94%A8%E5%AD%97%E5%85%83%E7%94%A8%E6%B3%95"></span>萬用字元用法<span class="ez-toc-section-end"></span> 
 
 <ul class="wp-block-list">
   <li>
@@ -58,7 +58,7 @@ tags:
 
 可以使用 &#8216;[]&#8217; 把特殊字元包起來，這些特殊字元就被當作普通字元對待了。
 
-### <span class="ez-toc-section" id="%E3%80%81%E3%80%81%E5%8F%8A1%E7%9A%84%E5%9B%9B%E7%A8%AE%E7%AF%84%E4%BE%8B"></span>[、]、[]及[1]的四種範例:<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E3%80%81%E3%80%81%E5%8F%8A1%E7%9A%84%E5%9B%9B%E7%A8%AE%E7%AF%84%E4%BE%8B"></span>[、]、[]及[1]的四種範例:<span class="ez-toc-section-end"></span> 
 
 以下SQL使用 like [] 匹配特殊字元 [ 與 []
 
@@ -76,7 +76,7 @@ select 1 where '[]TEST' like '[[]]%%'; -- 1
 -- 稍微複雜一點包法，前面的[1]要用[[]1]包
 select 1 where '[1]TEST' like '[[]1]%%'; -- 1</code></pre>
 
-### <span class="ez-toc-section" id="%E4%BD%BF%E7%94%A8_like_%E5%8C%B9%E9%85%8D%E7%89%B9%E6%AE%8A%E5%AD%97%E5%85%83"></span>使用 like [_] 匹配特殊字元_<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E4%BD%BF%E7%94%A8_like_%E5%8C%B9%E9%85%8D%E7%89%B9%E6%AE%8A%E5%AD%97%E5%85%83"></span>使用 like [_] 匹配特殊字元_<span class="ez-toc-section-end"></span> 
 
 原本 _ 的功能是與任意單字元匹配，  
 如果想搜尋是DB\_開頭的話，使用單純的\_又會把DBa、DBb什麼db開頭的家人都找出來，變模糊搜尋了。
@@ -92,7 +92,7 @@ select 1 where 'DBb' like '___'; -- 1</code></pre>
 select 1 where 'DBbtest' like 'db[_]%'; -- 無
 select 1 where 'DB_test' like 'db[_]%'; -- 1</code></pre>
 
-## <span class="ez-toc-section" id="escape%E7%9A%84%E7%94%A8%E6%B3%95"></span>escape的用法<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="escape%E7%9A%84%E7%94%A8%E6%B3%95"></span>escape的用法<span class="ez-toc-section-end"></span> 
 
 escape要與Like一起使用，定義轉義符  
 若不使用[]包住%，來搜尋&#8217;10%&#8217;，也許會很直覺的使用`like '10%'`  

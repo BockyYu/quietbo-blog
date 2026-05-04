@@ -10,6 +10,6 @@
             <link>http://localhost:1313/2022/07/28/linux-makefile8-missing-separator-stop-%E5%B7%B2%E8%A7%A3%E6%B1%BA/</link>
             <pubDate>Thu, 28 Jul 2022 03:26:38 +0000</pubDate>
             <guid>http://localhost:1313/2022/07/28/linux-makefile8-missing-separator-stop-%E5%B7%B2%E8%A7%A3%E6%B1%BA/</guid>
-            <description>&lt;p&gt;原因:&lt;/p&gt;&#xA;&lt;p&gt;出現這個錯誤的原因通常是tab格式錯誤導致的。Makefile的命令行必須以一個tab作為開頭, 不可用4個空白。&lt;/p&gt;&#xA;&lt;p&gt;在~/.vimrc文件中添加：&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;查看目前的Makefile是否有tab鍵&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;當你看到&lt;code&gt;^I&lt;/code&gt;代表tab。出問題的命令行如果前面是有空白, 代表該命令的指令是需要修改的&lt;/p&gt;&#xA;</description>
+            <description>&lt;p&gt;原因:&lt;/p&gt;&#xA;&lt;p&gt;出現這個錯誤的原因通常是tab格式錯誤導致的。Makefile的命令行必須以一個tab作為開頭, 不可用4個空白。&lt;/p&gt;&#xA;&lt;p&gt;在~/.vimrc文件中添加：&lt;/p&gt;&#xA;&lt;pre class=&#34;wp-block-code&#34;&gt;&lt;code lang=&#34;bash&#34; class=&#34;language-bash line-numbers&#34;&gt;set tabstop=4   //設置tab鍵是4個空格&#xA;set noexpandtab  //不把tab键用空格代替&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看目前的Makefile是否有tab鍵&lt;/p&gt;&#xA;&lt;pre class=&#34;wp-block-code&#34;&gt;&lt;code lang=&#34;bash&#34; class=&#34;language-bash&#34;&gt;cat -t Makefile&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;當你看到&lt;code&gt;^I&lt;/code&gt;代表tab。出問題的命令行如果前面是有空白, 代表該命令的指令是需要修改的&lt;/p&gt;&#xA;</description>
         </item></channel>
 </rss>

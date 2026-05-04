@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境：Linux\n注意：\n主機網絡驅動程序僅適用於 Linux 主機，不支持 Docker Desktop for Mac、Docker Desktop for Windows 或 Docker EE for Windows Server。\n–network host 創建4個容器:\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="環境：Linux\n注意：\n主機網絡驅動程序僅適用於 Linux 主機，不支持 Docker Desktop for Mac、Docker Desktop for Windows 或 Docker EE for Windows Server。\n">
 <title>[Docker] –network host, None</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker] –network host, None">
-<meta property='og:description' content="環境：Linux\n注意：\n主機網絡驅動程序僅適用於 Linux 主機，不支持 Docker Desktop for Mac、Docker Desktop for Windows 或 Docker EE for Windows Server。\n–network host 創建4個容器:\n">
+<meta property='og:description' content="環境：Linux\n注意：\n主機網絡驅動程序僅適用於 Linux 主機，不支持 Docker Desktop for Mac、Docker Desktop for Windows 或 Docker EE for Windows Server。\n">
 <meta property='og:url' content='http://localhost:1313/2022/01/17/docker-network-host-none/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2022-01-17T15:17:52&#43;00:00'/><meta property='article:modified_time' content='2022-01-17T15:17:52&#43;00:00'/>
 <meta name="twitter:title" content="[Docker] –network host, None">
-<meta name="twitter:description" content="環境：Linux\n注意：\n主機網絡驅動程序僅適用於 Linux 主機，不支持 Docker Desktop for Mac、Docker Desktop for Windows 或 Docker EE for Windows Server。\n–network host 創建4個容器:\n">
+<meta name="twitter:description" content="環境：Linux\n注意：\n主機網絡驅動程序僅適用於 Linux 主機，不支持 Docker Desktop for Mac、Docker Desktop for Windows 或 Docker EE for Windows Server。\n">
     </head>
     <body class="
     article-page
@@ -228,26 +228,36 @@
     <p>環境：Linux</p>
 <p>注意：<br>
 主機網絡驅動程序僅適用於 Linux 主機，不支持 Docker Desktop for Mac、Docker Desktop for Windows 或 Docker EE for Windows Server。</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/OJh6RUm.png" alt="" /> </figure></p>
 <h2 id="8211network-host">–network host
 </h2><p>創建4個容器:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">docker run -d --name web1 nginx
+docker run -d --name web2 nginx
+docker run -d --name web3 nginx
+docker run -d --name web4 --network host nginx</code></pre>
 <p>都是監聽80的port<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/R15HOJ9.png" alt="" /></p>
 <p>打開瀏覽器輸入127.0.0.1<br>
 能夠成功看到nginx的頁面，而這個頁面是由web4與本地連接的，並非we1,web2,web3，若是想要再創建一個web5，則無法創建。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="bash" class="language-bash line-numbers">docker run -d --name web5 --network host nginx
+docker logs -f web5</code></pre>
 <p>原因是80的port已被佔用。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)</code></pre>
 <h2 id="8211network-none">–network none
 </h2><p>無法對內，對外進行通訊</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">$ docker exec -it box1 ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: tunl0@NONE: &lt;NOARP> mtu 1480 qdisc noop qlen 1000
+    link/ipip 0.0.0.0 brd 0.0.0.0
+3: ip6tnl0@NONE: &lt;NOARP> mtu 1452 qdisc noop qlen 1000
+    link/tunnel6 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 brd 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
 
+</code></pre>
 </section>
 
 

@@ -10,6 +10,6 @@
             <link>http://localhost:1313/2022/01/06/mssql-like-%E4%B8%AD%E6%96%87%E4%B8%8D%E5%8C%B9%E9%85%8D%E5%95%8F%E9%A1%8C%E5%BF%85%E7%9F%A5/</link>
             <pubDate>Thu, 06 Jan 2022 08:33:23 +0000</pubDate>
             <guid>http://localhost:1313/2022/01/06/mssql-like-%E4%B8%AD%E6%96%87%E4%B8%8D%E5%8C%B9%E9%85%8D%E5%95%8F%E9%A1%8C%E5%BF%85%E7%9F%A5/</guid>
-            <description>&lt;p&gt;新手常犯，常忘記的匹配問題。主要是轉碼，需要在like後面添加個N，&lt;br&gt;&#xA;N轉換字符串爲nchar,nvarchar。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;</description>
+            <description>&lt;p&gt;新手常犯，常忘記的匹配問題。主要是轉碼，需要在like後面添加個N，&lt;br&gt;&#xA;N轉換字符串爲nchar,nvarchar。&lt;figure class=&#34;wp-block-image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img decoding=&#34;async&#34; src=&#34;https://i.imgur.com/2Ivedf4.png&#34; alt=&#34;&#34; /&gt; &lt;/figure&gt;&lt;/p&gt;&#xA;&lt;pre class=&#34;wp-block-code&#34;&gt;&lt;code class=&#34;&#34;&gt;SELECT [Type] ,[Title] FROM [TableName] WHERE [Title] LIKE N&#39;%標題%&#39;&lt;/code&gt;&lt;/pre&gt;</description>
         </item></channel>
 </rss>

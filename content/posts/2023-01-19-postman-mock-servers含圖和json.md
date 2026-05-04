@@ -46,7 +46,7 @@ tags:
   </ul></nav>
 </div>
 
-## <span class="ez-toc-section" id="%E5%BB%BA%E7%AB%8B_Mock_Server"></span>建立 Mock Server<span class="ez-toc-section-end"></span> {.wp-block-heading}<figure class="wp-block-image">
+## <span class="ez-toc-section" id="%E5%BB%BA%E7%AB%8B_Mock_Server"></span>建立 Mock Server<span class="ez-toc-section-end"></span> <figure class="wp-block-image">
 
 <img decoding="async" src="https://i.imgur.com/tlZXWGc.png" alt="" /> </figure> <figure class="wp-block-image"><img decoding="async" src="https://i.imgur.com/DtEhwsl.png" alt="" /></figure> 
 
@@ -60,7 +60,7 @@ tags:
 後續只要打{{url}}就會取得資訊。  
 <img decoding="async" src="https://i.imgur.com/K34Mzma.png" alt="" /> 
 
-## <span class="ez-toc-section" id="%E8%A8%AD%E8%A8%88_Mock_Server_Response"></span>設計 Mock Server Response<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E8%A8%AD%E8%A8%88_Mock_Server_Response"></span>設計 Mock Server Response<span class="ez-toc-section-end"></span> 
 
 <ol class="wp-block-list">
   <li>
@@ -95,7 +95,7 @@ tags:
 回到Request，按下Send後，Response會跟剛剛填寫Json相同:  
 <img decoding="async" src="https://i.imgur.com/7ba9mw3.png" alt="" /> 
 
-## <span class="ez-toc-section" id="response_%E7%B5%A6%E9%9A%A8%E6%A9%9F%E8%B3%87%E6%96%99"></span>response 給隨機資料<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="response_%E7%B5%A6%E9%9A%A8%E6%A9%9F%E8%B3%87%E6%96%99"></span>response 給隨機資料<span class="ez-toc-section-end"></span> 
 
 Postman 本身就有提供給隨機資料的參數，主要在 example response 那邊把固定值改填參數就行，在 [文件][2] 中給的範例是這樣：
 
@@ -122,11 +122,11 @@ Postman 本身就有提供給隨機資料的參數，主要在 example response 
 
 Postman 有的隨機參數官方都整理在這：[Dynamic variables][3]
 
-## <span class="ez-toc-section" id="%E4%BE%9D%E7%8B%80%E6%B3%81%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84Response"></span>依狀況返回不同的Response<span class="ez-toc-section-end"></span> {.wp-block-heading}
+## <span class="ez-toc-section" id="%E4%BE%9D%E7%8B%80%E6%B3%81%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84Response"></span>依狀況返回不同的Response<span class="ez-toc-section-end"></span> 
 
 通常在不同狀況會有不同的Response，例如成功或失敗。
 
-### <span class="ez-toc-section" id="%E6%88%90%E5%8A%9F%E5%A4%B1%E6%95%97%E7%9A%84%E8%BF%94%E5%9B%9E%E6%96%B9%E5%BC%8F"></span>成功/失敗的返回方式<span class="ez-toc-section-end"></span> {.wp-block-heading}
+### <span class="ez-toc-section" id="%E6%88%90%E5%8A%9F%E5%A4%B1%E6%95%97%E7%9A%84%E8%BF%94%E5%9B%9E%E6%96%B9%E5%BC%8F"></span>成功/失敗的返回方式<span class="ez-toc-section-end"></span> 
 
 再新增一個Explore為失敗的UserNume(success)。  
 當data為success時，返回:

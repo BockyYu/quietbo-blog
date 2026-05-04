@@ -11,7 +11,7 @@ tags:
 
 ---
 <div class="wp-block-image is-style-default">
-  <figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" src="https://quietbo.com/wp-content/uploads/2022/03/chrome_iLlqqg3OhM.png" alt="" class="wp-image-793" width="334" height="119" srcset="https://quietbo.com/wp-content/uploads/2022/03/chrome_iLlqqg3OhM.png 334w, https://quietbo.com/wp-content/uploads/2022/03/chrome_iLlqqg3OhM-300x107.png 300w" sizes="auto, (max-width: 334px) 100vw, 334px" /></figure>
+  <figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" src="/uploads/2022/03/chrome_iLlqqg3OhM.png" alt="" class="wp-image-793" width="334" height="119" srcset="/uploads/2022/03/chrome_iLlqqg3OhM.png 334w, /uploads/2022/03/chrome_iLlqqg3OhM-300x107.png 300w" sizes="auto, (max-width: 334px) 100vw, 334px" /></figure>
 </div>
 
 <ul class="wp-block-list">

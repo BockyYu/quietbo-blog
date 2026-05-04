@@ -10,7 +10,7 @@ tags:
   - golang
 
 ---
-## 陣列 {.wp-block-heading}
+## 陣列 
 
 陣列索引是從 0 開始, 以索引 (index) 對陣列賦值。  
 附上Code:
@@ -82,7 +82,7 @@ func main() {
     fmt.Println(arr5[1][1]) //66
 }</code></pre>
 
-## 切片 {.wp-block-heading}
+## 切片 
 
 使用 make() 函數來創建切片:
 
@@ -169,7 +169,7 @@ func main() {
     // 一般容量會大於長度
 }</code></pre>
 
-### copy {.wp-block-heading}
+### copy 
 
 copy() 可以將一個數組切片複製到另一個數組切片中，如果加入的兩個數組切片不一樣大，就會按照其中較小的那個數組切片的元素個數進行複制。
 

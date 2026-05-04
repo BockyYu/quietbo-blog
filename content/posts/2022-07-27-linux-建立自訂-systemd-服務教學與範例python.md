@@ -14,7 +14,7 @@ tags:
 ---
 [Linux 建立自訂 Systemd 服務教學與範例][1]
 
-# 部屬方式 {.wp-block-heading}
+# 部屬方式 
 
 本次範例程式使用FastAPI,  
 檔名為main.py
@@ -40,7 +40,7 @@ async def root():
 if __name__ == "__main__":
     uvicorn.run("main:app", host='0.0.0.0', port=8080, workers=1, reload=True)</code></pre>
 
-# Linux 建立自訂 Systemd 服務教學與範例 {.wp-block-heading}
+# Linux 建立自訂 Systemd 服務教學與範例 
 
 <ol class="wp-block-list">
   <li>
@@ -255,7 +255,7 @@ Alias=rc-local.service</code></pre>
 
 啟用則返回:enabled
 
-## 補充 {.wp-block-heading}
+## 補充 
 
 <ol class="wp-block-list">
   <li>

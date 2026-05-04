@@ -16,7 +16,7 @@ tags:
 使用Mac M1  
 Jenkins 2.319.1
 
-# 安裝Jenkins {.wp-block-heading}
+# 安裝Jenkins 
 
 到[Jenkins網站][1]下載對應的檔案。目前我是使用
 
@@ -52,7 +52,7 @@ Jenkins 2.319.1
 
 <img decoding="async" src="https://i.imgur.com/Vgj5t8W.png" alt="" /> </figure> 
 
-# 設定 jenkins 與Github Rerository連接 {.wp-block-heading}
+# 設定 jenkins 與Github Rerository連接 
 
 <ol class="wp-block-list">
   <li>
@@ -86,9 +86,9 @@ Jenkins 2.319.1
 
 建置完成後，點擊「#1」並進入「console output」，就可以看到終端機的輸出了。<figure class="wp-block-image size-full">
 
-<img loading="lazy" decoding="async" width="666" height="806" src="https://quietbo.com/wp-content/uploads/2021/12/image.png" alt="" class="wp-image-644" srcset="https://quietbo.com/wp-content/uploads/2021/12/image.png 666w, https://quietbo.com/wp-content/uploads/2021/12/image-248x300.png 248w" sizes="auto, (max-width: 666px) 100vw, 666px" /> </figure> 
+<img loading="lazy" decoding="async" width="666" height="806" src="/uploads/2021/12/image.png" alt="" class="wp-image-644" srcset="/uploads/2021/12/image.png 666w, /uploads/2021/12/image-248x300.png 248w" sizes="auto, (max-width: 666px) 100vw, 666px" /> </figure> 
 
-## Jenkins檢查github {.wp-block-heading}
+## Jenkins檢查github 
 
 不建議使用，基本上應該是github上有push新的程式後，jenkins再進行建置。  
 <img decoding="async" src="https://i.imgur.com/mhftEQP.png" alt="" />

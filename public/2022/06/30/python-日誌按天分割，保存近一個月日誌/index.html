@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="下方為code, 請根據自己需求去做調整, 主要是存放的路徑與log內的訊息格式\n檔案名稱如下, 名稱會照file_handler.suffix做修正。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="下方為code, 請根據自己需求去做調整, 主要是存放的路徑與log內的訊息格式\nimport datetime import logging import os import pathlib import re from logging.handlers import TimedRotatingFileHandler path = os.path.join(pathlib.Path(__file__).parent.absolute(), 'log') log_folder_path = os.path.join(pathlib.Path(__file__).parent.parent.parent, 'log') # 與service同層, 自行調整parent的次數, try: if not os.path.isdir(log_folder_path): # 如果日誌資料夾不存在，則建立資料夾 os.mkdir(log_folder_path) except Exception: print(\"建立資料夾失敗,資料夾路徑：\" + log_folder_path) pass log_name = 'serverlog' # 自訂log檔名稱 logger = logging.getLogger(log_name) log_filename = datetime.datetime.now().strftime(\"%Y-%m-%d.log\") log_path = os.path.join(log_folder_path, log_name) logger.setLevel(logging.DEBUG) # when: 為一天, backupCount: 30個log檔案 file_handler = TimedRotatingFileHandler( filename=log_path, when=\"MIDNIGHT\", interval=1, backupCount=30 ) file_handler.suffix = \"%Y-%m-%d.log\" # 可自訂 file_handler.extMatch = re.compile(r\"^\\d{4}-\\d{2}-\\d{2}.log$\") # 刪除過期log檔 # format_2 = '[%(asctime)s] [%(process)d] [%(levelname)s] - %(module)s.%(funcName)s (%(filename)s:%(lineno)d) - %(message)s' # 可自訂想要的格式, 或是網路上提供的, 像format_2就給的訊息很多, 但本身不需要那麼多訊息可以自己訂些簡單的 file_handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)1.4s: %(module)s:%(lineno)d %(message)s')) logger.addHandler(file_handler) 檔案名稱如下, 名稱會照file_handler.suffix做修正。\n">
 <title>[Python] 日誌按天分割，保存近一個月日誌</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Python] 日誌按天分割，保存近一個月日誌">
-<meta property='og:description' content="下方為code, 請根據自己需求去做調整, 主要是存放的路徑與log內的訊息格式\n檔案名稱如下, 名稱會照file_handler.suffix做修正。\n">
+<meta property='og:description' content="下方為code, 請根據自己需求去做調整, 主要是存放的路徑與log內的訊息格式\nimport datetime import logging import os import pathlib import re from logging.handlers import TimedRotatingFileHandler path = os.path.join(pathlib.Path(__file__).parent.absolute(), 'log') log_folder_path = os.path.join(pathlib.Path(__file__).parent.parent.parent, 'log') # 與service同層, 自行調整parent的次數, try: if not os.path.isdir(log_folder_path): # 如果日誌資料夾不存在，則建立資料夾 os.mkdir(log_folder_path) except Exception: print(\"建立資料夾失敗,資料夾路徑：\" + log_folder_path) pass log_name = 'serverlog' # 自訂log檔名稱 logger = logging.getLogger(log_name) log_filename = datetime.datetime.now().strftime(\"%Y-%m-%d.log\") log_path = os.path.join(log_folder_path, log_name) logger.setLevel(logging.DEBUG) # when: 為一天, backupCount: 30個log檔案 file_handler = TimedRotatingFileHandler( filename=log_path, when=\"MIDNIGHT\", interval=1, backupCount=30 ) file_handler.suffix = \"%Y-%m-%d.log\" # 可自訂 file_handler.extMatch = re.compile(r\"^\\d{4}-\\d{2}-\\d{2}.log$\") # 刪除過期log檔 # format_2 = '[%(asctime)s] [%(process)d] [%(levelname)s] - %(module)s.%(funcName)s (%(filename)s:%(lineno)d) - %(message)s' # 可自訂想要的格式, 或是網路上提供的, 像format_2就給的訊息很多, 但本身不需要那麼多訊息可以自己訂些簡單的 file_handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)1.4s: %(module)s:%(lineno)d %(message)s')) logger.addHandler(file_handler) 檔案名稱如下, 名稱會照file_handler.suffix做修正。\n">
 <meta property='og:url' content='http://localhost:1313/2022/06/30/python-%E6%97%A5%E8%AA%8C%E6%8C%89%E5%A4%A9%E5%88%86%E5%89%B2%EF%BC%8C%E4%BF%9D%E5%AD%98%E8%BF%91%E4%B8%80%E5%80%8B%E6%9C%88%E6%97%A5%E8%AA%8C/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2022-06-30T11:00:42&#43;00:00'/><meta property='article:modified_time' content='2022-06-30T11:00:42&#43;00:00'/>
 <meta name="twitter:title" content="[Python] 日誌按天分割，保存近一個月日誌">
-<meta name="twitter:description" content="下方為code, 請根據自己需求去做調整, 主要是存放的路徑與log內的訊息格式\n檔案名稱如下, 名稱會照file_handler.suffix做修正。\n">
+<meta name="twitter:description" content="下方為code, 請根據自己需求去做調整, 主要是存放的路徑與log內的訊息格式\nimport datetime import logging import os import pathlib import re from logging.handlers import TimedRotatingFileHandler path = os.path.join(pathlib.Path(__file__).parent.absolute(), 'log') log_folder_path = os.path.join(pathlib.Path(__file__).parent.parent.parent, 'log') # 與service同層, 自行調整parent的次數, try: if not os.path.isdir(log_folder_path): # 如果日誌資料夾不存在，則建立資料夾 os.mkdir(log_folder_path) except Exception: print(\"建立資料夾失敗,資料夾路徑：\" + log_folder_path) pass log_name = 'serverlog' # 自訂log檔名稱 logger = logging.getLogger(log_name) log_filename = datetime.datetime.now().strftime(\"%Y-%m-%d.log\") log_path = os.path.join(log_folder_path, log_name) logger.setLevel(logging.DEBUG) # when: 為一天, backupCount: 30個log檔案 file_handler = TimedRotatingFileHandler( filename=log_path, when=\"MIDNIGHT\", interval=1, backupCount=30 ) file_handler.suffix = \"%Y-%m-%d.log\" # 可自訂 file_handler.extMatch = re.compile(r\"^\\d{4}-\\d{2}-\\d{2}.log$\") # 刪除過期log檔 # format_2 = '[%(asctime)s] [%(process)d] [%(levelname)s] - %(module)s.%(funcName)s (%(filename)s:%(lineno)d) - %(message)s' # 可自訂想要的格式, 或是網路上提供的, 像format_2就給的訊息很多, 但本身不需要那麼多訊息可以自己訂些簡單的 file_handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)1.4s: %(module)s:%(lineno)d %(message)s')) logger.addHandler(file_handler) 檔案名稱如下, 名稱會照file_handler.suffix做修正。\n">
     </head>
     <body class="
     article-page
@@ -226,10 +226,46 @@
     
     
     <p>下方為code, 請根據自己需求去做調整, 主要是存放的路徑與log內的訊息格式</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="python" class="language-python line-numbers">import datetime
+import logging
+import os
+import pathlib
+import re
+from logging.handlers import TimedRotatingFileHandler
+
+
+path = os.path.join(pathlib.Path(__file__).parent.absolute(), 'log')
+log_folder_path = os.path.join(pathlib.Path(__file__).parent.parent.parent, 'log')  # 與service同層, 自行調整parent的次數,
+
+try:
+    if not os.path.isdir(log_folder_path):  # 如果日誌資料夾不存在，則建立資料夾
+        os.mkdir(log_folder_path)
+except Exception:
+    print("建立資料夾失敗,資料夾路徑：" + log_folder_path)
+    pass
+
+log_name = 'serverlog'  # 自訂log檔名稱
+logger = logging.getLogger(log_name)
+
+log_filename = datetime.datetime.now().strftime("%Y-%m-%d.log")
+log_path = os.path.join(log_folder_path, log_name)
+logger.setLevel(logging.DEBUG)
+
+# when: 為一天, backupCount: 30個log檔案
+file_handler = TimedRotatingFileHandler(
+    filename=log_path, when="MIDNIGHT", interval=1, backupCount=30
+)
+file_handler.suffix = "%Y-%m-%d.log"  # 可自訂
+file_handler.extMatch = re.compile(r"^\d{4}-\d{2}-\d{2}.log$") # 刪除過期log檔
+
+
+# format_2 = '[%(asctime)s] [%(process)d] [%(levelname)s] - %(module)s.%(funcName)s (%(filename)s:%(lineno)d) - %(message)s'
+
+# 可自訂想要的格式, 或是網路上提供的, 像format_2就給的訊息很多, 但本身不需要那麼多訊息可以自己訂些簡單的
+file_handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)1.4s: %(module)s:%(lineno)d %(message)s'))
+logger.addHandler(file_handler)</code></pre>
 <p>檔案名稱如下, 名稱會照file_handler.suffix做修正。<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/9v6ifxz.png" alt="" /></p>
 
 </section>
 

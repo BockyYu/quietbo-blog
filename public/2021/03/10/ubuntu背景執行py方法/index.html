@@ -232,35 +232,56 @@
     <section class="article-content">
     
     
-    <p>2022/07/06 – 新增<!-- raw HTML omitted -->[Python] 背景執行nohup, &amp; 與 nohup.out<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+    <p>2022/07/06 – 新增<a href="https://quietbo.com/2022/07/06/python-%e8%83%8c%e6%99%af%e5%9f%b7%e8%a1%8cnohup-%e8%88%87-nohup-out/?preview_id=847&preview_nonce=4fb57ac562&preview=true" data-type="URL" data-id="https://quietbo.com/2022/07/06/python-%e8%83%8c%e6%99%af%e5%9f%b7%e8%a1%8cnohup-%e8%88%87-nohup-out/?preview_id=847&preview_nonce=4fb57ac562&preview=true" target="_blank" rel="noreferrer noopener">[Python] 背景執行nohup, &amp; 與 nohup.out</a></p>
+<hr class="wp-block-separator has-alpha-channel-opacity" />
 <p>主要介紹在linux下使用Terminal來背景執行python的幾種方式，<br>
 執行3隻python檔，每5秒、10秒、15秒各別顯示當前時間。</p>
 <p>以下為python範例:<br>
 test.py、test2.py、test3.py這三隻同時使用背景來執行的畫面。</p>
 <p>執行test.py後，會顯示跳出PID為25270。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="python" class="language-python line-numbers"># coding:utf-8
+from datetime import datetime
+from time import sleep
+
+while(1):
+    count = 1
+    sleep(5)
+    print(str(count) + " : " + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))</code></pre>
 <p>如果想讓程式跑在背景，在結尾的地方加個&amp;<br>
 python 背景執行指令如下:</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre class="wp-block-code"><code lang="python" class="language-python">python 程式碼名稱 &</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/26SgbQS.png" alt="" /> </figure></p>
 <p>再執行一隻test2.py，不會讓原本的test.py停住，仍在背景繼續執行，並且顯示test2.py新的PID。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<p>再執行test3.py。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<p>查詢背景運行的程式:</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<p>想停止某隻程式的話，輸入下方指令:</p>
-<!-- raw HTML omitted -->
-<p>下圖為停止第一支test.py的程式。</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="python" class="language-python line-numbers"># coding:utf-8
+from datetime import datetime
+from time import sleep
 
+while(1):
+    count = 2
+    sleep(10)
+    print(str(count) + " : " + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/qs2nJvo.png" alt="" /> </figure></p>
+<p>再執行test3.py。</p>
+<pre class="wp-block-code"><code lang="python" class="language-python line-numbers"># coding:utf-8
+from datetime import datetime
+from time import sleep
+
+while(1):
+    count = 3
+    sleep(15)
+    print(str(count) + " : " + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/vemyMSe.png" alt="" /> </figure></p>
+<p>查詢背景運行的程式:</p>
+<pre class="wp-block-code"><code lang="bash" class="language-bash">ps -ef</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/IczNFtg.png" alt="" /> </figure></p>
+<p>想停止某隻程式的話，輸入下方指令:</p>
+<pre class="wp-block-code"><code class="">kill PID</code></pre>
+<p>下圖為停止第一支test.py的程式。</p>
+<img decoding="async" src="https://i.imgur.com/XGJJtqK.png" alt="" />  
+kill掉後原本的Terminal會出現已終止的程式名稱。  
+<img decoding="async" src="https://i.imgur.com/1If2w51.png" alt="" />  
+原本的test2.py和test3.py還會繼續執行。  
+<img decoding="async" src="https://i.imgur.com/ucgmhz8.png" alt="" />
 </section>
 
 

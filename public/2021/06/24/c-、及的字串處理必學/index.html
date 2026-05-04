@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="最近新專案進來，從Python轉到C#了，一切來的太突然，因為不是很熟悉C#，所以在這做些筆記，也方便分享給其他同事，一起學習C#。\n符號:@\n用途:加在字串前面，表示其中的轉義字元不被處理，也可換行。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="最近新專案進來，從Python轉到C#了，一切來的太突然，因為不是很熟悉C#，所以在這做些筆記，也方便分享給其他同事，一起學習C#。\n">
 <title>[C#] @、$及@$的字串處理(必學)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[C#] @、$及@$的字串處理(必學)">
-<meta property='og:description' content="最近新專案進來，從Python轉到C#了，一切來的太突然，因為不是很熟悉C#，所以在這做些筆記，也方便分享給其他同事，一起學習C#。\n符號:@\n用途:加在字串前面，表示其中的轉義字元不被處理，也可換行。\n">
+<meta property='og:description' content="最近新專案進來，從Python轉到C#了，一切來的太突然，因為不是很熟悉C#，所以在這做些筆記，也方便分享給其他同事，一起學習C#。\n">
 <meta property='og:url' content='http://localhost:1313/2021/06/24/c-%E3%80%81%E5%8F%8A%E7%9A%84%E5%AD%97%E4%B8%B2%E8%99%95%E7%90%86%E5%BF%85%E5%AD%B8/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2021-06-23T18:26:45&#43;00:00'/><meta property='article:modified_time' content='2021-06-23T18:26:45&#43;00:00'/>
 <meta name="twitter:title" content="[C#] @、$及@$的字串處理(必學)">
-<meta name="twitter:description" content="最近新專案進來，從Python轉到C#了，一切來的太突然，因為不是很熟悉C#，所以在這做些筆記，也方便分享給其他同事，一起學習C#。\n符號:@\n用途:加在字串前面，表示其中的轉義字元不被處理，也可換行。\n">
+<meta name="twitter:description" content="最近新專案進來，從Python轉到C#了，一切來的太突然，因為不是很熟悉C#，所以在這做些筆記，也方便分享給其他同事，一起學習C#。\n">
     </head>
     <body class="
     article-page
@@ -235,23 +235,48 @@
     <p>最近新專案進來，從Python轉到C#了，一切來的太突然，因為不是很熟悉C#，所以在這做些筆記，也方便分享給其他同事，一起學習C#。</p>
 <p>符號:@<br>
 用途:加在字串前面，表示其中的轉義字元不被處理，也可換行。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="csharp" class="language-csharp line-numbers">string a = "hello \t world";
+string b = @"hello \t world";
+string c = "today is \"Sunday\"";
+string d = @"today is ""Sunday""";
+string e = "https:\\\\localhost\\user\\name.txt";
+string f = @"https:\\localhost\user\name.txt";
+string g = "AAA\r\nBBB\r\nCCC";
+string h = @"
+AAAA
+BBBB
+CCCC";</code></pre>
 <p>顯示如下:<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/6u5UR8t.png" alt="" /></p>
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+  <p>
+    如果使用@的話，編譯時會自動上\r\n\t。像h輸出就是自動加換行的結果。<br />此處注意的是:顯示一個雙引號的話，需要像d寫法一樣，使用2個雙引號&#8221;&#8221;才會當作1個雙引號&#8221;
+  </p>
+</blockquote>
 <p>符號:$<br>
 用途:使用String.Format將指定的變數名稱帶入字串中。<br>
 其實就是:字串輸出格式。</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="csharp" class="language-csharp line-numbers">string a = "hello world";
+string b = @"today is ""Sunday""";
+string c = @"https:\\localhost\user\name.txt";
+
+
+string i = $"{a} {b} URL:{c}";
+Console.WriteLine(i);</code></pre>
 <p>輸出:</p>
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code class="">hello world today is "Sunday" URL:https:\\localhost\user\name.txt</code></pre>
 <p>符號:$@(或@$)</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre class="wp-block-code"><code lang="csharp" class="language-csharp line-numbers">string a = "hello world";
+string b = @"today is ""Sunday""";
+string c = @"https:\\localhost\user\name.txt";
+
+string i = $@"{a} 
+{b} 
+URL:{c}";
+
+Console.WriteLine(i);</code></pre>
 <p>輸出結果:<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/CNKTZro.png" alt="" /></p>
 
 </section>
 

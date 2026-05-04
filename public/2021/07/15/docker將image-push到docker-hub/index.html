@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 執行成功如下圖：\n到docker hub查看是否有push成功。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 需要docker hub的帳號 開啟終端機，輸入下方指令後輸入帳號密碼，成功則顯示：Login Succeeded docker login 建立新的tag\n把原本的hello(藍框)建立新的tag，主要是push到docker hub的格式，但這兩個是同一個鏡像(IMAGE ID) docker tag hello {dockerHub帳號}/hello:1.0 ">
 <title>[Docker]將Image push到Docker Hub</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Docker]將Image push到Docker Hub">
-<meta property='og:description' content=" 執行成功如下圖：\n到docker hub查看是否有push成功。\n">
+<meta property='og:description' content=" 需要docker hub的帳號 開啟終端機，輸入下方指令後輸入帳號密碼，成功則顯示：Login Succeeded docker login 建立新的tag\n把原本的hello(藍框)建立新的tag，主要是push到docker hub的格式，但這兩個是同一個鏡像(IMAGE ID) docker tag hello {dockerHub帳號}/hello:1.0 ">
 <meta property='og:url' content='http://localhost:1313/2021/07/15/docker%E5%B0%87image-push%E5%88%B0docker-hub/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2021-07-14T18:53:19&#43;00:00'/><meta property='article:modified_time' content='2021-07-14T18:53:19&#43;00:00'/>
 <meta name="twitter:title" content="[Docker]將Image push到Docker Hub">
-<meta name="twitter:description" content=" 執行成功如下圖：\n到docker hub查看是否有push成功。\n">
+<meta name="twitter:description" content=" 需要docker hub的帳號 開啟終端機，輸入下方指令後輸入帳號密碼，成功則顯示：Login Succeeded docker login 建立新的tag\n把原本的hello(藍框)建立新的tag，主要是push到docker hub的格式，但這兩個是同一個鏡像(IMAGE ID) docker tag hello {dockerHub帳號}/hello:1.0 ">
     </head>
     <body class="
     article-page
@@ -225,21 +225,40 @@
     <section class="article-content">
     
     
-    <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+    <ol class="wp-block-list">
+  <li>
+    需要<a href="https://hub.docker.com/">docker hub</a>的帳號
+  </li>
+  <li>
+    開啟終端機，輸入下方指令後輸入帳號密碼，成功則顯示：Login Succeeded
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="docker" class="language-docker">docker login</code></pre>
+<ol class="wp-block-list" start="3">
+  <li>
+    建立新的tag<br />把原本的hello(藍框)建立新的tag，主要是push到docker hub的格式，但這兩個是同一個鏡像(IMAGE ID)
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="docker" class="language-docker">docker tag hello {dockerHub帳號}/hello:1.0</code></pre><figure class="wp-block-image">
+<p><img decoding="async" src="https://i.imgur.com/dcmznsP.png" alt="" /> </figure></p>
+<ol class="wp-block-list" start="4">
+  <li>
+    push到docker hub
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="docker" class="language-docker">docker image push {dockerHub的帳號}/hello:1.0</code></pre>
 <p>執行成功如下圖：<br>
-<!-- raw HTML omitted --><br>
+<img decoding="async" src="https://i.imgur.com/cuI2tXC.png" alt="" /><br>
 到docker hub查看是否有push成功。<br>
-<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<img decoding="async" src="https://i.imgur.com/quOgzQq.png" alt="" /></p>
+<ol class="wp-block-list" start="5">
+  <li>
+    拉取剛才push的image:<br />先刪除原本push的image，沒有的話再pull剛剛傳上去的image
+  </li>
+</ol>
+<pre class="wp-block-code"><code lang="docker" class="language-docker">docker pull dockerHub的帳號/hello:1.0</code></pre>
 <p>用docker image ls 查看pull的image是否成功<br>
-<!-- raw HTML omitted --></p>
+<img decoding="async" src="https://i.imgur.com/okiWOQY.png" alt="" /></p>
 
 </section>
 

@@ -14,7 +14,7 @@ tags:
 ---
  
 
-## 導出虛擬環境 {.wp-block-heading}
+## 導出虛擬環境 
 
 一般命令為導出的是系統環境，不是虛擬環境(venv)
 
@@ -44,7 +44,7 @@ print(command)
 # os.system(command)  #路徑有空格時不可用
 os.popen(command)  # 路徑有空格可用</code></pre>
 
-## 安装requirement {.wp-block-heading}
+## 安装requirement 
 
 開啟新的專案想使用requirement時，打開終端機輸入:
 
