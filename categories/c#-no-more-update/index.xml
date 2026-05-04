@@ -2,213 +2,583 @@
  &gt;Microsoft： Exception 類別&lt;/a&gt;&lt;br&gt;
 程式執行期間發生的錯誤，會丟出異常或丟出例外。&lt;/p&gt;
 &lt;p&gt;例外處理是所有開發工程師必學的，以下介紹比較常見的 Exception&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 確認例外的什麼類型
+ &lt;/li&gt;
+ &lt;li&gt;
+ 透過debug來檢查是第幾行造成異常
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="nullreferenceexception"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;NullReferenceException&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#NullReferenceException" &gt;NullReferenceException&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#DivideByZeroException" &gt;DivideByZeroException&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#ArgumentOutOfRangeException" &gt;ArgumentOutOfRangeException&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#ArgumentNullException" &gt;ArgumentNullException&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#FormatException" &gt;FormatException&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2021/11/01/%e4%be%8b%e5%a4%96%e8%99%95%e7%90%86exception/#try%E2%80%A6catch%E2%80%A6finally" &gt;try…catch…finally&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="nullreferenceexception"&gt;&lt;span class="ez-toc-section" id="NullReferenceException"&gt;&lt;/span&gt;NullReferenceException&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;當嘗試對Null 物件取值時，所擲回的例外狀況。&lt;/p&gt;
 &lt;p&gt;尋找字串裡，B在第幾個位置出現，由於name是null, 所以程式時會丟出例外，範例如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string name = null;
+int position = name.IndexOf('B');&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;錯誤如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="dividebyzeroexception"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;DivideByZeroException&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;Unhandled Exception:
+System.NullReferenceException: Object reference not set to an instance of an object&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="dividebyzeroexception"&gt;&lt;span class="ez-toc-section" id="DivideByZeroException"&gt;&lt;/span&gt;DivideByZeroException&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;嘗試將整數或 Decimal 值除以零時，所擲回的例外狀況。&lt;/p&gt;
 &lt;p&gt;分母不可以為零，程式在執行時, 會丟出例外，範例如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp"&gt;int i = 100;
+int ans = i/0;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;錯誤如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="argumentoutofrangeexception"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;ArgumentOutOfRangeException&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;System.DivideByZeroException: Attempted to divide by zero.&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="argumentoutofrangeexception"&gt;&lt;span class="ez-toc-section" id="ArgumentOutOfRangeException"&gt;&lt;/span&gt;ArgumentOutOfRangeException&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;引數超出有效值的範圍。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string value = "0123456789";
+
+// 字串長度10, 叫用 Substring時, 傳入 100, 會丟出 ArgumentOutOfRangeException 例外
+string result = value.Substring(100);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;錯誤訊息如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="argumentnullexception"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;ArgumentNullException&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;System.ArgumentOutOfRangeException: startIndex cannot be larger than length of string.&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="argumentnullexception"&gt;&lt;span class="ez-toc-section" id="ArgumentNullException"&gt;&lt;/span&gt;ArgumentNullException&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://docs.microsoft.com/zh-tw/dotnet/api/system.argumentnullexception?view=net-5.0" target="_blank" rel="noopener"
  &gt;ArgumentNullException&lt;/a&gt;&lt;br&gt;
 當 Null 參考 (在 Visual Basic 中為 Nothing) 傳遞給不接受其為有效引數的方法時，所擲回的例外狀況。&lt;/p&gt;
 &lt;p&gt;不允許參數是null時,就會丟出ArgumentNullException&lt;/p&gt;
-&lt;h2 id="formatexception"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;FormatException&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="formatexception"&gt;&lt;span class="ez-toc-section" id="FormatException"&gt;&lt;/span&gt;FormatException&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;引數格式無效或複合格式字串格式不正確時所擲回的例外狀況。&lt;/p&gt;
 &lt;p&gt;此用法是想使用字串插值，但因為語法錯誤，導致異常。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string template = "user_name: {bocky}"; 
+string result = string.Format(template, "bocky");&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;錯誤如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="trycatchfinally"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;try…catch…finally&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;System.FormatException: Input string was not in a correct format.&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="trycatchfinally"&gt;&lt;span class="ez-toc-section" id="try%E2%80%A6catch%E2%80%A6finally"&gt;&lt;/span&gt;try…catch…finally&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;不要太依賴，若是能在開發時就想到需要檢查/判斷的地方，就先做好。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[C#]字串相關處理</title><link>https://quietbo.com/2021/10/31/c%E5%AD%97%E4%B8%B2%E7%9B%B8%E9%97%9C%E8%99%95%E7%90%86/</link><pubDate>Sun, 31 Oct 2021 15:41:04 +0000</pubDate><guid>https://quietbo.com/2021/10/31/c%E5%AD%97%E4%B8%B2%E7%9B%B8%E9%97%9C%E8%99%95%E7%90%86/</guid><description>&lt;!-- raw HTML omitted --&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ &lt;a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/keywords/try-catch"&gt;Microsoft：try-catch&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ &lt;a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/keywords/try-finally"&gt;Microsoft：try-finally&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ &lt;a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/keywords/try-catch-finally"&gt;Microsoft：try-catch-finally&lt;/a&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;try
+{
+//程式執行區或可能發生異常的地方
+}
+catch (Exception ex)
+{
+//例外的處理方法，如秀出警告
+}
+finally
+{
+//無論是否有發生例外事件，都會執行這區塊
+}&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[C#]字串相關處理</title><link>https://quietbo.com/2021/10/31/c%E5%AD%97%E4%B8%B2%E7%9B%B8%E9%97%9C%E8%99%95%E7%90%86/</link><pubDate>Sun, 31 Oct 2021 15:41:04 +0000</pubDate><guid>https://quietbo.com/2021/10/31/c%E5%AD%97%E4%B8%B2%E7%9B%B8%E9%97%9C%E8%99%95%E7%90%86/</guid><description>&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="刪除字串左邊-右邊-兩側的空白"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;刪除字串左邊, 右邊, 兩側的空白&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/10/31/c%e5%ad%97%e4%b8%b2%e7%9b%b8%e9%97%9c%e8%99%95%e7%90%86/#%E5%88%AA%E9%99%A4%E5%AD%97%E4%B8%B2%E5%B7%A6%E9%82%8A_%E5%8F%B3%E9%82%8A_%E5%85%A9%E5%81%B4%E7%9A%84%E7%A9%BA%E7%99%BD" &gt;刪除字串左邊, 右邊, 兩側的空白&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/10/31/c%e5%ad%97%e4%b8%b2%e7%9b%b8%e9%97%9c%e8%99%95%e7%90%86/#%E7%8D%B2%E5%BE%97%E5%AD%97%E4%B8%B2%E7%9A%84%E9%95%B7%E5%BA%A6" &gt;獲得字串的長度&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/10/31/c%e5%ad%97%e4%b8%b2%e7%9b%b8%e9%97%9c%e8%99%95%e7%90%86/#%E6%88%AA%E5%8F%96%E5%AD%97%E4%B8%B2" &gt;截取字串&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/10/31/c%e5%ad%97%e4%b8%b2%e7%9b%b8%e9%97%9c%e8%99%95%e7%90%86/#%E5%AD%97%E4%B8%B2%E5%87%BA%E7%8F%BE%E6%9F%90%E4%BA%9B%E5%AD%97%E7%9A%84%E4%BD%8D%E7%BD%AE" &gt;字串出現某些字的位置&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2021/10/31/c%e5%ad%97%e4%b8%b2%e7%9b%b8%e9%97%9c%e8%99%95%e7%90%86/#%E5%AD%97%E4%B8%B2%E5%8F%96%E4%BB%A3" &gt;字串取代&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2021/10/31/c%e5%ad%97%e4%b8%b2%e7%9b%b8%e9%97%9c%e8%99%95%e7%90%86/#%E5%AD%97%E4%B8%B2%E5%88%87%E5%89%B2" &gt;字串切割&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-7" href="https://quietbo.com/2021/10/31/c%e5%ad%97%e4%b8%b2%e7%9b%b8%e9%97%9c%e8%99%95%e7%90%86/#%E5%AD%97%E4%B8%B2%E8%BD%89%E6%8F%9B" &gt;字串轉換&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-8" href="https://quietbo.com/2021/10/31/c%e5%ad%97%e4%b8%b2%e7%9b%b8%e9%97%9c%e8%99%95%e7%90%86/#%E5%88%A4%E6%96%B7%E5%AD%97%E4%B8%B2%E9%96%8B%E9%A0%AD%E6%88%96%E7%B5%90%E5%B0%BE%E6%98%AF%E5%90%A6%E7%AC%A6%E5%90%88%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AD%97%E4%B8%B2" &gt;判斷字串開頭或結尾是否符合指定的字串&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="刪除字串左邊-右邊-兩側的空白"&gt;&lt;span class="ez-toc-section" id="%E5%88%AA%E9%99%A4%E5%AD%97%E4%B8%B2%E5%B7%A6%E9%82%8A_%E5%8F%B3%E9%82%8A_%E5%85%A9%E5%81%B4%E7%9A%84%E7%A9%BA%E7%99%BD"&gt;&lt;/span&gt;刪除字串左邊, 右邊, 兩側的空白&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ TrimStart() 刪除左空白
+ &lt;/li&gt;
+ &lt;li&gt;
+ rimEnd() 刪除右空白
+ &lt;/li&gt;
+ &lt;li&gt;
+ Trim() 刪除左右空白
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;範例：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string str_name = " bocky Bocky ";
+string trim_start = str_name.TrimStart();
+string trim_end = str_name.TrimEnd();
+string trim_reim = str_name.Trim();&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;結果如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="獲得字串的長度"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;獲得字串的長度&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;bocky Bocky 
+ bocky Bocky
+bocky Bocky&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="獲得字串的長度"&gt;&lt;span class="ez-toc-section" id="%E7%8D%B2%E5%BE%97%E5%AD%97%E4%B8%B2%E7%9A%84%E9%95%B7%E5%BA%A6"&gt;&lt;/span&gt;獲得字串的長度&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;最常使用在獲得帳號或密碼的長度上，做長度的限制。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="截取字串"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;截取字串&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="字串出現某些字的位置"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;字串出現某些字的位置&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string password = "iambocky";
+int password_len = password.Length;
+Console.WriteLine("密碼長度:" + password_len); // 8&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="截取字串"&gt;&lt;span class="ez-toc-section" id="%E6%88%AA%E5%8F%96%E5%AD%97%E4%B8%B2"&gt;&lt;/span&gt;截取字串&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 擷取的位置需在字串範圍
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre title="" class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string name = "iambocky";
+string news_name = name.Substring(3, 5); 
+Console.WriteLine(news_name);&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="字串出現某些字的位置"&gt;&lt;span class="ez-toc-section" id="%E5%AD%97%E4%B8%B2%E5%87%BA%E7%8F%BE%E6%9F%90%E4%BA%9B%E5%AD%97%E7%9A%84%E4%BD%8D%E7%BD%AE"&gt;&lt;/span&gt;字串出現某些字的位置&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ IndexOf() 由左至右開始檢查，傳回第一個符合的位置,若字串中沒有符合則傳回-1
+ &lt;/li&gt;
+ &lt;li&gt;
+ LastIndexOf() 是從字串最後（右向左）尋找, 傳回第一個符合的位置
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;範例：判斷字串裡是否有@&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="字串取代"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;字串取代&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string email = "bocky@gmail.com";
+int location = email.IndexOf('@');
+Console.WriteLine(location); // @所在的位置（從0開始）
+if (location &amp;gt; 0)
+{
+ Console.WriteLine("屬於email");
+}
+else
+{
+ Console.WriteLine("不屬於email");
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="字串取代"&gt;&lt;span class="ez-toc-section" id="%E5%AD%97%E4%B8%B2%E5%8F%96%E4%BB%A3"&gt;&lt;/span&gt;字串取代&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;將字串裡的某一個字,或某個字串, 置換成其他字。&lt;/p&gt;
 &lt;p&gt;不想要空白，就把空白取代為，範例：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="字串切割"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;字串切割&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string value = " te st .jos n ";
+string result = value.Replace(" ", "");
+Console.WriteLine(result); // test.josn&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="字串切割"&gt;&lt;span class="ez-toc-section" id="%E5%AD%97%E4%B8%B2%E5%88%87%E5%89%B2"&gt;&lt;/span&gt;字串切割&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;將一個字串分割成數個子字串。&lt;br&gt;
 Split()&lt;/p&gt;
 &lt;p&gt;舉例要取年月日，用/來做切割，切割出來的資料需存在陣列內。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="字串轉換"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;字串轉換&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string today = "2021/10/31";
+string[] tmp = today.Split('/');
+
+string year = tmp[0];
+string month = tmp[1];
+string day = tmp[2];
+
+Console.WriteLine(year); // 2021
+Console.WriteLine(month); // 10
+Console.WriteLine(day); //31&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="字串轉換"&gt;&lt;span class="ez-toc-section" id="%E5%AD%97%E4%B8%B2%E8%BD%89%E6%8F%9B"&gt;&lt;/span&gt;字串轉換&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ ToUpper() 全部大寫
+ &lt;/li&gt;
+ &lt;li&gt;
+ ToLower() 全部小寫
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;大部分需要全部轉換成大小寫一致的話是為了比對。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string name = "Bocky";
+Console.WriteLine(name.ToUpper()); //全部大寫BOCKY
+Console.WriteLine(name.ToLower()); //全部小寫bocky&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;補充:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;若想判斷二個變數內的字串文字是否相同, 建議使用：Equals() &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;a class="link" href="https://stackoverflow.com/questions/814878/c-sharp-difference-between-and-equals" target="_blank" rel="noopener"
  &gt;== 和 Equals() 的區別&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="判斷字串開頭或結尾是否符合指定的字串"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;判斷字串開頭或結尾是否符合指定的字串&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="判斷字串開頭或結尾是否符合指定的字串"&gt;&lt;span class="ez-toc-section" id="%E5%88%A4%E6%96%B7%E5%AD%97%E4%B8%B2%E9%96%8B%E9%A0%AD%E6%88%96%E7%B5%90%E5%B0%BE%E6%98%AF%E5%90%A6%E7%AC%A6%E5%90%88%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AD%97%E4%B8%B2"&gt;&lt;/span&gt;判斷字串開頭或結尾是否符合指定的字串&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;傳回:Boolean&lt;br&gt;
 範例：檢查開頭是否有https://&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string url = "https://www.quietbo.com";
+bool is_https = url.StartsWith("https://");&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例：檢查結尾是否有.com&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[C#] 變數宣告</title><link>https://quietbo.com/2021/10/25/c-%E8%AE%8A%E6%95%B8%E5%AE%A3%E5%91%8A%E8%B5%B7%E6%AD%A5%E8%B5%B0-%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B82/</link><pubDate>Sun, 24 Oct 2021 17:30:25 +0000</pubDate><guid>https://quietbo.com/2021/10/25/c-%E8%AE%8A%E6%95%B8%E5%AE%A3%E5%91%8A%E8%B5%B7%E6%AD%A5%E8%B5%B0-%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B82/</guid><description>&lt;p&gt;環境:Windows 10&lt;br&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string url = "https://www.quietbo.com";
+bool is_com = url.EndsWith(".com");&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[C#] 變數宣告</title><link>https://quietbo.com/2021/10/25/c-%E8%AE%8A%E6%95%B8%E5%AE%A3%E5%91%8A%E8%B5%B7%E6%AD%A5%E8%B5%B0-%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B82/</link><pubDate>Sun, 24 Oct 2021 17:30:25 +0000</pubDate><guid>https://quietbo.com/2021/10/25/c-%E8%AE%8A%E6%95%B8%E5%AE%A3%E5%91%8A%E8%B5%B7%E6%AD%A5%E8%B5%B0-%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B82/</guid><description>&lt;p&gt;環境:Windows 10&lt;br&gt;
 IDE:VS2019&lt;/p&gt;
 &lt;p&gt;在C#中，//是單行註解，/**/是區塊註解&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 宣告的變數一定要給予型別。
+ &lt;/li&gt;
+ &lt;li&gt;
+ var則是一定要給值
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="整數int"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;整數int&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/10/25/c-%e8%ae%8a%e6%95%b8%e5%ae%a3%e5%91%8a%e8%b5%b7%e6%ad%a5%e8%b5%b0-%e6%96%b0%e6%89%8b%e6%95%99%e5%ad%b82/#%E6%95%B4%E6%95%B8int" &gt;整數int&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/10/25/c-%e8%ae%8a%e6%95%b8%e5%ae%a3%e5%91%8a%e8%b5%b7%e6%ad%a5%e8%b5%b0-%e6%96%b0%e6%89%8b%e6%95%99%e5%ad%b82/#var" &gt;var&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/10/25/c-%e8%ae%8a%e6%95%b8%e5%ae%a3%e5%91%8a%e8%b5%b7%e6%ad%a5%e8%b5%b0-%e6%96%b0%e6%89%8b%e6%95%99%e5%ad%b82/#%E6%B5%AE%E9%BB%9E%E6%95%B8float%E3%80%81double%E3%80%81decimal" &gt;浮點數(float、double、decimal)&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/10/25/c-%e8%ae%8a%e6%95%b8%e5%ae%a3%e5%91%8a%e8%b5%b7%e6%ad%a5%e8%b5%b0-%e6%96%b0%e6%89%8b%e6%95%99%e5%ad%b82/#%E5%AD%97%E4%B8%B2String" &gt;字串(String)&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2021/10/25/c-%e8%ae%8a%e6%95%b8%e5%ae%a3%e5%91%8a%e8%b5%b7%e6%ad%a5%e8%b5%b0-%e6%96%b0%e6%89%8b%e6%95%99%e5%ad%b82/#%E9%99%A3%E5%88%97arry" &gt;陣列(arry)&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2021/10/25/c-%e8%ae%8a%e6%95%b8%e5%ae%a3%e5%91%8a%e8%b5%b7%e6%ad%a5%e8%b5%b0-%e6%96%b0%e6%89%8b%e6%95%99%e5%ad%b82/#%E7%89%B9%E6%AE%8A%E9%80%B8%E5%87%BAEscape%E5%AD%97%E5%85%83" &gt;特殊逸出Escape字元&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="整數int"&gt;&lt;span class="ez-toc-section" id="%E6%95%B4%E6%95%B8int"&gt;&lt;/span&gt;整數int&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/builtin-types/integral-numeric-types" target="_blank" rel="noopener"
  &gt;microsoft(整數的數字型別)&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="var"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;var&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;int apple = 100; // 宣告變數apple時就給值100
+
+int bird; // 宣告變數bird，但不給值
+bird = 200; // 設定變數bird的值為200
+
+int lucky_girl_age = 18, lucky_boy_age = 17, abby; // 宣告數個同型別的變數&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="var"&gt;&lt;span class="ez-toc-section" id="var"&gt;&lt;/span&gt;var&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 必需宣告值&lt;br /&gt;var是一定要先給值，var是讓電腦來區分值是什麼型別，若沒有給值，電腦會無法判斷。
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;在編譯時會經由10,推測number的型別是整數:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;var number = 10; &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;不能只宣告的:var&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/ZnchZOq.png" alt="" /&gt;&lt;br&gt;
 補充:checked 是用來明確啟用整數型別算術運算和轉換的溢位檢查。&lt;/p&gt;
-&lt;h2 id="浮點數floatdoubledecimal"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;浮點數(float、double、decimal)&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="浮點數floatdoubledecimal"&gt;&lt;span class="ez-toc-section" id="%E6%B5%AE%E9%BB%9E%E6%95%B8float%E3%80%81double%E3%80%81decimal"&gt;&lt;/span&gt;浮點數(float、double、decimal)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types" target="_blank" rel="noopener"
  &gt;microsoft(浮點數值型別)&lt;/a&gt;&lt;br&gt;
 每個浮點數型別的預設值都是零，浮點數型別都有 MinValue 與 MaxValue 常數，提供該型別的最小與最大有限值。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ float
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 單精準數
+ &lt;/li&gt;
+ &lt;li&gt;
+ 不可以直接只指定數值，必需在數值最後加 F 或 f
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ double
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 雙精準數
+ &lt;/li&gt;
+ &lt;li&gt;
+ 可以直接指定數值，或在數值最後加 D 或 d
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ decimal
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 進位數
+ &lt;/li&gt;
+ &lt;li&gt;
+ 不可以直接只指定數值，必需在數值最後加M或m
+ &lt;/li&gt;
+ &lt;li&gt;
+ 通常用於財務(有關錢的計算)。
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;從c# 7.0開始支援_做為數位分隔符號，可以使用數位分隔符號搭配所有種類的數值常值。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;double d_1 = 9D;
+double d_2 = 6d;
+double d_3 = 4.852_0001000;
+Console.WriteLine(d_3); // 4.8520001
+
+float f_1 = 2_000.5F;
+float f_2 = 3.4000f;
+Console.WriteLine(f_2); // 3.4
+
+decimal myMoney_1 = 3_000.50m;
+decimal myMoney_2 = 400.750000M;
+Console.WriteLine(myMoney_2); // 400.750000&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;也可以使用科學記號標記法。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="字串string"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;字串(String)&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="陣列arry"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;陣列(arry)&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;double d = 0.42e2;
+Console.WriteLine(d); // 42
+
+float f = 134.45E-2f;
+Console.WriteLine(f); // 1.3445
+
+decimal m = 1.5E6m;
+Console.WriteLine(m); // 1500000&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="字串string"&gt;&lt;span class="ez-toc-section" id="%E5%AD%97%E4%B8%B2String"&gt;&lt;/span&gt;字串(String)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 字串加字串
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string firstName = "Hello";
+string lastName = "World";
+string fullName = firstName + "," + lastName;
+Console.WriteLine(fullName); // Hello,World&lt;/code&gt;&lt;/pre&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 字串加數字
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;int sum = 1 + 1;
+string leading = "1+1=";
+string result = leading + sum;
+Console.WriteLine(result); //1+1=2&lt;/code&gt;&lt;/pre&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 宣告字串為Null&lt;br /&gt;null 表示字串沒有任何值，可以與字串相加，不等於零(0)也不等於空字串。
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string value1 = null;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 空字串
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string value1 = "";
+string value2 = string.Empty; // 空字串比較好的寫法&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="陣列arry"&gt;&lt;span class="ez-toc-section" id="%E9%99%A3%E5%88%97arry"&gt;&lt;/span&gt;陣列(arry)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 指定長度後就不可以再修改長度，較適合已知長度
+ &lt;/li&gt;
+ &lt;li&gt;
+ 第一筆資料從0開始
+ &lt;/li&gt;
+ &lt;li&gt;
+ 型別必須一致
+ &lt;/li&gt;
+ &lt;li&gt;
+ 可以重覆修改值
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;資料型別 [] 陣列名稱 = new 資料型別[陣列大小];&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;int[] numbers = new int[4]; // 陣列長度為4
+// 宣告後再把值填到陣列裡
+numbers[0] = 1000;
+numbers[1] = 10;
+numbers[2] = 20;
+numbers[3] = 30;
+numbers[2] = -100; //修改值 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;宣告陣列時填入值：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;// 雖然一開始沒指定長度，但長度是固定的
+string[] items = new[] {"A", "B", "C", "D", "E"};
+// items[5] = "Z" //會報錯，陣列的長度已超過
+/*
+ * 長度只到5，會出現錯誤的訊息：
+ * System.IndexOutOfRangeException: Index was outside the bounds of the array.
+*/&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;取得陣列長度:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string[] items = new[] {"A", "B", "C", "D", "E"};
+int length = items.Length;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;排序小到大＆大到小：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;int[] items = new int[] {8, 10, 1, 3, 5};
+Array.Sort(items); // 小到大
+//Array.Reverse(items); // 轉成大到小需先使用sort排列過
+foreach (var item in items)
+{
+ Console.Write($"{item}\t");
+}
+// 1 3 5 8 10&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Sort(小到大）允許傳入兩個陣列;&lt;br&gt;
 下方使用2個不同的陣列來做成績的排序，且名字要與分數一致。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string[] students = {"小王", "小美", "大強", "大白", "自強", "莒光"};
+int[] score_math = {80, 50, 90, 66, 76, 99};
+
+// 將score_math排序, 且同時用相同順序排列students
+Array.Sort(score_math, students);
+
+//若想要遞增，則需使用2次Reverse
+// Array.Reverse(score_math);
+// Array.Reverse(students);
+for (int i = 0; i&amp;lt; students.Length; i++)
+{
+ string name = students[i];
+ int score = score_math[i];
+ Console.WriteLine($"{name}的成績:{score}");
+}&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;遞減的結果：&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/hkeVe1p.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;遞增的結果：&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="特殊逸出escape字元"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;特殊逸出Escape字元&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[C#] 建置一個Hello world</title><link>https://quietbo.com/2021/09/21/c-%E5%BB%BA%E7%BD%AE%E4%B8%80%E5%80%8Bhello-world-%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B81/</link><pubDate>Tue, 21 Sep 2021 06:57:13 +0000</pubDate><guid>https://quietbo.com/2021/09/21/c-%E5%BB%BA%E7%BD%AE%E4%B8%80%E5%80%8Bhello-world-%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B81/</guid><description>&lt;p&gt;環境:Windows&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/jJpiEPw.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="特殊逸出escape字元"&gt;&lt;span class="ez-toc-section" id="%E7%89%B9%E6%AE%8A%E9%80%B8%E5%87%BAEscape%E5%AD%97%E5%85%83"&gt;&lt;/span&gt;特殊逸出Escape字元&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ \&amp;#8217; 單引號
+ &lt;/li&gt;
+ &lt;li&gt;
+ \&amp;#8221; 雙引號
+ &lt;/li&gt;
+ &lt;li&gt;
+ \ 反斜線
+ &lt;/li&gt;
+ &lt;li&gt;
+ \a 發出一聲警告
+ &lt;/li&gt;
+ &lt;li&gt;
+ \b 倒退一個字元
+ &lt;/li&gt;
+ &lt;li&gt;
+ \f Form Feed
+ &lt;/li&gt;
+ &lt;li&gt;
+ \n 換新行
+ &lt;/li&gt;
+ &lt;li&gt;
+ \r 換行並移到最前方
+ &lt;/li&gt;
+ &lt;li&gt;
+ \t 水平方向的Tab
+ &lt;/li&gt;
+ &lt;li&gt;
+ \v 垂直方向的Tab
+ &lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>[C#] 建置一個Hello world</title><link>https://quietbo.com/2021/09/21/c-%E5%BB%BA%E7%BD%AE%E4%B8%80%E5%80%8Bhello-world-%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B81/</link><pubDate>Tue, 21 Sep 2021 06:57:13 +0000</pubDate><guid>https://quietbo.com/2021/09/21/c-%E5%BB%BA%E7%BD%AE%E4%B8%80%E5%80%8Bhello-world-%E6%96%B0%E6%89%8B%E6%95%99%E5%AD%B81/</guid><description>&lt;p&gt;環境:Windows&lt;br&gt;
 IDE: VS2019&lt;/p&gt;
 &lt;h2 id="建置一個c專案來顯示hello-world"&gt;建置一個C#專案來顯示Hello world
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;/h2&gt;&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 開啟VS2019 (Visual Studio 2019)
+ &lt;/li&gt;
+&lt;/ol&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/bQCe6MN.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 開啟新的專案
+ &lt;/li&gt;
+&lt;/ol&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/nYWaSE2.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 建立專案
+ &lt;/li&gt;
+&lt;/ol&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/2gAkOLz.png" alt="" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image"&gt;&lt;img decoding="async" src="https://i.imgur.com/T2QPiHi.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="4"&gt;
+ &lt;li&gt;
+ 添加一行要顯示的文字
+ &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;在Main裡面(第12~14行)中間填入:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;Console.WriteLine("Hello world");&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/EoPdfsz.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;一定要按下儲存(Ctrl+S)&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/agfE2kz.png" alt="" /&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="4"&gt;
+ &lt;li&gt;
+ 建置/重建方案
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;img decoding="async" src="https://i.imgur.com/q7MzcI1.png" alt="" /&gt; 
+注意:不要有失敗 
+&lt;img decoding="async" src="https://i.imgur.com/ConnLgf.png" alt="" /&gt; 
+&lt;ol class="wp-block-list" start="5"&gt;
+ &lt;li&gt;
+ 執行
+ &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;偵錯-&amp;gt; 啟動但不偵錯&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/uxTlUyR.png" alt="" /&gt;&lt;br&gt;
 會跳出一個終端機，顯示Hello world&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[C#] @、$及@$的字串處理(必學)</title><link>https://quietbo.com/2021/06/24/c-%E3%80%81%E5%8F%8A%E7%9A%84%E5%AD%97%E4%B8%B2%E8%99%95%E7%90%86%E5%BF%85%E5%AD%B8/</link><pubDate>Wed, 23 Jun 2021 18:26:45 +0000</pubDate><guid>https://quietbo.com/2021/06/24/c-%E3%80%81%E5%8F%8A%E7%9A%84%E5%AD%97%E4%B8%B2%E8%99%95%E7%90%86%E5%BF%85%E5%AD%B8/</guid><description>&lt;p&gt;最近新專案進來，從Python轉到C#了，一切來的太突然，因為不是很熟悉C#，所以在這做些筆記，也方便分享給其他同事，一起學習C#。&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/3zF60gf.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[C#] @、$及@$的字串處理(必學)</title><link>https://quietbo.com/2021/06/24/c-%E3%80%81%E5%8F%8A%E7%9A%84%E5%AD%97%E4%B8%B2%E8%99%95%E7%90%86%E5%BF%85%E5%AD%B8/</link><pubDate>Wed, 23 Jun 2021 18:26:45 +0000</pubDate><guid>https://quietbo.com/2021/06/24/c-%E3%80%81%E5%8F%8A%E7%9A%84%E5%AD%97%E4%B8%B2%E8%99%95%E7%90%86%E5%BF%85%E5%AD%B8/</guid><description>&lt;p&gt;最近新專案進來，從Python轉到C#了，一切來的太突然，因為不是很熟悉C#，所以在這做些筆記，也方便分享給其他同事，一起學習C#。&lt;/p&gt;
 &lt;p&gt;符號:@&lt;br&gt;
 用途:加在字串前面，表示其中的轉義字元不被處理，也可換行。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string a = "hello \t world";
+string b = @"hello \t world";
+string c = "today is \"Sunday\"";
+string d = @"today is ""Sunday""";
+string e = "https:\\\\localhost\\user\\name.txt";
+string f = @"https:\\localhost\user\name.txt";
+string g = "AAA\r\nBBB\r\nCCC";
+string h = @"
+AAAA
+BBBB
+CCCC";&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;顯示如下:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/6u5UR8t.png" alt="" /&gt;&lt;/p&gt;
+&lt;blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"&gt;
+ &lt;p&gt;
+ 如果使用@的話，編譯時會自動上\r\n\t。像h輸出就是自動加換行的結果。&lt;br /&gt;此處注意的是:顯示一個雙引號的話，需要像d寫法一樣，使用2個雙引號&amp;#8221;&amp;#8221;才會當作1個雙引號&amp;#8221;
+ &lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;符號:$&lt;br&gt;
 用途:使用String.Format將指定的變數名稱帶入字串中。&lt;br&gt;
 其實就是:字串輸出格式。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string a = "hello world";
+string b = @"today is ""Sunday""";
+string c = @"https:\\localhost\user\name.txt";
+
+
+string i = $"{a} {b} URL:{c}";
+Console.WriteLine(i);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;輸出:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hello world today is "Sunday" URL:https:\\localhost\user\name.txt&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;符號:$@(或@$)&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="csharp" class="language-csharp line-numbers"&gt;string a = "hello world";
+string b = @"today is ""Sunday""";
+string c = @"https:\\localhost\user\name.txt";
+
+string i = $@"{a} 
+{b} 
+URL:{c}";
+
+Console.WriteLine(i);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;輸出結果:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;img decoding="async" src="https://i.imgur.com/CNKTZro.png" alt="" /&gt;&lt;/p&gt;</description></item></channel></rss>

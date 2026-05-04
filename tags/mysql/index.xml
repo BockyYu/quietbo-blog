@@ -3,40 +3,61 @@ GUI: &lt;a class="link" href="https://tableplus.com/" target="_blank" rel="noope
  &gt;tabPlus&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在學習SQL時一定會學到外來鍵，外來鍵的目的是&lt;strong&gt;確定資料的參考完整性(referential integrity)&lt;/strong&gt;，簡單來說，就是&lt;strong&gt;只有被准許的資料值才會被存入資料庫內&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;下方以一個生活例子來舉例:&lt;br&gt;
-1個頻道(電視台)會依據不同時間有不同節目，當然&lt;strong&gt;沒有頻道就不會有節目撥出&lt;/strong&gt;，也就是一對多。如下圖:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+1個頻道(電視台)會依據不同時間有不同節目，當然&lt;strong&gt;沒有頻道就不會有節目撥出&lt;/strong&gt;，也就是一對多。如下圖:&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/hP9x7EB.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;頻道:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;CREATE TABLE `channel` (
+ `id` int PRIMARY KEY,
+ `channel_name` varchar(255) NOT NULL
+);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;節目:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;CREATE TABLE `programme` (
+ `id` int PRIMARY KEY AUTO_INCREMENT,
+ `channel_id` int,
+ `programme_name` varchar(255),
+ `start_time` datetime DEFAULT (now()),
+ `end_time` datetime DEFAULT (now()),
+ FOREIGN KEY(channel_id) REFERENCES channel(id)
+);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;加入資料1:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;INSERT INTO `channel` (`id`, `channel_name`) VALUES
+(7, '恩恩新聞'),
+(8, '探索世界'),
+(9, '東西購物');&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;加入資料2:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;INSERT INTO `programme` (`channel_id`, `programme_name`, `start_time`, `end_time`) VALUES
+(7, '3點新聞', '2022-03-01 15:00:00', '2022-03-01 16:00:00'),
+(7, '4點新聞', '2022-03-01 16:00:00', '2022-03-01 17:00:00'),
+(7, '5點新聞', '2022-03-01 17:00:00', '2022-03-01 18:00:00'),
+(8, '說書人', '2022-03-01 15:00:00', '2022-03-01 16:00:00'),
+(8, '科學時間', '2022-03-01 16:00:00', '2022-03-01 17:00:00'),
+(8, '海底裡', '2022-03-01 17:00:00', '2022-03-01 18:00:00'),
+(9, '3點購物時間', '2022-03-01 15:00:00', '2022-03-01 16:00:00'),
+(9, '4點購物時間', '2022-03-01 16:00:00', '2022-03-01 17:00:00'),
+(9, '5點購物時間', '2022-03-01 17:00:00', '2022-03-01 18:00:00'),&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;嘗試當加入一筆沒有在channel內的id&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;INSERT INTO `programme` (`channel_id`, `programme_name`, `start_time`, `end_time`) VALUES
+(10, '一起出去玩', '2022-03-01 17:00:00', '2022-03-01 18:00:00');&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;錯誤訊息如下:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="" class=""&gt;Cannot add or update a child row: a foreign key constraint fails (`general`.`programme`, CONSTRAINT `programme_ibfk_1` FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`))&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/X796Vf2.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;補充&lt;/p&gt;
 &lt;p&gt;當表已經建立完畢後，設置外來鍵:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;可參考:&lt;!-- raw HTML omitted --&gt;fooish&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[MySQL] MySQL InternalError: 1251, u’Client does not support authentication protocol requested by server; consider upgrading MySQL client</title><link>https://quietbo.com/2021/05/11/%E8%A7%A3%E6%B1%BA-internalerror-1251-uclient-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client/</link><pubDate>Tue, 11 May 2021 11:13:00 +0000</pubDate><guid>https://quietbo.com/2021/05/11/%E8%A7%A3%E6%B1%BA-internalerror-1251-uclient-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client/</guid><description>&lt;p&gt;某次在local測試時，因為要新增package而重新build了一次docker。&lt;br&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="" class=""&gt;ALTER TABLE `programme` ADD FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可參考:&lt;a rel="noreferrer noopener" href="https://www.fooish.com/sql/foreign-key-constraint.html" data-type="URL" data-id="https://www.fooish.com/sql/foreign-key-constraint.html" target="_blank"&gt;fooish&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[MySQL] MySQL InternalError: 1251, u’Client does not support authentication protocol requested by server; consider upgrading MySQL client</title><link>https://quietbo.com/2021/05/11/%E8%A7%A3%E6%B1%BA-internalerror-1251-uclient-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client/</link><pubDate>Tue, 11 May 2021 11:13:00 +0000</pubDate><guid>https://quietbo.com/2021/05/11/%E8%A7%A3%E6%B1%BA-internalerror-1251-uclient-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client/</guid><description>&lt;p&gt;某次在local測試時，因為要新增package而重新build了一次docker。&lt;br&gt;
 後來更新get-pip出現錯誤訊息如下:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;InternalError: (1251, u'Client does not support authentication protocol requested by server; consider upgrading MySQL client')&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;客戶端不支持服務器請求的身份驗證協議；請考慮升級MySQL客戶端&lt;/p&gt;
 &lt;p&gt;目前是使用python2.7，MySQL 8.0.23，&lt;br&gt;
 不推薦將MYSQL降級，可以通過在創建數據庫時告訴MySQL服務器使用舊版身份驗證插件來實現此目的。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql"&gt;ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+flush privileges;&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/5j9Eex7.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;如果不行的話，將@’localhost’拿掉，再重新執行一次，下方還有其他指令，可嘗試以下指令擇一試看看。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+ALTER USER 'root'@'localhost' IDENTIFIED BY '123456' PASSWORD EXPIRE NEVER;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+FLUSH PRIVILEGES; # 最後一定要加這段&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我是將@’localhost’拿掉後，才成功的。若失敗的話，請參考下方連結，內有許多解決方式。&lt;br&gt;
-參考連結:&lt;!-- raw HTML omitted --&gt;stackoverflow&lt;!-- raw HTML omitted --&gt;、&lt;!-- raw HTML omitted --&gt;Mysql 解決1251&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item></channel></rss>
+參考連結:&lt;a rel="noreferrer noopener" href="https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server/50961428" target="_blank"&gt;stackoverflow&lt;/a&gt;、&lt;a rel="noreferrer noopener" href="https://blog.csdn.net/lovedingd/article/details/106728292" data-type="URL" data-id="https://blog.csdn.net/lovedingd/article/details/106728292" target="_blank"&gt;Mysql 解決1251&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

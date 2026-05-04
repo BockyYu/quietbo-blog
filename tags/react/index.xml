@@ -3,17 +3,22 @@
  &gt;github:create-react-app&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;點擊網站來安裝&lt;a class="link" href="https://nodejs.org/en/" target="_blank" rel="noopener"
  &gt;Node.js&lt;/a&gt;&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/5YcVEgv.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;查看是否安裝成功&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;node -v
+npm -v&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;創建一個react&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;npx create-react-app react-store&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;打開剛才創建的react&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;cd react-store
+npm start&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;成功如下:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt; Local: http://localhost:3000
+ On Your Network: http://192.168.100.4:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;打開瀏覽器填入http://localhost:3000/&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;img decoding="async" src="https://i.imgur.com/gIAkRbN.png" alt="" /&gt;&lt;/p&gt;</description></item></channel></rss>

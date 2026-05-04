@@ -7,7 +7,50 @@
 <span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/python/ style=background-color:#efd7be;color:#3d270f>Python</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2021/07/22/python-%E6%9C%89%E5%BA%8F%E7%9A%84dict-ordereddict-%E5%BF%85%E5%AD%B8/>[Python] 有序的Dict – OrderedDict (必學)</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published datetime=2021-07-21T17:00:01Z>Wednesday, July 21, 2021</time>
 <svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>1 minute read</time></div></footer></div></header><section class=article-content><p>特性:<strong>依據key被插入的先後做排序，如果更新了某個key的值，不會影響排序位置，除非是把key刪除後又重新插入。後續加入的key都會從最末做添加</strong>。<br>本篇沒做增刪查改的範例。</p><h2 id=dict一般常用的>dict(一般常用的)</h2><p>一般常用的dict都會說是無序，但其實還是有一定的順序，是<strong>按照hash來存儲的，和存儲的數據結構有關</strong>(本篇不多說明)，但通常這個跟我們一般認真的序列有一點不一樣，因為不是填入時的順序。</p><p>輸出結果:</p><h2 id=ordereddict>OrderedDict</h2><p>輸出結果:</p><p>如果是要a~z排序的話就使用sorted，網路上很多參考，但這就不需要使用OrderedDict了，一般dict就可以做到，只是排序拼接而已，我自己工作上是很常用:</p><p>輸出結果:</p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/python/>Python</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2021/06/03/python-%E5%AD%97%E4%B8%B2%E8%BD%89%E5%9E%8B%E6%85%8Bast-literal_eval%EF%BC%8C%E4%B8%94%E7%82%BA%E4%BB%80%E9%BA%BC%E4%B8%8D%E5%BB%BA%E8%AD%B0eval%E5%BF%85%E5%AD%B8/><div class=article-details><h2 class=article-title>[Python]字串轉型態ast.literal_eval，且為什麼不建議eval(必學)</h2></div></a></article><article><a href=/2021/04/28/python%E5%AF%A6%E7%8F%BEphp-serialize%E5%87%BD%E6%95%B8/><div class=article-details><h2 class=article-title>[Python]實現php serialize函數</h2></div></a></article><article><a href=/2021/04/19/python-%E4%B8%A6%E7%99%BC%E7%B7%A8%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F/><div class=article-details><h2 class=article-title>[Python]並發編程的三種方式</h2></div></a></article><article><a href=/2021/03/10/ubuntu%E8%83%8C%E6%99%AF%E5%9F%B7%E8%A1%8Cpy%E6%96%B9%E6%B3%95/><div class=article-details><h2 class=article-title>[Linux]背景執行py方法</h2></div></a></article><article><a href=/2021/03/01/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B%E5%AF%ABline-bot/><div class=article-details><h2 class=article-title>Line bot – 創建Line bot帳號</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+<time class=article-time--reading>2 minutes read</time></div></footer></div></header><section class=article-content><p>特性:<strong>依據key被插入的先後做排序，如果更新了某個key的值，不會影響排序位置，除非是把key刪除後又重新插入。後續加入的key都會從最末做添加</strong>。<br>本篇沒做增刪查改的範例。</p><h2 id=dict一般常用的>dict(一般常用的)</h2><p>一般常用的dict都會說是無序，但其實還是有一定的順序，是<strong>按照hash來存儲的，和存儲的數據結構有關</strong>(本篇不多說明)，但通常這個跟我們一般認真的序列有一點不一樣，因為不是填入時的順序。</p><pre class=wp-block-code><code lang=python class="language-python line-numbers">example_dict = dict(
+    name='Bocky',
+    phone='0912-345-678',
+    address='Taiwan-Taipei',
+    age='18'
+)
+print(example_dict)</code></pre><p>輸出結果:</p><pre class=wp-block-code><code lang class=line-numbers>{'phone': '0912-345-678', 'age': '18', 'name': 'Bocky', 'address': 'Taiwan-Taipei'}</code></pre><h2 id=ordereddict>OrderedDict</h2><pre class=wp-block-code><code lang=python class="language-python line-numbers">from collections import OrderedDict
+import json
+# 錯誤示範，沒有照順序排列的效果(與一般dict結果一樣)
+example_ordered_dict_0 = OrderedDict(
+    name='Bocky',
+    phone='0912-345-678',
+    address='Taiwan-Taipei',
+    age='18'
+)
+print('錯誤示範的輸出:\n{}'.format(example_ordered_dict_0))
+print("="*20)
+
+example_ordered_dict_1 = OrderedDict([
+    ('name', 'Bocky'),
+    ('phone_number', '0912-345-678'),
+    ('address', 'Taiwan-Taipei'),
+    ('age', '18')
+])
+print("OrderedDict輸出結果:\n{}".format(example_ordered_dict_1))
+print("="*20)
+
+print("添加一個key為interest到最末端:")
+example_ordered_dict_1['interest'] = 'sleep'
+print(example_ordered_dict_1)
+print("="*20)
+
+print("把OrderedDict轉成字串,並剔除空白:")
+print (json.dumps(example_ordered_dict_1).replace(" ", ""))</code></pre><p>輸出結果:</p><pre class=wp-block-code><code lang class=line-numbers>錯誤示範的輸出:
+OrderedDict([('phone', '0912-345-678'), ('age', '18'), ('name', 'Bocky'), ('address', 'Taiwan-Taipei')])
+====================
+OrderedDict輸出結果:
+OrderedDict([('name', 'Bocky'), ('phone_number', '0912-345-678'), ('address', 'Taiwan-Taipei'), ('age', '18')])
+====================
+添加一個key為interest到最末端:
+OrderedDict([('name', 'Bocky'), ('phone_number', '0912-345-678'), ('address', 'Taiwan-Taipei'), ('age', '18'), ('interest', 'sleep')])
+====================
+把OrderedDict轉成字串,並剔除空白:
+{"name":"Bocky","phone_number":"0912-345-678","address":"Taiwan-Taipei","age":"18","interest":"sleep"}</code></pre><p>如果是要a~z排序的話就使用sorted，網路上很多參考，但這就不需要使用OrderedDict了，一般dict就可以做到，只是排序拼接而已，我自己工作上是很常用:</p><pre class=wp-block-code><code lang class=line-numbers>data = "&".join("{0}={1}".format(str(k), str(example_ordered_dict_1[k])) for k in sorted(example_ordered_dict_1.keys()))</code></pre><p>輸出結果:</p><pre class=wp-block-code><code lang>address=Taiwan-Taipei&age=18&interest=sleep&name=Bocky&phone_number=0912-345-678</code></pre></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/python/>Python</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2021/06/03/python-%E5%AD%97%E4%B8%B2%E8%BD%89%E5%9E%8B%E6%85%8Bast-literal_eval%EF%BC%8C%E4%B8%94%E7%82%BA%E4%BB%80%E9%BA%BC%E4%B8%8D%E5%BB%BA%E8%AD%B0eval%E5%BF%85%E5%AD%B8/><div class=article-details><h2 class=article-title>[Python]字串轉型態ast.literal_eval，且為什麼不建議eval(必學)</h2></div></a></article><article><a href=/2021/04/28/python%E5%AF%A6%E7%8F%BEphp-serialize%E5%87%BD%E6%95%B8/><div class=article-details><h2 class=article-title>[Python]實現php serialize函數</h2></div></a></article><article><a href=/2021/04/19/python-%E4%B8%A6%E7%99%BC%E7%B7%A8%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F/><div class=article-details><h2 class=article-title>[Python]並發編程的三種方式</h2></div></a></article><article><a href=/2021/03/10/ubuntu%E8%83%8C%E6%99%AF%E5%9F%B7%E8%A1%8Cpy%E6%96%B9%E6%B3%95/><div class=article-details><h2 class=article-title>[Linux]背景執行py方法</h2></div></a></article><article><a href=/2021/03/01/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B%E5%AF%ABline-bot/><div class=article-details><h2 class=article-title>Line bot – 創建Line bot帳號</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
 2026 Quietbo</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.1>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
     import gallery from '\/ts\/gallery.js';
 

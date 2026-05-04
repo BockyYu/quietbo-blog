@@ -2,242 +2,353 @@
 &lt;p&gt;&lt;a class="link" href="https://github.com/qishibo/AnotherRedisDesktopManager" target="_blank" rel="noopener"
  &gt;github網址&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;通過winget來完成:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;安裝完成後:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;winget install qishibo.AnotherRedisDesktopManager&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/PmIBnCD.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;安裝完成後:&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/nagDtzr.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;點選New Connection，填入自己的IP,Port號,密碼等&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Docker] Mac M1 安裝 Docker</title><link>https://quietbo.com/2021/09/13/docker-%E5%AE%89%E8%A3%9D-mac-m1/</link><pubDate>Mon, 13 Sep 2021 13:07:20 +0000</pubDate><guid>https://quietbo.com/2021/09/13/docker-%E5%AE%89%E8%A3%9D-mac-m1/</guid><description>&lt;p&gt;&lt;a class="link" href="https://docs.docker.com/docker-for-mac/apple-silicon/" target="_blank" rel="noopener"
+&lt;img decoding="async" src="https://i.imgur.com/xuvrecS.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Docker] Mac M1 安裝 Docker</title><link>https://quietbo.com/2021/09/13/docker-%E5%AE%89%E8%A3%9D-mac-m1/</link><pubDate>Mon, 13 Sep 2021 13:07:20 +0000</pubDate><guid>https://quietbo.com/2021/09/13/docker-%E5%AE%89%E8%A3%9D-mac-m1/</guid><description>&lt;p&gt;&lt;a class="link" href="https://docs.docker.com/docker-for-mac/apple-silicon/" target="_blank" rel="noopener"
  &gt;docker M1晶片安裝網址&lt;/a&gt;&lt;br&gt;
 &lt;a class="link" href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="noopener"
  &gt;docker Intel安裝網址&lt;/a&gt;&lt;br&gt;
 以往在Linux（ubuntu)環境安裝Docker，都是通過命令行安裝的，但這次 安裝Mac版的Docker變方便許多，下載完成的文件名叫做Docker.dmg。&lt;br&gt;
 雙擊後安裝，完成會出現下圖，把Docker.app移至應用程式就完成了。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/Yxy1rgU.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;應用程式中找到 Docker，雙擊打開，在右上角就會顯示docker已啟用。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/We4WkdA.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;系統要求:&lt;br&gt;
 必須安裝Rosetta 2，因為某些二進製文件仍然是 Darwin/AMD64。要從命令行手動安裝 Rosetta 2，請運行以下命令：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;softwareupdate --install-rosetta&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;檢查當前docker的版本：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker version&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;使用M1晶片的話，Arch會是arm64&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/QaW3kjD.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;docker.app打開後的畫面如下：&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Virtualbox] 安裝ubuntu20.04</title><link>https://quietbo.com/2021/07/01/%E8%99%9B%E6%93%AC%E6%A9%9F-virtualbox%E5%AE%89%E8%A3%9Dubuntu/</link><pubDate>Thu, 01 Jul 2021 12:00:25 +0000</pubDate><guid>https://quietbo.com/2021/07/01/%E8%99%9B%E6%93%AC%E6%A9%9F-virtualbox%E5%AE%89%E8%A3%9Dubuntu/</guid><description>&lt;p&gt;工作配Windows但開發時都用Linux，然後自己就很常弄壞環境，菜雞時期都是建新的，常用的工具在慢慢裝回來，後來學會備份(映像檔)和快照後，弄壞弄的更安心了呢(?)，但還是菜，bug(菜蟲)都掉滿地了。&lt;br&gt;
-真心建議安裝完後可以去學個【&lt;!-- raw HTML omitted --&gt;Virtualbox 快照&lt;!-- raw HTML omitted --&gt;】、 【 &lt;!-- raw HTML omitted --&gt;系統備份映象檔&lt;!-- raw HTML omitted --&gt;】 功能，也許哪天環境有問題，怎麼辦都解決不了的時候，快照也許能幫上忙，至少不用全部都重新安裝。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/R5PL8bA.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Virtualbox] 安裝ubuntu20.04</title><link>https://quietbo.com/2021/07/01/%E8%99%9B%E6%93%AC%E6%A9%9F-virtualbox%E5%AE%89%E8%A3%9Dubuntu/</link><pubDate>Thu, 01 Jul 2021 12:00:25 +0000</pubDate><guid>https://quietbo.com/2021/07/01/%E8%99%9B%E6%93%AC%E6%A9%9F-virtualbox%E5%AE%89%E8%A3%9Dubuntu/</guid><description>&lt;p&gt;工作配Windows但開發時都用Linux，然後自己就很常弄壞環境，菜雞時期都是建新的，常用的工具在慢慢裝回來，後來學會備份(映像檔)和快照後，弄壞弄的更安心了呢(?)，但還是菜，bug(菜蟲)都掉滿地了。&lt;br&gt;
+真心建議安裝完後可以去學個【&lt;a rel="noreferrer noopener" href="https://quietbo.com/2021/07/04/virtualbox-%e9%82%84%e5%8e%9f%e4%b9%8b%e5%89%8d%e7%9a%84%e5%82%99%e4%bb%bd%e8%88%87%e9%82%84%e5%8e%9f%e6%96%b9%e5%bc%8f-%e5%bf%ab%e7%85%a7-%e5%bf%85%e5%ad%b8/?preview=true" target="_blank"&gt;Virtualbox 快照&lt;/a&gt;】、 【 &lt;a href="https://quietbo.com/2021/08/12/virtualbox-%e7%b3%bb%e7%b5%b1%e5%82%99%e4%bb%bd%e6%98%a0%e8%b1%a1%e6%aa%94/" data-type="URL" data-id="https://quietbo.com/2021/08/12/virtualbox-%e7%b3%bb%e7%b5%b1%e5%82%99%e4%bb%bd%e6%98%a0%e8%b1%a1%e6%aa%94/"&gt;系統備份映象檔&lt;/a&gt;】 功能，也許哪天環境有問題，怎麼辦都解決不了的時候，快照也許能幫上忙，至少不用全部都重新安裝。&lt;/p&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="安裝"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;安裝&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/07/01/%e8%99%9b%e6%93%ac%e6%a9%9f-virtualbox%e5%ae%89%e8%a3%9dubuntu/#%E5%AE%89%E8%A3%9D" &gt;安裝&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/07/01/%e8%99%9b%e6%93%ac%e6%a9%9f-virtualbox%e5%ae%89%e8%a3%9dubuntu/#%E8%A7%A3%E6%9E%90%E5%BA%A6%E8%A8%AD%E5%AE%9A" &gt;解析度設定&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/07/01/%e8%99%9b%e6%93%ac%e6%a9%9f-virtualbox%e5%ae%89%e8%a3%9dubuntu/#%E8%A8%AD%E5%AE%9A%E5%8F%AF%E4%BB%A5%E9%9B%99%E5%90%91%E5%89%AA%E8%B2%BC" &gt;設定可以雙向剪貼&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/07/01/%e8%99%9b%e6%93%ac%e6%a9%9f-virtualbox%e5%ae%89%e8%a3%9dubuntu/#%E5%85%B1%E4%BA%AB%E8%B3%87%E6%96%99%E5%A4%BE" &gt;共享資料夾&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2021/07/01/%e8%99%9b%e6%93%ac%e6%a9%9f-virtualbox%e5%ae%89%e8%a3%9dubuntu/#%E7%95%AB%E9%9D%A2%E5%A4%A7%E5%B0%8F" &gt;畫面大小&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="安裝"&gt;&lt;span class="ez-toc-section" id="%E5%AE%89%E8%A3%9D"&gt;&lt;/span&gt;安裝&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;先新增虛擬機的名稱&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;img decoding="async" src="https://i.imgur.com/pflnAFT.png" alt="" /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;2.名稱,系統,版本如下&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/NPMNX72.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;以下步驟:&lt;br&gt;
 記憶體大小(下一步)-&amp;gt;立即建立虛擬硬碟-&amp;gt;VDI(VirtualBox磁碟映像)-&amp;gt;動態分配-&amp;gt;建議分32G&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/DqeBhjS.png" alt="" /&gt;&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/IOpb9lK.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;新增完後點選設定:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/CXwIJuN.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;系統-&amp;gt;加速-&amp;gt;不要勾Nested Paging&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/O0v2Pig.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;存放裝置 -&amp;gt; 空的 -&amp;gt; 找出iso檔的位置(自行決定要安裝的版本) -&amp;gt; 確定&lt;br&gt;
 注意:iso檔盡量不要放在中文路徑的資料夾下&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/Soak3kh.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;點選啟動:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/HSQeKe6.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;一開始的設定跟密碼不講解。&lt;/p&gt;
 &lt;p&gt;開始安裝畫面:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/Am90YfI.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;安裝完重新開機&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/BZA6GoL.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;記得要按Enter進入系統，不然會一直停再畫面&lt;br&gt;
 輸入剛剛設定時的密碼,記得打開右方的NumLock，不然可能按到”訪客作業階段”&lt;br&gt;
 我設很簡單&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/Vg4fEcS.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;登入成功!!!&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="解析度設定"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;解析度設定&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/O3lFH3a.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="解析度設定"&gt;&lt;span class="ez-toc-section" id="%E8%A7%A3%E6%9E%90%E5%BA%A6%E8%A8%AD%E5%AE%9A"&gt;&lt;/span&gt;解析度設定&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;畫面超級小,先把他調大一點…&lt;br&gt;
 右上角-&amp;gt;系統設定-&amp;gt;顯示器-&amp;gt;解析度(自行調整)&lt;br&gt;
 我是用1680*1050(16:10)&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="設定可以雙向剪貼"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;設定可以雙向剪貼&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/gQ6zMul.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="設定可以雙向剪貼"&gt;&lt;span class="ez-toc-section" id="%E8%A8%AD%E5%AE%9A%E5%8F%AF%E4%BB%A5%E9%9B%99%E5%90%91%E5%89%AA%E8%B2%BC"&gt;&lt;/span&gt;設定可以雙向剪貼&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;沒用的話會無法貼上從windows複製的文字&lt;/p&gt;
 &lt;p&gt;裝置-&amp;gt;插入Guest Additions CD 映像&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/dZGRaKI.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;點選執行&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/6LfMWVw.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;打上密碼:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/W5l12rr.png" alt="" /&gt;&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/J1CMASF.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;輸入:yes&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/NAyT6hv.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;選雙向&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/5sJV1uZ.png" alt="" /&gt;&lt;br&gt;
 選雙向&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/N84wRLB.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;完成&lt;/p&gt;
-&lt;h2 id="共享資料夾"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;共享資料夾&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="共享資料夾"&gt;&lt;span class="ez-toc-section" id="%E5%85%B1%E4%BA%AB%E8%B3%87%E6%96%99%E5%A4%BE"&gt;&lt;/span&gt;共享資料夾&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;終端機輸入這串:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo usermod --append --groups vboxsf $USER&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;裝置-&amp;gt; 共用資料夾 -&amp;gt; 共用資料夾設定&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/Iqf4SMG.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;注意:這裡選擇的是在外面windows的資料夾路徑&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/lgV3Qtx.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;共用的資料夾是創建在windows的，&lt;br&gt;
 不是ubuntu(如果想要從ubuntu分享也可以用其他方式)。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/e9KNlgz.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;下圖就是成功掛載的樣子，檢查資料夾的路徑，沒問題就按確認。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/u5Fi6H9.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;打開ubuntu的檔案資料夾，會出現剛才建立的資料夾:&lt;br&gt;
 前綴是sf_加共用資料夾名稱，打開後測試看看能不能在ubuntu添加檔案。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="畫面大小"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;畫面大小&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/b8mvMBY.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="畫面大小"&gt;&lt;span class="ez-toc-section" id="%E7%95%AB%E9%9D%A2%E5%A4%A7%E5%B0%8F"&gt;&lt;/span&gt;畫面大小&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;自動調整客體顯示大小&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/0JyDeEU.png" alt="" /&gt;&lt;/p&gt;
 &lt;h5 id="補充無法使用客體大小"&gt;補充:無法使用客體大小
 &lt;/h5&gt;&lt;p&gt;某次安裝的ubuntu20.04無法使用客體大小。在網路上查了三個小時終於找到解決方式。&lt;/p&gt;
 &lt;p&gt;一直重新安裝VBoxGuestAdditions.iso檔都沒用，最後再下列網址找到解決方式。&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://askubuntu.com/questions/452979/resolution-doesnt-change-when-resizing-virtualbox-window" target="_blank" rel="noopener"
  &gt;解決網址&lt;/a&gt;&lt;br&gt;
 終端機輸入下列指令，之後重新開機。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[安裝]Mac pro M1 安裝virtualenv</title><link>https://quietbo.com/2021/06/27/mac-pro-m1-%E5%AE%89%E8%A3%9Dvirtualenv/</link><pubDate>Sun, 27 Jun 2021 11:55:45 +0000</pubDate><guid>https://quietbo.com/2021/06/27/mac-pro-m1-%E5%AE%89%E8%A3%9Dvirtualenv/</guid><description>&lt;p&gt;目前自帶版本有:&lt;br&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo apt-get install virtualbox-guest-dkms&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[安裝]Mac pro M1 安裝virtualenv</title><link>https://quietbo.com/2021/06/27/mac-pro-m1-%E5%AE%89%E8%A3%9Dvirtualenv/</link><pubDate>Sun, 27 Jun 2021 11:55:45 +0000</pubDate><guid>https://quietbo.com/2021/06/27/mac-pro-m1-%E5%AE%89%E8%A3%9Dvirtualenv/</guid><description>&lt;p&gt;目前自帶版本有:&lt;br&gt;
 Python 2.7.16&lt;br&gt;
 Python 3.8.2&lt;/p&gt;
 &lt;p&gt;查詢路徑：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[Docke] ubuntu 安裝Docke</title><link>https://quietbo.com/2021/05/12/docke-ubuntu-%E5%AE%89%E8%A3%9D/</link><pubDate>Tue, 11 May 2021 17:56:00 +0000</pubDate><guid>https://quietbo.com/2021/05/12/docke-ubuntu-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;以下為ubuntu20.04&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;which python3 # which python&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/cjtmWq2.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 安裝virtualenv&lt;br /&gt;用pip就可以安裝 virtualenv，可以同時用在 Python 2 和 3，
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;pip install virtualenv&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 創建虛擬環境
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;mkdir work_venv # 建立一個名為work_venv的資料夾
+python3 -m virtualenv XXXvenv # 創建名為XXvenv的虛擬機&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/PXPLVuo.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 進入/安裝模組/離開虛擬環境
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;source XXvenv/bin/activate
+
+# 進到虛擬環境，最前面就會多（XXvenv）
+pip list&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/unecAMW.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;pip install XXXX # 安裝模組
+pip install -r requirements.txt # 導入requirements.txt(路徑自行填寫)
+deactivate # 離開虛擬環境&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docke] ubuntu 安裝Docke</title><link>https://quietbo.com/2021/05/12/docke-ubuntu-%E5%AE%89%E8%A3%9D/</link><pubDate>Tue, 11 May 2021 17:56:00 +0000</pubDate><guid>https://quietbo.com/2021/05/12/docke-ubuntu-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;以下為ubuntu20.04&lt;/p&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="linux-安裝docker"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Linux 安裝docker&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#Linux_%E5%AE%89%E8%A3%9Ddocker" &gt;Linux 安裝docker&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#Linux_%E5%AE%89%E8%A3%9Ddocker_Compose" &gt;Linux 安裝docker Compose&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#docker_%E5%88%87%E6%8F%9B%E4%BD%BF%E7%94%A8%E8%80%85" &gt;docker 切換使用者&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#%E6%9B%B4%E6%96%B0apt%E5%8C%85%E8%B5%84%E6%BA%90%E7%B4%A2%E5%BC%95" &gt;更新apt包资源索引&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#%E5%AE%89%E8%A3%9D%E8%BB%9F%E4%BB%B6%E5%8C%85%E4%BB%A5%E5%85%81%E8%A8%B1apt%E9%80%9A%E9%81%8EHTTPS%E4%BD%BF%E7%94%A8%E5%AD%98%E5%84%B2%E5%BA%AB" &gt;安裝軟件包以允許apt通過HTTPS使用存儲庫:&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#%E9%87%8D%E6%96%B0%E9%96%8B%E5%95%9Fdocker" &gt;重新開啟docker&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="linux-安裝docker"&gt;&lt;span class="ez-toc-section" id="Linux_%E5%AE%89%E8%A3%9Ddocker"&gt;&lt;/span&gt;Linux 安裝docker&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;在 Ubuntu Linux 中，使用 apt 安裝 Docker 比較方便：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo apt-get install docker.io&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/6z0wwDO.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;安裝好之後，查看一下 docker 服務是否有正常啟動：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service docker status&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;正常的話，應該可以看到綠色的狀態：&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="linux-安裝docker-compose"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Linux 安裝docker Compose&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="docker-切換使用者"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;docker 切換使用者&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="更新apt包资源索引"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;更新apt包资源索引&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="安裝軟件包以允許apt通過https使用存儲庫"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;安裝軟件包以允許apt通過HTTPS使用存儲庫:&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="重新開啟docker"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;重新開啟docker&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/UMvvP4N.png" alt="" /&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo usermod -aG docker 使用者名稱&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/SgP2HST.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker version&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/QvrXKqq.png" alt="" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image"&gt;&lt;img decoding="async" src="https://i.imgur.com/B5QPKn6.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="linux-安裝docker-compose"&gt;&lt;span class="ez-toc-section" id="Linux_%E5%AE%89%E8%A3%9Ddocker_Compose"&gt;&lt;/span&gt;Linux 安裝docker Compose&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo gpasswd -a ${USER} docker&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/L9WTE0i.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="docker-切換使用者"&gt;&lt;span class="ez-toc-section" id="docker_%E5%88%87%E6%8F%9B%E4%BD%BF%E7%94%A8%E8%80%85"&gt;&lt;/span&gt;docker 切換使用者&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 將使用者加入群組
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo gpasswd -a ${USER} docker&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 切換到超級使用者
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo su&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 切回使用者
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;su ubuntu&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="更新apt包资源索引"&gt;&lt;span class="ez-toc-section" id="%E6%9B%B4%E6%96%B0apt%E5%8C%85%E8%B5%84%E6%BA%90%E7%B4%A2%E5%BC%95"&gt;&lt;/span&gt;更新apt包资源索引&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo apt-get update&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="安裝軟件包以允許apt通過https使用存儲庫"&gt;&lt;span class="ez-toc-section" id="%E5%AE%89%E8%A3%9D%E8%BB%9F%E4%BB%B6%E5%8C%85%E4%BB%A5%E5%85%81%E8%A8%B1apt%E9%80%9A%E9%81%8EHTTPS%E4%BD%BF%E7%94%A8%E5%AD%98%E5%84%B2%E5%BA%AB"&gt;&lt;/span&gt;安裝軟件包以允許apt通過HTTPS使用存儲庫:&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo apt-get install \
+ apt-transport-https \
+ ca-certificates \
+ curl \
+ software-properties-common&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="重新開啟docker"&gt;&lt;span class="ez-toc-section" id="%E9%87%8D%E6%96%B0%E9%96%8B%E5%95%9Fdocker"&gt;&lt;/span&gt;重新開啟docker&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;有次早上要執行docker-compose的時候無法正常開啟，出現下方錯誤訊息&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;當時已經設好群組卻還是一樣，所以有可能就是docker不知道原因**&lt;!-- raw HTML omitted --&gt;被關閉&lt;!-- raw HTML omitted --&gt;**了。&lt;br&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;ERROR: Couldn't connect to Docker daemon at http+docker://localhost - is it running?
+
+If it's at a non-standard location, specify the URL with the DOCKER_HOST environment variable.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;當時已經設好群組卻還是一樣，所以有可能就是docker不知道原因**&lt;span style="text-decoration: underline;"&gt;被關閉&lt;/span&gt;**了。&lt;br&gt;
 下方指令為重新開啟docker的方式。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[安裝]Python 2.7以及Python virtualenv</title><link>https://quietbo.com/2021/03/24/python-2-7%E4%BB%A5%E5%8F%8Apython-virtual-environment-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 10:51:20 +0000</pubDate><guid>https://quietbo.com/2021/03/24/python-2-7%E4%BB%A5%E5%8F%8Apython-virtual-environment-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;因ubuntu從18.04開始，內建的python版本都是為3.6以上 (舊的內建2.7)，所以要手動輸入版本號&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;service docker start
+sudo docker-compose up&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[安裝]Python 2.7以及Python virtualenv</title><link>https://quietbo.com/2021/03/24/python-2-7%E4%BB%A5%E5%8F%8Apython-virtual-environment-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 10:51:20 +0000</pubDate><guid>https://quietbo.com/2021/03/24/python-2-7%E4%BB%A5%E5%8F%8Apython-virtual-environment-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;因ubuntu從18.04開始，內建的python版本都是為3.6以上 (舊的內建2.7)，所以要手動輸入版本號&lt;/p&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="安裝python27"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;安裝python2.7&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/03/24/python-2-7%e4%bb%a5%e5%8f%8apython-virtual-environment-%e5%ae%89%e8%a3%9d/#%E5%AE%89%E8%A3%9Dpython27" &gt;安裝python2.7&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/03/24/python-2-7%e4%bb%a5%e5%8f%8apython-virtual-environment-%e5%ae%89%e8%a3%9d/#%E5%AE%89%E8%A3%9Dpip%E5%A5%97%E4%BB%B6" &gt;安裝pip套件&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/03/24/python-2-7%e4%bb%a5%e5%8f%8apython-virtual-environment-%e5%ae%89%e8%a3%9d/#%E4%BD%BF%E7%94%A8pip%E5%AE%89%E8%A3%9Dvirtualenv" &gt;使用pip安裝virtualenv&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/03/24/python-2-7%e4%bb%a5%e5%8f%8apython-virtual-environment-%e5%ae%89%e8%a3%9d/#%E7%82%BAvirtualenv%E8%A3%BD%E4%BD%9C%E5%88%A5%E5%90%8D" &gt;為virtualenv製作別名&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="安裝python27"&gt;&lt;span class="ez-toc-section" id="%E5%AE%89%E8%A3%9Dpython27"&gt;&lt;/span&gt;安裝python2.7&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;sudo apt update
+sudo apt install python2.7 -y&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;檢查一下python2.7版本:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;python2.7 -V&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;輸出結果:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="安裝pip套件"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;安裝pip套件&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/w4o7c6Q.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="安裝pip套件"&gt;&lt;span class="ez-toc-section" id="%E5%AE%89%E8%A3%9Dpip%E5%A5%97%E4%BB%B6"&gt;&lt;/span&gt;安裝pip套件&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;這邊的作法是下載&lt;code&gt;get-pip.py&lt;/code&gt;來安裝。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;:&lt;br&gt;
 第3行的URL不一定是最新的，若有跳出錯誤訊息是URL找不到，請自行更換成錯誤訊息跳出的URL。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;cd ~
+cd 下載
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+python2.7 get-pip.py &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;若安裝成功，最後會看到這個訊息:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/UIkuliG.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;(可略過不做)&lt;br&gt;
 為使用pip套件建立別名:&lt;br&gt;
 後面的指令pip2請自行改成&lt;code&gt;python2.7 -m pip&lt;/code&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;cd ~
+touch .bash_aliases
+echo "alias pip2='python2.7 -m pip'" &amp;gt;&amp;gt; .bash_aliases
+source .bash_aliases
+pip2 -V&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;輸出結果:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="使用pip安裝virtualenv"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;使用pip安裝virtualenv&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;pip 20.3.4 from /home/ubuntu/.local/lib/python2.7/site-packages/pip (python 2.7)&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="使用pip安裝virtualenv"&gt;&lt;span class="ez-toc-section" id="%E4%BD%BF%E7%94%A8pip%E5%AE%89%E8%A3%9Dvirtualenv"&gt;&lt;/span&gt;使用pip安裝virtualenv&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;日後為每個專案製作一個專屬的python environment&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="為virtualenv製作別名"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;為virtualenv製作別名&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;pip2 install virtualenv
+# 等同於 python2.7 -m pip install virtualenv&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/u9rTOFG.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="為virtualenv製作別名"&gt;&lt;span class="ez-toc-section" id="%E7%82%BAvirtualenv%E8%A3%BD%E4%BD%9C%E5%88%A5%E5%90%8D"&gt;&lt;/span&gt;為virtualenv製作別名&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;這是因為如果安裝其他python版本的virtualenv，用別名來區分使用的版本。&lt;strong&gt;也可以略過，後續指令virtialenv2.7自行替換成virtualenv&lt;/strong&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;echo "alias virtualenv2.7='python2.7 -m virtualenv'" &amp;gt;&amp;gt; ~/.bash_aliases
+source .bash_aliases
+# 測試一下
+virtualenv2.7 --version
+# 輸出結果
+# virtualenv 20.4.3 from /home/ubuntu/.local/lib/python2.7/site-packages/virtualenv/__init__.pyc&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;製作一個test_venv專屬的python environment。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;mkdir python27_venv
+cd python27_venv
+virtualenv2.7 test_venv # 方法1:有製作別名(上方操作)才可使用此方法
+python27_venv python2.7 -m virtualenv test_venv # 方法2&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/IBxbyKT.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;創建完後進入虛擬環境:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[MySQL] 快速安裝</title><link>https://quietbo.com/2021/03/24/mysql-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 09:14:15 +0000</pubDate><guid>https://quietbo.com/2021/03/24/mysql-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;apt套件管理器安裝:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;source ~/python27_venv/test_venv/bin/activate&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;# 命令列多出前綴(test_venv)。表示已經啟用此虛擬環境
+(test_venv)$ python -V
+Python 2.7.17 # 輸出結果
+(test_venv)$ pip list
+
+(test_venv)$ deactivate # 離開虛擬環境
+
+# 前綴消失，表示已經關閉虛擬環境&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/YhCSlD5.png" alt="" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image"&gt;&lt;img decoding="async" src="https://i.imgur.com/xuP235Q.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;</description></item><item><title>[MySQL] 快速安裝</title><link>https://quietbo.com/2021/03/24/mysql-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 09:14:15 +0000</pubDate><guid>https://quietbo.com/2021/03/24/mysql-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;apt套件管理器安裝:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo apt update
+sudo apt install mysql-server -y&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;安裝完應會自動啟動:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/SE8x1aZ.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;檢查redis服務狀態:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service mysql status&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;停止redis server:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service mysql stop&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;啟動redis server:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service mysql start&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;進入Mysql:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;mysql -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/WeiyuQw.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;若出現則登入成功。&lt;br&gt;
 mysql&amp;gt;&lt;/p&gt;</description></item><item><title>[Redis]安裝</title><link>https://quietbo.com/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 08:00:54 +0000</pubDate><guid>https://quietbo.com/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;利用apt套件管理器安裝:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo apt update
+sudo apt install redis-server -y&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;檢查redis服務狀態:&lt;br&gt;
 安裝完應會自動啟動。開啟會出現綠色字active(running)&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/bSzwVOX.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;檢查服務狀態:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service redis-server status &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;停止redis server:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service redis-server stop&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;啟動redis server:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service redis-server start&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;啟動redis服務器:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;redis-cli&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/KUEm3J5.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;</description></item></channel></rss>

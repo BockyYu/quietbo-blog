@@ -8,7 +8,32 @@
 </a><a href=/categories/python/ style=background-color:#efd7be;color:#3d270f>Python</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2021/03/10/ubuntu%E8%83%8C%E6%99%AF%E5%9F%B7%E8%A1%8Cpy%E6%96%B9%E6%B3%95/>[Linux]背景執行py方法</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published datetime=2021-03-10T10:33:33Z>Wednesday, March 10, 2021</time>
 <svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>1 minute read</time></div></footer></div></header><section class=article-content><p>2022/07/06 – 新增[Python] 背景執行nohup, & 與 nohup.out</p><p>主要介紹在linux下使用Terminal來背景執行python的幾種方式，<br>執行3隻python檔，每5秒、10秒、15秒各別顯示當前時間。</p><p>以下為python範例:<br>test.py、test2.py、test3.py這三隻同時使用背景來執行的畫面。</p><p>執行test.py後，會顯示跳出PID為25270。</p><p>如果想讓程式跑在背景，在結尾的地方加個&<br>python 背景執行指令如下:</p><p></p><p>再執行一隻test2.py，不會讓原本的test.py停住，仍在背景繼續執行，並且顯示test2.py新的PID。</p><p></p><p>再執行test3.py。</p><p></p><p>查詢背景運行的程式:</p><p></p><p>想停止某隻程式的話，輸入下方指令:</p><p>下圖為停止第一支test.py的程式。</p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/python/>Python</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2021/03/01/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B%E5%AF%ABline-bot/><div class=article-details><h2 class=article-title>Line bot – 創建Line bot帳號</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+<time class=article-time--reading>1 minute read</time></div></footer></div></header><section class=article-content><p>2022/07/06 – 新增<a href="https://quietbo.com/2022/07/06/python-%e8%83%8c%e6%99%af%e5%9f%b7%e8%a1%8cnohup-%e8%88%87-nohup-out/?preview_id=847&preview_nonce=4fb57ac562&preview=true" data-type=URL data-id="https://quietbo.com/2022/07/06/python-%e8%83%8c%e6%99%af%e5%9f%b7%e8%a1%8cnohup-%e8%88%87-nohup-out/?preview_id=847&preview_nonce=4fb57ac562&preview=true" target=_blank rel="noreferrer noopener">[Python] 背景執行nohup, & 與 nohup.out</a></p><hr class="wp-block-separator has-alpha-channel-opacity"><p>主要介紹在linux下使用Terminal來背景執行python的幾種方式，<br>執行3隻python檔，每5秒、10秒、15秒各別顯示當前時間。</p><p>以下為python範例:<br>test.py、test2.py、test3.py這三隻同時使用背景來執行的畫面。</p><p>執行test.py後，會顯示跳出PID為25270。</p><pre class=wp-block-code><code lang=python class="language-python line-numbers"># coding:utf-8
+from datetime import datetime
+from time import sleep
+
+while(1):
+    count = 1
+    sleep(5)
+    print(str(count) + " : " + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))</code></pre><p>如果想讓程式跑在背景，在結尾的地方加個&<br>python 背景執行指令如下:</p><pre class=wp-block-code><code lang=python class=language-python>python 程式碼名稱 &</code></pre><figure class=wp-block-image><p><img decoding=async src=https://i.imgur.com/26SgbQS.png alt></figure></p><p>再執行一隻test2.py，不會讓原本的test.py停住，仍在背景繼續執行，並且顯示test2.py新的PID。</p><pre class=wp-block-code><code lang=python class="language-python line-numbers"># coding:utf-8
+from datetime import datetime
+from time import sleep
+
+while(1):
+    count = 2
+    sleep(10)
+    print(str(count) + " : " + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))</code></pre><figure class=wp-block-image><p><img decoding=async src=https://i.imgur.com/qs2nJvo.png alt></figure></p><p>再執行test3.py。</p><pre class=wp-block-code><code lang=python class="language-python line-numbers"># coding:utf-8
+from datetime import datetime
+from time import sleep
+
+while(1):
+    count = 3
+    sleep(15)
+    print(str(count) + " : " + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))</code></pre><figure class=wp-block-image><p><img decoding=async src=https://i.imgur.com/vemyMSe.png alt></figure></p><p>查詢背景運行的程式:</p><pre class=wp-block-code><code lang=bash class=language-bash>ps -ef</code></pre><figure class=wp-block-image><p><img decoding=async src=https://i.imgur.com/IczNFtg.png alt></figure></p><p>想停止某隻程式的話，輸入下方指令:</p><pre class=wp-block-code><code>kill PID</code></pre><p>下圖為停止第一支test.py的程式。</p><img decoding=async src=https://i.imgur.com/XGJJtqK.png alt>
+kill掉後原本的Terminal會出現已終止的程式名稱。
+<img decoding=async src=https://i.imgur.com/1If2w51.png alt>
+原本的test2.py和test3.py還會繼續執行。
+<img decoding=async src=https://i.imgur.com/ucgmhz8.png alt></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/python/>Python</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2021/03/01/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B%E5%AF%ABline-bot/><div class=article-details><h2 class=article-title>Line bot – 創建Line bot帳號</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
 2026 Quietbo</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.1>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
     import gallery from '\/ts\/gallery.js';
 

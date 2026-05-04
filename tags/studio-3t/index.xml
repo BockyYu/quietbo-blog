@@ -2,38 +2,76 @@
 Windows使用GUI &lt;a class="link" href="https://studio3t.com/" target="_blank" rel="noopener"
  &gt;Studio 3T&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;請自行先安裝VMware、ubuntu、docker及Studio 3T。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="ubuntu安裝docker-mongodb"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;ubuntu安裝docker mongodb&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2023/01/09/python-%e8%88%87mongodb%e9%80%a3%e6%8e%a5%e4%b8%a6%e4%bd%bf%e7%94%a8guistudio-3t/#ubuntu%E5%AE%89%E8%A3%9Ddocker_mongodb" &gt;ubuntu安裝docker mongodb&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2023/01/09/python-%e8%88%87mongodb%e9%80%a3%e6%8e%a5%e4%b8%a6%e4%bd%bf%e7%94%a8guistudio-3t/#%E6%9F%A5%E8%A9%A2%E8%A9%B2ubuntu%E7%9A%84IP%E4%BD%8D%E5%9D%80" &gt;查詢該ubuntu的IP位址&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2023/01/09/python-%e8%88%87mongodb%e9%80%a3%e6%8e%a5%e4%b8%a6%e4%bd%bf%e7%94%a8guistudio-3t/#Windows%E5%AE%89%E8%A3%9DStudio_3T" &gt;Windows安裝Studio 3T&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2023/01/09/python-%e8%88%87mongodb%e9%80%a3%e6%8e%a5%e4%b8%a6%e4%bd%bf%e7%94%a8guistudio-3t/#%E5%A6%82%E4%BD%95%E9%80%B2%E5%85%A5docker%E5%85%A7%E7%9A%84mongodb" &gt;如何進入docker內的mongodb?&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="ubuntu安裝docker-mongodb"&gt;&lt;span class="ez-toc-section" id="ubuntu%E5%AE%89%E8%A3%9Ddocker_mongodb"&gt;&lt;/span&gt;ubuntu安裝docker mongodb&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;下載image&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker pull mongo:latest&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;啟動容器&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker run --name mongo -v /d/tmp/mongo/data:/data/db -d -p 27017:27017 mongo:latest&lt;/code&gt;&lt;/pre&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ &amp;#8211;name 指定建起來的container名字
+ &lt;/li&gt;
+ &lt;li&gt;
+ -v 連結local端目錄與container目錄 (像Linux中mount共用空間的概念)
+ &lt;/li&gt;
+ &lt;li&gt;
+ -d 背景執行
+ &lt;/li&gt;
+ &lt;li&gt;
+ -p 指定將docker內的27017 port 與本地端(ubuntu)的27017 port連結在一起，這樣就可以透過本地直接連container了
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;若ubuntu重新啟動發現容器沒有up是正常的，只要在重新使用start就可以起來了，&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker ps -a
+docker start {CONTAINER_ID}&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:docker start 242c45f0ab65&lt;br&gt;
 up正常為下圖:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="查詢該ubuntu的ip位址"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;查詢該ubuntu的IP位址&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/2loo39c.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="查詢該ubuntu的ip位址"&gt;&lt;span class="ez-toc-section" id="%E6%9F%A5%E8%A9%A2%E8%A9%B2ubuntu%E7%9A%84IP%E4%BD%8D%E5%9D%80"&gt;&lt;/span&gt;查詢該ubuntu的IP位址&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;右上角網路資訊點進去到這頁面會看到ubnutu的ip&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="windows安裝studio-3t"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Windows安裝Studio 3T&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/mtAd6ZL.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="windows安裝studio-3t"&gt;&lt;span class="ez-toc-section" id="Windows%E5%AE%89%E8%A3%9DStudio_3T"&gt;&lt;/span&gt;Windows安裝Studio 3T&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;GUI &lt;a class="link" href="https://studio3t.com/" target="_blank" rel="noopener"
  &gt;Studio 3T&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;設置與ubuntu內的mongodb&lt;/p&gt;
 &lt;p&gt;點Connect建立New Connect。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/Uz82ZC5.png" alt="" /&gt;&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/xSPR4yk.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;成功會出現下圖&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="如何進入docker內的mongodb"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;如何進入docker內的mongodb?&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/oAkMC9W.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="如何進入docker內的mongodb"&gt;&lt;span class="ez-toc-section" id="%E5%A6%82%E4%BD%95%E9%80%B2%E5%85%A5docker%E5%85%A7%E7%9A%84mongodb"&gt;&lt;/span&gt;如何進入docker內的mongodb?&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 進入容器，指令:docker exec -it 容器ID bash
+ &lt;/li&gt;
+ &lt;li&gt;
+ 進入容器後輸入:mongosh
+ &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;下圖為成功進入docker內的mongodb&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/JKKB3re.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;補充&lt;br&gt;
 如果沒連上可能是ubuntu 27017的port沒有分享出來。&lt;/p&gt;</description></item></channel></rss>

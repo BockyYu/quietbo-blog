@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Makefile on Quietbo</title><link>https://quietbo.com/tags/makefile/</link><description>Recent content in Makefile on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Thu, 28 Jul 2022 03:26:38 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/makefile/index.xml" rel="self" type="application/rss+xml"/><item><title>[Linux] Makefile:8: *** missing separator. Stop.(已解決)</title><link>https://quietbo.com/2022/07/28/linux-makefile8-missing-separator-stop-%E5%B7%B2%E8%A7%A3%E6%B1%BA/</link><pubDate>Thu, 28 Jul 2022 03:26:38 +0000</pubDate><guid>https://quietbo.com/2022/07/28/linux-makefile8-missing-separator-stop-%E5%B7%B2%E8%A7%A3%E6%B1%BA/</guid><description>&lt;p&gt;原因:&lt;/p&gt;
 &lt;p&gt;出現這個錯誤的原因通常是tab格式錯誤導致的。Makefile的命令行必須以一個tab作為開頭, 不可用4個空白。&lt;/p&gt;
 &lt;p&gt;在~/.vimrc文件中添加：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;set tabstop=4 //設置tab鍵是4個空格
+set noexpandtab //不把tab键用空格代替&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看目前的Makefile是否有tab鍵&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;cat -t Makefile&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;當你看到&lt;code&gt;^I&lt;/code&gt;代表tab。出問題的命令行如果前面是有空白, 代表該命令的指令是需要修改的&lt;/p&gt;</description></item></channel></rss>

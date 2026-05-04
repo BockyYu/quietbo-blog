@@ -1,16 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on Quietbo</title><link>https://quietbo.com/tags/redis/</link><description>Recent content in Redis on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 10 Nov 2024 18:19:00 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>[Redis] 監控</title><link>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</link><pubDate>Sun, 10 Nov 2024 18:19:00 +0000</pubDate><guid>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</guid><description>&lt;!-- raw HTML omitted --&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on Quietbo</title><link>https://quietbo.com/tags/redis/</link><description>Recent content in Redis on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 10 Nov 2024 18:19:00 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>[Redis] 監控</title><link>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</link><pubDate>Sun, 10 Nov 2024 18:19:00 +0000</pubDate><guid>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</guid><description>&lt;/p&gt; 
 &lt;p&gt;參考文章:&lt;a class="link" href="https://www.cnblogs.com/jingzh/p/18414550#13-redis%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener"
- &gt;Redis維之監控指標，效能監控，監控方式，反應慢分析&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;先連接redis（本機默認端口6379）&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;如果不使用下方redis-cli的話，就使用bin/redis-cli info | grep mem&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;非交互模式下的指令&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h1 id="info-wp-block-heading"&gt;INFO {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;
-&lt;/h1&gt;&lt;p&gt;server:伺服器運行的環境參數&lt;br&gt;
+ &gt;Redis維之監控指標，效能監控，監控方式，反應慢分析&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;先連接redis（本機默認端口6379）&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;redis-cli&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
+&lt;p&gt;如果不使用下方redis-cli的話，就使用bin/redis-cli info | grep mem&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;INFO # 查看當前狀態（可以一次獲取所有的信息，也可以按塊獲取信息）
+INFO &amp;lt;子集&amp;gt; # 例如 CPU,memory 
+INFO memory # INFO 命令的子集，只會顯示與記憶體相關的資訊
+INFO stats # Redis的統計數據，主要包含命令執行、連接、網路等統計信息。
+LATENCY LATEST # 查看最近的延遲峰值
+LATENCY HISTORY command # 顯示 command 事件的延遲歷史記錄
+SLOWLOG GET [n] # 獲取慢查詢日誌（默認獲取所有）&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
+&lt;p&gt;非交互模式下的指令&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;redis-cli --latency # 基本延遲測試
+redis-cli --latency-history # 延遲歷史記錄（每15秒輸出一次）
+redis-cli --latency-dist # 延遲分佈圖&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
+&lt;hr&gt;
+&lt;p&gt;server:伺服器運行的環境參數&lt;br&gt;
 clients:客戶端相關訊息&lt;br&gt;
 memory：伺服器運行記憶體統計數據&lt;br&gt;
 persistence：持久化訊息&lt;br&gt;
@@ -18,31 +24,53 @@ stats：通用統計數據&lt;br&gt;
 Replication：主從複製相關訊息&lt;br&gt;
 CPU：CPU使用情況&lt;br&gt;
 cluster：集群資訊&lt;br&gt;
-Keypass：鍵值對統計數量信息&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="info-stats-wp-block-heading"&gt;INFO STATS {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;p&gt;Redis的統計數據，主要包含命令執行、連接、網路等統計信息。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[Redis] 發佈(publish)&amp;訂閱(subscribe)</title><link>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</link><pubDate>Mon, 14 Feb 2022 10:51:45 +0000</pubDate><guid>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</guid><description>&lt;p&gt;環境:Windows 10&lt;br&gt;
+Keypass：鍵值對統計數量信息&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;./redis-cli info 按块获取信息 | grep 需要过滤的参数
+./redis-cli info stats | grep ops
+./redis-cli &amp;gt; info server&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
+&lt;hr&gt;
+&lt;p&gt;Redis的統計數據，主要包含命令執行、連接、網路等統計信息。&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;# Stats
+total_connections_received:12345 # 總共接受的連接數
+total_commands_processed:123456 # 總共處理的命令數
+instantaneous_ops_per_sec:1000 # 每秒執行的命令數
+total_net_input_bytes:12345678 # 總網路輸入流量(bytes)
+total_net_output_bytes:12345678 # 總網路輸出流量(bytes)
+instantaneous_input_kbps:12.34 # 即時輸入流量(KB/s)
+instantaneous_output_kbps:12.34 # 即時輸出流量(KB/s)
+rejected_connections:0 # 由於maxclients限制而被拒絕的連接數
+sync_full:2 # 全量同步次數
+sync_partial_ok:1 # 成功的部分同步次數
+sync_partial_err:0 # 失敗的部分同步次數
+expired_keys:12345 # 過期的key數量
+expired_stale_perc:0.12 # 過期key的百分比
+expired_time_cap_reached_count:0 # 達到過期時間上限的次數
+expire_cycle_cpu_milliseconds:123 # 過期循環佔用CPU的毫秒數
+evicted_keys:0 # 由於maxmemory限制而被驅逐的key數量
+keyspace_hits:123456 # key命中次數
+keyspace_misses:12345 # key未命中次數
+pubsub_channels:1 # 目前使用中的發布/訂閱頻道數
+pubsub_patterns:0 # 目前使用中的發布/訂閱模式數
+latest_fork_usec:1234 # 最近一次fork操作耗時(微秒)
+migrate_cached_sockets:0 # 快取的遷移socket數量&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</description></item><item><title>[Redis] 發佈(publish)&amp;訂閱(subscribe)</title><link>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</link><pubDate>Mon, 14 Feb 2022 10:51:45 +0000</pubDate><guid>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</guid><description>&lt;p&gt;環境:Windows 10&lt;br&gt;
 Redis: 5.0.7&lt;/p&gt;
 &lt;p&gt;Redis發布訂閱(pub/sub) 是一種消息通信模式：發送者(pub) 發送消息，訂閱者(sub) 接收消息。&lt;/p&gt;
 &lt;h2 id="範例.wp-block-heading"&gt;範例
 &lt;/h2&gt;&lt;p&gt;創建了訂閱頻道名為runoobChat&lt;br&gt;
 訂閱之後就無法在進行操作，只能點擊Stop Subscribe&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/pGIes6o.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;開新的GUI連到redis內，查看訂閱數:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;pubsub numsub channel_name &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;返回頻道訂閱者的數量:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;channels可創建多個，且可同時被多個client訂閱，client可訂閱多個channels(如下圖)&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/5ibVYq8.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;channels可創建多個，且可同時被多個client訂閱，client可訂閱多個channels(如下圖)&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/hSH0f5U.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="jsx" class="language-jsx"&gt;subscribe channel_name # 訂閱1個channel
+subscribe channel_name_1 channel_name_2 # 訂閱多個channel&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;將信息發送到指定的頻道，下方是runoobChat發送訊息出去給所有訂閱者。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;下圖是我開啟3個redis，前面2個是client，最右方的是server，發送訊息給訂閱runoobChat這個channel的client。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;publish runoobChat "發送的訊息" &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下圖是我開啟3個redis，前面2個是client，最右方的是server，發送訊息給訂閱runoobChat這個channel的client。&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/SjxSEMt.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://redis.io/topics/pubsub" target="_blank" rel="noopener"
  &gt;Redis文檔&lt;/a&gt;&lt;br&gt;
 &lt;a class="link" href="https://www.runoob.com/redis/redis-pub-sub.html" target="_blank" rel="noopener"

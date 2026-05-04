@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-tw dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="yml的基本語法結構:\n練習 以Python Flask+Redis(練習)：為例子，改造成一個docker-compose文件\napp.py檔案內容如下:\n"><title>[Docker-compose] Python Flask+Redis(練習2)</title><link rel=canonical href=https://quietbo.com/2022/01/31/docker-compose-python-flaskredis%E7%B7%B4%E7%BF%922/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css><meta property='og:title' content="[Docker-compose] Python Flask+Redis(練習2)"><meta property='og:description' content="yml的基本語法結構:\n練習 以Python Flask+Redis(練習)：為例子，改造成一個docker-compose文件\napp.py檔案內容如下:\n"><meta property='og:url' content='https://quietbo.com/2022/01/31/docker-compose-python-flaskredis%E7%B7%B4%E7%BF%922/'><meta property='og:site_name' content='Quietbo'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='docker-compose'><meta property='article:published_time' content='2022-01-31T12:28:54+00:00'><meta property='article:modified_time' content='2022-01-31T12:28:54+00:00'><meta name=twitter:title content="[Docker-compose] Python Flask+Redis(練習2)"><meta name=twitter:description content="yml的基本語法結構:\n練習 以Python Flask+Redis(練習)：為例子，改造成一個docker-compose文件\napp.py檔案內容如下:\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<!doctype html><html lang=zh-tw dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="yml的基本語法結構:\nservices: # 容器 servicename: # 服務名字，這個名字也是內部 bridge網絡可以使用的 DNS name image: # 鏡像的名字 command: # 可選，如果設置，則會覆蓋默認鏡像裡的 CMD命令 environment: # 可選，相當於 docker run裡的 --env volumes: # 可選，相當於docker run裡的 -v networks: # 可選，相當於 docker run裡的 --network ports: # 可選，相當於 docker run裡的 -p servicename2: volumes: # 可選，相當於 docker volume create networks: # 可選，相當於 docker network create services\n對照:Compose and Docker compatibility servicename\n與前一篇在docker時下指令的&#8211;name flask-demo 一致 練習 以Python Flask+Redis(練習)：為例子，改造成一個docker-compose文件\n"><title>[Docker-compose] Python Flask+Redis(練習2)</title><link rel=canonical href=https://quietbo.com/2022/01/31/docker-compose-python-flaskredis%E7%B7%B4%E7%BF%922/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css><meta property='og:title' content="[Docker-compose] Python Flask+Redis(練習2)"><meta property='og:description' content="yml的基本語法結構:\nservices: # 容器 servicename: # 服務名字，這個名字也是內部 bridge網絡可以使用的 DNS name image: # 鏡像的名字 command: # 可選，如果設置，則會覆蓋默認鏡像裡的 CMD命令 environment: # 可選，相當於 docker run裡的 --env volumes: # 可選，相當於docker run裡的 -v networks: # 可選，相當於 docker run裡的 --network ports: # 可選，相當於 docker run裡的 -p servicename2: volumes: # 可選，相當於 docker volume create networks: # 可選，相當於 docker network create services\n對照:Compose and Docker compatibility servicename\n與前一篇在docker時下指令的&#8211;name flask-demo 一致 練習 以Python Flask+Redis(練習)：為例子，改造成一個docker-compose文件\n"><meta property='og:url' content='https://quietbo.com/2022/01/31/docker-compose-python-flaskredis%E7%B7%B4%E7%BF%922/'><meta property='og:site_name' content='Quietbo'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='docker-compose'><meta property='article:published_time' content='2022-01-31T12:28:54+00:00'><meta property='article:modified_time' content='2022-01-31T12:28:54+00:00'><meta name=twitter:title content="[Docker-compose] Python Flask+Redis(練習2)"><meta name=twitter:description content="yml的基本語法結構:\nservices: # 容器 servicename: # 服務名字，這個名字也是內部 bridge網絡可以使用的 DNS name image: # 鏡像的名字 command: # 可選，如果設置，則會覆蓋默認鏡像裡的 CMD命令 environment: # 可選，相當於 docker run裡的 --env volumes: # 可選，相當於docker run裡的 -v networks: # 可選，相當於 docker run裡的 --network ports: # 可選，相當於 docker run裡的 -p servicename2: volumes: # 可選，相當於 docker volume create networks: # 可選，相當於 docker network create services\n對照:Compose and Docker compatibility servicename\n與前一篇在docker時下指令的&#8211;name flask-demo 一致 練習 以Python Flask+Redis(練習)：為例子，改造成一個docker-compose文件\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
 <span class=hamburger-box><span class=hamburger-inner></span></span></button><header><div class=site-meta><h1 class=site-name><a href=/>Quietbo</a></h1><h2 class=site-description>你的部落格簡介</h2></div></header><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
 <span>Home</span></a></li><li><a href=/posts/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
 <span>網誌</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
@@ -7,7 +7,87 @@
 <span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/dockeramp-docker-compose/ style=background-color:#eebeef;color:#3c0f3d>Docker&amp;amp; Docker-Compose</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2022/01/31/docker-compose-python-flaskredis%E7%B7%B4%E7%BF%922/>[Docker-compose] Python Flask+Redis(練習2)</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published datetime=2022-01-31T12:28:54Z>Monday, January 31, 2022</time>
 <svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>1 minute read</time></div></footer></div></header><section class=article-content><p>yml的基本語法結構:</p><h2 id=練習.wp-block-heading>練習</h2><p>以<a class=link href=https://quietbo.com/2022/01/22/docker-mac-python-flaskredis%e7%b7%b4%e7%bf%92/ target=_blank rel=noopener>Python Flask+Redis(練習)</a>：為例子，改造成一個docker-compose文件</p><p>app.py檔案內容如下:</p><p>dockerfile如下：</p><p>docker-compose.yml內容如下:</p><p>打開瀏覽器輸入<br>127.0.0.1:8899</p><p></p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/docker-compose/>Docker-Compose</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2022/01/23/docker-compose-%E5%AE%89%E8%A3%9D/><div class=article-details><h2 class=article-title>[Docker-compose] 安裝</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+<time class=article-time--reading>2 minutes read</time></div></footer></div></header><section class=article-content><p>yml的基本語法結構:</p><pre class=wp-block-code><code>services: # 容器
+  servicename: # 服務名字，這個名字也是內部 bridge網絡可以使用的 DNS name
+    image: # 鏡像的名字
+    command: # 可選，如果設置，則會覆蓋默認鏡像裡的 CMD命令
+    environment: # 可選，相當於 docker run裡的 --env
+    volumes: # 可選，相當於docker run裡的 -v
+    networks: # 可選，相當於 docker run裡的 --network
+    ports: # 可選，相當於 docker run裡的 -p
+  servicename2:
+
+volumes: # 可選，相當於 docker volume create
+
+networks: # 可選，相當於 docker network create</code></pre><ul class=wp-block-list><li>services<br>對照:<a href=https://docs.docker.com/compose/compose-file/>Compose and Docker compatibility</a></li><li>servicename<br>與前一篇在docker時下指令的&#8211;name flask-demo 一致</li></ul><h2 id=練習.wp-block-heading>練習</h2><p>以<a class=link href=https://quietbo.com/2022/01/22/docker-mac-python-flaskredis%e7%b7%b4%e7%bf%92/ target=_blank rel=noopener>Python Flask+Redis(練習)</a>：為例子，改造成一個docker-compose文件</p><p>app.py檔案內容如下:</p><pre class=wp-block-code><code>from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello_world():
+    return 'hello'
+
+
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=5000)</code></pre><p>dockerfile如下：</p><pre class=wp-block-code><code>FROM python:3.9.5-slim
+
+RUN pip install flask redis && \
+    groupadd -r flask && useradd -r -g flask flask && \
+    mkdir /src && \
+    chown -R flask:flask /src
+
+USER flask
+
+COPY app.py /src/app.py
+
+WORKDIR /src
+
+ENV FLASK_APP=app.py REDIS_HOST=redis
+
+EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]</code></pre><p>docker-compose.yml內容如下:</p><pre class=wp-block-code><code>version: "3.8"
+
+services:
+  flask-demo:
+    image: flask-demo:latest
+    environment:
+      - REDIS_HOST=redis-server
+    networks:
+      - demo-network
+    ports:
+      - 8899:5000
+
+  redis-server:
+    image: redis:latest
+    networks:
+      - demo-network
+
+networks:
+  demo-network: null</code></pre><ol class=wp-block-list><li>資料結構</li></ol><pre class=wp-block-code><code>.
+├── app.py
+├── docker-compose.yml
+└── dockerfile</code></pre><ol class=wp-block-list start=2><li>建立2個image</li></ol><ul class=wp-block-list><li>下載redis image</li></ul><pre class=wp-block-code><code>docker image pull redis</code></pre><ul class=wp-block-list><li>建立flask-demo的image</li></ul><pre class=wp-block-code><code>docker image build -t flask-demo .</code></pre><ol class=wp-block-list start=3><li>運行docker-compose</li></ol><pre class=wp-block-code><code>$ docker-compose up  
+Creating network "my_flask_demo-network" with the default driver
+Creating my_flask_redis-server_1 ... done
+Creating my_flask_flask-demo_1   ... done
+Attaching to my_flask_redis-server_1, my_flask_flask-demo_1
+redis-server_1  | 1:C 31 Jan 2022 12:26:05.447 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-server_1  | 1:C 31 Jan 2022 12:26:05.447 # Redis version=6.2.6, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-server_1  | 1:C 31 Jan 2022 12:26:05.447 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-server_1  | 1:M 31 Jan 2022 12:26:05.447 * monotonic clock: POSIX clock_gettime
+redis-server_1  | 1:M 31 Jan 2022 12:26:05.448 * Running mode=standalone, port=6379.
+redis-server_1  | 1:M 31 Jan 2022 12:26:05.448 # Server initialized
+redis-server_1  | 1:M 31 Jan 2022 12:26:05.449 * Ready to accept connections
+flask-demo_1    |  * Serving Flask app 'app.py' (lazy loading)
+flask-demo_1    |  * Environment: production
+flask-demo_1    |    WARNING: This is a development server. Do not use it in a production deployment.
+flask-demo_1    |    Use a production WSGI server instead.
+flask-demo_1    |  * Debug mode: off
+flask-demo_1    |  * Running on all addresses.
+flask-demo_1    |    WARNING: This is a development server. Do not use it in a production deployment.
+flask-demo_1    |  * Running on http://172.25.0.3:5000/ (Press CTRL+C to quit)</code></pre><p>打開瀏覽器輸入<br>127.0.0.1:8899<figure class=wp-block-image></p><p><img decoding=async src=https://i.imgur.com/pES3Goo.png alt></figure></p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/docker-compose/>Docker-Compose</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2022/01/23/docker-compose-%E5%AE%89%E8%A3%9D/><div class=article-details><h2 class=article-title>[Docker-compose] 安裝</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
 2026 Quietbo</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.1>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
     import gallery from '\/ts\/gallery.js';
 

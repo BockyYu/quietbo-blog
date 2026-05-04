@@ -5,54 +5,132 @@ Django:3.2&lt;/p&gt;
 &lt;/h2&gt;&lt;p&gt;可參考：&lt;a class="link" href="https://quietbo.com/2021/06/27/mac-pro-m1-%e5%ae%89%e8%a3%9dvirtualenv/" target="_blank" rel="noopener"
  &gt;安裝virtualenv&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;進入env後，安裝及查看Django版本：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;pip install django
+pip list&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/YDA0rRK.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;h2 id="建立專案"&gt;建立專案
 &lt;/h2&gt;&lt;p&gt;尋找一個位置，建立第一個專案：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;django-admin startproject mydjango&lt;/code&gt;&lt;/pre&gt;
+&lt;img decoding="async" src="https://i.imgur.com/33w2bsR.png" alt="" /&gt; 
+創建的資料結構如下： 
+&lt;img decoding="async" src="https://i.imgur.com/AREpKuM.png" alt="" /&gt; 
 &lt;p&gt;執行方式：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;python manage.py runserver&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;若想更改默認端口：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;python manage.py runserver 0.0.0.0:8899&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;執行成功如下圖：&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/T83LNyC.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;開啟瀏覽器，輸入：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;http://127.0.0.1:8000/&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;第一次運行，會看到下圖畫面：&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/xIuSCBD.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;停止方式：Control + C&lt;/p&gt;
 &lt;p&gt;此時，會多出現一個檔案db.sqlite3&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/2pFmXot.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;Django主要提供了四種數據庫引擎：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ django.db.backends.postgresql
+ &lt;/li&gt;
+ &lt;li&gt;
+ django.db.backends.mysql
+ &lt;/li&gt;
+ &lt;li&gt;
+ django.db.backends.sqlite3
+ &lt;/li&gt;
+ &lt;li&gt;
+ django.db.backends.oracle
+ &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;打開setting.py會看到默認引擎是sqlite3，&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+DATABASES = {
+ 'default': {
+ 'ENGINE': 'django.db.backends.sqlite3',
+ 'NAME': BASE_DIR / 'db.sqlite3',
+ }
+}&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/pcR3yH3.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;MySQL設置方式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;DATABASES = {
+ 'default': {
+ 'ENGINE': 'django.db.backends.mysql',
+ 'NAME': 'djangodb',
+ 'USER': 'root',
+ 'PASSWORD': '12345',
+ 'HOST': '127.0.0.1',
+ }
+}&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;如果需要更多的配置信息，可以指定配置文件：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;DATABASES = {
+ 'default': {
+ 'ENGINE': 'django.db.backends.mysql',
+ 'OPTIONS':{
+ 'read_default_file': '/path/to/my.cnf',
+ },
+ }
+}&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;配置文件：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;# my.cnf
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;[client]&lt;/p&gt;
 &lt;p&gt;databases = djangodb user = root password = 12345 default-character-set=utf8&lt;/p&gt;
 &lt;p&gt;PostgreSQL數據庫配置:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;DATABASES = {
+ 'default': {
+ 'ENGINE': 'django.db.backends.postgresql',
+ 'NAME': 'mydatabase',
+ 'USER': 'mydatabaseuser',
+ 'PASSWORD': 'mypassword',
+ 'HOST': '127.0.0.1',
+ 'PORT': '5432',
+ }
+}&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;初始化：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;python manage.py migrate&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/udBptue.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id="創建應用程序"&gt;創建應用程序
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h3&gt;&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;python manage.py startapp books&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;生成books，如下的資料結構&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;.
+├── books
+│&amp;nbsp;&amp;nbsp; ├── __init__.py
+│&amp;nbsp;&amp;nbsp; ├── admin.py
+│&amp;nbsp;&amp;nbsp; ├── apps.py
+│&amp;nbsp;&amp;nbsp; ├── migrations
+│&amp;nbsp;&amp;nbsp; │&amp;nbsp;&amp;nbsp; └── __init__.py
+│&amp;nbsp;&amp;nbsp; ├── models.py
+│&amp;nbsp;&amp;nbsp; ├── tests.py
+│&amp;nbsp;&amp;nbsp; └── views.py
+├── db.sqlite3
+├── manage.py
+└── mydjango
+ ├── __init__.py
+ ├── asgi.py
+ ├── settings.py
+ ├── urls.py
+ └── wsgi.py&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/RbOLpWV.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ admin :網站管理設置
+ &lt;/li&gt;
+ &lt;li&gt;
+ apps :註冊應用相關
+ &lt;/li&gt;
+ &lt;li&gt;
+ migration ：數據庫的升級文件包，會自動升級專案的數據庫
+ &lt;/li&gt;
+ &lt;li&gt;
+ models ：定義模型
+ &lt;/li&gt;
+ &lt;li&gt;
+ tests :測試相關代碼
+ &lt;/li&gt;
+ &lt;li&gt;
+ views ：定義視圖函式
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;主要程式撰寫是在views及models&lt;/p&gt;</description></item></channel></rss>

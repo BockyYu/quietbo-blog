@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-tw dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="服務更新 下方為目錄結構:\napp.py檔如下\ndockerfile如下:\ndocker-compose.yml檔內容如下:\n"><title>[docker-compose] 服務的更新</title><link rel=canonical href=https://quietbo.com/2022/02/02/docker-compose-%E6%9C%8D%E5%8B%99%E7%9A%84%E6%9B%B4%E6%96%B0/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css><meta property='og:title' content="[docker-compose] 服務的更新"><meta property='og:description' content="服務更新 下方為目錄結構:\napp.py檔如下\ndockerfile如下:\ndocker-compose.yml檔內容如下:\n"><meta property='og:url' content='https://quietbo.com/2022/02/02/docker-compose-%E6%9C%8D%E5%8B%99%E7%9A%84%E6%9B%B4%E6%96%B0/'><meta property='og:site_name' content='Quietbo'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='docker-compose'><meta property='article:published_time' content='2022-02-01T18:11:04+00:00'><meta property='article:modified_time' content='2022-02-01T18:11:04+00:00'><meta name=twitter:title content="[docker-compose] 服務的更新"><meta name=twitter:description content="服務更新 下方為目錄結構:\napp.py檔如下\ndockerfile如下:\ndocker-compose.yml檔內容如下:\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<!doctype html><html lang=zh-tw dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="服務更新 下方為目錄結構:\n$ tree . ├── docker-compose.yml └── my_flask ├── app.py └── dockerfile app.py檔如下\nfrom flask import Flask from redis import Redis import os import socket app = Flask(__name__) redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379) @app.route('/') def hello(): redis.incr('hits') return f\" hello container world! i have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\\n\" dockerfile如下:\n"><title>[docker-compose] 服務的更新</title><link rel=canonical href=https://quietbo.com/2022/02/02/docker-compose-%E6%9C%8D%E5%8B%99%E7%9A%84%E6%9B%B4%E6%96%B0/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css><meta property='og:title' content="[docker-compose] 服務的更新"><meta property='og:description' content="服務更新 下方為目錄結構:\n$ tree . ├── docker-compose.yml └── my_flask ├── app.py └── dockerfile app.py檔如下\nfrom flask import Flask from redis import Redis import os import socket app = Flask(__name__) redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379) @app.route('/') def hello(): redis.incr('hits') return f\" hello container world! i have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\\n\" dockerfile如下:\n"><meta property='og:url' content='https://quietbo.com/2022/02/02/docker-compose-%E6%9C%8D%E5%8B%99%E7%9A%84%E6%9B%B4%E6%96%B0/'><meta property='og:site_name' content='Quietbo'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='docker-compose'><meta property='article:published_time' content='2022-02-01T18:11:04+00:00'><meta property='article:modified_time' content='2022-02-01T18:11:04+00:00'><meta name=twitter:title content="[docker-compose] 服務的更新"><meta name=twitter:description content="服務更新 下方為目錄結構:\n$ tree . ├── docker-compose.yml └── my_flask ├── app.py └── dockerfile app.py檔如下\nfrom flask import Flask from redis import Redis import os import socket app = Flask(__name__) redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379) @app.route('/') def hello(): redis.incr('hits') return f\" hello container world! i have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\\n\" dockerfile如下:\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
 <span class=hamburger-box><span class=hamburger-inner></span></span></button><header><div class=site-meta><h1 class=site-name><a href=/>Quietbo</a></h1><h2 class=site-description>你的部落格簡介</h2></div></header><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
 <span>Home</span></a></li><li><a href=/posts/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
 <span>網誌</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
@@ -7,7 +7,111 @@
 <span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/dockeramp-docker-compose/ style=background-color:#eebeef;color:#3c0f3d>Docker&amp;amp; Docker-Compose</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2022/02/02/docker-compose-%E6%9C%8D%E5%8B%99%E7%9A%84%E6%9B%B4%E6%96%B0/>[docker-compose] 服務的更新</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published datetime=2022-02-01T18:11:04Z>Tuesday, February 1, 2022</time>
 <svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>1 minute read</time></div></footer></div></header><section class=article-content><h2 id=服務更新.wp-block-heading>服務更新</h2><p>下方為目錄結構:</p><p>app.py檔如下</p><p>dockerfile如下:</p><p>docker-compose.yml檔內容如下:</p><p>在該目錄下執行:</p><p>會創建2個容器，一個是flask-demo，一個是redis，開起瀏覽器輸入127.0.0.1:8899，會看到下方字串(隨著開啟次數會累加):</p><p>若有更新app.py內的code，重新build一次flask，下方為演示的訊息:</p><p>查看容器狀況，會發現原本的redis沒有被重構，只有因修改了app.py後重建的flask-demo，畫面如下:<br></p><h2 id=刪除服務.wp-block-heading>刪除服務</h2><p>將原本的docker-compose.yml檔新增一個busbox:</p><p>在剛才已有兩個容器的狀況下，再下一次指令:</p><p></p><p>在已經建立3個容器的狀況下，將yml檔的busbox註解掉，再重新下一次指令，會出現一段WARNING的訊息:</p><p></p><p>使用剛才建議的指令，來刪除不需要的service</p><p></p><p>三個更新文件指令:</p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/docker-compose/>Docker-Compose</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2022/02/01/docker-compose-image-build%E8%88%87pullbuild%E9%9D%9Edockerfile%E5%90%8D%E7%A8%B1/><div class=article-details><h2 class=article-title>[docker-compose] image build與pull(build非dockerfile名稱)</h2></div></a></article><article><a href=/2022/01/31/docker-compose-python-flaskredis%E7%B7%B4%E7%BF%922/><div class=article-details><h2 class=article-title>[Docker-compose] Python Flask+Redis(練習2)</h2></div></a></article><article><a href=/2022/01/23/docker-compose-%E5%AE%89%E8%A3%9D/><div class=article-details><h2 class=article-title>[Docker-compose] 安裝</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+<time class=article-time--reading>2 minutes read</time></div></footer></div></header><section class=article-content><h2 id=服務更新.wp-block-heading>服務更新</h2><p>下方為目錄結構:</p><pre class=wp-block-code><code>$ tree      
+.
+├── docker-compose.yml
+└── my_flask
+    ├── app.py
+    └── dockerfile</code></pre><p>app.py檔如下</p><pre class=wp-block-code><code lang=python class="language-python line-numbers">from flask import Flask
+from redis import Redis
+import os
+import socket
+
+app = Flask(__name__)
+redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379)
+
+
+@app.route('/')
+def hello():
+    redis.incr('hits')
+    return f"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\n"</code></pre><p>dockerfile如下:</p><pre class=wp-block-code><code lang=python class="language-python line-numbers">FROM python:3.9.5-slim
+
+RUN pip install flask redis && \
+    groupadd -r flask && useradd -r -g flask flask && \
+    mkdir /src && \
+    chown -R flask:flask /src
+
+USER flask
+
+COPY app.py /src/app.py
+
+WORKDIR /src
+
+ENV FLASK_APP=app.py REDIS_HOST=redis
+
+EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]</code></pre><p>docker-compose.yml檔內容如下:</p><pre class=wp-block-code><code lang=docker class="language-docker line-numbers">version: "3.8"
+
+services:
+  flask-demo:
+    build: ./my_flask
+    image: flask_demo:latest
+    environment:
+      - REDIS_HOST=redis-server
+    networks:
+      - demo-network
+    ports:
+      - 8899:5000
+
+  redis-server:
+    container_name: redis-demo
+    image: redis:latest
+    networks:
+      - demo-network
+
+networks:
+  demo-network: null</code></pre><p>在該目錄下執行:</p><pre class=wp-block-code><code>docker-compose up -d</code></pre><p>會創建2個容器，一個是flask-demo，一個是redis，開起瀏覽器輸入127.0.0.1:8899，會看到下方字串(隨著開啟次數會累加):</p><pre class=wp-block-code><code>Hello Container World! I have been seen 1 times and my hostname is b895a0c7b962.</code></pre><p>若有更新app.py內的code，重新build一次flask，下方為演示的訊息:</p><pre class=wp-block-code><code lang=bash class=language-bash>$ docker-compose up -d --build
+Building flask-demo
+[+] Building 5.9s (10/10) FINISHED                                                                                                          
+ =&gt; [internal] load build definition from Dockerfile                                                                                   0.0s
+ =&gt; =&gt; transferring dockerfile: 37B                                                                                                    0.0s
+ =&gt; [internal] load .dockerignore                                                                                                      0.0s
+ =&gt; =&gt; transferring context: 2B                                                                                                        0.0s
+ =&gt; [internal] load metadata for docker.io/library/python:3.9.5-slim                                                                   5.8s
+ =&gt; [auth] library/python:pull token for registry-1.docker.io                                                                          0.0s
+ =&gt; [internal] load build context                                                                                                      0.0s
+ =&gt; =&gt; transferring context: 395B                                                                                                      0.0s
+ =&gt; [1/4] FROM docker.io/library/python:3.9.5-slim@sha256:9828573e6a0b02b6d0ff0bae0716b027aa21cf8e59ac18a76724d216bab7ef04             0.0s
+ =&gt; CACHED [2/4] RUN pip install flask redis &&     groupadd -r flask && useradd -r -g flask flask &&     mkdir /src &&     chown -R   0.0s
+ =&gt; [3/4] COPY app.py /src/app.py                                                                                                      0.0s
+ =&gt; [4/4] WORKDIR /src                                                                                                                 0.0s
+ =&gt; exporting to image                                                                                                                 0.0s
+ =&gt; =&gt; exporting layers                                                                                                                0.0s
+ =&gt; =&gt; writing image sha256:cc1bafcde9c602150db215976497c20a13db386bdbfeecf41d84e36ed77286e9                                           0.0s
+ =&gt; =&gt; naming to docker.io/library/flask_demo:latest                                                                                   0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+redis-demo is up-to-date
+Recreating mydocker_flask-demo_1 ... done</code></pre><p>查看容器狀況，會發現原本的redis沒有被重構，只有因修改了app.py後重建的flask-demo，畫面如下:<br><img decoding=async src=https://i.imgur.com/jTeoXcD.png alt></p><h2 id=刪除服務.wp-block-heading>刪除服務</h2><p>將原本的docker-compose.yml檔新增一個busbox:</p><pre class=wp-block-code><code lang=docker class="language-docker line-numbers">version: "3.8"
+
+services:
+  flask-demo:
+    build: ./my_flask
+    image: flask_demo:latest
+    environment:
+      - REDIS_HOST=redis-server
+    networks:
+      - demo-network
+    ports:
+      - 8899:5000
+
+  redis-server:
+    container_name: redis-demo
+    image: redis:latest
+    networks:
+      - demo-network
+
+  busybox:
+    image: busybox:latest
+    command: sh -c "while true; do sleep 3600; done"
+    networks:
+      - demo-network
+
+networks:
+  demo-network: null</code></pre><p>在剛才已有兩個容器的狀況下，再下一次指令:</p><pre class=wp-block-code><code>docker-compose up -d</code></pre><figure class=wp-block-image><p><img decoding=async src=https://i.imgur.com/Z5Bn8Te.png alt></figure></p><p>在已經建立3個容器的狀況下，將yml檔的busbox註解掉，再重新下一次指令，會出現一段WARNING的訊息:</p><pre class=wp-block-code><code>WARNING: Found orphan containers (mydocker_busybox_1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.</code></pre><figure class=wp-block-image><p><img decoding=async src=https://i.imgur.com/Wf3b6zu.png alt></figure></p><p>使用剛才建議的指令，來刪除不需要的service</p><pre class=wp-block-code><code>docker-compose up -d --remove-orphans</code></pre><figure class=wp-block-image><p><img decoding=async src=https://i.imgur.com/QsCEeSA.png alt></figure></p><p>三個更新文件指令:</p><pre class=wp-block-code><code class=line-numbers>docker-compose build # 只build dockerfile 的image
+docker-compose up -d --remove-orphans # 刪除不需要使用的service
+docker-compose restart # 重啟</code></pre></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/docker-compose/>Docker-Compose</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2022/02/01/docker-compose-image-build%E8%88%87pullbuild%E9%9D%9Edockerfile%E5%90%8D%E7%A8%B1/><div class=article-details><h2 class=article-title>[docker-compose] image build與pull(build非dockerfile名稱)</h2></div></a></article><article><a href=/2022/01/31/docker-compose-python-flaskredis%E7%B7%B4%E7%BF%922/><div class=article-details><h2 class=article-title>[Docker-compose] Python Flask+Redis(練習2)</h2></div></a></article><article><a href=/2022/01/23/docker-compose-%E5%AE%89%E8%A3%9D/><div class=article-details><h2 class=article-title>[Docker-compose] 安裝</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
 2026 Quietbo</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.1>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
     import gallery from '\/ts\/gallery.js';
 

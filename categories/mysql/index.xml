@@ -1,99 +1,166 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MySQL on Quietbo</title><link>https://quietbo.com/categories/mysql/</link><description>Recent content in MySQL on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Fri, 17 Feb 2023 07:00:53 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/mysql/index.xml" rel="self" type="application/rss+xml"/><item><title>[Mac|M1] Sequel Pro 閃退(解決)</title><link>https://quietbo.com/2023/02/17/macm1-sequel-pro-%E9%96%83%E9%80%80%E8%A7%A3%E6%B1%BA/</link><pubDate>Fri, 17 Feb 2023 07:00:53 +0000</pubDate><guid>https://quietbo.com/2023/02/17/macm1-sequel-pro-%E9%96%83%E9%80%80%E8%A7%A3%E6%B1%BA/</guid><description>&lt;p&gt;如果MySQL的版本是8.0以上，别下Sequel Pro，每次用每次閃退，直接在AppleStore下載：&lt;br&gt;
-Sequel-Ace/Sequel-Ace&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+Sequel-Ace/Sequel-Ace&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/kvndkVm.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;目前在Mac M1 Ventura 13.2使用都正常&lt;/p&gt;</description></item><item><title>[SQL] REFERENCES 外來鍵的用法(含範例與mysql)</title><link>https://quietbo.com/2022/03/01/sql-references-%E5%A4%96%E4%BE%86%E9%8D%B5%E7%9A%84%E7%94%A8%E6%B3%95%E5%90%AB%E7%AF%84%E4%BE%8B%E8%88%87mysql/</link><pubDate>Tue, 01 Mar 2022 07:20:41 +0000</pubDate><guid>https://quietbo.com/2022/03/01/sql-references-%E5%A4%96%E4%BE%86%E9%8D%B5%E7%9A%84%E7%94%A8%E6%B3%95%E5%90%AB%E7%AF%84%E4%BE%8B%E8%88%87mysql/</guid><description>&lt;p&gt;下方演示: MySQL&lt;br&gt;
 GUI: &lt;a class="link" href="https://tableplus.com/" target="_blank" rel="noopener"
  &gt;tabPlus&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在學習SQL時一定會學到外來鍵，外來鍵的目的是&lt;strong&gt;確定資料的參考完整性(referential integrity)&lt;/strong&gt;，簡單來說，就是&lt;strong&gt;只有被准許的資料值才會被存入資料庫內&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;下方以一個生活例子來舉例:&lt;br&gt;
-1個頻道(電視台)會依據不同時間有不同節目，當然&lt;strong&gt;沒有頻道就不會有節目撥出&lt;/strong&gt;，也就是一對多。如下圖:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+1個頻道(電視台)會依據不同時間有不同節目，當然&lt;strong&gt;沒有頻道就不會有節目撥出&lt;/strong&gt;，也就是一對多。如下圖:&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/hP9x7EB.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;頻道:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;CREATE TABLE `channel` (
+ `id` int PRIMARY KEY,
+ `channel_name` varchar(255) NOT NULL
+);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;節目:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;CREATE TABLE `programme` (
+ `id` int PRIMARY KEY AUTO_INCREMENT,
+ `channel_id` int,
+ `programme_name` varchar(255),
+ `start_time` datetime DEFAULT (now()),
+ `end_time` datetime DEFAULT (now()),
+ FOREIGN KEY(channel_id) REFERENCES channel(id)
+);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;加入資料1:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;INSERT INTO `channel` (`id`, `channel_name`) VALUES
+(7, '恩恩新聞'),
+(8, '探索世界'),
+(9, '東西購物');&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;加入資料2:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;INSERT INTO `programme` (`channel_id`, `programme_name`, `start_time`, `end_time`) VALUES
+(7, '3點新聞', '2022-03-01 15:00:00', '2022-03-01 16:00:00'),
+(7, '4點新聞', '2022-03-01 16:00:00', '2022-03-01 17:00:00'),
+(7, '5點新聞', '2022-03-01 17:00:00', '2022-03-01 18:00:00'),
+(8, '說書人', '2022-03-01 15:00:00', '2022-03-01 16:00:00'),
+(8, '科學時間', '2022-03-01 16:00:00', '2022-03-01 17:00:00'),
+(8, '海底裡', '2022-03-01 17:00:00', '2022-03-01 18:00:00'),
+(9, '3點購物時間', '2022-03-01 15:00:00', '2022-03-01 16:00:00'),
+(9, '4點購物時間', '2022-03-01 16:00:00', '2022-03-01 17:00:00'),
+(9, '5點購物時間', '2022-03-01 17:00:00', '2022-03-01 18:00:00'),&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;嘗試當加入一筆沒有在channel內的id&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;INSERT INTO `programme` (`channel_id`, `programme_name`, `start_time`, `end_time`) VALUES
+(10, '一起出去玩', '2022-03-01 17:00:00', '2022-03-01 18:00:00');&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;錯誤訊息如下:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="" class=""&gt;Cannot add or update a child row: a foreign key constraint fails (`general`.`programme`, CONSTRAINT `programme_ibfk_1` FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`))&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/X796Vf2.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;補充&lt;/p&gt;
 &lt;p&gt;當表已經建立完畢後，設置外來鍵:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;可參考:&lt;!-- raw HTML omitted --&gt;fooish&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[SQL] 萬用字元與escape的用法(必知)</title><link>https://quietbo.com/2021/12/10/sql-%E8%90%AC%E7%94%A8%E5%AD%97%E5%85%83%E8%88%87escape%E7%9A%84%E7%94%A8%E6%B3%95/</link><pubDate>Fri, 10 Dec 2021 08:27:31 +0000</pubDate><guid>https://quietbo.com/2021/12/10/sql-%E8%90%AC%E7%94%A8%E5%AD%97%E5%85%83%E8%88%87escape%E7%9A%84%E7%94%A8%E6%B3%95/</guid><description>&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="" class=""&gt;ALTER TABLE `programme` ADD FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可參考:&lt;a rel="noreferrer noopener" href="https://www.fooish.com/sql/foreign-key-constraint.html" data-type="URL" data-id="https://www.fooish.com/sql/foreign-key-constraint.html" target="_blank"&gt;fooish&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[SQL] 萬用字元與escape的用法(必知)</title><link>https://quietbo.com/2021/12/10/sql-%E8%90%AC%E7%94%A8%E5%AD%97%E5%85%83%E8%88%87escape%E7%9A%84%E7%94%A8%E6%B3%95/</link><pubDate>Fri, 10 Dec 2021 08:27:31 +0000</pubDate><guid>https://quietbo.com/2021/12/10/sql-%E8%90%AC%E7%94%A8%E5%AD%97%E5%85%83%E8%88%87escape%E7%9A%84%E7%94%A8%E6%B3%95/</guid><description>&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/12/10/sql-%e8%90%ac%e7%94%a8%e5%ad%97%e5%85%83%e8%88%87escape%e7%9a%84%e7%94%a8%e6%b3%95/#%E8%90%AC%E7%94%A8%E5%AD%97%E5%85%83%E7%94%A8%E6%B3%95" &gt;萬用字元用法&lt;/a&gt;&lt;ul class='ez-toc-list-level-3' &gt;
+ &lt;li class='ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/12/10/sql-%e8%90%ac%e7%94%a8%e5%ad%97%e5%85%83%e8%88%87escape%e7%9a%84%e7%94%a8%e6%b3%95/#%E3%80%81%E3%80%81%E5%8F%8A1%E7%9A%84%E5%9B%9B%E7%A8%AE%E7%AF%84%E4%BE%8B" &gt;[、]、[]及[1]的四種範例:&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/12/10/sql-%e8%90%ac%e7%94%a8%e5%ad%97%e5%85%83%e8%88%87escape%e7%9a%84%e7%94%a8%e6%b3%95/#%E4%BD%BF%E7%94%A8_like_%E5%8C%B9%E9%85%8D%E7%89%B9%E6%AE%8A%E5%AD%97%E5%85%83" &gt;使用 like [] 匹配特殊字元&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&amp;gt;
  &amp;lt;a class=&amp;quot;ez-toc-link ez-toc-heading-4&amp;quot; href=&amp;quot;https://quietbo.com/2021/12/10/sql-%e8%90%ac%e7%94%a8%e5%ad%97%e5%85%83%e8%88%87escape%e7%9a%84%e7%94%a8%e6%b3%95/#escape%E7%9A%84%E7%94%A8%E6%B3%95&amp;quot; &amp;gt;escape的用法&amp;lt;/a&amp;gt;
 &amp;lt;/li&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="萬用字元用法"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;萬用字元用法&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="萬用字元用法"&gt;&lt;span class="ez-toc-section" id="%E8%90%AC%E7%94%A8%E5%AD%97%E5%85%83%E7%94%A8%E6%B3%95"&gt;&lt;/span&gt;萬用字元用法&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ %：匹配零個及多個任意字元
+ &lt;/li&gt;
+ &lt;li&gt;
+ _ &lt;em&gt;：與任意1個單字元匹配，包含&lt;/em&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ []：匹配一個範圍
+ &lt;/li&gt;
+ &lt;li&gt;
+ [^]：排除一個範圍
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;字串中出現的特殊字元：&lt;code&gt;%&amp;lt;strong&amp;gt; [ [] _&amp;lt;/strong&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;可以使用 ‘[]’ 把特殊字元包起來，這些特殊字元就被當作普通字元對待了。&lt;/p&gt;
-&lt;h3 id="及1的四種範例"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;[、]、[]及[1]的四種範例:&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id="及1的四種範例"&gt;&lt;span class="ez-toc-section" id="%E3%80%81%E3%80%81%E5%8F%8A1%E7%9A%84%E5%9B%9B%E7%A8%AE%E7%AF%84%E4%BE%8B"&gt;&lt;/span&gt;[、]、[]及[1]的四種範例:&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;以下SQL使用 like [] 匹配特殊字元 [ 與 []&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h3 id="使用-like--匹配特殊字元"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;使用 like [&lt;em&gt;] 匹配特殊字元&lt;/em&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;-- 使用[[]
+select 1 where '[TEST' like '[[]%'; -- 1
+select 1 where 'TEST[' like '%[[]'; -- 1
+
+-- 這邊的]是不需要包起來，只需要寫在like內即可
+select 1 where 'TEST]' like '%]'; -- 1
+select 1 where ']TEST' like ']%'; -- 1
+
+-- 使用[[]]
+select 1 where '[]TEST' like '[[]]%%'; -- 1
+
+-- 稍微複雜一點包法，前面的[1]要用[[]1]包
+select 1 where '[1]TEST' like '[[]1]%%'; -- 1&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="使用-like--匹配特殊字元"&gt;&lt;span class="ez-toc-section" id="%E4%BD%BF%E7%94%A8_like_%E5%8C%B9%E9%85%8D%E7%89%B9%E6%AE%8A%E5%AD%97%E5%85%83"&gt;&lt;/span&gt;使用 like [&lt;em&gt;] 匹配特殊字元&lt;/em&gt;&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;原本 _ 的功能是與任意單字元匹配，&lt;br&gt;
 如果想搜尋是DB_開頭的話，使用單純的_又會把DBa、DBb什麼db開頭的家人都找出來，變模糊搜尋了。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;--原本:
+select 1 where 'DB_' like '___'; -- 1
+select 1 where 'DBa' like '___'; -- 1
+select 1 where 'DBb' like '___'; -- 1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;如果確定只要DB_開頭，就必須把_用[]包起來，這樣其他的就找不到了!&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="escape的用法"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;escape的用法&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql"&gt;select 1 where 'DBatest' like 'db[_]%'; -- 無
+select 1 where 'DBbtest' like 'db[_]%'; -- 無
+select 1 where 'DB_test' like 'db[_]%'; -- 1&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="escape的用法"&gt;&lt;span class="ez-toc-section" id="escape%E7%9A%84%E7%94%A8%E6%B3%95"&gt;&lt;/span&gt;escape的用法&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;escape要與Like一起使用，定義轉義符&lt;br&gt;
 若不使用[]包住%，來搜尋’10%’，也許會很直覺的使用&lt;code&gt;like '10%'&lt;/code&gt;&lt;br&gt;
 但這樣會把100%、101%、1000%等10開頭都搜尋到，與預期結果不符。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;SELECT 1 WHERE '100%' LIKE '10%'; -- 1
+SELECT 1 WHERE '101%' LIKE '10%'; -- 1
+SELECT 1 WHERE '102%' LIKE '10%'; -- 1
+SELECT 1 WHERE '10000%' LIKE '10%'; -- 1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;下方指令是使用escape來尋找真正的%&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt; SELECT 1 WHERE '10%' LIKE '10/%' ESCAPE '/' ;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;上方的是指定用’/’符號來說明，後面的萬用符轉成普通字符(單純的百分比%)，&lt;br&gt;
 如果同時要尋找/的話呢?例如日期常使用到的/&lt;br&gt;
 一般沒有使用ESCAPE的話，可能直接打上日期(下方第一個)搜尋，&lt;br&gt;
 若加入 ESCAPE ‘/’ ，要使用2個/，這樣才能符合。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[MySQL] MySQL InternalError: 1251, u’Client does not support authentication protocol requested by server; consider upgrading MySQL client</title><link>https://quietbo.com/2021/05/11/%E8%A7%A3%E6%B1%BA-internalerror-1251-uclient-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client/</link><pubDate>Tue, 11 May 2021 11:13:00 +0000</pubDate><guid>https://quietbo.com/2021/05/11/%E8%A7%A3%E6%B1%BA-internalerror-1251-uclient-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client/</guid><description>&lt;p&gt;某次在local測試時，因為要新增package而重新build了一次docker。&lt;br&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql line-numbers"&gt;SELECT 1 WHERE '2021/12/31' LIKE '2021/12/31'; -- 1
+SELECT 1 WHERE '2021/12/31' LIKE '2021//12//31' ESCAPE '/'; -- 1
+SELECT 1 WHERE 'MSSQL/50%' LIKE 'MSSQL/50%' ESCAPE '/'; -- 0
+SELECT 1 WHERE 'MSSQL/50%' LIKE 'MSSQL//50/%' ESCAPE '/'; -- 1&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[MySQL] MySQL InternalError: 1251, u’Client does not support authentication protocol requested by server; consider upgrading MySQL client</title><link>https://quietbo.com/2021/05/11/%E8%A7%A3%E6%B1%BA-internalerror-1251-uclient-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client/</link><pubDate>Tue, 11 May 2021 11:13:00 +0000</pubDate><guid>https://quietbo.com/2021/05/11/%E8%A7%A3%E6%B1%BA-internalerror-1251-uclient-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client/</guid><description>&lt;p&gt;某次在local測試時，因為要新增package而重新build了一次docker。&lt;br&gt;
 後來更新get-pip出現錯誤訊息如下:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;InternalError: (1251, u'Client does not support authentication protocol requested by server; consider upgrading MySQL client')&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;客戶端不支持服務器請求的身份驗證協議；請考慮升級MySQL客戶端&lt;/p&gt;
 &lt;p&gt;目前是使用python2.7，MySQL 8.0.23，&lt;br&gt;
 不推薦將MYSQL降級，可以通過在創建數據庫時告訴MySQL服務器使用舊版身份驗證插件來實現此目的。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql"&gt;ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+flush privileges;&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/5j9Eex7.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;如果不行的話，將@’localhost’拿掉，再重新執行一次，下方還有其他指令，可嘗試以下指令擇一試看看。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+ALTER USER 'root'@'localhost' IDENTIFIED BY '123456' PASSWORD EXPIRE NEVER;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+FLUSH PRIVILEGES; # 最後一定要加這段&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我是將@’localhost’拿掉後，才成功的。若失敗的話，請參考下方連結，內有許多解決方式。&lt;br&gt;
-參考連結:&lt;!-- raw HTML omitted --&gt;stackoverflow&lt;!-- raw HTML omitted --&gt;、&lt;!-- raw HTML omitted --&gt;Mysql 解決1251&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[MySQL] 快速安裝</title><link>https://quietbo.com/2021/03/24/mysql-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 09:14:15 +0000</pubDate><guid>https://quietbo.com/2021/03/24/mysql-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;apt套件管理器安裝:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+參考連結:&lt;a rel="noreferrer noopener" href="https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server/50961428" target="_blank"&gt;stackoverflow&lt;/a&gt;、&lt;a rel="noreferrer noopener" href="https://blog.csdn.net/lovedingd/article/details/106728292" data-type="URL" data-id="https://blog.csdn.net/lovedingd/article/details/106728292" target="_blank"&gt;Mysql 解決1251&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[MySQL] 快速安裝</title><link>https://quietbo.com/2021/03/24/mysql-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 09:14:15 +0000</pubDate><guid>https://quietbo.com/2021/03/24/mysql-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;apt套件管理器安裝:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo apt update
+sudo apt install mysql-server -y&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;安裝完應會自動啟動:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/SE8x1aZ.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;檢查redis服務狀態:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service mysql status&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;停止redis server:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service mysql stop&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;啟動redis server:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service mysql start&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;進入Mysql:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;mysql -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/WeiyuQw.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;若出現則登入成功。&lt;br&gt;
 mysql&amp;gt;&lt;/p&gt;</description></item></channel></rss>

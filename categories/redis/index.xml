@@ -1,16 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on Quietbo</title><link>https://quietbo.com/categories/redis/</link><description>Recent content in Redis on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 10 Nov 2024 18:19:00 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>[Redis] 監控</title><link>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</link><pubDate>Sun, 10 Nov 2024 18:19:00 +0000</pubDate><guid>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</guid><description>&lt;!-- raw HTML omitted --&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on Quietbo</title><link>https://quietbo.com/categories/redis/</link><description>Recent content in Redis on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 10 Nov 2024 18:19:00 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>[Redis] 監控</title><link>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</link><pubDate>Sun, 10 Nov 2024 18:19:00 +0000</pubDate><guid>https://quietbo.com/2024/11/11/redis-%E7%9B%A3%E6%8E%A7/</guid><description>&lt;/p&gt; 
 &lt;p&gt;參考文章:&lt;a class="link" href="https://www.cnblogs.com/jingzh/p/18414550#13-redis%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener"
- &gt;Redis維之監控指標，效能監控，監控方式，反應慢分析&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;先連接redis（本機默認端口6379）&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;如果不使用下方redis-cli的話，就使用bin/redis-cli info | grep mem&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;非交互模式下的指令&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h1 id="info-wp-block-heading"&gt;INFO {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;
-&lt;/h1&gt;&lt;p&gt;server:伺服器運行的環境參數&lt;br&gt;
+ &gt;Redis維之監控指標，效能監控，監控方式，反應慢分析&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;先連接redis（本機默認端口6379）&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;redis-cli&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
+&lt;p&gt;如果不使用下方redis-cli的話，就使用bin/redis-cli info | grep mem&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;INFO # 查看當前狀態（可以一次獲取所有的信息，也可以按塊獲取信息）
+INFO &amp;lt;子集&amp;gt; # 例如 CPU,memory 
+INFO memory # INFO 命令的子集，只會顯示與記憶體相關的資訊
+INFO stats # Redis的統計數據，主要包含命令執行、連接、網路等統計信息。
+LATENCY LATEST # 查看最近的延遲峰值
+LATENCY HISTORY command # 顯示 command 事件的延遲歷史記錄
+SLOWLOG GET [n] # 獲取慢查詢日誌（默認獲取所有）&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
+&lt;p&gt;非交互模式下的指令&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;redis-cli --latency # 基本延遲測試
+redis-cli --latency-history # 延遲歷史記錄（每15秒輸出一次）
+redis-cli --latency-dist # 延遲分佈圖&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
+&lt;hr&gt;
+&lt;p&gt;server:伺服器運行的環境參數&lt;br&gt;
 clients:客戶端相關訊息&lt;br&gt;
 memory：伺服器運行記憶體統計數據&lt;br&gt;
 persistence：持久化訊息&lt;br&gt;
@@ -18,23 +24,79 @@ stats：通用統計數據&lt;br&gt;
 Replication：主從複製相關訊息&lt;br&gt;
 CPU：CPU使用情況&lt;br&gt;
 cluster：集群資訊&lt;br&gt;
-Keypass：鍵值對統計數量信息&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="info-stats-wp-block-heading"&gt;INFO STATS {.wp-block-heading}&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;p&gt;Redis的統計數據，主要包含命令執行、連接、網路等統計信息。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item><item><title>[Redis] HyperLogLog(HLL) – 活躍量統計</title><link>https://quietbo.com/2023/12/06/redis-hyperlogloghll-%E6%B4%BB%E8%BA%8D%E9%87%8F%E7%B5%B1%E8%A8%88/</link><pubDate>Wed, 06 Dec 2023 11:00:45 +0000</pubDate><guid>https://quietbo.com/2023/12/06/redis-hyperlogloghll-%E6%B4%BB%E8%BA%8D%E9%87%8F%E7%B5%B1%E8%A8%88/</guid><description>&lt;p&gt;統計一個APP的日活量（DAU）和月活量（MAU）&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+Keypass：鍵值對統計數量信息&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;./redis-cli info 按块获取信息 | grep 需要过滤的参数
+./redis-cli info stats | grep ops
+./redis-cli &amp;gt; info server&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
+&lt;hr&gt;
+&lt;p&gt;Redis的統計數據，主要包含命令執行、連接、網路等統計信息。&lt;/p&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;# Stats
+total_connections_received:12345 # 總共接受的連接數
+total_commands_processed:123456 # 總共處理的命令數
+instantaneous_ops_per_sec:1000 # 每秒執行的命令數
+total_net_input_bytes:12345678 # 總網路輸入流量(bytes)
+total_net_output_bytes:12345678 # 總網路輸出流量(bytes)
+instantaneous_input_kbps:12.34 # 即時輸入流量(KB/s)
+instantaneous_output_kbps:12.34 # 即時輸出流量(KB/s)
+rejected_connections:0 # 由於maxclients限制而被拒絕的連接數
+sync_full:2 # 全量同步次數
+sync_partial_ok:1 # 成功的部分同步次數
+sync_partial_err:0 # 失敗的部分同步次數
+expired_keys:12345 # 過期的key數量
+expired_stale_perc:0.12 # 過期key的百分比
+expired_time_cap_reached_count:0 # 達到過期時間上限的次數
+expire_cycle_cpu_milliseconds:123 # 過期循環佔用CPU的毫秒數
+evicted_keys:0 # 由於maxmemory限制而被驅逐的key數量
+keyspace_hits:123456 # key命中次數
+keyspace_misses:12345 # key未命中次數
+pubsub_channels:1 # 目前使用中的發布/訂閱頻道數
+pubsub_patterns:0 # 目前使用中的發布/訂閱模式數
+latest_fork_usec:1234 # 最近一次fork操作耗時(微秒)
+migrate_cached_sockets:0 # 快取的遷移socket數量&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</description></item><item><title>[Redis] HyperLogLog(HLL) – 活躍量統計</title><link>https://quietbo.com/2023/12/06/redis-hyperlogloghll-%E6%B4%BB%E8%BA%8D%E9%87%8F%E7%B5%B1%E8%A8%88/</link><pubDate>Wed, 06 Dec 2023 11:00:45 +0000</pubDate><guid>https://quietbo.com/2023/12/06/redis-hyperlogloghll-%E6%B4%BB%E8%BA%8D%E9%87%8F%E7%B5%B1%E8%A8%88/</guid><description>&lt;p&gt;統計一個APP的日活量（DAU）和月活量（MAU）&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;基數: 不重複元素, 例如{1, 2, 3, 5, 5, 5, 6}, 基數集為{1, 2, 3, 5, 6}, 基數為5;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;本次範例使用Docker內建立一個Redis容器&lt;br&gt;
 &lt;a class="link" href="https://redis.io/docs/data-types/probabilistic/hyperloglogs/" target="_blank" rel="noopener"
  &gt;Redis-hyperloglogs&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;HyperLogLogs 提供了3個指令：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ pfadd : 添加
+ &lt;/li&gt;
+ &lt;li&gt;
+ pfcount : 計數
+ &lt;/li&gt;
+ &lt;li&gt;
+ pfmerge : 合併
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;&amp;gt; PFADD bikes Hyperion Deimos Phoebe Quaoar
+(integer) 1
+&amp;gt; PFCOUNT bikes
+(integer) 4
+&amp;gt; PFADD commuter_bikes Salacia Mimas Quaoar
+(integer) 1
+&amp;gt; PFMERGE all_bikes bikes commuter_bikes
+OK
+&amp;gt; PFCOUNT all_bikes
+(integer) 6&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;以上的操作說明為:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 將Hyperion, Deimos, Phoebe, Quaoar加入至bikes
+ &lt;/li&gt;
+ &lt;li&gt;
+ 查看bikes目前有多少基數(不重複元素)
+ &lt;/li&gt;
+ &lt;li&gt;
+ Salacia, Mimas, Quaoar加入至commuter_bikes
+ &lt;/li&gt;
+ &lt;li&gt;
+ 將兩個key&gt; bikes與commuter_bikes合併成一張表，命名為all_bikes
+ &lt;/li&gt;
+ &lt;li&gt;
+ 查看all_bikes目前有多少基數
+ &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;第4個操作不會將原本兩表刪除，還是會保留著。&lt;/p&gt;
 &lt;p&gt;如果想要HLL的資料刪除的話，可使用del與TTL時間到達後自行刪除&lt;/p&gt;</description></item><item><title>[Redis] 發佈(publish)&amp;訂閱(subscribe)</title><link>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</link><pubDate>Mon, 14 Feb 2022 10:51:45 +0000</pubDate><guid>https://quietbo.com/2022/02/14/redis-%E7%99%BC%E4%BD%88publish%E8%A8%82%E9%96%B1subscribe/</guid><description>&lt;p&gt;環境:Windows 10&lt;br&gt;
 Redis: 5.0.7&lt;/p&gt;
@@ -42,19 +104,19 @@ Redis: 5.0.7&lt;/p&gt;
 &lt;h2 id="範例.wp-block-heading"&gt;範例
 &lt;/h2&gt;&lt;p&gt;創建了訂閱頻道名為runoobChat&lt;br&gt;
 訂閱之後就無法在進行操作，只能點擊Stop Subscribe&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/pGIes6o.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;開新的GUI連到redis內，查看訂閱數:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;pubsub numsub channel_name &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;返回頻道訂閱者的數量:&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;channels可創建多個，且可同時被多個client訂閱，client可訂閱多個channels(如下圖)&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/5ibVYq8.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;channels可創建多個，且可同時被多個client訂閱，client可訂閱多個channels(如下圖)&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/hSH0f5U.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="jsx" class="language-jsx"&gt;subscribe channel_name # 訂閱1個channel
+subscribe channel_name_1 channel_name_2 # 訂閱多個channel&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;將信息發送到指定的頻道，下方是runoobChat發送訊息出去給所有訂閱者。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;下圖是我開啟3個redis，前面2個是client，最右方的是server，發送訊息給訂閱runoobChat這個channel的client。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;publish runoobChat "發送的訊息" &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下圖是我開啟3個redis，前面2個是client，最右方的是server，發送訊息給訂閱runoobChat這個channel的client。&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/SjxSEMt.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://redis.io/topics/pubsub" target="_blank" rel="noopener"
  &gt;Redis文檔&lt;/a&gt;&lt;br&gt;
 &lt;a class="link" href="https://www.runoob.com/redis/redis-pub-sub.html" target="_blank" rel="noopener"
@@ -62,17 +124,40 @@ Redis: 5.0.7&lt;/p&gt;
 &lt;p&gt;&lt;a class="link" href="https://github.com/qishibo/AnotherRedisDesktopManager" target="_blank" rel="noopener"
  &gt;github網址&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;通過winget來完成:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;安裝完成後:&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;winget install qishibo.AnotherRedisDesktopManager&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/PmIBnCD.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;安裝完成後:&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/nagDtzr.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;點選New Connection，填入自己的IP,Port號,密碼等&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Redis] Key命令與五種數據的操作(基本指令)</title><link>https://quietbo.com/2021/09/18/redis-key%E5%91%BD%E4%BB%A4%E8%88%87%E4%BA%94%E7%A8%AE%E6%95%B8%E6%93%9A%E7%9A%84%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4/</link><pubDate>Sat, 18 Sep 2021 15:12:23 +0000</pubDate><guid>https://quietbo.com/2021/09/18/redis-key%E5%91%BD%E4%BB%A4%E8%88%87%E4%BA%94%E7%A8%AE%E6%95%B8%E6%93%9A%E7%9A%84%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4/</guid><description>&lt;p&gt;作者:不一定會持續更新。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/xuvrecS.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Redis] Key命令與五種數據的操作(基本指令)</title><link>https://quietbo.com/2021/09/18/redis-key%E5%91%BD%E4%BB%A4%E8%88%87%E4%BA%94%E7%A8%AE%E6%95%B8%E6%93%9A%E7%9A%84%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4/</link><pubDate>Sat, 18 Sep 2021 15:12:23 +0000</pubDate><guid>https://quietbo.com/2021/09/18/redis-key%E5%91%BD%E4%BB%A4%E8%88%87%E4%BA%94%E7%A8%AE%E6%95%B8%E6%93%9A%E7%9A%84%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4/</guid><description>&lt;p&gt;作者:不一定會持續更新。&lt;/p&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/09/18/redis-key%e5%91%bd%e4%bb%a4%e8%88%87%e4%ba%94%e7%a8%ae%e6%95%b8%e6%93%9a%e7%9a%84%e6%93%8d%e4%bd%9c%e5%9f%ba%e6%9c%ac%e6%8c%87%e4%bb%a4/#Key%E5%91%BD%E4%BB%A4" &gt;Key命令&lt;/a&gt;&lt;ul class='ez-toc-list-level-3' &gt;
+ &lt;li class='ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/09/18/redis-key%e5%91%bd%e4%bb%a4%e8%88%87%e4%ba%94%e7%a8%ae%e6%95%b8%e6%93%9a%e7%9a%84%e6%93%8d%e4%bd%9c%e5%9f%ba%e6%9c%ac%e6%8c%87%e4%bb%a4/#%E6%AA%A2%E6%9F%A5Key%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8" &gt;檢查Key是否存在&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/09/18/redis-key%e5%91%bd%e4%bb%a4%e8%88%87%e4%ba%94%e7%a8%ae%e6%95%b8%e6%93%9a%e7%9a%84%e6%93%8d%e4%bd%9c%e5%9f%ba%e6%9c%ac%e6%8c%87%e4%bb%a4/#%E6%9F%A5%E7%9C%8BKey%E5%B0%8D%E6%87%89%E7%9A%84value%E7%9A%84%E9%A1%9E%E5%9E%8BType" &gt;查看Key對應的value的類型(Type)&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/09/18/redis-key%e5%91%bd%e4%bb%a4%e8%88%87%e4%ba%94%e7%a8%ae%e6%95%b8%e6%93%9a%e7%9a%84%e6%93%8d%e4%bd%9c%e5%9f%ba%e6%9c%ac%e6%8c%87%e4%bb%a4/#%E5%88%AA%E9%99%A4Key" &gt;刪除Key&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2021/09/18/redis-key%e5%91%bd%e4%bb%a4%e8%88%87%e4%ba%94%e7%a8%ae%e6%95%b8%e6%93%9a%e7%9a%84%e6%93%8d%e4%bd%9c%e5%9f%ba%e6%9c%ac%e6%8c%87%e4%bb%a4/#%E8%A8%AD%E7%BD%AEKey%E9%81%8E%E6%9C%9F%E6%99%82%E9%96%93" &gt;設置Key過期時間&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2021/09/18/redis-key%e5%91%bd%e4%bb%a4%e8%88%87%e4%ba%94%e7%a8%ae%e6%95%b8%e6%93%9a%e7%9a%84%e6%93%8d%e4%bd%9c%e5%9f%ba%e6%9c%ac%e6%8c%87%e4%bb%a4/#%E6%9F%A5%E7%9C%8BKey%E7%9A%84%E6%9C%89%E6%95%88%E6%99%82%E9%96%93" &gt;查看Key的有效時間:&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&amp;gt;
  &amp;lt;a class=&amp;quot;ez-toc-link ez-toc-heading-7&amp;quot; href=&amp;quot;https://quietbo.com/2021/09/18/redis-key%e5%91%bd%e4%bb%a4%e8%88%87%e4%ba%94%e7%a8%ae%e6%95%b8%e6%93%9a%e7%9a%84%e6%93%8d%e4%bd%9c%e5%9f%ba%e6%9c%ac%e6%8c%87%e4%bb%a4/#String%E5%AD%97%E7%AC%A6%E4%B8%B2&amp;quot; &amp;gt;String字符串&amp;lt;/a&amp;gt;&amp;lt;ul class='ez-toc-list-level-3' &amp;gt;
  &amp;lt;li class='ez-toc-heading-level-3'&amp;gt;
@@ -146,248 +231,442 @@ Redis: 5.0.7&lt;/p&gt;
  &amp;lt;/ul&amp;gt;
 &amp;lt;/li&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="key命令"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Key命令&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;格式&lt;!-- raw HTML omitted --&gt;:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="key命令"&gt;&lt;span class="ez-toc-section" id="Key%E5%91%BD%E4%BB%A4"&gt;&lt;/span&gt;Key命令&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 在查找key的時候支持正則
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="font-size: revert; color: initial;"&gt;格式&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;keys pattern&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="檢查key是否存在"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;檢查Key是否存在&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;keys * # 查所有key，常用
+keys 'k*' # 查名稱包含[開頭為k]的key&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/dGtaC1H.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id="檢查key是否存在"&gt;&lt;span class="ez-toc-section" id="%E6%AA%A2%E6%9F%A5Key%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"&gt;&lt;/span&gt;檢查Key是否存在&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;格式(可多個): 存在返回1，不存在返回0&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;exists key1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="查看key對應的value的類型type"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;查看Key對應的value的類型(Type)&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;exists k0
+exists k1
+exists k0 k1
+exists k0 k1 k2 k3&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/EYs4V02.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id="查看key對應的value的類型type"&gt;&lt;span class="ez-toc-section" id="%E6%9F%A5%E7%9C%8BKey%E5%B0%8D%E6%87%89%E7%9A%84value%E7%9A%84%E9%A1%9E%E5%9E%8BType"&gt;&lt;/span&gt;查看Key對應的value的類型(Type)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;type key&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;redis⽀持的五種類型:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="刪除key"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;刪除Key&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ string
+ &lt;/li&gt;
+ &lt;li&gt;
+ list
+ &lt;/li&gt;
+ &lt;li&gt;
+ set
+ &lt;/li&gt;
+ &lt;li&gt;
+ zset
+ &lt;/li&gt;
+ &lt;li&gt;
+ hash
+ &lt;/li&gt;
+&lt;/ol&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/r0GYnew.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id="刪除key"&gt;&lt;span class="ez-toc-section" id="%E5%88%AA%E9%99%A4Key"&gt;&lt;/span&gt;刪除Key&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="設置key過期時間"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;設置Key過期時間&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;del key1
+del key1 key2 key3 # 刪除多個&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/7qjMFEG.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id="設置key過期時間"&gt;&lt;span class="ez-toc-section" id="%E8%A8%AD%E7%BD%AEKey%E9%81%8E%E6%9C%9F%E6%99%82%E9%96%93"&gt;&lt;/span&gt;設置Key過期時間&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;如果在一開始就沒有指定過期時間，Key會一直存在，直到用Del才會移除，&lt;br&gt;
 在已有的Key設置過期時間(以秒為單位):&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h3 id="查看key的有效時間"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;查看Key的有效時間:&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;expire key seconds&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="查看key的有效時間"&gt;&lt;span class="ez-toc-section" id="%E6%9F%A5%E7%9C%8BKey%E7%9A%84%E6%9C%89%E6%95%88%E6%99%82%E9%96%93"&gt;&lt;/span&gt;查看Key的有效時間:&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="string字符串"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;String字符串&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;ttl key&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/cRx86MR.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="string字符串"&gt;&lt;span class="ez-toc-section" id="String%E5%AD%97%E7%AC%A6%E4%B8%B2"&gt;&lt;/span&gt;String字符串&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;字符串類型是Redis中最為基礎的數據存儲類型，它在Redis中是二進制安全的，這便意味著該類型可以接受任何格式的數據，如JPEG圖像數據或Json對象描述信息等。在Redis中字符串類型的Value最多可以容納的數據長度是512M。&lt;/p&gt;
 &lt;p&gt;想了解更多命令可參考:&lt;a class="link" href="http://redisdoc.com/string/set.html" target="_blank" rel="noopener"
  &gt;String&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="setsetnx-設置key與value--設置多個"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Set、Setnx 設置key與value &amp;amp; 設置多個&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id="setsetnx-設置key與value--設置多個"&gt;&lt;span class="ez-toc-section" id="Set%E3%80%81Setnx_%E8%A8%AD%E7%BD%AEkey%E8%88%87value_%E8%A8%AD%E7%BD%AE%E5%A4%9A%E5%80%8B"&gt;&lt;/span&gt;Set、Setnx 設置key與value &amp;amp; 設置多個&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 如果設置的key不存在則添加，若key已存在則修改value。
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;set key value # 設置一個
+mset key1 value1 key2 value2 key2 value2 # 設置多個&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;設置一個key與value:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="設置過期時間"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;設置過期時間&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;set name hello&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/tmo5cCi.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 如果設置的key存在則不做任何動作。
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;setnx name hello&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/LSeIgIc.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 設置多個key與value:
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;mset k1 hello k2 hi k3 good&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/cMOrueo.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id="設置過期時間"&gt;&lt;span class="ez-toc-section" id="%E8%A8%AD%E7%BD%AE%E9%81%8E%E6%9C%9F%E6%99%82%E9%96%93"&gt;&lt;/span&gt;設置過期時間&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 為key設定value值，並且設定過期時間
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;setex key seconds value # 以秒為單位&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;setex ice 5 cream # 設置5秒後過期
+get ice # cream
+get ice # 5秒後在獲取會回nil&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/HRQsEqT.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 在key的value內追加值
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;append key value&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;原本k3的value是good，我在k3的value追加值:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;append k3 morning&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/VHFQgFM.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;但若是原本沒有key的話，會設置一個新的key與value&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="獲取value--多個valeu"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;獲取value &amp;amp; 多個valeu&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/0Jcqu0N.png" alt="" /&gt;&lt;/p&gt;
+&lt;h3 id="獲取value--多個valeu"&gt;&lt;span class="ez-toc-section" id="%E7%8D%B2%E5%8F%96value_%E5%A4%9A%E5%80%8Bvaleu"&gt;&lt;/span&gt;獲取value &amp;amp; 多個valeu&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ get：根據鍵獲取值，如果不存在此鍵則返回nil
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;get key
+mget key1 key2 key3 # 獲取多個值&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="list列表"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;List列表&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;mget k1 k2 k3 &lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/gXN9alW.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="list列表"&gt;&lt;span class="ez-toc-section" id="List%E5%88%97%E8%A1%A8"&gt;&lt;/span&gt;List列表&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;列表的元素類型為有序列的字符串&lt;/strong&gt;&lt;br&gt;
 想了解更多命令可參考:&lt;a class="link" href="http://redisdoc.com/list/index.html" target="_blank" rel="noopener"
  &gt;List&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="增加"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;增加&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id="增加"&gt;&lt;span class="ez-toc-section" id="%E5%A2%9E%E5%8A%A0"&gt;&lt;/span&gt;增加&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 從左/右側添加數據
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;lpush key value1 value2 value3 ....valueN # 左側
+rpush key value1 value2 value3 ....valueN # 右側&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;下圖為從左/右側加入數據的範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;lpush Llist A B C D E
+rpush Rlist R O P W Z
+lrange Llist 0 5
+lrange Rlist 0 5&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Zzun1l5.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;lpush的第一個元素(0)是E，因為lpush插入的方式是像下方影片的插入方式，&lt;br&gt;
-所以原本第一個A才會在最後。(右側則不舉例)&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+所以原本第一個A才會在最後。(右側則不舉例)&lt;figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"&gt;&lt;/p&gt;
+&lt;ul class="blocks-gallery-grid"&gt;
+ &lt;li class="blocks-gallery-item"&gt;
+ &lt;figure&gt;&lt;img loading="lazy" decoding="async" width="900" height="450" src="https://quietbo.com/uploads/2021/09/wTdUGAOTME-1.gif" alt="" data-id="549" data-full-url="https://quietbo.com/uploads/2021/09/wTdUGAOTME-1.gif" data-link="https://quietbo.com/?attachment_id=549" class="wp-image-549" /&gt;&lt;/figure&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;&lt;/figure&gt; 
+&lt;img decoding="async" src="https://i.imgur.com/yoJ3zJz.png" alt="" /&gt; 
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 指定位置添加數據&lt;br /&gt;可指定要在某一元素的前或後插入新的元素
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;linsert key before/after 現有元素 插入的新元素&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="修改指定位置的value"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;修改指定位置的value&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;lrange Llist 0 -1 # 顯示Llist的所有元素
+linsert Llist before B b1 # 在現有元素B的前方插入新元素b1&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/bH6jHZ2.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id="修改指定位置的value"&gt;&lt;span class="ez-toc-section" id="%E4%BF%AE%E6%94%B9%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%9A%84value"&gt;&lt;/span&gt;修改指定位置的value&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 索引可以是負數
+ &lt;/li&gt;
+ &lt;li&gt;
+ 最左側為第一個元素0
+ &lt;/li&gt;
+ &lt;li&gt;
+ 最後一個元素是-1
+ &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;lset key index value&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;lrange Llist 0 -1
+lset Llist 1 Z&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;這裡要注意的是，第一個元素是0，所以把原本的元素1:D改成了Z&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="獲取value"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;獲取value&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/kRWxWLP.png" alt="" /&gt;&lt;/p&gt;
+&lt;h3 id="獲取value"&gt;&lt;span class="ez-toc-section" id="%E7%8D%B2%E5%8F%96value"&gt;&lt;/span&gt;獲取value&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 獲取列表內指定範圍的值
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 索引可以是負數
+ &lt;/li&gt;
+ &lt;li&gt;
+ 最左側為第一個元素0
+ &lt;/li&gt;
+ &lt;li&gt;
+ 最後一個元素是-1
+ &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;lrange key start stop &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;常用的顯示所有元素方式為:lrange key 0 -1&lt;/p&gt;
-&lt;h3 id="刪除某個多個元素"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;刪除某個/多個元素&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id="刪除某個多個元素"&gt;&lt;span class="ez-toc-section" id="%E5%88%AA%E9%99%A4%E6%9F%90%E5%80%8B%E5%A4%9A%E5%80%8B%E5%85%83%E7%B4%A0"&gt;&lt;/span&gt;刪除某個/多個元素&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 刪除指定的值
+ &lt;/li&gt;
+ &lt;li&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;lrem key count value&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;移除元素可以是一個或多個，都是照count來決定移除的數量和方向。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ count &gt; 0 : 從元素0開始，移除count個與value相同的元素
+ &lt;/li&gt;
+ &lt;li&gt;
+ count &lt; 0 : 從最後一個元素，移除count個與value相同的元素
+ &lt;/li&gt;
+ &lt;li&gt;
+ count = 0 : 移除表中與value相同的元素
+ &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;rpush lrem_test aa bb cc oo aa zz bb aa rr aa # 先建立一個list
+lrange lrem_test 0 -1 # 檢視一下新創立的list
+lrem lrem_test 2 aa # 刪除2個與aa相同的元素 (下方圖一)
+lrem lrem_test -1 aa # 移除表中後面數的第1個與aa相同的元素 (下方圖二)
+lrem lrem_test 0 bb # 移除表中與bb相同的元素 (下方圖三)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(下方為圖一)&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/tGWfv3h.png" alt="" /&gt;&lt;br&gt;
 (下方為圖二)&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/HY548k5.png" alt="" /&gt;&lt;br&gt;
 (下方為圖三)&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/SIKM9bY.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;想了解更多命令可參考:&lt;a class="link" href="http://redisdoc.com/list/lrem.html" target="_blank" rel="noopener"
  &gt;lrem&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="set集合"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Set集合&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;h3 id="增加-1"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;增加&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="set集合"&gt;&lt;span class="ez-toc-section" id="Set%E9%9B%86%E5%90%88"&gt;&lt;/span&gt;Set集合&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ ⽆序集合
+ &lt;/li&gt;
+ &lt;li&gt;
+ 元素為字符串類型
+ &lt;/li&gt;
+ &lt;li&gt;
+ 元素具有唯唯性，不重複
+ &lt;/li&gt;
+ &lt;li&gt;
+ Set集合沒有修改操作&lt;br /&gt;想了解更多命令可參考:&lt;a href="http://redisdoc.com/set/index.html"&gt;Set集合&lt;/a&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="增加-1"&gt;&lt;span class="ez-toc-section" id="%E5%A2%9E%E5%8A%A0-2"&gt;&lt;/span&gt;增加&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;添加元素格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sadd key member1 member2 ...&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h3 id="獲取"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;獲取&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sadd aset Abby Kitty Bobby&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="獲取"&gt;&lt;span class="ez-toc-section" id="%E7%8D%B2%E5%8F%96"&gt;&lt;/span&gt;獲取&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;獲取所有元素格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;smembers key&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;下圖顯示結果，很像list的&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="刪除"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;刪除&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/a6dOZh0.png" alt="" /&gt;&lt;/p&gt;
+&lt;h3 id="刪除"&gt;&lt;span class="ez-toc-section" id="%E5%88%AA%E9%99%A4"&gt;&lt;/span&gt;刪除&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;删除指定元素格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;srem key value&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;list刪除方式是lrem，集合的刪除方式是srem，只要看頭是l或s就能知道是什麼數據，&lt;br&gt;
 集合的值不能重複，所以不需指定index。&lt;/p&gt;
-&lt;h2 id="zset有序集合"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;zset有序集合&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id="zset有序集合"&gt;&lt;span class="ez-toc-section" id="zset%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88"&gt;&lt;/span&gt;zset有序集合&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;可以當作是Set的升級版，在基礎上加了”權重”。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h3 id="增加-2"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;增加&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 有序的集合
+ &lt;/li&gt;
+ &lt;li&gt;
+ 元素為字符串類型
+ &lt;/li&gt;
+ &lt;li&gt;
+ 元素具有唯一性，不可重複
+ &lt;/li&gt;
+ &lt;li&gt;
+ score表示權重，可以是整數或浮點數，通過權重將從⼩到大元素排序
+ &lt;/li&gt;
+ &lt;li&gt;
+ 與集合一樣，沒有修改操作
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="增加-2"&gt;&lt;span class="ez-toc-section" id="%E5%A2%9E%E5%8A%A0-3"&gt;&lt;/span&gt;增加&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;格式如下:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zadd key score1 member1 score2 member2 ...&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h3 id="獲取member與score"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;獲取member與score&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zadd zset_test 4 Abby 5 Kitty 6 Lucy 1 Bocky 4 Pocky 1 Happy&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="獲取member與score"&gt;&lt;span class="ez-toc-section" id="%E7%8D%B2%E5%8F%96member%E8%88%87score"&gt;&lt;/span&gt;獲取member與score&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;與List獲取元素很相似，zset是有序集合，但不需設數量，因為集合不能有重複的元素。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 需指定開始與結束位置
+ &lt;/li&gt;
+ &lt;li&gt;
+ 索引由左至右，索引可以是負數
+ &lt;/li&gt;
+ &lt;li&gt;
+ 第一個元素為0，-1表示最后⼀个元素
+ &lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zrange key start stop&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zrange zset_test 0 -1&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/AMYtHAB.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 獲取score在min與max之間的值
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zrangebyscore key min max&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zrangebyscore zset_test 1 2&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/jtPgpTe.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 獲取member的score值
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zscore key member&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例為:獲取Bocky、Happy(member)的score&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="刪除-1"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;刪除&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/nvvKuEX.png" alt="" /&gt;&lt;/p&gt;
+&lt;h3 id="刪除-1"&gt;&lt;span class="ez-toc-section" id="%E5%88%AA%E9%99%A4-2"&gt;&lt;/span&gt;刪除&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 删除指定的member
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zrem key member1 member2 ....&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zrem zset_test Pocky&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/hzbrkgv.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 删除有score值指定範圍的member
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zremrangebyscore key min max&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;zremrangebyscore zset_test 1 2 # 刪除集合zset_test中權重值是1~2之間的元素&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例的Bocky、Happy的score值為1。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h2 id="hash"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;hash&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;h3 id="增加-3"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;增加&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/bNOLlJ5.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="hash"&gt;&lt;span class="ez-toc-section" id="hash"&gt;&lt;/span&gt;hash&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 用於存儲對象，對象的結構為屬性(field)與值(value)
+ &lt;/li&gt;
+ &lt;li&gt;
+ 值的類型為字符串&lt;br /&gt;(滿像python的dict)
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="增加-3"&gt;&lt;span class="ez-toc-section" id="%E5%A2%9E%E5%8A%A0-4"&gt;&lt;/span&gt;增加&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 設置單個屬性
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;hset: 如果給定的Key不存在則建立，若存在則覆蓋，成功返回1&lt;br&gt;
 hsetnx: 如果給定的key已經存在，則不執行該命令，返回0&lt;/p&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hset key field value&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hset today very happy&lt;/code&gt;&lt;/pre&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 設置多個屬性&lt;br /&gt;如果有一樣field的名稱但不同的value，則會覆蓋掉。&lt;br /&gt;格式:
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hmset key field1 value1 field2 value2 ...&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="獲取field與value"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;獲取field與value&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hmset yesterday very happy sometimes read often playgames&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/FtXUQBp.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id="獲取field與value"&gt;&lt;span class="ez-toc-section" id="%E7%8D%B2%E5%8F%96field%E8%88%87value"&gt;&lt;/span&gt;獲取field與value&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 獲取所有field(属性)
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hkeys key&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hkeys yesterday&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/c7YjlAW.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 獲取key裡面所有的value
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hvals key&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/v3HsLD5.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 獲取field的value
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hget key field # 獲取一個value
+hmget key field1 field2 field3 ... # 獲取多value&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;範例:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;h3 id="刪除属性"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;刪除属性&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hget yesterday very
+hmget yesterday very sometimes often &lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/n9i3alo.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id="刪除属性"&gt;&lt;span class="ez-toc-section" id="%E5%88%AA%E9%99%A4%E5%B1%9E%E6%80%A7"&gt;&lt;/span&gt;刪除属性&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 刪除整個hash則使用del(與string一樣)
+ &lt;/li&gt;
+ &lt;li&gt;
+ 刪除field(屬性)時，value(值)也會一併刪除
+ &lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;格式:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;hdel key field1 field2 ... &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注意:&lt;br&gt;
 del是刪除key，hdel才是刪除屬性&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item><item><title>[Redis]安裝</title><link>https://quietbo.com/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 08:00:54 +0000</pubDate><guid>https://quietbo.com/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;利用apt套件管理器安裝:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;img decoding="async" src="https://i.imgur.com/9dd4svA.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Redis]安裝</title><link>https://quietbo.com/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</link><pubDate>Wed, 24 Mar 2021 08:00:54 +0000</pubDate><guid>https://quietbo.com/2021/03/24/redis-server-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;利用apt套件管理器安裝:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo apt update
+sudo apt install redis-server -y&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;檢查redis服務狀態:&lt;br&gt;
 安裝完應會自動啟動。開啟會出現綠色字active(running)&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/bSzwVOX.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;檢查服務狀態:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service redis-server status &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;停止redis server:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service redis-server stop&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;啟動redis server:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service redis-server start&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;啟動redis服務器:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;redis-cli&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/KUEm3J5.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;</description></item></channel></rss>

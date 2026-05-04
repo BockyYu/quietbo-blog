@@ -3,32 +3,52 @@ Jenkins 2.319.1&lt;/p&gt;
 &lt;h1 id="安裝jenkins"&gt;安裝Jenkins
 &lt;/h1&gt;&lt;p&gt;到&lt;a class="link" href="https://www.jenkins.io/" target="_blank" rel="noopener"
  &gt;Jenkins網站&lt;/a&gt;下載對應的檔案。目前我是使用&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;brew install jenkins-lts&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/OzpWOTs.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;安裝完成後，啟動jenkins&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;brew services start jenkins-lts&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/sZkyWrq.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;打開瀏覽器，輸入：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;http://localhost:8080&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;一進去jenkins會要求使用密碼解鎖，初始密碼的路徑，就在提示上的紅色字。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/mJtjOa2.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;解鎖後，選擇要安裝的套件&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/pUcbYIe.png" alt="" /&gt;&lt;/p&gt;
 &lt;p&gt;接下來是安裝時間，會稍微久一點。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;安裝完成後，會要求輸入建立admin帳號，這些帳密都要記住，未來登入需要使用。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/1BcCNOz.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;安裝完成後，會要求輸入建立admin帳號，這些帳密都要記住，未來登入需要使用。&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Wt8Xb8a.png" alt="" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image"&gt;&lt;img decoding="async" src="https://i.imgur.com/N3T0Fpj.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;成功進入jenkins！&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/UAg0ro4.png" alt="" /&gt; &lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Vgj5t8W.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;h1 id="設定-jenkins-與github-rerository連接"&gt;設定 jenkins 與Github Rerository連接
-&lt;/h1&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;/h1&gt;&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 新增建置作業&lt;br /&gt;&lt;img decoding="async" src="https://i.imgur.com/nwfYR6x.png" alt="" /&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ 新增項目名稱，建置Free-Strle軟體專案&lt;br /&gt;&lt;img decoding="async" src="https://i.imgur.com/fuImLsu.png" alt="" /&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ 輸入github的git網址&lt;br /&gt;&lt;img decoding="async" src="https://i.imgur.com/DBTTCi9.png" alt="" /&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ 建置觸發程序，將GitHub hook trigger for GITScm polling打勾。&lt;br /&gt;&lt;img decoding="async" src="https://i.imgur.com/upQad1U.png" alt="" /&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ 建置環境選擇執行Shell，並輸入下方指令後儲存。
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;echo 開始建置mydjango&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/4hzqyUk.png" alt="" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image"&gt;&lt;img decoding="async" src="https://i.imgur.com/9ucJHQm.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;注意：這次示範使用mac的shell，如果使用windows的Shell語法要注意更換。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;建置完成後，點擊「#1」並進入「console output」，就可以看到終端機的輸出了。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="6"&gt;
+ &lt;li&gt;
+ 儲存後點擊「馬上建置」，成功後左下方會出現綠色勾，若失敗的話可進入觀看失敗訊息。&lt;br /&gt;&lt;img decoding="async" src="https://i.imgur.com/7xd5MZx.png" alt="" /&gt;
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;建置完成後，點擊「#1」並進入「console output」，就可以看到終端機的輸出了。&lt;figure class="wp-block-image size-full"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading="lazy" decoding="async" width="666" height="806" src="https://quietbo.com/uploads/2021/12/image.png" alt="" class="wp-image-644" srcset="https://quietbo.com/uploads/2021/12/image.png 666w, https://quietbo.com/uploads/2021/12/image-248x300.png 248w" sizes="auto, (max-width: 666px) 100vw, 666px" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;h2 id="jenkins檢查github"&gt;Jenkins檢查github
 &lt;/h2&gt;&lt;p&gt;不建議使用，基本上應該是github上有push新的程式後，jenkins再進行建置。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;img decoding="async" src="https://i.imgur.com/mhftEQP.png" alt="" /&gt;&lt;/p&gt;</description></item></channel></rss>

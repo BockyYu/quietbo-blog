@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-tw dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="容器間通信 容器都連接到了一個叫 docker0 的Linux bridge上\n下方為bridge的訊息，基本上Containers的IPv4Address會在Subnet的子網內。\n"><title>[Docker] Docker Bridge 網路</title><link rel=canonical href=https://quietbo.com/2022/01/14/docker-docker-bridge-%E7%B6%B2%E8%B7%AF/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css><meta property='og:title' content="[Docker] Docker Bridge 網路"><meta property='og:description' content="容器間通信 容器都連接到了一個叫 docker0 的Linux bridge上\n下方為bridge的訊息，基本上Containers的IPv4Address會在Subnet的子網內。\n"><meta property='og:url' content='https://quietbo.com/2022/01/14/docker-docker-bridge-%E7%B6%B2%E8%B7%AF/'><meta property='og:site_name' content='Quietbo'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='docker'><meta property='article:published_time' content='2022-01-14T15:14:13+00:00'><meta property='article:modified_time' content='2022-01-14T15:14:13+00:00'><meta name=twitter:title content="[Docker] Docker Bridge 網路"><meta name=twitter:description content="容器間通信 容器都連接到了一個叫 docker0 的Linux bridge上\n下方為bridge的訊息，基本上Containers的IPv4Address會在Subnet的子網內。\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<!doctype html><html lang=zh-tw dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="容器間通信 容器都連接到了一個叫 docker0 的Linux bridge上\n$ docker network ls NETWORK ID NAME DRIVER SCOPE b2077f8151cb bridge bridge local d1465da885e1 host host local 91fc3c2b25fb none null local 下方為bridge的訊息，基本上Containers的IPv4Address會在Subnet的子網內。\n"><title>[Docker] Docker Bridge 網路</title><link rel=canonical href=https://quietbo.com/2022/01/14/docker-docker-bridge-%E7%B6%B2%E8%B7%AF/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css><meta property='og:title' content="[Docker] Docker Bridge 網路"><meta property='og:description' content="容器間通信 容器都連接到了一個叫 docker0 的Linux bridge上\n$ docker network ls NETWORK ID NAME DRIVER SCOPE b2077f8151cb bridge bridge local d1465da885e1 host host local 91fc3c2b25fb none null local 下方為bridge的訊息，基本上Containers的IPv4Address會在Subnet的子網內。\n"><meta property='og:url' content='https://quietbo.com/2022/01/14/docker-docker-bridge-%E7%B6%B2%E8%B7%AF/'><meta property='og:site_name' content='Quietbo'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='docker'><meta property='article:published_time' content='2022-01-14T15:14:13+00:00'><meta property='article:modified_time' content='2022-01-14T15:14:13+00:00'><meta name=twitter:title content="[Docker] Docker Bridge 網路"><meta name=twitter:description content="容器間通信 容器都連接到了一個叫 docker0 的Linux bridge上\n$ docker network ls NETWORK ID NAME DRIVER SCOPE b2077f8151cb bridge bridge local d1465da885e1 host host local 91fc3c2b25fb none null local 下方為bridge的訊息，基本上Containers的IPv4Address會在Subnet的子網內。\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
 <span class=hamburger-box><span class=hamburger-inner></span></span></button><header><div class=site-meta><h1 class=site-name><a href=/>Quietbo</a></h1><h2 class=site-description>你的部落格簡介</h2></div></header><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
 <span>Home</span></a></li><li><a href=/posts/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
 <span>網誌</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
@@ -7,7 +7,77 @@
 <span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/dockeramp-docker-compose/ style=background-color:#eebeef;color:#3c0f3d>Docker&amp;amp; Docker-Compose</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2022/01/14/docker-docker-bridge-%E7%B6%B2%E8%B7%AF/>[Docker] Docker Bridge 網路</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published datetime=2022-01-14T15:14:13Z>Friday, January 14, 2022</time>
 <svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>1 minute read</time></div></footer></div></header><section class=article-content><h2 id=容器間通信>容器間通信</h2><p>容器都連接到了一個叫 docker0 的Linux bridge上</p><p>下方為bridge的訊息，基本上Containers的IPv4Address會在Subnet的子網內。</p><p>並且Containers都默認的連接到docker0，如下圖。</p><p></p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/docker/>Docker</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2022/01/10/docker-data-volume%E7%9A%84%E7%B7%B4%E7%BF%92mysql/><div class=article-details><h2 class=article-title>[Docker] Data Volume的練習(MySQL)</h2></div></a></article><article><a href=/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%EF%BC%8C%E6%89%BE%E4%B8%8D%E5%88%B0var-lib-docker-volumes-%E5%B7%B2%E8%A7%A3%E6%B1%BA/><div class=article-details><h2 class=article-title>[Docker] Mac M1 – no such file or directory: /var/lib/docker/volumes ，找不到var/lib/docker/volumes (已解決)</h2></div></a></article><article><a href=/2021/09/27/docker-mac-m1-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries%E5%B7%B2%E8%A7%A3%E6%B1%BA/><div class=article-details><h2 class=article-title>[Docker] Mac M1 – no matching manifest for linux/arm64/v8 in the manifest list entries(已解決)</h2></div></a></article><article><a href=/2021/09/13/docker-%E5%AE%89%E8%A3%9D-mac-m1/><div class=article-details><h2 class=article-title>[Docker] Mac M1 安裝 Docker</h2></div></a></article><article><a href=/2021/07/15/docker%E5%B0%87image-push%E5%88%B0docker-hub/><div class=article-details><h2 class=article-title>[Docker]將Image push到Docker Hub</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+<time class=article-time--reading>1 minute read</time></div></footer></div></header><section class=article-content><h2 id=容器間通信>容器間通信</h2><p>容器都連接到了一個叫 docker0 的Linux bridge上</p><pre class=wp-block-code><code>$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+b2077f8151cb   bridge    bridge    local
+d1465da885e1   host      host      local
+91fc3c2b25fb   none      null      local</code></pre><p>下方為bridge的訊息，基本上Containers的IPv4Address會在Subnet的子網內。</p><pre class=wp-block-code><code>$ docker network inspect b20
+[
+    {
+        "Name": "bridge",
+        "Id": "b2077f8151cbe85b063e14c0603ad241acc0066d0155b747d09d5a1171598b62",
+        "Created": "2022-01-05T06:05:45.888144625Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "0f74d05e5298f06e21b056273867145558143b4dda2b62f0e397ef31f25fc074": {
+                "Name": "box1",
+                "EndpointID": "8b7adf5422e5701c9fd762728009809a5a63033cdfe1ea2d621fb3d6a668f4ec",
+                "MacAddress": "02:42:ac:11:00:02",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            },
+            "5360d3a4fb4ab3fab6b4b3fc505932f9360bc5d970d1411db8acd84be37d0338": {
+                "Name": "web2",
+                "EndpointID": "b318ba87a14cc6bb72183805479d0acc35947045242875b2bd590290bdde03ca",
+                "MacAddress": "02:42:ac:11:00:03",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": ""
+            },
+            "d9875a0e49cd74897dc3d25d7d9ad297bcfbd62bdfde050ddb2e64b5cf5764e0": {
+                "Name": "box2",
+                "EndpointID": "67c774ac6dbac5d7266223d34ff28a0a81c2f24074397ce307d8e49593e5f950",
+                "MacAddress": "02:42:ac:11:00:05",
+                "IPv4Address": "172.17.0.5/16",
+                "IPv6Address": ""
+            },
+            "f8b413a00b3b4715914b381a28b1aef8816dc32942d6ec2eb29c2570da3069ff": {
+                "Name": "web1",
+                "EndpointID": "96c5cbd408523c17fae501ce51c2cb1b6d85ab4d70d629b88e630f7faabc336d",
+                "MacAddress": "02:42:ac:11:00:04",
+                "IPv4Address": "172.17.0.4/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]</code></pre><p>並且Containers都默認的連接到docker0，如下圖。<figure class=wp-block-image></p><p><img decoding=async src=https://i.imgur.com/mqnWun0.png alt></figure><figure class="wp-block-image size-large"><img loading=lazy decoding=async width=1024 height=668 src=/uploads/2022/01/image-1024x668.png alt class=wp-image-693 srcset="/uploads/2022/01/image-1024x668.png 1024w, /uploads/2022/01/image-300x196.png 300w, /uploads/2022/01/image-768x501.png 768w, /uploads/2022/01/image.png 1316w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></figure></p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/docker/>Docker</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2022/01/10/docker-data-volume%E7%9A%84%E7%B7%B4%E7%BF%92mysql/><div class=article-details><h2 class=article-title>[Docker] Data Volume的練習(MySQL)</h2></div></a></article><article><a href=/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%EF%BC%8C%E6%89%BE%E4%B8%8D%E5%88%B0var-lib-docker-volumes-%E5%B7%B2%E8%A7%A3%E6%B1%BA/><div class=article-details><h2 class=article-title>[Docker] Mac M1 – no such file or directory: /var/lib/docker/volumes ，找不到var/lib/docker/volumes (已解決)</h2></div></a></article><article><a href=/2021/09/27/docker-mac-m1-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries%E5%B7%B2%E8%A7%A3%E6%B1%BA/><div class=article-details><h2 class=article-title>[Docker] Mac M1 – no matching manifest for linux/arm64/v8 in the manifest list entries(已解決)</h2></div></a></article><article><a href=/2021/09/13/docker-%E5%AE%89%E8%A3%9D-mac-m1/><div class=article-details><h2 class=article-title>[Docker] Mac M1 安裝 Docker</h2></div></a></article><article><a href=/2021/07/15/docker%E5%B0%87image-push%E5%88%B0docker-hub/><div class=article-details><h2 class=article-title>[Docker]將Image push到Docker Hub</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
 2026 Quietbo</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.1>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
     import gallery from '\/ts\/gallery.js';
 

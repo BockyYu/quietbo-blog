@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MongoDB on Quietbo</title><link>https://quietbo.com/categories/mongodb/</link><description>Recent content in MongoDB on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Fri, 10 Mar 2023 16:56:40 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/mongodb/index.xml" rel="self" type="application/rss+xml"/><item><title>[Mongodb] 資料內為什麼有$numberLong?(已解決)</title><link>https://quietbo.com/2023/03/11/mongodb-%E8%B3%87%E6%96%99%E5%85%A7%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%89numberlong%E5%B7%B2%E8%A7%A3%E6%B1%BA/</link><pubDate>Fri, 10 Mar 2023 16:56:40 +0000</pubDate><guid>https://quietbo.com/2023/03/11/mongodb-%E8%B3%87%E6%96%99%E5%85%A7%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%89numberlong%E5%B7%B2%E8%A7%A3%E6%B1%BA/</guid><description>&lt;p&gt;這件事情是不小心自己做了一個坑給自己踩的，&lt;br&gt;
 我從公司的QAT測試環境的GUI(Mongodb compass)複製了一份data，內容複製出來如下:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="json" class="language-json line-numbers"&gt;{
+ "uuid" : "2580913",
+ "name" : "UserName",
+ "id" : "A123456789",
+ "age" : 18,
+ "weight" : 70,
+ "height" : 175
+ "birthday" :{
+ "$numberLong" : "789798540000"
+ }
+ "registration_date": {
+ "$numberLong": "1677211157126"
+ }
+}&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然後在我自己本機用Studio 3T直接insert了這些相同格式的資料，都正常匯入了！&lt;/p&gt;
 &lt;p&gt;後來我在local開發的時候find用了下方的方式來搜尋(注意!其實這是錯的，這裡的$numberLong是被當作層級使用)&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;{"birthday.$numberLong": {"$gte": "789798540000"}}&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;此時local能正常取出資料，我還沒意識到問題。&lt;br&gt;
 後來部署到QAT後頻繁出錯，一去了解才發現，原來當時從Mongodb compass複製出來的$numberLong該資料的type，&lt;br&gt;
 原始資料為:&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="json" class="language-json"&gt;{
+ "uuid" : "2580913068820",
+ "name" : "UserName",
+ "id" : "A123456789",
+ "age" : 18,
+ "weight" : 70,
+ "height" : 175
+ "birthday" : 789798540000,
+ "registration_date": 1677211157126
+}&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我後來去QAT機器測了一下這段，(如果birthday的type是int)&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;db.user.find ({birthday:{$ type : "int" }})&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;結果沒有資料。我把int換成了long：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;db.user.find ({birthday:{$ type : "long" }})&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;就出現一堆資料了。&lt;/p&gt;
 &lt;p&gt;……….&lt;br&gt;
 其實我一開始在把QAT的測試資料存進local這裡就出錯了！&lt;/p&gt;

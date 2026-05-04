@@ -1,46 +1,129 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>基本功 on Quietbo</title><link>https://quietbo.com/tags/%E5%9F%BA%E6%9C%AC%E5%8A%9F/</link><description>Recent content in 基本功 on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Thu, 04 Nov 2021 16:53:04 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/%E5%9F%BA%E6%9C%AC%E5%8A%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>[Python] break、continue、pass、return及exit的用法與區別</title><link>https://quietbo.com/2021/11/05/python-break%E3%80%81continue%E3%80%81pass%E3%80%81return%E5%8F%8Aexit%E7%9A%84%E7%94%A8%E6%B3%95%E8%88%87%E5%8D%80%E5%88%A5/</link><pubDate>Thu, 04 Nov 2021 16:53:04 +0000</pubDate><guid>https://quietbo.com/2021/11/05/python-break%E3%80%81continue%E3%80%81pass%E3%80%81return%E5%8F%8Aexit%E7%9A%84%E7%94%A8%E6%B3%95%E8%88%87%E5%8D%80%E5%88%A5/</guid><description>&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>基本功 on Quietbo</title><link>https://quietbo.com/tags/%E5%9F%BA%E6%9C%AC%E5%8A%9F/</link><description>Recent content in 基本功 on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Thu, 04 Nov 2021 16:53:04 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/%E5%9F%BA%E6%9C%AC%E5%8A%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>[Python] break、continue、pass、return及exit的用法與區別</title><link>https://quietbo.com/2021/11/05/python-break%E3%80%81continue%E3%80%81pass%E3%80%81return%E5%8F%8Aexit%E7%9A%84%E7%94%A8%E6%B3%95%E8%88%87%E5%8D%80%E5%88%A5/</link><pubDate>Thu, 04 Nov 2021 16:53:04 +0000</pubDate><guid>https://quietbo.com/2021/11/05/python-break%E3%80%81continue%E3%80%81pass%E3%80%81return%E5%8F%8Aexit%E7%9A%84%E7%94%A8%E6%B3%95%E8%88%87%E5%8D%80%E5%88%A5/</guid><description>&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ break 結束循環語句
+ &lt;/li&gt;
+ &lt;li&gt;
+ continue 跳出本次循環，繼續下一個循環
+ &lt;/li&gt;
+ &lt;li&gt;
+ pass 不做任何事情，站位而已
+ &lt;/li&gt;
+ &lt;li&gt;
+ return 退出整個函數(def)
+ &lt;/li&gt;
+ &lt;li&gt;
+ exit 結束整個程序(進程)
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="break"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;break&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/11/05/python-break%e3%80%81continue%e3%80%81pass%e3%80%81return%e5%8f%8aexit%e7%9a%84%e7%94%a8%e6%b3%95%e8%88%87%e5%8d%80%e5%88%a5/#break" &gt;break&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/11/05/python-break%e3%80%81continue%e3%80%81pass%e3%80%81return%e5%8f%8aexit%e7%9a%84%e7%94%a8%e6%b3%95%e8%88%87%e5%8d%80%e5%88%a5/#continue" &gt;continue&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/11/05/python-break%e3%80%81continue%e3%80%81pass%e3%80%81return%e5%8f%8aexit%e7%9a%84%e7%94%a8%e6%b3%95%e8%88%87%e5%8d%80%e5%88%a5/#pass" &gt;pass&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/11/05/python-break%e3%80%81continue%e3%80%81pass%e3%80%81return%e5%8f%8aexit%e7%9a%84%e7%94%a8%e6%b3%95%e8%88%87%e5%8d%80%e5%88%a5/#return" &gt;return&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2021/11/05/python-break%e3%80%81continue%e3%80%81pass%e3%80%81return%e5%8f%8aexit%e7%9a%84%e7%94%a8%e6%b3%95%e8%88%87%e5%8d%80%e5%88%a5/#exit" &gt;exit&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="break"&gt;&lt;span class="ez-toc-section" id="break"&gt;&lt;/span&gt;break&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;用來終止循環語句，即使循環條件沒有False或者序列還沒被完全遞歸完，也會停止執行循環語句。&lt;/p&gt;
 &lt;p&gt;break語句用在while和for循環中。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python line-numbers"&gt;def config():
+ for num in '12345':
+ if num == '3':
+ break
+ print('當前數字:', num)
+ print('=' * 10)
+
+config()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;結果如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="continue"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;continue&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;當前數字: 1
+當前數字: 2
+==========&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="continue"&gt;&lt;span class="ez-toc-section" id="continue"&gt;&lt;/span&gt;continue&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;continue 語句跳出&lt;strong&gt;本次&lt;/strong&gt;循環，然後繼續進行下一輪循環。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python line-numbers"&gt;def config():
+ for num in '12345':
+ if num == '3':
+ continue
+ print('當前數字:', num)
+ print('=' * 10)
+
+config()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;輸出結果：當for迴圈到3時，被跳過了。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="pass"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;pass&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;當前數字: 1
+當前數字: 2
+當前數字: 4
+當前數字: 5
+==========&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="pass"&gt;&lt;span class="ez-toc-section" id="pass"&gt;&lt;/span&gt;pass&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;空語句，pass 不做任何事情，一般用做佔位語句，是為了保持程序結構的完整性。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python"&gt;def config():
+ for num in '12345':
+ if num == '3':
+ pass
+ print('當前數字:', num)
+ print('=' * 10)
+
+config()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;結果如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;當前數字: 1
+當前數字: 2
+當前數字: 3
+當前數字: 4
+當前數字: 5
+==========&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;補充：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="return"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;return&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"&gt;
+ &lt;p&gt;
+ 為什麼要站位？
+ &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;事實上站位就是要先預留位置，回頭再補上具體的代碼實現。
+很多時候我們在開發的時候，會把已知的判斷條件或函式寫好，然後在對應的塊中寫上pass，後續再慢慢完善這些站位的部分。&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="return"&gt;&lt;span class="ez-toc-section" id="return"&gt;&lt;/span&gt;return&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;return 語句就是將結果返回到調用的地方，並把控制權也一起返回。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python"&gt;def config():
+ for num in '12345':
+ if num == '3':
+ return f'for迴圈在 {num} 時回傳了'
+ print('當前數字:', num)
+ print('=' * 10)
+
+print(config())
+print('上方function已返回')&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;結果如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id="exit"&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;exit&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;當前數字: 1
+當前數字: 2
+for迴圈在 3 時回傳了
+上方function已返回&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="exit"&gt;&lt;span class="ez-toc-section" id="exit"&gt;&lt;/span&gt;exit&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
 &lt;/h2&gt;&lt;p&gt;用來結束整個程序（進程）。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python"&gt;def config():
+ for num in '12345':
+ if num == '3':
+ exit()
+ print('當前數字:', num)
+ print('=' * 10)
+
+config()
+print('*' * 10) #程式已結束所以不會印出&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;顯示如下：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;</description></item></channel></rss>
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;當前數字: 1
+當前數字: 2&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

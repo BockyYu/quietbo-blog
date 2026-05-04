@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-tw dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content=' <span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" aria-label="顯示/隱藏內容目錄"><span class="ez-toc-js-icon-con"><span class=""><span class="eztoc-hide" style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #999;color:#999" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #999;color:#999" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></span></a></span> <li class=&#39;ez-toc-page-1 ez-toc-heading-level-2&#39;> <a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#select" >select</a><ul class=&#39;ez-toc-list-level-3&#39; > <li class=&#39;ez-toc-heading-level-3&#39;> <a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95" >基本語法</a> </li> </ul> </li> </ul> </li> [Golang] goroutine & channel Channel Channel 是 Go 語言中用於 goroutine 之間通信的管道，是 Go 並發編程模型的核心組件之一。\n基本概念\nChannel 提供了一種 goroutine 之間的通信機制，使一個 goroutine 可以向另一個 goroutine 發送數據，而無需顯式的鎖或條件變量。\n'><title>Quietbo</title><link rel=canonical href=https://quietbo.com/2022/09/12/golang-goroutine-channel/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css><meta property='og:title' content="Quietbo"><meta property='og:description' content=' <span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" aria-label="顯示/隱藏內容目錄"><span class="ez-toc-js-icon-con"><span class=""><span class="eztoc-hide" style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #999;color:#999" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #999;color:#999" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></span></a></span> <li class=&#39;ez-toc-page-1 ez-toc-heading-level-2&#39;> <a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#select" >select</a><ul class=&#39;ez-toc-list-level-3&#39; > <li class=&#39;ez-toc-heading-level-3&#39;> <a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95" >基本語法</a> </li> </ul> </li> </ul> </li> [Golang] goroutine & channel Channel Channel 是 Go 語言中用於 goroutine 之間通信的管道，是 Go 並發編程模型的核心組件之一。\n基本概念\nChannel 提供了一種 goroutine 之間的通信機制，使一個 goroutine 可以向另一個 goroutine 發送數據，而無需顯式的鎖或條件變量。\n'><meta property='og:url' content='https://quietbo.com/2022/09/12/golang-goroutine-channel/'><meta property='og:site_name' content='Quietbo'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='golang'><meta property='article:published_time' content='2022-09-12T14:41:24+00:00'><meta property='article:modified_time' content='2022-09-12T14:41:24+00:00'><meta name=twitter:title content="Quietbo"><meta name=twitter:description content=' <span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" aria-label="顯示/隱藏內容目錄"><span class="ez-toc-js-icon-con"><span class=""><span class="eztoc-hide" style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #999;color:#999" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #999;color:#999" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></span></a></span> <li class=&#39;ez-toc-page-1 ez-toc-heading-level-2&#39;> <a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#select" >select</a><ul class=&#39;ez-toc-list-level-3&#39; > <li class=&#39;ez-toc-heading-level-3&#39;> <a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95" >基本語法</a> </li> </ul> </li> </ul> </li> [Golang] goroutine & channel Channel Channel 是 Go 語言中用於 goroutine 之間通信的管道，是 Go 並發編程模型的核心組件之一。\n基本概念\nChannel 提供了一種 goroutine 之間的通信機制，使一個 goroutine 可以向另一個 goroutine 發送數據，而無需顯式的鎖或條件變量。\n'></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<!doctype html><html lang=zh-tw dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content=' Table of Contents <span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" aria-label="顯示/隱藏內容目錄"><span class="ez-toc-js-icon-con"><span class=""><span class="eztoc-hide" style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #999;color:#999" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #999;color:#999" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></span></a></span> [Golang] goroutine & channel Channel 類型與創建 發送與接收 <li class=&#39;ez-toc-page-1 ez-toc-heading-level-2&#39;> <a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#select" >select</a><ul class=&#39;ez-toc-list-level-3&#39; > <li class=&#39;ez-toc-heading-level-3&#39;> <a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95" >基本語法</a> </li> </ul> </li> </ul> </li> [Golang] goroutine & channel Go 併發&通道（channel） Channel Channel 是 Go 語言中用於 goroutine 之間通信的管道，是 Go 並發編程模型的核心組件之一。\n基本概念\nChannel 提供了一種 goroutine 之間的通信機制，使一個 goroutine 可以向另一個 goroutine 發送數據，而無需顯式的鎖或條件變量。\n'><title>Quietbo</title><link rel=canonical href=https://quietbo.com/2022/09/12/golang-goroutine-channel/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css><meta property='og:title' content="Quietbo"><meta property='og:description' content=' Table of Contents <span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" aria-label="顯示/隱藏內容目錄"><span class="ez-toc-js-icon-con"><span class=""><span class="eztoc-hide" style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #999;color:#999" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #999;color:#999" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></span></a></span> [Golang] goroutine & channel Channel 類型與創建 發送與接收 <li class=&#39;ez-toc-page-1 ez-toc-heading-level-2&#39;> <a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#select" >select</a><ul class=&#39;ez-toc-list-level-3&#39; > <li class=&#39;ez-toc-heading-level-3&#39;> <a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95" >基本語法</a> </li> </ul> </li> </ul> </li> [Golang] goroutine & channel Go 併發&通道（channel） Channel Channel 是 Go 語言中用於 goroutine 之間通信的管道，是 Go 並發編程模型的核心組件之一。\n基本概念\nChannel 提供了一種 goroutine 之間的通信機制，使一個 goroutine 可以向另一個 goroutine 發送數據，而無需顯式的鎖或條件變量。\n'><meta property='og:url' content='https://quietbo.com/2022/09/12/golang-goroutine-channel/'><meta property='og:site_name' content='Quietbo'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='golang'><meta property='article:published_time' content='2022-09-12T14:41:24+00:00'><meta property='article:modified_time' content='2022-09-12T14:41:24+00:00'><meta name=twitter:title content="Quietbo"><meta name=twitter:description content=' Table of Contents <span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" aria-label="顯示/隱藏內容目錄"><span class="ez-toc-js-icon-con"><span class=""><span class="eztoc-hide" style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #999;color:#999" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #999;color:#999" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></span></a></span> [Golang] goroutine & channel Channel 類型與創建 發送與接收 <li class=&#39;ez-toc-page-1 ez-toc-heading-level-2&#39;> <a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#select" >select</a><ul class=&#39;ez-toc-list-level-3&#39; > <li class=&#39;ez-toc-heading-level-3&#39;> <a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2022/09/12/golang-goroutine-channel/#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95" >基本語法</a> </li> </ul> </li> </ul> </li> [Golang] goroutine & channel Go 併發&通道（channel） Channel Channel 是 Go 語言中用於 goroutine 之間通信的管道，是 Go 並發編程模型的核心組件之一。\n基本概念\nChannel 提供了一種 goroutine 之間的通信機制，使一個 goroutine 可以向另一個 goroutine 發送數據，而無需顯式的鎖或條件變量。\n'></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
 <span class=hamburger-box><span class=hamburger-inner></span></span></button><header><div class=site-meta><h1 class=site-name><a href=/>Quietbo</a></h1><h2 class=site-description>你的部落格簡介</h2></div></header><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
 <span>Home</span></a></li><li><a href=/posts/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
 <span>網誌</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
@@ -7,8 +7,8 @@
 <span>Dark Mode</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/golang/ style=background-color:#dcefbe;color:#2c3d0f>Golang</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2022/09/12/golang-goroutine-channel/></a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published datetime=2022-09-12T14:41:24Z>Monday, September 12, 2022</time>
 <svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>1 minute read</time></div></footer></div></header><section class=article-content><pre><code>&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot; aria-label=&quot;顯示/隱藏內容目錄&quot;&gt;&lt;span class=&quot;ez-toc-js-icon-con&quot;&gt;&lt;span class=&quot;&quot;&gt;&lt;span class=&quot;eztoc-hide&quot; style=&quot;display:none;&quot;&gt;Toggle&lt;/span&gt;&lt;span class=&quot;ez-toc-icon-toggle-span&quot;&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;list-377408&quot; width=&quot;20px&quot; height=&quot;20px&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; class=&quot;arrow-unsorted-368013&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;10px&quot; height=&quot;10px&quot; viewBox=&quot;0 0 24 24&quot; version=&quot;1.2&quot; baseProfile=&quot;tiny&quot;&gt;&lt;path d=&quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;
-</code></pre><pre><code>    &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+<time class=article-time--reading>3 minutes read</time></div></footer></div></header><section class=article-content><div id=ez-toc-container class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"><div class=ez-toc-title-container><p class=ez-toc-title style=cursor:inherit>Table of Contents</p><pre><code>&lt;span class=&quot;ez-toc-title-toggle&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&quot; aria-label=&quot;顯示/隱藏內容目錄&quot;&gt;&lt;span class=&quot;ez-toc-js-icon-con&quot;&gt;&lt;span class=&quot;&quot;&gt;&lt;span class=&quot;eztoc-hide&quot; style=&quot;display:none;&quot;&gt;Toggle&lt;/span&gt;&lt;span class=&quot;ez-toc-icon-toggle-span&quot;&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;list-377408&quot; width=&quot;20px&quot; height=&quot;20px&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg style=&quot;fill: #999;color:#999&quot; class=&quot;arrow-unsorted-368013&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;10px&quot; height=&quot;10px&quot; viewBox=&quot;0 0 24 24&quot; version=&quot;1.2&quot; baseProfile=&quot;tiny&quot;&gt;&lt;path d=&quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;
+</code></pre></div><nav><ul class='ez-toc-list ez-toc-list-level-1'><li class='ez-toc-page-1 ez-toc-heading-level-1'><a class="ez-toc-link ez-toc-heading-1" href=https://quietbo.com/2022/09/12/golang-goroutine-channel/#Golang_goroutine_channel>[Golang] goroutine & channel</a><ul class=ez-toc-list-level-2><li class=ez-toc-heading-level-2><a class="ez-toc-link ez-toc-heading-2" href=https://quietbo.com/2022/09/12/golang-goroutine-channel/#Channel>Channel</a><ul class=ez-toc-list-level-3><li class=ez-toc-heading-level-3><a class="ez-toc-link ez-toc-heading-3" href=https://quietbo.com/2022/09/12/golang-goroutine-channel/#%E9%A1%9E%E5%9E%8B%E8%88%87%E5%89%B5%E5%BB%BA>類型與創建</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-4" href=https://quietbo.com/2022/09/12/golang-goroutine-channel/#%E7%99%BC%E9%80%81%E8%88%87%E6%8E%A5%E6%94%B6>發送與接收</a></li></ul></li><pre><code>    &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
       &lt;a class=&quot;ez-toc-link ez-toc-heading-5&quot; href=&quot;https://quietbo.com/2022/09/12/golang-goroutine-channel/#select&quot; &gt;select&lt;/a&gt;&lt;ul class='ez-toc-list-level-3' &gt;
         &lt;li class='ez-toc-heading-level-3'&gt;
           &lt;a class=&quot;ez-toc-link ez-toc-heading-6&quot; href=&quot;https://quietbo.com/2022/09/12/golang-goroutine-channel/#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95&quot; &gt;基本語法&lt;/a&gt;
@@ -17,7 +17,145 @@
     &lt;/li&gt;
   &lt;/ul&gt;
 &lt;/li&gt;
-</code></pre><h1 id=golang-goroutine--channel>[Golang] goroutine & channel</h1><h2 id=channel>Channel</h2><p>Channel 是 Go 語言中用於 goroutine 之間通信的管道，是 Go 並發編程模型的核心組件之一。<br>基本概念<br>Channel 提供了一種 goroutine 之間的通信機制，使一個 goroutine 可以向另一個 goroutine 發送數據，而無需顯式的鎖或條件變量。</p><h3 id=類型與創建>類型與創建</h3><h3 id=發送與接收>發送與接收</h3><p>goroutine + Channel 範例:</p><p>顯示如下:</p><p>output:</p><p>補充:<br>可以在<br>fmt.Println(&lt;-c)與fmt.Println(data)之前，print隨便一個數值，<br>就可以看到，輸出模式取決於 Go 調度器如何在這兩個 goroutine 之間切換</p><h2 id=select>select</h2><p>select 是 Go 語言中的一個控制結構，專門用於處理多個通道操作。它的主要用途是同時等待多個通道的操作（發送或接收），並在其中一個操作可以進行時執行對應的代碼。</p><h3 id=基本語法>基本語法</h3><p><a class=link href=https://www.runoob.com/go/go-select-statement.html target=_blank rel=noopener>select</a></p><p>output:</p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/golang/>Golang</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2022/09/10/golang-%E6%8E%A5%E5%8F%A3interface/><div class=article-details><h2 class=article-title>[Golang] 接口interface</h2></div></a></article><article><a href=/2022/09/07/golang-%E7%B5%90%E6%A7%8B%E9%AB%94/><div class=article-details><h2 class=article-title>[Golang] 結構體struct &方法接收器</h2></div></a></article><article><a href=/2022/09/03/golang-%E5%87%BD%E6%95%B8-%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B8%E9%96%89%E5%8C%85%E5%8F%AF%E8%AE%8A%E5%8F%83%E6%95%B8%E9%81%9E%E8%BF%B4-%E5%BB%B6%E9%81%B2%E5%9F%B7%E8%A1%8C/><div class=article-details><h2 class=article-title>[Golang] 函數, 匿名函數,閉包,可變參數,遞迴, 延遲執行</h2></div></a></article><article><a href=/2022/09/01/golang-list/><div class=article-details><h2 class=article-title>[Golang] List</h2></div></a></article><article><a href=/2022/09/01/golang-map%E9%9B%86%E5%90%88/><div class=article-details><h2 class=article-title>[Golang] map</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+</code></pre></ul></nav></div><h1 id=golang-goroutine--channel><span class=ez-toc-section id=Golang_goroutine_channel></span>[Golang] goroutine & channel<span class=ez-toc-section-end></span></h1><ul class=wp-block-list><li>Go <a href=https://www.runoob.com/go/go-concurrent.html>併發&通道（channel）</a></li></ul><h2 id=channel><span class=ez-toc-section id=Channel></span>Channel<span class=ez-toc-section-end></span></h2><p>Channel 是 Go 語言中用於 goroutine 之間通信的管道，是 Go 並發編程模型的核心組件之一。<br>基本概念<br>Channel 提供了一種 goroutine 之間的通信機制，使一個 goroutine 可以向另一個 goroutine 發送數據，而無需顯式的鎖或條件變量。</p><h3 id=類型與創建><span class=ez-toc-section id=%E9%A1%9E%E5%9E%8B%E8%88%87%E5%89%B5%E5%BB%BA></span>類型與創建<span class=ez-toc-section-end></span></h3><pre class=wp-block-code><code>// 創建不同類型的 channel
+ch1 := make(chan int)         // 無緩衝的整數 channel
+ch2 := make(chan string, 10)  // 有 10 個緩衝區的字符串 channel
+ch3 := make(chan interface{}) // 任意類型的 channel</code></pre><h3 id=發送與接收><span class=ez-toc-section id=%E7%99%BC%E9%80%81%E8%88%87%E6%8E%A5%E6%94%B6></span>發送與接收<span class=ez-toc-section-end></span></h3><pre class=wp-block-code><code>// 發送數據
+ch &lt;- value
+
+// 接收數據
+value := &lt;-ch
+value, ok := &lt;-ch  // ok 表示 channel 是否已關閉</code></pre><p>goroutine + Channel 範例:</p><pre class=wp-block-code><code>package main
+import "fmt"
+import "time"
+func main() {
+    ch1 := make(chan int, 1)
+    ch2 := make(chan string, 1)
+    ch3 := make(chan interface{}, 1)
+
+    ch1 &lt;- 1  // ch1 緩衝區已滿
+
+    // 創建 goroutine 來接收第一個值
+    go func() {
+        time.Sleep(2 * time.Second)  // 等待1秒
+        fmt.Println(&lt;-ch1)  // 1，此時釋放 ch1 的空間
+    }()
+
+    ch1 &lt;- 3  // 這裡會阻塞，直到上面的 goroutine 從 ch1 接收數據
+    // 由於上面的 goroutine 有2秒延遲，這里會等待約2秒
+
+    ch2 &lt;- "name"
+    ch3 &lt;- "hi"
+
+    fmt.Println(&lt;-ch1)  // 3
+    fmt.Println(&lt;-ch2)  // "name"
+    fmt.Println(&lt;-ch3)  // "hi"
+}</code></pre><p>顯示如下:</p><pre class=wp-block-code><code>1
+3
+name
+hi</code></pre><ol start=2 class=wp-block-list><li>範例&說明</li></ol><pre class=wp-block-code><code>package main
+import "fmt"
+
+func main() {
+    // 創建通道
+    c := make(chan int)
+
+    //併發執行
+    go ifunc(c)
+    for i := 1; i &lt;= 10; i++{
+        // 將數據i發送給通道
+        c &lt;- i
+    }
+
+    // 通道ifunc結束讀取數據
+    c&lt;- 100
+
+    //等於ifunc結束
+    fmt.Println(&lt;-c)
+}
+
+func ifunc(c chan int) {
+
+    // 阻塞等待數據
+    for {
+        //從通道獲取一個數據
+        data := &lt;- c
+
+        // 當取得的數據為100則結束阻塞
+        if data == 100{
+            break
+        }
+        // 輸出數據
+        fmt.Println(data)
+    }
+    // 通知main結束
+    c&lt;-0
+}</code></pre><p>output:</p><pre class=wp-block-code><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+0</code></pre><p>補充:<br>可以在<br>fmt.Println(&lt;-c)與fmt.Println(data)之前，print隨便一個數值，<br>就可以看到，輸出模式取決於 Go 調度器如何在這兩個 goroutine 之間切換</p><h2 id=select><span class=ez-toc-section id=select></span>select<span class=ez-toc-section-end></span></h2><p>select 是 Go 語言中的一個控制結構，專門用於處理多個通道操作。它的主要用途是同時等待多個通道的操作（發送或接收），並在其中一個操作可以進行時執行對應的代碼。</p><h3 id=基本語法><span class=ez-toc-section id=%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95></span>基本語法<span class=ez-toc-section-end></span></h3><pre class=wp-block-code><code>select {
+case &lt;-chan1:
+    // 從 chan1 接收到數據時執行
+case chan2 &lt;- value:
+    // 向 chan2 發送數據成功時執行
+case x := &lt;-chan3:
+    // 從 chan3 接收到數據並賦值給 x 時執行
+default:
+    // 沒有通道操作就緒時執行（非阻塞模式）
+}</code></pre><p><a class=link href=https://www.runoob.com/go/go-select-statement.html target=_blank rel=noopener>select</a></p><pre class=wp-block-code><code>package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    // 創建兩個通道
+    ch1 := make(chan string)
+    ch2 := make(chan string)
+
+    // 在一個 goroutine 中，1秒後發送數據到 ch1
+    go func() {
+        time.Sleep(1 * time.Second)
+        ch1 &lt;- "來自通道1的數據"
+    }()
+    go func() {
+        time.Sleep(1 * time.Second)
+        ch1 &lt;- "來自通道1-1的數據"
+    }()
+    // 在另一個 goroutine 中，2秒後發送數據到 ch2
+    go func() {
+        time.Sleep(2 * time.Second)
+        ch2 &lt;- "來自通道2的數據"
+    }()
+
+    go func() {
+        time.Sleep(2 * time.Second)
+        ch2 &lt;- "來自通道2-1的數據"
+    }()
+
+    // 使用 select 監聽兩個通道
+    for i := 0; i &lt; 4; i++ {
+        select {
+        case msg1 := &lt;-ch1:
+            fmt.Println("接收到:", msg1)
+        case msg2 := &lt;-ch2:
+            fmt.Println("接收到:", msg2)
+        case &lt;-time.After(3 * time.Second):
+            fmt.Println("操作超時")
+        }
+    }
+}</code></pre><p>output:</p><pre class=wp-block-code><code>接收到: 來自通道1-1的數據
+接收到: 來自通道1的數據
+接收到: 來自通道2的數據
+接收到: 來自通道2-1的數據</code></pre></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/golang/>Golang</a></section></footer></article><aside><h2 class=section-title>Related content</h2><div class=subsection-list><div class=article-list--tile><article><a href=/2022/09/10/golang-%E6%8E%A5%E5%8F%A3interface/><div class=article-details><h2 class=article-title>[Golang] 接口interface</h2></div></a></article><article><a href=/2022/09/07/golang-%E7%B5%90%E6%A7%8B%E9%AB%94/><div class=article-details><h2 class=article-title>[Golang] 結構體struct &方法接收器</h2></div></a></article><article><a href=/2022/09/03/golang-%E5%87%BD%E6%95%B8-%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B8%E9%96%89%E5%8C%85%E5%8F%AF%E8%AE%8A%E5%8F%83%E6%95%B8%E9%81%9E%E8%BF%B4-%E5%BB%B6%E9%81%B2%E5%9F%B7%E8%A1%8C/><div class=article-details><h2 class=article-title>[Golang] 函數, 匿名函數,閉包,可變參數,遞迴, 延遲執行</h2></div></a></article><article><a href=/2022/09/01/golang-list/><div class=article-details><h2 class=article-title>[Golang] List</h2></div></a></article><article><a href=/2022/09/01/golang-map%E9%9B%86%E5%90%88/><div class=article-details><h2 class=article-title>[Golang] map</h2></div></a></article></div></div></aside><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
 2026 Quietbo</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.1>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
     import gallery from '\/ts\/gallery.js';
 
