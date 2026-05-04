@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="\n前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
 <title>[Kafka] 使用docker在本機部署KRaft模式 &#43; kafka-ui (簡易版)</title>
 
 
@@ -13,12 +13,12 @@
 
 
 <link rel="stylesheet" href="/scss/style.min.b732095129242e2cc6d53ba659f476b7da40a2c70e1928579884e0cb48466352.css"><meta property='og:title' content="[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)">
-<meta property='og:description' content="\n前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
+<meta property='og:description' content="前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
 <meta property='og:url' content='http://localhost:1313/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/'>
 <meta property='og:site_name' content='Quietbo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='docker' /><meta property='article:tag' content='kafka' /><meta property='article:tag' content='kraft' /><meta property='article:published_time' content='2025-07-06T21:09:56&#43;00:00'/><meta property='article:modified_time' content='2025-07-06T21:09:56&#43;00:00'/>
 <meta name="twitter:title" content="[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)">
-<meta name="twitter:description" content="\n前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
+<meta name="twitter:description" content="前言\n原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。\n">
     </head>
     <body class="
     article-page
@@ -232,62 +232,36 @@
     <section class="article-content">
     
     
-    </p> 
-<p>前言<br>
-原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。</p></p>
-<p>相關連結：</p></p>
-<ul class="wp-block-list">
-  <li>
-    <a href="https://hub.docker.com/r/apache/kafka">docker-kafka</a>
-  </li></p> 
-  <li>
-    <a href="https://docs.docker.net.tw/guides/kafka/">dockerdocs</a>
-  </li></p> 
-  <li>
-    <a href="https://github.com/provectus/kafka-ui">gitHub-kafka-ui</a>
-  </li></p> 
-  <li>
-    <a href="https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead">kafka:3.9.1 image</a>
-  </li>
-</ul></p> 
-<div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction">
-<nav>
-  <ul class='ez-toc-list ez-toc-list-level-1 ' >
-    <li class='ez-toc-page-1 ez-toc-heading-level-1'>
-      <a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2025/07/07/e/#%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F" >什麼是 KRaft 模式？</a><ul class='ez-toc-list-level-3' >
-        <li class='ez-toc-heading-level-3'>
-          <ul class='ez-toc-list-level-3' >
-            <li class='ez-toc-heading-level-3'>
-              <a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2025/07/07/e/#kafka-ui" >kafka-ui</a>
-            </li>
-            <li class='ez-toc-page-1 ez-toc-heading-level-3'>
-              <a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2025/07/07/e/#%E6%B8%AC%E8%A9%A6%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8" >測試是否正常</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul></nav>
-</div>
-<h1 id="什麼是-kraft-模式"><span class="ez-toc-section" id="%E4%BB%80%E9%BA%BC%E6%98%AF_KRaft_%E6%A8%A1%E5%BC%8F%EF%BC%9F"></span>什麼是 KRaft 模式？<span class="ez-toc-section-end"></span> </p>
+    <p>前言<br>
+原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。</p>
+<p>相關連結：</p>
+<ul>
+<li><a class="link" href="https://hub.docker.com/r/apache/kafka"  target="_blank" rel="noopener"
+    >docker-kafka</a></li>
+<li><a class="link" href="https://docs.docker.net.tw/guides/kafka/"  target="_blank" rel="noopener"
+    >dockerdocs</a></li>
+<li><a class="link" href="https://github.com/provectus/kafka-ui"  target="_blank" rel="noopener"
+    >gitHub-kafka-ui</a></li>
+<li><a class="link" href="https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead"  target="_blank" rel="noopener"
+    >kafka:3.9.1 image</a></li>
+</ul>
+<h1 id="什麼是-kraft-模式">什麼是 KRaft 模式？
 </h1><p>KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：</p></p>
 <p>不需要 ZooKeeper：簡化部署和維護<br>
 內建 Controller：metadata 管理更高效<br>
 更好的效能：減少網路延遲和複雜度</p></p>
 <p>快速開始 (推薦使用 docker-compose)<br>
 如果你想快速開始，可以直接跳到 docker-compose.yml 章節。</p></p>
-<ol class="wp-block-list">
-  <li>
-    創建自定義網路
-  </li>
-</ol></p> 
-<pre class="wp-block-code"><code class="">docker network create kafka-network</code></pre></p> 
-<ol start="2" class="wp-block-list">
-  <li>
-    部署 Kafka Broker<br />為什麼選擇 3.9.1 而不是 latest？<br />版本固定，確保環境一致性，避免 latest 版本可能帶來的不穩定性
-  </li>
-</ol></p> 
-<pre class="wp-block-code"><code class="">docker run -d \
+<ol>
+<li>創建自定義網路</li>
+</ol>
+<pre tabindex="0"><code>docker network create kafka-network
+</code></pre><ol start="2">
+<li>部署 Kafka Broker
+為什麼選擇 3.9.1 而不是 latest？
+版本固定，確保環境一致性，避免 latest 版本可能帶來的不穩定性</li>
+</ol>
+<pre tabindex="0"><code>docker run -d \
   --name broker \
   --network kafka-network \
   -p 9092:9092 \
@@ -298,8 +272,8 @@
   -e KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER \
   -e KAFKA_CONTROLLER_QUORUM_VOTERS=1@broker:9093 \
   -e KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT \
-  apache/kafka:3.9.1</code></pre></p> 
-<p>環境變數詳解</p> <figure class="wp-block-table"></p>
+  apache/kafka:3.9.1
+</code></pre><p>環境變數詳解</p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
@@ -338,16 +312,16 @@
       </tr>
   </tbody>
 </table></div>
-<p>重要提醒： KAFKA_ADVERTISED_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！</p></p>
-<h3 id="kafka-ui"><span class="ez-toc-section" id="kafka-ui"></span>kafka-ui<span class="ez-toc-section-end"></span> </p>
-</h3><pre class="wp-block-code"><code class="">docker run -d \
+<p>重要提醒： KAFKA_ADVERTISED_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！</p>
+<h3 id="kafka-ui">kafka-ui
+</h3><pre tabindex="0"><code>docker run -d \
   --name kafka-ui \
   --network kafka-network \
   -p 8080:8080 \
   -e KAFKA_CLUSTERS_0_NAME=local \
   -e KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=broker:9092 \
-  provectuslabs/kafka-ui:latest</code></pre></p> 
-<p>環境變數的解說:</p> <figure class="wp-block-table"></p>
+  provectuslabs/kafka-ui:latest
+</code></pre><p>環境變數的解說:</p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
@@ -366,26 +340,17 @@
       </tr>
   </tbody>
 </table></div>
-<h3 id="測試是否正常"><span class="ez-toc-section" id="%E6%B8%AC%E8%A9%A6%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8"></span>測試是否正常<span class="ez-toc-section-end"></span> </p>
-</h3><ol class="wp-block-list">
-  <li>
-    檢查服務狀態
-  </li>
-</ol></p> 
-<pre class="wp-block-code"><code class="">bash# 檢查容器運行狀態
+<h3 id="測試是否正常">測試是否正常
+</h3><p>檢查服務狀態</p>
+<pre tabindex="0"><code>bash# 檢查容器運行狀態
 docker ps
 
 # 檢查 kafka-ui 日誌
 docker logs kafka-ui
 
 # 檢查 broker 日誌
-docker logs broker</code></pre></p> 
-<ol start="2" class="wp-block-list">
-  <li>
-    進入 Kafka 容器測試
-  </li>
-</ol></p> 
-<pre class="wp-block-code"><code class=""># 進入 Kafka 容器
+docker logs broker
+</code></pre><pre tabindex="0"><code># 進入 Kafka 容器
 docker exec --workdir /opt/kafka/bin/ -it broker sh
 
 # 創建測試 Topic
@@ -395,46 +360,33 @@ docker exec --workdir /opt/kafka/bin/ -it broker sh
 ./kafka-topics.sh --bootstrap-server localhost:9092 --list
 
 # 查看 Topic 詳細資訊
-./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic test-topic</code></pre></p> 
-<ol start="3" class="wp-block-list">
-  <li>
-    測試 Producer/Consumer
-  </li>
-</ol></p> 
-<pre class="wp-block-code"><code class=""># 啟動 Producer (會出現 &gt; 提示符)
+./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic test-topic
+</code></pre><p>測試 Producer/Consumer</p>
+<pre tabindex="0"><code># 啟動 Producer (會出現 &gt; 提示符)
 ./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test-topic
 &gt; hello kafka
 &gt; this is a test message
 
-
 # 啟動 Consumer (讀取所有訊息)
-./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning</code></pre></p> 
-<ol start="4" class="wp-block-list">
-  <li>
-    透過 kafka-ui 驗證<br />開啟瀏覽器訪問：http://localhost:8080<br />你應該能看到：
-  </li>
-</ol></p> 
-<ul class="wp-block-list">
-  <li>
-    Kafka 集群狀態
-  </li></p> 
-  <li>
-    Topics 列表
-  </li></p> 
-  <li>
-    剛才發送的訊息
-  </li>
-</ul></p> 
-<h2 id="docker-composeyml-推薦方式"><span class="ez-toc-section" id="docker-composeyml_%E6%8E%A8%E8%96%A6%E6%96%B9%E5%BC%8F"></span>docker-compose.yml (推薦方式)<span class="ez-toc-section-end"></span></p>
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+</code></pre><p>透過 kafka-ui 驗證
+開啟瀏覽器訪問：http://localhost:8080
+你應該能看到：</p>
+<ul>
+<li>Kafka 集群狀態</li>
+<li>Topics 列表</li>
+<li>剛才發送的訊息</li>
+</ul>
+<h2 id="docker-composeyml-推薦方式">docker-compose.yml (推薦方式)
 </h2><p>請使用docker-compose.yml來儲存下方內容，<br>
-並下指令docker-compose up即可正常運行</p></p>
-<pre class="wp-block-code"><code class="">version: '3.8'
+並下指令docker-compose up即可正常運行</p>
+<pre tabindex="0"><code>version: &#39;3.8&#39;
 services:
   broker:
     image: apache/kafka:3.9.1
     container_name: broker
     ports:
-      - "9092:9092"
+      - &#34;9092:9092&#34;
     environment:
       KAFKA_NODE_ID: 1
       KAFKA_PROCESS_ROLES: broker,controller
@@ -450,7 +402,7 @@ services:
     image: provectuslabs/kafka-ui:latest
     container_name: kafka-ui
     ports:
-      - "8080:8080"
+      - &#34;8080:8080&#34;
     environment:
       KAFKA_CLUSTERS_0_NAME: local
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: broker:9092
@@ -461,9 +413,9 @@ services:
 
 networks:
   kafka-network:
-    driver: bridge</code></pre></p> 
-<p>啟動服務</p></p>
-<pre class="wp-block-code"><code class="">bash# 啟動所有服務
+    driver: bridge
+</code></pre><p>啟動服務</p>
+<pre tabindex="0"><code>bash# 啟動所有服務
 docker-compose up -d
 
 # 查看服務狀態
@@ -473,12 +425,12 @@ docker-compose ps
 docker-compose logs -f
 
 # 停止服務
-docker-compose down</code></pre></p> 
-<p>查看當前版本</p></p>
-<pre class="wp-block-code"><code class="">docker exec -it broker /opt/kafka/bin/kafka-topics.sh --version</code></pre></p> 
-<p>輸出範例：<br>
-4.0.0</p> </p></p></p>
-
+docker-compose down
+</code></pre><p>查看當前版本</p>
+<pre tabindex="0"><code>docker exec -it broker /opt/kafka/bin/kafka-topics.sh --version
+</code></pre><p>輸出範例：</p>
+<pre tabindex="0"><code>4.0.0
+</code></pre>
 </section>
 
 
