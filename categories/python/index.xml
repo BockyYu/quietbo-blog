@@ -1,53 +1,38 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Quietbo</title><link>https://quietbo.com/categories/python/</link><description>Recent content in Python on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 24 Mar 2024 06:42:36 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/python/index.xml" rel="self" type="application/rss+xml"/><item><title>[Graph database] 使用docker安裝memgraph &amp; python簡易連線</title><link>https://quietbo.com/2024/03/24/graph-database-%E4%BD%BF%E7%94%A8docker%E5%AE%89%E8%A3%9Dmemgraph/</link><pubDate>Sun, 24 Mar 2024 06:42:36 +0000</pubDate><guid>https://quietbo.com/2024/03/24/graph-database-%E4%BD%BF%E7%94%A8docker%E5%AE%89%E8%A3%9Dmemgraph/</guid><description>&lt;ul class="wp-block-list"&gt;
- &lt;li&gt;
- 使用docker desktop
- &lt;/li&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Quietbo</title><link>https://quietbo.com/categories/python/</link><description>Recent content in Python on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 24 Mar 2024 06:42:36 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/python/index.xml" rel="self" type="application/rss+xml"/><item><title>[Graph database] 使用docker安裝memgraph &amp; python簡易連線</title><link>https://quietbo.com/2024/03/24/graph-database-%E4%BD%BF%E7%94%A8docker%E5%AE%89%E8%A3%9Dmemgraph/</link><pubDate>Sun, 24 Mar 2024 06:42:36 +0000</pubDate><guid>https://quietbo.com/2024/03/24/graph-database-%E4%BD%BF%E7%94%A8docker%E5%AE%89%E8%A3%9Dmemgraph/</guid><description>&lt;ul&gt;
+&lt;li&gt;使用docker desktop&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;``&lt;/p&gt;
 &lt;h2 id="什麼是-graph-database-"&gt;什麼是 Graph database ？
-&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://zh.wikipedia.org/zh-tw/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93" target="_blank" rel="noopener"
- &gt;Graph database簡稱GDB&lt;/a&gt;,是一個使用圖結構進行語意查詢的資料庫，它使用節點、邊和屬性來表示和儲存資料。 該系統的關鍵概念是圖，它直接將儲存中的資料項，與資料節點和節點間表示關係的邊的集合相關聯&lt;/p&gt;
-&lt;p&gt;目前有哪些GraphDB,排名:&lt;a href="https://db-engines.com/en/ranking/graph+dbmsmemgraph" target="_blank" rel="noreferrer noopener"&gt;圖形資料庫排名&lt;/a&gt;以及所有&lt;a href="https://db-engines.com/en/ranking" target="_blank" rel="noreferrer noopener"&gt;受歡迎程度對資料庫管理系統進行排名&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="docker-desktop-安裝-memgraph"&gt;docker desktop 安裝 memgraph &lt;figure class="wp-block-image size-large"&gt;
-&lt;/h2&gt;&lt;p&gt;&lt;img loading="lazy" decoding="async" width="1024" height="579" src="https://quietbo.com/uploads/2024/03/image-1-1024x579.png" alt="" class="wp-image-1030" srcset="https://quietbo.com/uploads/2024/03/image-1-1024x579.png 1024w, https://quietbo.com/uploads/2024/03/image-1-300x170.png 300w, https://quietbo.com/uploads/2024/03/image-1-768x434.png 768w, https://quietbo.com/uploads/2024/03/image-1.png 1266w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /&gt; &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;以在 localhost:7687 看到 memgraph 的介面了。&lt;figure class="wp-block-image size-large"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" decoding="async" width="1024" height="551" src="https://quietbo.com/uploads/2024/03/image-2-1024x551.png" alt="" class="wp-image-1031" srcset="https://quietbo.com/uploads/2024/03/image-2-1024x551.png 1024w, https://quietbo.com/uploads/2024/03/image-2-300x161.png 300w, https://quietbo.com/uploads/2024/03/image-2-768x413.png 768w, https://quietbo.com/uploads/2024/03/image-2-1536x827.png 1536w, https://quietbo.com/uploads/2024/03/image-2-2048x1102.png 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image size-large"&gt;&lt;img loading="lazy" decoding="async" width="1024" height="638" src="https://quietbo.com/uploads/2024/03/image-3-1024x638.png" alt="" class="wp-image-1032" srcset="https://quietbo.com/uploads/2024/03/image-3-1024x638.png 1024w, https://quietbo.com/uploads/2024/03/image-3-300x187.png 300w, https://quietbo.com/uploads/2024/03/image-3-768x478.png 768w, https://quietbo.com/uploads/2024/03/image-3-1536x956.png 1536w, https://quietbo.com/uploads/2024/03/image-3-2048x1275.png 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;點擊左方的Datasets 找 CORA: Scientific publications classified into seven categories&lt;figure class="wp-block-image size-large"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" decoding="async" width="1024" height="550" src="https://quietbo.com/uploads/2024/03/image-4-1024x550.png" alt="" class="wp-image-1033" srcset="https://quietbo.com/uploads/2024/03/image-4-1024x550.png 1024w, https://quietbo.com/uploads/2024/03/image-4-300x161.png 300w, https://quietbo.com/uploads/2024/03/image-4-768x413.png 768w, https://quietbo.com/uploads/2024/03/image-4-1536x826.png 1536w, https://quietbo.com/uploads/2024/03/image-4.png 1920w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /&gt; &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;執行完成後點擊 run query&lt;figure class="wp-block-image size-large"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" decoding="async" width="1024" height="550" src="https://quietbo.com/uploads/2024/03/image-5-1024x550.png" alt="" class="wp-image-1034" srcset="https://quietbo.com/uploads/2024/03/image-5-1024x550.png 1024w, https://quietbo.com/uploads/2024/03/image-5-300x161.png 300w, https://quietbo.com/uploads/2024/03/image-5-768x413.png 768w, https://quietbo.com/uploads/2024/03/image-5-1536x826.png 1536w, https://quietbo.com/uploads/2024/03/image-5.png 1920w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /&gt; &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;會出現下方成功的結果&lt;figure class="wp-block-image size-large"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading="lazy" decoding="async" width="1024" height="591" src="https://quietbo.com/uploads/2024/03/image-1024x591.png" alt="" class="wp-image-1027" srcset="https://quietbo.com/uploads/2024/03/image-1024x591.png 1024w, https://quietbo.com/uploads/2024/03/image-300x173.png 300w, https://quietbo.com/uploads/2024/03/image-768x443.png 768w, https://quietbo.com/uploads/2024/03/image.png 1355w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /&gt; &lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id="python連線"&gt;Python連線
-&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
- &lt;li&gt;
- 使用pycharm
- &lt;/li&gt;
+&lt;/h2&gt;&lt;p&gt;[Graph database簡稱GDB][1],是一個使用圖結構進行語意查詢的資料庫，它使用節點、邊和屬性來表示和儲存資料。 該系統的關鍵概念是圖，它直接將儲存中的資料項，與資料節點和節點間表示關係的邊的集合相關聯 目前有哪些GraphDB,排名:&lt;a class="link" href="https://db-engines.com/en/ranking/graph&amp;#43;dbmsmemgraph" target="_blank" rel="noopener"
+ &gt;圖形資料庫排名&lt;/a&gt;以及所有&lt;a class="link" href="https://db-engines.com/en/ranking" target="_blank" rel="noopener"
+ &gt;受歡迎程度對資料庫管理系統進行排名&lt;/a&gt; ## docker desktop 安裝 memgraph&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://quietbo.com/uploads/2024/03/image-1-1024x579.png"&gt;以在 localhost:7687 看到 memgraph 的介面了。&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://quietbo.com/uploads/2024/03/image-2-1024x551.png"&gt;&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://quietbo.com/uploads/2024/03/image-3-1024x638.png"&gt;點擊左方的Datasets 找 CORA: Scientific publications classified into seven categories&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://quietbo.com/uploads/2024/03/image-4-1024x550.png"&gt;執行完成後點擊 run query&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://quietbo.com/uploads/2024/03/image-5-1024x550.png"&gt;會出現下方成功的結果&lt;img loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://quietbo.com/uploads/2024/03/image-1024x591.png"&gt;## Python連線&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用pycharm&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;官網教學:&lt;a class="link" href="https://pypi.org/project/pymgclient/0.1.0/" target="_blank" rel="noopener"
- &gt;網址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;當memgraph建立成功後使用下方程式碼來建立Person&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python line-numbers"&gt;import mgclient
-
-conn = mgclient.connect(host='127.0.0.1', port=7687)
-cursor = conn.cursor()
-cursor.execute("""
- CREATE (n:Person {name: 'John'})-[e:KNOWS]-&amp;gt;
- (m:Person {name: 'Steve'})
- RETURN n, e, m
- """)
-
-row = cursor.fetchone()
-print(row[0]) # (:Person {'name': 'John'})
-print(row[1]) # [:KNOWS]
-print(row[2]) # (:Person {'name': 'Steve'})
-
-conn.commit() # 提交數據(沒有commit就不會真正存進資料庫內)
-# 關閉游標和連線
-cursor.close()
-conn.close()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;接著在memgraph下sql指令即可看到剛才創建的2筆資料&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code lang="sql" class="language-sql"&gt;MATCH (c:Person) RETURN c;&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Python] grequest 出現 Monkey-patching ssl after ssl has already been imported may lead to errors, including RecursionError on Python 3.6. It may also silently lead to incorrect behaviour on Python 3.7. Please monkey-patch earlier(已解決)</title><link>https://quietbo.com/2023/05/02/python-grequest-%E5%87%BA%E7%8F%BE-monkey-patching-ssl-after-ssl-has-already-been-imported-may-lead-to-errors-including-recursionerror-on-python-3-6-it-may-also-silently-lead-to-incorrect-behaviou/</link><pubDate>Tue, 02 May 2023 14:56:10 +0000</pubDate><guid>https://quietbo.com/2023/05/02/python-grequest-%E5%87%BA%E7%8F%BE-monkey-patching-ssl-after-ssl-has-already-been-imported-may-lead-to-errors-including-recursionerror-on-python-3-6-it-may-also-silently-lead-to-incorrect-behaviou/</guid><description>&lt;p&gt;剛開始使用grequest就遇到這個Error，用這段訊息去找也沒有解決方式，一開始google到的都是要加下方這段，但仍然沒有解決根本的問題!&lt;/p&gt;
+&lt;p&gt;官網教學:[網址][2] 當memgraph建立成功後使用下方程式碼來建立Person&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;mgclient&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mgclient&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;127.0.0.1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;7687&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;#34;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; CREATE (n:Person {name: &amp;#39;John&amp;#39;})-[e:KNOWS]-&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; (m:Person {name: &amp;#39;Steve&amp;#39;})
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; RETURN n, e, m
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt; &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchone&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="c1"&gt;# (:Person {&amp;#39;name&amp;#39;: &amp;#39;John&amp;#39;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="c1"&gt;# [:KNOWS]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="c1"&gt;# (:Person {&amp;#39;name&amp;#39;: &amp;#39;Steve&amp;#39;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c1"&gt;# 提交數據(沒有commit就不會真正存進資料庫內)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 關閉游標和連線&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接著在memgraph下sql指令即可看到剛才創建的2筆資料&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;MATCH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;RETURN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;[1]: &lt;a class="link" href="https://zh.wikipedia.org/zh-tw/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93" target="_blank" rel="noopener"
+ &gt;https://zh.wikipedia.org/zh-tw/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93&lt;/a&gt; [2]: &lt;a class="link" href="https://pypi.org/project/pymgclient/0.1.0/" target="_blank" rel="noopener"
+ &gt;https://pypi.org/project/pymgclient/0.1.0/&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[Python] grequest 出現 Monkey-patching ssl after ssl has already been imported may lead to errors, including RecursionError on Python 3.6. It may also silently lead to incorrect behaviour on Python 3.7. Please monkey-patch earlier(已解決)</title><link>https://quietbo.com/2023/05/02/python-grequest-%E5%87%BA%E7%8F%BE-monkey-patching-ssl-after-ssl-has-already-been-imported-may-lead-to-errors-including-recursionerror-on-python-3-6-it-may-also-silently-lead-to-incorrect-behaviou/</link><pubDate>Tue, 02 May 2023 14:56:10 +0000</pubDate><guid>https://quietbo.com/2023/05/02/python-grequest-%E5%87%BA%E7%8F%BE-monkey-patching-ssl-after-ssl-has-already-been-imported-may-lead-to-errors-including-recursionerror-on-python-3-6-it-may-also-silently-lead-to-incorrect-behaviou/</guid><description>&lt;p&gt;剛開始使用grequest就遇到這個Error，用這段訊息去找也沒有解決方式，一開始google到的都是要加下方這段，但仍然沒有解決根本的問題!&lt;/p&gt;
 &lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python line-numbers"&gt;import gevent
 from gevent import monkey
 monkey.patch_all(select=False)&lt;/code&gt;&lt;/pre&gt;
@@ -68,45 +53,38 @@ print(res_list[0].text) # 打印第一个请求的响应文本&lt;/code&gt;&lt;/
 &lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/TSt5RhX.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;後來發現原本py檔有from其他py檔是有使用request的，把request前面import grequests就成功解決這個問題&lt;/p&gt;</description></item><item><title>[Mongodb] 資料內為什麼有$numberLong?(已解決)</title><link>https://quietbo.com/2023/03/11/mongodb-%E8%B3%87%E6%96%99%E5%85%A7%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%89numberlong%E5%B7%B2%E8%A7%A3%E6%B1%BA/</link><pubDate>Fri, 10 Mar 2023 16:56:40 +0000</pubDate><guid>https://quietbo.com/2023/03/11/mongodb-%E8%B3%87%E6%96%99%E5%85%A7%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%89numberlong%E5%B7%B2%E8%A7%A3%E6%B1%BA/</guid><description>&lt;p&gt;這件事情是不小心自己做了一個坑給自己踩的，&lt;br&gt;
 我從公司的QAT測試環境的GUI(Mongodb compass)複製了一份data，內容複製出來如下:&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code lang="json" class="language-json line-numbers"&gt;{
- "uuid" : "2580913",
- "name" : "UserName",
- "id" : "A123456789",
- "age" : 18,
- "weight" : 70,
- "height" : 175
- "birthday" :{
- "$numberLong" : "789798540000"
- }
- "registration_date": {
- "$numberLong": "1677211157126"
- }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;然後在我自己本機用Studio 3T直接insert了這些相同格式的資料，都正常匯入了！&lt;/p&gt;
-&lt;p&gt;後來我在local開發的時候find用了下方的方式來搜尋(注意!其實這是錯的，這裡的$numberLong是被當作層級使用)&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;{"birthday.$numberLong": {"$gte": "789798540000"}}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;此時local能正常取出資料，我還沒意識到問題。&lt;br&gt;
-後來部署到QAT後頻繁出錯，一去了解才發現，原來當時從Mongodb compass複製出來的$numberLong該資料的type，&lt;br&gt;
-原始資料為:&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code lang="json" class="language-json"&gt;{
- "uuid" : "2580913068820",
- "name" : "UserName",
- "id" : "A123456789",
- "age" : 18,
- "weight" : 70,
- "height" : 175
- "birthday" : 789798540000,
- "registration_date": 1677211157126
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我後來去QAT機器測了一下這段，(如果birthday的type是int)&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;db.user.find ({birthday:{$ type : "int" }})&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;結果沒有資料。我把int換成了long：&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;db.user.find ({birthday:{$ type : "long" }})&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;就出現一堆資料了。&lt;/p&gt;
-&lt;p&gt;……….&lt;br&gt;
-其實我一開始在把QAT的測試資料存進local這裡就出錯了！&lt;/p&gt;
-&lt;p&gt;原因是Mongodb compass在複製資料時為了區分int和long這兩個不同的type，所以加了$numberLong 這段讓我們肉眼能夠判斷資料的type，後來我把$numberLong都拿掉後，公司QAT就正常可以取得資料了。&lt;/p&gt;
-&lt;p&gt;真的是被自己給笨慘了&lt;/p&gt;</description></item><item><title>[Python] 製作一個exe檔案在windows執行</title><link>https://quietbo.com/2022/12/11/python-%E8%A3%BD%E4%BD%9C%E4%B8%80%E5%80%8Bexe%E6%AA%94%E6%A1%88%E5%9C%A8windows%E5%9F%B7%E8%A1%8C/</link><pubDate>Sun, 11 Dec 2022 08:03:13 +0000</pubDate><guid>https://quietbo.com/2022/12/11/python-%E8%A3%BD%E4%BD%9C%E4%B8%80%E5%80%8Bexe%E6%AA%94%E6%A1%88%E5%9C%A8windows%E5%9F%B7%E8%A1%8C/</guid><description>&lt;ul class="wp-block-list"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;uuid&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;2580913&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;UserName&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;id&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;A123456789&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;age&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;weight&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;height&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;175&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;birthday&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;$numberLong&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;789798540000&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;registration_date&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;$numberLong&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;1677211157126&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然後在我自己本機用Studio 3T直接insert了這些相同格式的資料，都正常匯入了！ 後來我在local開發的時候find用了下方的方式來搜尋(注意!其實這是錯的，這裡的$numberLong是被當作層級使用)&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;{&amp;#34;birthday.$numberLong&amp;#34;: {&amp;#34;$gte&amp;#34;: &amp;#34;789798540000&amp;#34;}}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此時local能正常取出資料，我還沒意識到問題。 後來部署到QAT後頻繁出錯，一去了解才發現，原來當時從Mongodb compass複製出來的$numberLong該資料的type， 原始資料為:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;uuid&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;2580913068820&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;UserName&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;id&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;A123456789&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;age&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;weight&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;height&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;175&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;birthday&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;789798540000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;registration_date&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1677211157126&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我後來去QAT機器測了一下這段，(如果birthday的type是int)&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;db.user.find ({birthday:{$ type : &amp;#34;int&amp;#34; }})
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;結果沒有資料。我把int換成了long：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;db.user.find ({birthday:{$ type : &amp;#34;long&amp;#34; }})
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就出現一堆資料了。 其實我一開始在把QAT的測試資料存進local這裡就出錯了！ 原因是Mongodb compass在複製資料時為了區分int和long這兩個不同的type，所以加了$numberLong 這段讓我們肉眼能夠判斷資料的type，後來我把$numberLong都拿掉後，公司QAT就正常可以取得資料了。&lt;/p&gt;</description></item><item><title>[Python] 製作一個exe檔案在windows執行</title><link>https://quietbo.com/2022/12/11/python-%E8%A3%BD%E4%BD%9C%E4%B8%80%E5%80%8Bexe%E6%AA%94%E6%A1%88%E5%9C%A8windows%E5%9F%B7%E8%A1%8C/</link><pubDate>Sun, 11 Dec 2022 08:03:13 +0000</pubDate><guid>https://quietbo.com/2022/12/11/python-%E8%A3%BD%E4%BD%9C%E4%B8%80%E5%80%8Bexe%E6%AA%94%E6%A1%88%E5%9C%A8windows%E5%9F%B7%E8%A1%8C/</guid><description>&lt;ul class="wp-block-list"&gt;
  &lt;li&gt;
  Windows 11
  &lt;/li&gt;

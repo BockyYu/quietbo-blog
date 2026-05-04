@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kraft on Quietbo</title><link>https://quietbo.com/tags/kraft/</link><description>Recent content in Kraft on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 06 Jul 2025 21:09:56 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/kraft/index.xml" rel="self" type="application/rss+xml"/><item><title>[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)</title><link>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</link><pubDate>Sun, 06 Jul 2025 21:09:56 +0000</pubDate><guid>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</guid><description>&lt;p&gt;前言&lt;br&gt;
-原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kraft on Quietbo</title><link>https://quietbo.com/tags/kraft/</link><description>Recent content in Kraft on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 06 Jul 2025 21:09:56 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/kraft/index.xml" rel="self" type="application/rss+xml"/><item><title>[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)</title><link>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</link><pubDate>Sun, 06 Jul 2025 21:09:56 +0000</pubDate><guid>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</guid><description>&lt;h2 id="前言"&gt;前言
+&lt;/h2&gt;&lt;p&gt;原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。&lt;/p&gt;
 &lt;p&gt;相關連結：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class="link" href="https://hub.docker.com/r/apache/kafka" target="_blank" rel="noopener"
@@ -11,13 +11,13 @@
 &lt;li&gt;&lt;a class="link" href="https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead" target="_blank" rel="noopener"
  &gt;kafka:3.9.1 image&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id="什麼是-kraft-模式"&gt;什麼是 KRaft 模式？
-&lt;/h1&gt;&lt;p&gt;KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：&lt;/p&gt;&lt;/p&gt;
+&lt;h2 id="什麼是-kraft-模式"&gt;什麼是 KRaft 模式？
+&lt;/h2&gt;&lt;p&gt;KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：&lt;/p&gt;
 &lt;p&gt;不需要 ZooKeeper：簡化部署和維護&lt;br&gt;
 內建 Controller：metadata 管理更高效&lt;br&gt;
-更好的效能：減少網路延遲和複雜度&lt;/p&gt;&lt;/p&gt;
+更好的效能：減少網路延遲和複雜度&lt;/p&gt;
 &lt;p&gt;快速開始 (推薦使用 docker-compose)&lt;br&gt;
-如果你想快速開始，可以直接跳到 docker-compose.yml 章節。&lt;/p&gt;&lt;/p&gt;
+如果你想快速開始，可以直接跳到 docker-compose.yml 章節。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;創建自定義網路&lt;/li&gt;
 &lt;/ol&gt;
@@ -79,8 +79,8 @@
  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;重要提醒： KAFKA_ADVERTISED_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！&lt;/p&gt;
-&lt;h3 id="kafka-ui"&gt;kafka-ui
-&lt;/h3&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d \
+&lt;h2 id="kafka-ui"&gt;kafka-ui
+&lt;/h2&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d \
  --name kafka-ui \
  --network kafka-network \
  -p 8080:8080 \

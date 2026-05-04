@@ -8,29 +8,34 @@
 </a><a href=/categories/python/ style=background-color:#efd7be;color:#3d270f>Python</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2023/03/11/mongodb-%E8%B3%87%E6%96%99%E5%85%A7%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%89numberlong%E5%B7%B2%E8%A7%A3%E6%B1%BA/>[Mongodb] 資料內為什麼有$numberLong?(已解決)</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published datetime=2023-03-10T16:56:40Z>Friday, March 10, 2023</time>
 <svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>2 minutes read</time></div></footer></div></header><section class=article-content><p>這件事情是不小心自己做了一個坑給自己踩的，<br>我從公司的QAT測試環境的GUI(Mongodb compass)複製了一份data，內容複製出來如下:</p><pre class=wp-block-code><code lang=json class="language-json line-numbers">{
-    "uuid" : "2580913",
-    "name" : "UserName",
-    "id" : "A123456789",
-    "age" : 18,
-    "weight" : 70,
-    "height" : 175
-    "birthday" :{
-        "$numberLong" : "789798540000"
-    }
-    "registration_date": {
-        "$numberLong": "1677211157126"
-    }
-}</code></pre><p>然後在我自己本機用Studio 3T直接insert了這些相同格式的資料，都正常匯入了！</p><p>後來我在local開發的時候find用了下方的方式來搜尋(注意!其實這是錯的，這裡的$numberLong是被當作層級使用)</p><pre class=wp-block-code><code>{"birthday.$numberLong": {"$gte": "789798540000"}}</code></pre><p>此時local能正常取出資料，我還沒意識到問題。<br>後來部署到QAT後頻繁出錯，一去了解才發現，原來當時從Mongodb compass複製出來的$numberLong該資料的type，<br>原始資料為:</p><pre class=wp-block-code><code lang=json class=language-json>{
-    "uuid" : "2580913068820",
-    "name" : "UserName",
-    "id" : "A123456789",
-    "age" : 18,
-    "weight" : 70,
-    "height" : 175
-    "birthday" : 789798540000,
-    "registration_date": 1677211157126
-}</code></pre><p>我後來去QAT機器測了一下這段，(如果birthday的type是int)</p><pre class=wp-block-code><code>db.user.find ({birthday:{$ type : "int" }})</code></pre><p>結果沒有資料。我把int換成了long：</p><pre class=wp-block-code><code>db.user.find ({birthday:{$ type : "long" }})</code></pre><p>就出現一堆資料了。</p><p>……….<br>其實我一開始在把QAT的測試資料存進local這裡就出錯了！</p><p>原因是Mongodb compass在複製資料時為了區分int和long這兩個不同的type，所以加了$numberLong 這段讓我們肉眼能夠判斷資料的type，後來我把$numberLong都拿掉後，公司QAT就正常可以取得資料了。</p><p>真的是被自己給笨慘了</p></section><footer class="article-meta article-footer"></footer></article><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+<time class=article-time--reading>2 minutes read</time></div></footer></div></header><section class=article-content><p>這件事情是不小心自己做了一個坑給自己踩的，<br>我從公司的QAT測試環境的GUI(Mongodb compass)複製了一份data，內容複製出來如下:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;uuid&#34;</span> <span class=p>:</span> <span class=s2>&#34;2580913&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;name&#34;</span> <span class=p>:</span> <span class=s2>&#34;UserName&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;id&#34;</span> <span class=p>:</span> <span class=s2>&#34;A123456789&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;age&#34;</span> <span class=p>:</span> <span class=mi>18</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;weight&#34;</span> <span class=p>:</span> <span class=mi>70</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;height&#34;</span> <span class=p>:</span> <span class=mi>175</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;birthday&#34;</span> <span class=p>:{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;$numberLong&#34;</span> <span class=p>:</span> <span class=s2>&#34;789798540000&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;registration_date&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;$numberLong&#34;</span><span class=p>:</span> <span class=s2>&#34;1677211157126&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>然後在我自己本機用Studio 3T直接insert了這些相同格式的資料，都正常匯入了！ 後來我在local開發的時候find用了下方的方式來搜尋(注意!其實這是錯的，這裡的$numberLong是被當作層級使用)</p><pre tabindex=0><code>{&#34;birthday.$numberLong&#34;: {&#34;$gte&#34;: &#34;789798540000&#34;}}
+</code></pre><p>此時local能正常取出資料，我還沒意識到問題。 後來部署到QAT後頻繁出錯，一去了解才發現，原來當時從Mongodb compass複製出來的$numberLong該資料的type， 原始資料為:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;uuid&#34;</span> <span class=p>:</span> <span class=s2>&#34;2580913068820&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;name&#34;</span> <span class=p>:</span> <span class=s2>&#34;UserName&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;id&#34;</span> <span class=p>:</span> <span class=s2>&#34;A123456789&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;age&#34;</span> <span class=p>:</span> <span class=mi>18</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;weight&#34;</span> <span class=p>:</span> <span class=mi>70</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;height&#34;</span> <span class=p>:</span> <span class=mi>175</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;birthday&#34;</span> <span class=p>:</span> <span class=mi>789798540000</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;registration_date&#34;</span><span class=p>:</span> <span class=mi>1677211157126</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>我後來去QAT機器測了一下這段，(如果birthday的type是int)</p><pre tabindex=0><code>db.user.find ({birthday:{$ type : &#34;int&#34; }})
+</code></pre><p>結果沒有資料。我把int換成了long：</p><pre tabindex=0><code>db.user.find ({birthday:{$ type : &#34;long&#34; }})
+</code></pre><p>就出現一堆資料了。 其實我一開始在把QAT的測試資料存進local這裡就出錯了！ 原因是Mongodb compass在複製資料時為了區分int和long這兩個不同的type，所以加了$numberLong 這段讓我們肉眼能夠判斷資料的type，後來我把$numberLong都拿掉後，公司QAT就正常可以取得資料了。</p></section><footer class="article-meta article-footer"></footer></article><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
 2026 Quietbo</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.1>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
     import gallery from '\/ts\/gallery.js';
 

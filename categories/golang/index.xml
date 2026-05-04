@@ -1,23 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Golang on Quietbo</title><link>https://quietbo.com/categories/golang/</link><description>Recent content in Golang on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 17 Nov 2024 15:27:57 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>[Golang] goroutine &amp; sync.WaitGroup</title><link>https://quietbo.com/2024/11/17/golang-goroutine-sync-waitgroup/</link><pubDate>Sun, 17 Nov 2024 15:27:57 +0000</pubDate><guid>https://quietbo.com/2024/11/17/golang-goroutine-sync-waitgroup/</guid><description>&lt;/p&gt; 
-&lt;p&gt;Goroutine 是 Go 語言中一種輕量級的並發執行單元。我們可以使用 Goroutine 來實現並發編程,提高程式的效率和性能。&lt;/p&gt;&lt;/p&gt;
-&lt;p&gt;sync.WaitGroup 是 Go 標準庫中提供的一個同步原語,它用於等待一組 Goroutine 全部執行完畢。我們可以通過以下方式使用 sync.WaitGroup:&lt;/p&gt;&lt;/p&gt;
-&lt;p&gt;創建 WaitGroup 實例:&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;wg := new(sync.WaitGroup)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;使用 wg.Add(n) 可以將 WaitGroup 的計數器增加 n。每啟動一個新的 Goroutine,都需要增加計數器。&lt;br&gt;
-增加 WaitGroup 計數器:&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;wg.Add(n)&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;等待所有 Goroutine 完成&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;wg.Wait()&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;在 main 函數中,使用 wg.Wait() 可以阻塞直到所有 Goroutine 都完成。&lt;/p&gt;&lt;/p&gt;
-&lt;p&gt;在 Goroutine 中減少計數器:&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;defer wg.Done()&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;在 Goroutine 內部,使用 defer wg.Done() 可以在 Goroutine 退出時,將 WaitGroup 的計數器減 1。&lt;/p&gt;&lt;/p&gt;
-&lt;p&gt;下方為實作的code，找質數：一般如果用for迴圈會非常慢&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;package main
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Golang on Quietbo</title><link>https://quietbo.com/categories/golang/</link><description>Recent content in Golang on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 17 Nov 2024 15:27:57 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>[Golang] goroutine &amp; sync.WaitGroup</title><link>https://quietbo.com/2024/11/17/golang-goroutine-sync-waitgroup/</link><pubDate>Sun, 17 Nov 2024 15:27:57 +0000</pubDate><guid>https://quietbo.com/2024/11/17/golang-goroutine-sync-waitgroup/</guid><description>&lt;p&gt;Goroutine 是 Go 語言中一種輕量級的並發執行單元。我們可以使用 Goroutine 來實現並發編程,提高程式的效率和性能。&lt;/p&gt;
+&lt;p&gt;sync.WaitGroup 是 Go 標準庫中提供的一個同步原語,它用於等待一組 Goroutine 全部執行完畢。我們可以通過以下方式使用 sync.WaitGroup:&lt;/p&gt;
+&lt;p&gt;創建 WaitGroup 實例:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;wg := new(sync.WaitGroup)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用 wg.Add(n) 可以將 WaitGroup 的計數器增加 n。每啟動一個新的 Goroutine,都需要增加計數器。 增加 WaitGroup 計數器:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;wg.Add(n)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;等待所有 Goroutine 完成&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;wg.Wait()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 main 函數中,使用 wg.Wait() 可以阻塞直到所有 Goroutine 都完成。&lt;/p&gt;
+&lt;p&gt;在 Goroutine 中減少計數器:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;defer wg.Done()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 Goroutine 內部,使用 defer wg.Done() 可以在 Goroutine 退出時,將 WaitGroup 的計數器減 1。&lt;/p&gt;
+&lt;p&gt;下方為實作的code，找質數：一般如果用for迴圈會非常慢&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;package main
 
 import (
- "fmt"
- "time"
+ &amp;#34;fmt&amp;#34;
+ &amp;#34;time&amp;#34;
 )
 
 func main() {
@@ -29,7 +27,7 @@ func main() {
  }
  }
  end := time.Now()
- fmt.Println(end.Unix() - start.Unix(), "seconds")
+ fmt.Println(end.Unix() - start.Unix(), &amp;#34;seconds&amp;#34;)
 }
 
 func isPrime(num int) bool {
@@ -45,16 +43,13 @@ func isPrime(num int) bool {
  }
  return true
  }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;單純只使用Goroutine，在使用findPrimes之前加go，會沒辦法知道實際到底花幾秒的時間，以及main時間到就會結束。&lt;br&gt;
-main 啟動了 300000 個 Goroutine，每個 Goroutine 調用 findPrimes 函數。&lt;br&gt;
-但是 main 函數並沒有等待所有 Goroutine 執行完畢,而是直接等待了 2 秒鐘輸出 done。&lt;br&gt;
-單純使用 Goroutine 而不使用 sync.WaitGroup 或其他同步機制,無法確保所有任務都已完成,也無法準確測量總的執行時間。&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;package main
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;單純只使用Goroutine，在使用findPrimes之前加go，會沒辦法知道實際到底花幾秒的時間，以及main時間到就會結束。 main 啟動了 300000 個 Goroutine，每個 Goroutine 調用 findPrimes 函數。 但是 main 函數並沒有等待所有 Goroutine 執行完畢,而是直接等待了 2 秒鐘輸出 done。 單純使用 Goroutine 而不使用 sync.WaitGroup 或其他同步機制,無法確保所有任務都已完成,也無法準確測量總的執行時間。&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;package main
 
 import (
- "fmt"
- "time"
+ &amp;#34;fmt&amp;#34;
+ &amp;#34;time&amp;#34;
 )
 
 func main() {
@@ -63,7 +58,7 @@ func main() {
  go findPrimes(i)
  }
  time.Sleep(2 * time.Second)
- fmt.Println("done")
+ fmt.Println(&amp;#34;done&amp;#34;)
 }
 
 func findPrimes(num int) {
@@ -79,15 +74,15 @@ func findPrimes(num int) {
  }
  fmt.Println(num)
  }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt; 
-&lt;p&gt;因此,我們無法確定在 “done” 輸出之前,所有 findPrimes 函數都已經執行完畢，要解決這個問題,最簡單的方法就是使用 sync.WaitGroup。&lt;/p&gt;&lt;/p&gt;
-&lt;p&gt;下方正確使用了 sync.WaitGroup 來確保所有 Goroutine 都執行完畢,並且能夠正確地計算整個過程的耗時。&lt;/p&gt;&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;package main
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因此,我們無法確定在 “done” 輸出之前,所有 findPrimes 函數都已經執行完畢，要解決這個問題,最簡單的方法就是使用 sync.WaitGroup。&lt;/p&gt;
+&lt;p&gt;下方正確使用了 sync.WaitGroup 來確保所有 Goroutine 都執行完畢,並且能夠正確地計算整個過程的耗時。&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;package main
 
 import (
- "fmt"
- "sync"
- "time"
+ &amp;#34;fmt&amp;#34;
+ &amp;#34;sync&amp;#34;
+ &amp;#34;time&amp;#34;
 )
 
 func main() {
@@ -101,7 +96,7 @@ func main() {
  }
  wg.Wait() // 在所有goroutine完成之前, main 函數會一直等待,使用 wg.Wait()
  end := time.Now().Unix()
- fmt.Print(end-start, "seconds")
+ fmt.Print(end-start, &amp;#34;seconds&amp;#34;)
 }
 
 func findPrimes(num int, wg *sync.WaitGroup) {
@@ -118,7 +113,8 @@ func findPrimes(num int, wg *sync.WaitGroup) {
  }
  fmt.Println(num)
  }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</description></item><item><title>[Golang] aes各种加密方式（CBC/ECB/CFB）含Code</title><link>https://quietbo.com/2022/12/27/golang-aes%E5%90%84%E7%A7%8D%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%88cbc-ecb-cfb%EF%BC%89%E5%90%ABcode/</link><pubDate>Tue, 27 Dec 2022 10:12:09 +0000</pubDate><guid>https://quietbo.com/2022/12/27/golang-aes%E5%90%84%E7%A7%8D%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%88cbc-ecb-cfb%EF%BC%89%E5%90%ABcode/</guid><description>&lt;ul class="wp-block-list"&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Golang] aes各种加密方式（CBC/ECB/CFB）含Code</title><link>https://quietbo.com/2022/12/27/golang-aes%E5%90%84%E7%A7%8D%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%88cbc-ecb-cfb%EF%BC%89%E5%90%ABcode/</link><pubDate>Tue, 27 Dec 2022 10:12:09 +0000</pubDate><guid>https://quietbo.com/2022/12/27/golang-aes%E5%90%84%E7%A7%8D%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%EF%BC%88cbc-ecb-cfb%EF%BC%89%E5%90%ABcode/</guid><description>&lt;ul class="wp-block-list"&gt;
  &lt;li&gt;
  Code
  &lt;/li&gt;

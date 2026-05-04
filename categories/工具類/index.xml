@@ -12,17 +12,15 @@
 Sequel-Ace/Sequel-Ace&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/kvndkVm.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;目前在Mac M1 Ventura 13.2使用都正常&lt;/p&gt;</description></item><item><title>[Mac|M1] 「Another Redis Desktop Manager.app」已損毀，無法打開</title><link>https://quietbo.com/2023/02/07/macm1-%E3%80%8Canother-redis-desktop-manager-app%E3%80%8D%E5%B7%B2%E6%90%8D%E6%AF%80%EF%BC%8C%E7%84%A1%E6%B3%95%E6%89%93%E9%96%8B/</link><pubDate>Tue, 07 Feb 2023 07:33:38 +0000</pubDate><guid>https://quietbo.com/2023/02/07/macm1-%E3%80%8Canother-redis-desktop-manager-app%E3%80%8D%E5%B7%B2%E6%90%8D%E6%AF%80%EF%BC%8C%E7%84%A1%E6%B3%95%E6%89%93%E9%96%8B/</guid><description>&lt;p&gt;執行下方指令安裝Another Redis Desktop&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=" line-numbers"&gt;brew install --cask another-redis-desktop-manager&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;打開Another Redis Desktop.app後會出現APP已損毀，無法打開的訊息，&lt;br&gt;
-解決方式：&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;sudo spctl --master-disable
-sudo xattr -rd com.apple.quarantine /Applications/Another\ Redis\ Desktop\ Manager.app
-sudo spctl --master-enable
-spctl --status.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;assessments enabled&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;重新打開APP後即成功&lt;/p&gt;
-&lt;p&gt;來源:&lt;a class="link" href="https://github.com/qishibo/AnotherRedisDesktopManager/issues/782" target="_blank" rel="noopener"
- &gt;m1打不开，提示 “Another Redis Desktop Manager.app”已损坏，无法打开 #782&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[Postman] Mock Servers(含圖和Json)</title><link>https://quietbo.com/2023/01/19/postman-mock-servers%E5%90%AB%E5%9C%96%E5%92%8Cjson/</link><pubDate>Thu, 19 Jan 2023 09:32:19 +0000</pubDate><guid>https://quietbo.com/2023/01/19/postman-mock-servers%E5%90%AB%E5%9C%96%E5%92%8Cjson/</guid><description>&lt;p&gt;為何需要使用到Mock?&lt;br&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;brew install --cask another-redis-desktop-manager
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;打開Another Redis Desktop.app後會出現APP已損毀，無法打開的訊息， 解決方式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo spctl --master-disable
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo xattr -rd com.apple.quarantine /Applications/Another&lt;span class="se"&gt;\ &lt;/span&gt;Redis&lt;span class="se"&gt;\ &lt;/span&gt;Desktop&lt;span class="se"&gt;\ &lt;/span&gt;Manager.app
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo spctl --master-enable
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;spctl --status.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;assessments enabled
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;重新打開APP後即成功 來源:[m1打不开，提示 “Another Redis Desktop Manager.app”已损坏，无法打开 #782][1] [1]: &lt;a class="link" href="https://github.com/qishibo/AnotherRedisDesktopManager/issues/782" target="_blank" rel="noopener"
+ &gt;https://github.com/qishibo/AnotherRedisDesktopManager/issues/782&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[Postman] Mock Servers(含圖和Json)</title><link>https://quietbo.com/2023/01/19/postman-mock-servers%E5%90%AB%E5%9C%96%E5%92%8Cjson/</link><pubDate>Thu, 19 Jan 2023 09:32:19 +0000</pubDate><guid>https://quietbo.com/2023/01/19/postman-mock-servers%E5%90%AB%E5%9C%96%E5%92%8Cjson/</guid><description>&lt;p&gt;為何需要使用到Mock?&lt;br&gt;
 可參考這篇&lt;a class="link" href="https://ithelp.ithome.com.tw/articles/10267680" target="_blank" rel="noopener"
  &gt;[面試][後端]在正式 API 完成前，如何讓要串接的工程師不要空等？&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;不只是前端可能會遇到要等後端API完成，有時候後端要與其他Server對接API拿資料時，也會使用到。&lt;br&gt;

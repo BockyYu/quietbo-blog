@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kafka on Quietbo</title><link>https://quietbo.com/tags/kafka/</link><description>Recent content in Kafka on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 06 Jul 2025 21:09:56 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/kafka/index.xml" rel="self" type="application/rss+xml"/><item><title>[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)</title><link>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</link><pubDate>Sun, 06 Jul 2025 21:09:56 +0000</pubDate><guid>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</guid><description>&lt;p&gt;前言&lt;br&gt;
-原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kafka on Quietbo</title><link>https://quietbo.com/tags/kafka/</link><description>Recent content in Kafka on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 06 Jul 2025 21:09:56 +0000</lastBuildDate><atom:link href="https://quietbo.com/tags/kafka/index.xml" rel="self" type="application/rss+xml"/><item><title>[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)</title><link>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</link><pubDate>Sun, 06 Jul 2025 21:09:56 +0000</pubDate><guid>https://quietbo.com/2025/07/07/kafka%E4%BD%BF%E7%94%A8docker%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%83%A8%E7%BD%B2kraft/</guid><description>&lt;h2 id="前言"&gt;前言
+&lt;/h2&gt;&lt;p&gt;原本官方文件的簡單範例使用預設網路設定，大部分參數都自動配置，較適合單機測試，但無法與 kafka-ui 等其他服務整合。本篇將介紹如何使用 Kafka KRaft 模式 + kafka-ui，並提供完整的配置說明。&lt;/p&gt;
 &lt;p&gt;相關連結：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class="link" href="https://hub.docker.com/r/apache/kafka" target="_blank" rel="noopener"
@@ -11,13 +11,13 @@
 &lt;li&gt;&lt;a class="link" href="https://hub.docker.com/layers/apache/kafka/3.9.1/images/sha256-5862db4a63a6dd7d46fd14771b10a1b39e069c2c47f17d8e4640f960720a0ead" target="_blank" rel="noopener"
  &gt;kafka:3.9.1 image&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id="什麼是-kraft-模式"&gt;什麼是 KRaft 模式？
-&lt;/h1&gt;&lt;p&gt;KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：&lt;/p&gt;&lt;/p&gt;
+&lt;h2 id="什麼是-kraft-模式"&gt;什麼是 KRaft 模式？
+&lt;/h2&gt;&lt;p&gt;KRaft (Kafka Raft) 是 Kafka 的新架構模式，主要特色：&lt;/p&gt;
 &lt;p&gt;不需要 ZooKeeper：簡化部署和維護&lt;br&gt;
 內建 Controller：metadata 管理更高效&lt;br&gt;
-更好的效能：減少網路延遲和複雜度&lt;/p&gt;&lt;/p&gt;
+更好的效能：減少網路延遲和複雜度&lt;/p&gt;
 &lt;p&gt;快速開始 (推薦使用 docker-compose)&lt;br&gt;
-如果你想快速開始，可以直接跳到 docker-compose.yml 章節。&lt;/p&gt;&lt;/p&gt;
+如果你想快速開始，可以直接跳到 docker-compose.yml 章節。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;創建自定義網路&lt;/li&gt;
 &lt;/ol&gt;
@@ -79,8 +79,8 @@
  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;重要提醒： KAFKA_ADVERTISED_LISTENERS 必須使用 broker:9092，不能使用 localhost:9092，否則 kafka-ui 無法連接！&lt;/p&gt;
-&lt;h3 id="kafka-ui"&gt;kafka-ui
-&lt;/h3&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d \
+&lt;h2 id="kafka-ui"&gt;kafka-ui
+&lt;/h2&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d \
  --name kafka-ui \
  --network kafka-network \
  -p 8080:8080 \
@@ -196,96 +196,57 @@ docker-compose down
 &lt;pre tabindex="0"&gt;&lt;code&gt;docker exec -it broker /opt/kafka/bin/kafka-topics.sh --version
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;輸出範例：&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;4.0.0
-&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Kafka] Mac上使用Docker部署kafka+zookeeper</title><link>https://quietbo.com/2024/03/22/kafka-mac%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2kafkazookeeper/</link><pubDate>Fri, 22 Mar 2024 07:32:14 +0000</pubDate><guid>https://quietbo.com/2024/03/22/kafka-mac%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2kafkazookeeper/</guid><description>&lt;ol class="wp-block-list"&gt;
- &lt;li&gt;
- 拉取 kafka &amp; zookeeper image
- &lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Kafka] Mac上使用Docker部署kafka+zookeeper</title><link>https://quietbo.com/2024/03/22/kafka-mac%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2kafkazookeeper/</link><pubDate>Fri, 22 Mar 2024 07:32:14 +0000</pubDate><guid>https://quietbo.com/2024/03/22/kafka-mac%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2kafkazookeeper/</guid><description>&lt;ol&gt;
+&lt;li&gt;拉取 kafka &amp;amp; zookeeper image&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker pull wurstmeister/kafka
-docker pull zookeeper&lt;/code&gt;&lt;/pre&gt;
-&lt;ol class="wp-block-list" start="2"&gt;
- &lt;li&gt;
- 運行zookeeper的container
- &lt;/li&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker pull wurstmeister/kafka
+docker pull zookeeper
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start="2"&gt;
+&lt;li&gt;運行zookeeper的container&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -d --name zookeeper -p 2181:2181 -t zookeeper&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;運行kafka(下方會建立3個docker container)&lt;br&gt;
-注意：192.168.999.999為自己本機的ip，請自行手動修改&lt;br&gt;
-mac查詢方式:&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;ifconfig | grep "inet"&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;看到的inet有192.168.XXX.XXX就是了![Uploading file…_28ywkkhaq]()&lt;/p&gt;
-&lt;p&gt;參數說明:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
- &lt;li&gt;
- -d: 表示在背景運行容器
- &lt;/li&gt;
- &lt;li&gt;
- &amp;#8211;name: 容器命名
- &lt;/li&gt;
- &lt;li&gt;
- -p: 將容器內部的port分享到本機的prot號，用於kafka的監聽端口
- &lt;/li&gt;
- &lt;li&gt;
- -e KAFKA_BROKER_ID=0: 設置環境變量，將Kafka Broker的ID設為0。
- &lt;/li&gt;
- &lt;li&gt;
- -e KAFKA_ZOOKEEPER_CONNECT=192.168.999.999:2181 將Kafka與Zookeeper連接。Zookeeper預設的prot是2181
- &lt;/li&gt;
- &lt;li&gt;
- -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.999.999:9092:
- &lt;/li&gt;
- &lt;li&gt;
- PLAINTEXT:// 使用普通的明文文字傳輸協議。這是設定 Kafka 的廣告偵聽器，也就是 Kafka 伺服器公開給外部用戶端的位址和連接埠。
- &lt;/li&gt;
- &lt;li&gt;
- -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092: 設置Kafka監聽的地址和端口。
- &lt;/li&gt;
- &lt;li&gt;
- -t wurstmeister/kafka: 指定使用的image(wurstmeister/kafka 是 Kafka 官方維護的一個鏡像
- &lt;/li&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d --name zookeeper -p 2181:2181 -t zookeeper
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;運行kafka(下方會建立3個docker container) 注意：192.168.999.999為自己本機的ip，請自行手動修改 mac查詢方式:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;ifconfig | grep &amp;#34;inet&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;看到的inet有192.168.XXX.XXX就是了!\[Uploading file…_28ywkkhaq\]() 參數說明:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;-d: 表示在背景運行容器&lt;/li&gt;
+&lt;li&gt;–name: 容器命名&lt;/li&gt;
+&lt;li&gt;-p: 將容器內部的port分享到本機的prot號，用於kafka的監聽端口&lt;/li&gt;
+&lt;li&gt;-e KAFKA_BROKER_ID=0: 設置環境變量，將Kafka Broker的ID設為0。&lt;/li&gt;
+&lt;li&gt;-e KAFKA_ZOOKEEPER_CONNECT=192.168.999.999:2181 將Kafka與Zookeeper連接。Zookeeper預設的prot是2181&lt;/li&gt;
+&lt;li&gt;-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.999.999:9092:&lt;/li&gt;
+&lt;li&gt;PLAINTEXT:// 使用普通的明文文字傳輸協議。這是設定 Kafka 的廣告偵聽器，也就是 Kafka 伺服器公開給外部用戶端的位址和連接埠。&lt;/li&gt;
+&lt;li&gt;-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092: 設置Kafka監聽的地址和端口。&lt;/li&gt;
+&lt;li&gt;-t wurstmeister/kafka: 指定使用的image(wurstmeister/kafka 是 Kafka 官方維護的一個鏡像&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Kafka0：&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -d --name kafka0 -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=192.168.999.999:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.999.999:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Kafka1：&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=192.168.999.999:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.999.999:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Kafka2：&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=192.168.999.999:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.999.999:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;成功後4個container都顯示Running&lt;/p&gt;
-&lt;p&gt;進入kafka0的container&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker exec -it kafka0 /bin/bash&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;進入bin後創建topic&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;cd /opt/kafka_2.13-2.8.1/bin
-kafka-topics.sh --create --zookeeper 192.168.999.999:2181 --replication-factor 3 --partitions 5 --topic TestTopic&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;查看指定 topic&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;kafka-topics.sh --zookeeper 192.168.999.999:2181 --topic TestTopic --describe &lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
-&lt;p&gt;&lt;img decoding="async" src="https://hackmd.io/_uploads/rk5Uw5tCa.png" alt="image" /&gt; &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;節點說明：&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;Topic: TestTopic TopicId: H-Y_jJv5TFSN-sxQBMnzdg PartitionCount: 5 ReplicationFactor: 3&lt;/code&gt;&lt;/pre&gt;
-&lt;ul class="wp-block-list"&gt;
- &lt;li&gt;
- Topic: 主題名稱
- &lt;/li&gt;
- &lt;li&gt;
- Leader: 主題節點號
- &lt;/li&gt;
- &lt;li&gt;
- Replicas: 副本節點有Broker.id = 2、0、1（包括Leader Replica和Follower Replica，且不管是否存活），
- &lt;/li&gt;
- &lt;li&gt;
- Isr: 表示存活且同步Leader節點的副本有Broker.id = 2、0、1
- &lt;/li&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d --name kafka0 -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=192.168.999.999:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.999.999:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Kafka1：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=192.168.999.999:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.999.999:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Kafka2：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=192.168.999.999:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.999.999:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;成功後4個container都顯示Running 進入kafka0的container&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker exec -it kafka0 /bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;進入bin後創建topic&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cd /opt/kafka_2.13-2.8.1/bin
+kafka-topics.sh --create --zookeeper 192.168.999.999:2181 --replication-factor 3 --partitions 5 --topic TestTopic
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查看指定 topic&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;kafka-topics.sh --zookeeper 192.168.999.999:2181 --topic TestTopic --describe 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img alt="image" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://hackmd.io/_uploads/rk5Uw5tCa.png"&gt;節點說明：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Topic: TestTopic TopicId: H-Y_jJv5TFSN-sxQBMnzdg PartitionCount: 5 ReplicationFactor: 3
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Topic: 主題名稱&lt;/li&gt;
+&lt;li&gt;Leader: 主題節點號&lt;/li&gt;
+&lt;li&gt;Replicas: 副本節點有Broker.id = 2、0、1（包括Leader Replica和Follower Replica，且不管是否存活），&lt;/li&gt;
+&lt;li&gt;Isr: 表示存活且同步Leader節點的副本有Broker.id = 2、0、1&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;查看 topic 集合&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;kafka-topics.sh --zookeeper 192.168.999.999:2181 --list&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
-&lt;p&gt;&lt;img decoding="async" src="https://hackmd.io/_uploads/ByjwPqKAT.png" alt="image" /&gt; &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;生產者和消费者測試，開啟三個終端機，&lt;br&gt;
-分別在Broker0上運行一個生產者，Broker1、2上分別運行一個消費者：&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;kafka-console-producer.sh --broker-list 192.168.999.999:9092 --topic TestTopic
+&lt;pre tabindex="0"&gt;&lt;code&gt;kafka-topics.sh --zookeeper 192.168.999.999:2181 --list
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img alt="image" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://hackmd.io/_uploads/ByjwPqKAT.png"&gt;生產者和消费者測試，開啟三個終端機， 分別在Broker0上運行一個生產者，Broker1、2上分別運行一個消費者：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;kafka-console-producer.sh --broker-list 192.168.999.999:9092 --topic TestTopic
 
 kafka-console-consumer.sh --bootstrap-server 192.168.999.999:9093 --topic TestTopic --from-beginning
 
-kafka-console-consumer.sh --bootstrap-server 192.168.999.999:9094 --topic TestTopic --from-beginning&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;左邊輸入的地方會有個&amp;gt; 箭頭符號，代表是生產者，送出後會送到右手邊的消費者&lt;/p&gt;
-&lt;figure class="wp-block-image is-resized"&gt;
-&lt;p&gt;&lt;a class="link" href="https://hackmd.io/_uploads/SkrsccY0T.png" target="_blank" rel="noopener"
- &gt;&lt;img decoding="async" src="https://hackmd.io/_uploads/SkrsccY0T.png" alt="image" style="aspect-ratio:1;width:840px;height:auto" /&gt;&lt;/a&gt;&lt;/figure&gt;&lt;/p&gt;</description></item></channel></rss>
+kafka-console-consumer.sh --bootstrap-server 192.168.999.999:9094 --topic TestTopic --from-beginning
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;左邊輸入的地方會有個&amp;gt; 箭頭符號，代表是生產者，送出後會送到右手邊的消費者&lt;img alt="image" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://hackmd.io/_uploads/SkrsccY0T.png"&gt;[1]: &lt;a class="link" href="https://hackmd.io/" target="_blank" rel="noopener"
+ &gt;https://hackmd.io/&lt;/a&gt;_uploads/SkrsccY0T.png&lt;/p&gt;</description></item></channel></rss>
