@@ -2,7 +2,7 @@
 title: '[Kafka] 使用docker在本機部署KRaft模式 + kafka-ui (簡易版)'
 author: Bocky
 type: post
-draft: true 
+featured: true
 date: 2025-07-06T21:09:56+00:00
 url: /2025/07/07/e/
 categories:
