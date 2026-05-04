@@ -1,0 +1,2137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Quietbo</title><link>https://quietbo.com/categories/docker/</link><description>Recent content in Docker on Quietbo</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Wed, 03 Aug 2022 10:27:42 +0000</lastBuildDate><atom:link href="https://quietbo.com/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>[Docker] Linux 查找volumes</title><link>https://quietbo.com/2022/08/03/docker-linux-%E6%9F%A5%E6%89%BEvolumes/</link><pubDate>Wed, 03 Aug 2022 10:27:42 +0000</pubDate><guid>https://quietbo.com/2022/08/03/docker-linux-%E6%9F%A5%E6%89%BEvolumes/</guid><description>&lt;p&gt;以下為linux在查找volumes範例&lt;/p&gt;
+&lt;p&gt;查看已建立的volume&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker volume list
+DRIVER VOLUME NAME
+local mysql-data&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看該volume資訊, 會看到Mountpoint, 這是存放的路徑&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker inspect mysql-data
+[
+ {
+ "CreatedAt": "2022-08-03T05:59:51Z",
+ "Driver": "local",
+ "Labels": null,
+ "Mountpoint": "/var/lib/docker/volumes/mysql-data/_data",
+ "Name": "mysql-data",
+ "Options": null,
+ "Scope": "local"
+ }
+]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;會發現使用找不到, 因為該路徑下需要使用root&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ cd /var/lib/docker/volumes/mysql-data/_data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ sudo -s
+$ cd /var/lib/docker/volumes/mysql-data/_data&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;該路徑下會看到database, 內容會有tableName.ibd&lt;/p&gt;</description></item><item><title>[Docker] restart</title><link>https://quietbo.com/2022/07/27/docker-restart/</link><pubDate>Wed, 27 Jul 2022 07:06:09 +0000</pubDate><guid>https://quietbo.com/2022/07/27/docker-restart/</guid><description>&lt;p&gt;原文檔:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ &lt;a href="https://docs.docker.com/engine/reference/commandline/restart/"&gt;Docker Doc&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ &lt;a href="https://docs.docker.com/config/containers/start-containers-automatically/#use-a-restart-policy"&gt;Start containers automatically&lt;/a&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;只要重開機後, 就要手動去開啟容器, 雖然有GUI很方便按個按鈕就好, 可是有時候還是會忘記要啟動必要容器…&lt;/p&gt;
+&lt;h2 id="設置重啟策略"&gt;設置重啟策略
+&lt;/h2&gt;&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker run --restart={Policy} {Container Name}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此命令更改已在運行的容器:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker update --restart={Policy} {Container Name}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下方為Policy與原檔描述&lt;figure class="wp-block-table"&gt;&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Policy&lt;/th&gt;
+ &lt;th&gt;Result&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;no&lt;/td&gt;
+ &lt;td&gt;默認, 不要自動重啟容器。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;on-failure[:max-retries]&lt;/td&gt;
+ &lt;td&gt;如果容器因錯誤退出，則重新啟動容器，這表現為非零退出代碼。或者，使用該:max-retries選項限制 Docker 守護程序嘗試重新啟動容器的次數。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;always&lt;/td&gt;
+ &lt;td&gt;無論退出狀態如何，始終重新啟動容器。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;unless-stopped&lt;/td&gt;
+ &lt;td&gt;無論退出狀態如何，始終重啟容器，包括在守護進程啟動時，除非容器在 Docker 守護進程停止之前進入停止狀態。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="查看容器設置"&gt;查看容器設置
+&lt;/h2&gt;&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker inspect {Container Name}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或使用下方指令&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker inspect -f "{{ .HostConfig.RestartPolicy }}" {Container_Name}
+
+{always 0}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在HostConfig.RestartPolicy下可以看到已經被改為always&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/R7L5RQM.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;顯示所有正在運行的 docker 容器的重啟策略&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker inspect --format "{{.HostConfig.RestartPolicy.Name}}, {{.Name}}, {{.Id}}" $(docker ps -qf status=running) | sort -t, -k1 |column -s, -t&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;顯示結果:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;always /agitated_hertz 32a0f056b137401990aff0c2532de951933bf301f6736bc806ef5e2490aea2b5
+always /ubuntu 0c1e12f31e1ad359530a2709a3a814e8a442fea756d1cda8694d8c9aebb05755&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;參考來源:&lt;a class="link" href="https://stackoverflow.com/questions/43108227/is-it-possible-to-show-the-restart-policy-of-a-running-docker-container" target="_blank" rel="noopener"
+ &gt;[stackoverflow]Is it possible to show the restart policy of a running Docker container?&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[Docker] 80port被佔用。Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai(解決)</title><link>https://quietbo.com/2022/06/07/docker-80port%E8%A2%AB%E4%BD%94%E7%94%A8%E3%80%82error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-cranky_banzai%E8%A7%A3%E6%B1%BA/</link><pubDate>Tue, 07 Jun 2022 10:23:23 +0000</pubDate><guid>https://quietbo.com/2022/06/07/docker-80port%E8%A2%AB%E4%BD%94%E7%94%A8%E3%80%82error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-cranky_banzai%E8%A7%A3%E6%B1%BA/</guid><description>&lt;p&gt;當我在docker創建containerd時, 出現被佔用訊息, 如下:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker: Error response from daemon: driver failed programming external connectivity on endpoint cranky_banzai (6e53d887b7e49120d6eb6d061196c5f4edd36e5527a9554dfed718184081a0a2): Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;網路上很多都是把docker restart就解決了, 如果沒解決, 可能是被其他佔用了。&lt;/p&gt;
+&lt;p&gt;執行:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;netstat | grep 80&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;沒看到80被佔用。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/7pG0p48.png" alt="" /&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;netstat -tulpn | grep :80&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Not all processes could be identified, non-owned process info&lt;br&gt;
+will not be shown, you would have to be root to see it all.)&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;tcp6 0 0 :::80 :::* LISTEN -&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看起來是有東西, 但必須使用root才能知道是什麼，切換成root後再看一次&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo su -
+netstat -tulpn | grep :80&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看到是LISTEN 858230/apache2&lt;br&gt;
+因為我沒有在使用apache2所以我就先停掉。&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/HyPa2tQ.png" alt="" /&gt; 
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo /etc/init.d/apache2 stop&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image is-style-default"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/d4sSrIr.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;離開root&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;exit&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再執行一次docker run -d -p 80:80 nginx&lt;br&gt;
+成功解決這次被佔用問題!&lt;/p&gt;</description></item><item><title>[Docker] 建立群組 – Got permission denied while trying to connect to the Docker daemon socket at unix(解決)</title><link>https://quietbo.com/2022/06/06/docker-%E5%BB%BA%E7%AB%8B%E7%BE%A4%E7%B5%84-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket-at-unix%E8%A7%A3%E6%B1%BA/</link><pubDate>Mon, 06 Jun 2022 07:43:23 +0000</pubDate><guid>https://quietbo.com/2022/06/06/docker-%E5%BB%BA%E7%AB%8B%E7%BE%A4%E7%B5%84-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket-at-unix%E8%A7%A3%E6%B1%BA/</guid><description>&lt;p&gt;環境:linux&lt;/p&gt;
+&lt;p&gt;下方錯誤訊息，表示目前的使用者身分沒有權限。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/build?buildargs=%7B%7D&amp;cachefrom=%5B%5D&amp;cgroupparent=&amp;cpuperiod=0&amp;cpuquota=0&amp;cpusetcpus=&amp;cpusetmems=&amp;cpushares=0&amp;dockerfile=Dockerfile&amp;labels=%7B%7D&amp;memory=0&amp;memswap=0&amp;networkmode=default&amp;rm=1&amp;shmsize=0&amp;t=ocms_server&amp;target=&amp;ulimits=null&amp;version=1": dial unix /var/run/docker.sock: connect: permission denied&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;解決方式:&lt;/p&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 最前方加入sudo(每次都需要加sudo有點麻煩)
+ &lt;/li&gt;
+ &lt;li&gt;
+ 將目前使用者加到docker群組裡面(本篇使用的方法)
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="建立-docker-群組"&gt;建立 docker 群組
+&lt;/h1&gt;&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo groupadd docker&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果一開始就已經有群組的話，就則會告知下方訊息&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;groupadd: group 'docker' already exists&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="將非-root-帳號加上-docker-群組中"&gt;將非 root 帳號加上 docker 群組中
+&lt;/h2&gt;&lt;p&gt;將連接的用戶”$USER”添加到docker組。&lt;br&gt;
+如果不想使用當前用戶，請更改用戶名&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo gpasswd -a $USER docker&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;成功則返回:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;Adding user admins to group docker&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;group 的資訊並不會立刻更新，為了要能立刻產生作用，執行 newgrp docker，&lt;/p&gt;
+&lt;p&gt;讓這個帳號立刻改成使用 docker 這個群組 (或是你要登出登入也行)：&lt;br&gt;
+執行下方指令, 或注銷/進入以激活對組的更改:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;newgrp docker&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="重新啟動-docker-服務"&gt;重新啟動 docker 服務
+&lt;/h1&gt;&lt;p&gt;重啟 docker 服務之後，所有的變動就完成了：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo systemctl restart docker&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[docker-compose] 環境設置</title><link>https://quietbo.com/2022/02/03/docker-compose-%E7%92%B0%E5%A2%83%E8%A8%AD%E7%BD%AE/</link><pubDate>Thu, 03 Feb 2022 13:08:42 +0000</pubDate><guid>https://quietbo.com/2022/02/03/docker-compose-%E7%92%B0%E5%A2%83%E8%A8%AD%E7%BD%AE/</guid><description>&lt;p&gt;主要docker-compose.yml檔案不要直接暴露redis的密碼。&lt;/p&gt;
+&lt;h2 id="使用-env設置密碼範例.wp-block-heading"&gt;使用.env設置密碼範例
+&lt;/h2&gt;&lt;p&gt;下方為目錄結構:&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/1mLAJkZ.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;以下為docker-compose.yml檔內容&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;version: "3.8"
+
+services:
+ flask:
+ build:
+ context: ./flask
+ dockerfile: Dockerfile
+ image: flask-demo:latest
+ environment:
+ - REDIS_HOST=redis-server
+ - REDIS_PASS=${REDIS_PASS}
+ networks:
+ - backend
+ - frontend
+
+ redis-server:
+ image: redis:latest
+ command: redis-server --requirepass ${REDIS_PASS}
+ networks:
+ - backend
+
+ nginx:
+ image: nginx:stable-alpine
+ ports:
+ - 8000:80
+ depends_on:
+ - flask
+ volumes:
+ - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+ - ./var/log/nginx:/var/log/nginx
+ networks:
+ - frontend
+
+networks:
+ backend:
+ frontend:&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;.env檔&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;REDIS_PASS=ABC123&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;.gitignore檔(用於不要上傳到git上)&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;.env&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看目前設置內容:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker-compose config&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="指定路徑的方式.wp-block-heading"&gt;指定路徑的方式
+&lt;/h2&gt;&lt;p&gt;若不使用.env檔，想使用其他路徑下的檔案，改成myenv的檔名，下指令&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker-compose --env-file myenv config
+docker-compose --env-file myenv up -d&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;則可正常執行。&lt;/p&gt;</description></item><item><title>[docker-compose] 服務的更新</title><link>https://quietbo.com/2022/02/02/docker-compose-%E6%9C%8D%E5%8B%99%E7%9A%84%E6%9B%B4%E6%96%B0/</link><pubDate>Tue, 01 Feb 2022 18:11:04 +0000</pubDate><guid>https://quietbo.com/2022/02/02/docker-compose-%E6%9C%8D%E5%8B%99%E7%9A%84%E6%9B%B4%E6%96%B0/</guid><description>&lt;h2 id="服務更新.wp-block-heading"&gt;服務更新
+&lt;/h2&gt;&lt;p&gt;下方為目錄結構:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ tree 
+.
+├── docker-compose.yml
+└── my_flask
+ ├── app.py
+ └── dockerfile&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;app.py檔如下&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python line-numbers"&gt;from flask import Flask
+from redis import Redis
+import os
+import socket
+
+app = Flask(__name__)
+redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379)
+
+
+@app.route('/')
+def hello():
+ redis.incr('hits')
+ return f"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\n"&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;dockerfile如下:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python line-numbers"&gt;FROM python:3.9.5-slim
+
+RUN pip install flask redis &amp;&amp; \
+ groupadd -r flask &amp;&amp; useradd -r -g flask flask &amp;&amp; \
+ mkdir /src &amp;&amp; \
+ chown -R flask:flask /src
+
+USER flask
+
+COPY app.py /src/app.py
+
+WORKDIR /src
+
+ENV FLASK_APP=app.py REDIS_HOST=redis
+
+EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;docker-compose.yml檔內容如下:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;version: "3.8"
+
+services:
+ flask-demo:
+ build: ./my_flask
+ image: flask_demo:latest
+ environment:
+ - REDIS_HOST=redis-server
+ networks:
+ - demo-network
+ ports:
+ - 8899:5000
+
+ redis-server:
+ container_name: redis-demo
+ image: redis:latest
+ networks:
+ - demo-network
+
+networks:
+ demo-network: null&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在該目錄下執行:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker-compose up -d&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;會創建2個容器，一個是flask-demo，一個是redis，開起瀏覽器輸入127.0.0.1:8899，會看到下方字串(隨著開啟次數會累加):&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;Hello Container World! I have been seen 1 times and my hostname is b895a0c7b962.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;若有更新app.py內的code，重新build一次flask，下方為演示的訊息:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker-compose up -d --build
+Building flask-demo
+[+] Building 5.9s (10/10) FINISHED 
+ =&amp;gt; [internal] load build definition from Dockerfile 0.0s
+ =&amp;gt; =&amp;gt; transferring dockerfile: 37B 0.0s
+ =&amp;gt; [internal] load .dockerignore 0.0s
+ =&amp;gt; =&amp;gt; transferring context: 2B 0.0s
+ =&amp;gt; [internal] load metadata for docker.io/library/python:3.9.5-slim 5.8s
+ =&amp;gt; [auth] library/python:pull token for registry-1.docker.io 0.0s
+ =&amp;gt; [internal] load build context 0.0s
+ =&amp;gt; =&amp;gt; transferring context: 395B 0.0s
+ =&amp;gt; [1/4] FROM docker.io/library/python:3.9.5-slim@sha256:9828573e6a0b02b6d0ff0bae0716b027aa21cf8e59ac18a76724d216bab7ef04 0.0s
+ =&amp;gt; CACHED [2/4] RUN pip install flask redis &amp;&amp; groupadd -r flask &amp;&amp; useradd -r -g flask flask &amp;&amp; mkdir /src &amp;&amp; chown -R 0.0s
+ =&amp;gt; [3/4] COPY app.py /src/app.py 0.0s
+ =&amp;gt; [4/4] WORKDIR /src 0.0s
+ =&amp;gt; exporting to image 0.0s
+ =&amp;gt; =&amp;gt; exporting layers 0.0s
+ =&amp;gt; =&amp;gt; writing image sha256:cc1bafcde9c602150db215976497c20a13db386bdbfeecf41d84e36ed77286e9 0.0s
+ =&amp;gt; =&amp;gt; naming to docker.io/library/flask_demo:latest 0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+redis-demo is up-to-date
+Recreating mydocker_flask-demo_1 ... done&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看容器狀況，會發現原本的redis沒有被重構，只有因修改了app.py後重建的flask-demo，畫面如下:&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/jTeoXcD.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="刪除服務.wp-block-heading"&gt;刪除服務
+&lt;/h2&gt;&lt;p&gt;將原本的docker-compose.yml檔新增一個busbox:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;version: "3.8"
+
+services:
+ flask-demo:
+ build: ./my_flask
+ image: flask_demo:latest
+ environment:
+ - REDIS_HOST=redis-server
+ networks:
+ - demo-network
+ ports:
+ - 8899:5000
+
+ redis-server:
+ container_name: redis-demo
+ image: redis:latest
+ networks:
+ - demo-network
+
+ busybox:
+ image: busybox:latest
+ command: sh -c "while true; do sleep 3600; done"
+ networks:
+ - demo-network
+
+networks:
+ demo-network: null&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在剛才已有兩個容器的狀況下，再下一次指令:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker-compose up -d&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Z5Bn8Te.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在已經建立3個容器的狀況下，將yml檔的busbox註解掉，再重新下一次指令，會出現一段WARNING的訊息:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;WARNING: Found orphan containers (mydocker_busybox_1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Wf3b6zu.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;使用剛才建議的指令，來刪除不需要的service&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker-compose up -d --remove-orphans&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/QsCEeSA.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;三個更新文件指令:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=" line-numbers"&gt;docker-compose build # 只build dockerfile 的image
+docker-compose up -d --remove-orphans # 刪除不需要使用的service
+docker-compose restart # 重啟&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[docker-compose] image build與pull(build非dockerfile名稱)</title><link>https://quietbo.com/2022/02/01/docker-compose-image-build%E8%88%87pullbuild%E9%9D%9Edockerfile%E5%90%8D%E7%A8%B1/</link><pubDate>Tue, 01 Feb 2022 13:52:15 +0000</pubDate><guid>https://quietbo.com/2022/02/01/docker-compose-image-build%E8%88%87pullbuild%E9%9D%9Edockerfile%E5%90%8D%E7%A8%B1/</guid><description>&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2022/02/01/docker-compose-image-build%e8%88%87pullbuild%e9%9d%9edockerfile%e5%90%8d%e7%a8%b1/#%E7%9B%AE%E9%8C%84%E7%B5%90%E6%A7%8B" &gt;目錄結構&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2022/02/01/docker-compose-image-build%e8%88%87pullbuild%e9%9d%9edockerfile%e5%90%8d%e7%a8%b1/#docker-compose_image_buildpull%E7%9A%84%E6%8C%87%E4%BB%A4%E5%B7%AE%E7%95%B0" &gt;docker-compose image build/pull的指令差異&lt;/a&gt;&lt;ul class='ez-toc-list-level-3' &gt;
+ &lt;li class='ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2022/02/01/docker-compose-image-build%e8%88%87pullbuild%e9%9d%9edockerfile%e5%90%8d%e7%a8%b1/#docker-compose_build" &gt;docker-compose build&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2022/02/01/docker-compose-image-build%e8%88%87pullbuild%e9%9d%9edockerfile%e5%90%8d%e7%a8%b1/#docker-compose_pull" &gt;docker-compose pull&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&amp;gt;
+ &amp;lt;a class=&amp;quot;ez-toc-link ez-toc-heading-5&amp;quot; href=&amp;quot;https://quietbo.com/2022/02/01/docker-compose-image-build%e8%88%87pullbuild%e9%9d%9edockerfile%e5%90%8d%e7%a8%b1/#%E9%83%A8%E5%88%86%E5%9F%BA%E7%A4%8E%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8&amp;quot; &amp;gt;部分基礎的命令行基本使用&amp;lt;/a&amp;gt;
+&amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="目錄結構.wp-block-heading"&gt;&lt;span class="ez-toc-section" id="%E7%9B%AE%E9%8C%84%E7%B5%90%E6%A7%8B"&gt;&lt;/span&gt;目錄結構&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;當要build的image名稱不是dockerfile時，是其他名稱，且在不同路徑下，例如：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;.
+├── docker-compose.yml
+└── my_flask
+ ├── app.py
+ └── dockerfile.data&lt;/code&gt;&lt;/pre&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ build: 要build的指令：&lt;ul&gt;
+ &lt;li&gt;
+ context: 檔案路徑
+ &lt;/li&gt;
+ &lt;li&gt;
+ dockerfile: 檔案名稱
+ &lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;app.py檔如下&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python line-numbers"&gt;from flask import Flask
+from redis import Redis
+import os
+import socket
+
+app = Flask(__name__)
+redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379)
+
+
+@app.route('/')
+def hello():
+ redis.incr('hits')
+ return f"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\n"&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;dockerfile如下:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;FROM python:3.9.5-slim
+
+RUN pip install flask redis &amp;&amp; \
+ groupadd -r flask &amp;&amp; useradd -r -g flask flask &amp;&amp; \
+ mkdir /src &amp;&amp; \
+ chown -R flask:flask /src
+
+USER flask
+
+COPY app.py /src/app.py
+
+WORKDIR /src
+
+ENV FLASK_APP=app.py REDIS_HOST=redis
+
+EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;docker_compose.yml檔如下:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;version: "3.8"
+
+services:
+ flask-demo:
+ build:
+ context: ./my_flask
+ dockerfile: Dockerfile.data
+ image: flask_demo:latest
+ environment:
+ - REDIS_HOST=redis-server
+ networks:
+ - demo-network
+ ports:
+ - 8899:5000
+
+ redis-server:
+ container_name: redis-demo
+ image: redis:latest
+ networks:
+ - demo-network
+
+networks:
+ demo-network: null&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;成功畫面:&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/9wRyaGQ.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="docker-compose-image-build-pull的指令差異.wp-block-heading"&gt;&lt;span class="ez-toc-section" id="docker-compose_image_buildpull%E7%9A%84%E6%8C%87%E4%BB%A4%E5%B7%AE%E7%95%B0"&gt;&lt;/span&gt;docker-compose image build/pull的指令差異&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;當docker-compose.yml檔內同時有要從dockerfile build的image與從dockerhub pull下來時，這兩種會不同結果&lt;/p&gt;
+&lt;h3 id="docker-compose-build.wp-block-heading"&gt;&lt;span class="ez-toc-section" id="docker-compose_build"&gt;&lt;/span&gt;docker-compose build&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;下方是利用docker_compose.yml檔執行的結果，只有build dockerfile，沒有redis image：&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/0WtFnrJ.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id="docker-compose-pull.wp-block-heading"&gt;&lt;span class="ez-toc-section" id="docker-compose_pull"&gt;&lt;/span&gt;docker-compose pull&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;下方是從dockerhub pull redis，因為dockerfile的關係所以馬上就是done，而pull則需等待下載:&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/oM8hTaq.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以看到，下方使用pull，只有一個redis的image&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/eeXIX8v.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="部分基礎的命令行基本使用.wp-block-heading"&gt;&lt;span class="ez-toc-section" id="%E9%83%A8%E5%88%86%E5%9F%BA%E7%A4%8E%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"&gt;&lt;/span&gt;部分基礎的命令行基本使用&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ -d: 背景執行
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker-compose up -d&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;若想查看log可使用下方兩個指令&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ -f :持續動態的查看
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker-compose logs
+docker-compose logs -f&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看容器目前狀況:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker-compose ps
+ Name Command State Ports 
+-----------------------------------------------------------------------------------------
+my_flask_flask-demo_1 flask run -h 0.0.0.0 Up 0.0.0.0:8899-&amp;gt;5000/tcp
+my_flask_redis-server_1 docker-entrypoint.sh redis ... Up 6379/tcp &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意:使用docker-compose ps時，要在yml檔的目錄底下才能使用，否則無法查詢&lt;/p&gt;
+&lt;p&gt;將容器停止:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker-compose stop&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將已經停止的容器刪除:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker-compose rm 
+Going to remove my_flask_flask-demo_1, my_flask_redis-server_1
+Are you sure? [yN] y
+Removing my_flask_flask-demo_1 ... done
+Removing my_flask_redis-server_1 ... done&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docker-compose] Python Flask+Redis(練習2)</title><link>https://quietbo.com/2022/01/31/docker-compose-python-flaskredis%E7%B7%B4%E7%BF%922/</link><pubDate>Mon, 31 Jan 2022 12:28:54 +0000</pubDate><guid>https://quietbo.com/2022/01/31/docker-compose-python-flaskredis%E7%B7%B4%E7%BF%922/</guid><description>&lt;p&gt;yml的基本語法結構:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;services: # 容器
+ servicename: # 服務名字，這個名字也是內部 bridge網絡可以使用的 DNS name
+ image: # 鏡像的名字
+ command: # 可選，如果設置，則會覆蓋默認鏡像裡的 CMD命令
+ environment: # 可選，相當於 docker run裡的 --env
+ volumes: # 可選，相當於docker run裡的 -v
+ networks: # 可選，相當於 docker run裡的 --network
+ ports: # 可選，相當於 docker run裡的 -p
+ servicename2:
+
+volumes: # 可選，相當於 docker volume create
+
+networks: # 可選，相當於 docker network create&lt;/code&gt;&lt;/pre&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ services&lt;br /&gt;對照:&lt;a href="https://docs.docker.com/compose/compose-file/"&gt;Compose and Docker compatibility&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ servicename&lt;br /&gt;與前一篇在docker時下指令的&amp;#8211;name flask-demo 一致
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="練習.wp-block-heading"&gt;練習
+&lt;/h2&gt;&lt;p&gt;以&lt;a class="link" href="https://quietbo.com/2022/01/22/docker-mac-python-flaskredis%e7%b7%b4%e7%bf%92/" target="_blank" rel="noopener"
+ &gt;Python Flask+Redis(練習)&lt;/a&gt;：為例子，改造成一個docker-compose文件&lt;/p&gt;
+&lt;p&gt;app.py檔案內容如下:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello_world():
+ return 'hello'
+
+
+if __name__ == "__main__":
+ app.run(debug=True, host='0.0.0.0', port=5000)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;dockerfile如下：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;FROM python:3.9.5-slim
+
+RUN pip install flask redis &amp;&amp; \
+ groupadd -r flask &amp;&amp; useradd -r -g flask flask &amp;&amp; \
+ mkdir /src &amp;&amp; \
+ chown -R flask:flask /src
+
+USER flask
+
+COPY app.py /src/app.py
+
+WORKDIR /src
+
+ENV FLASK_APP=app.py REDIS_HOST=redis
+
+EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;docker-compose.yml內容如下:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;version: "3.8"
+
+services:
+ flask-demo:
+ image: flask-demo:latest
+ environment:
+ - REDIS_HOST=redis-server
+ networks:
+ - demo-network
+ ports:
+ - 8899:5000
+
+ redis-server:
+ image: redis:latest
+ networks:
+ - demo-network
+
+networks:
+ demo-network: null&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 資料結構
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;.
+├── app.py
+├── docker-compose.yml
+└── dockerfile&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 建立2個image
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 下載redis image
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image pull redis&lt;/code&gt;&lt;/pre&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 建立flask-demo的image
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image build -t flask-demo .&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 運行docker-compose
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker-compose up 
+Creating network "my_flask_demo-network" with the default driver
+Creating my_flask_redis-server_1 ... done
+Creating my_flask_flask-demo_1 ... done
+Attaching to my_flask_redis-server_1, my_flask_flask-demo_1
+redis-server_1 | 1:C 31 Jan 2022 12:26:05.447 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-server_1 | 1:C 31 Jan 2022 12:26:05.447 # Redis version=6.2.6, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-server_1 | 1:C 31 Jan 2022 12:26:05.447 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-server_1 | 1:M 31 Jan 2022 12:26:05.447 * monotonic clock: POSIX clock_gettime
+redis-server_1 | 1:M 31 Jan 2022 12:26:05.448 * Running mode=standalone, port=6379.
+redis-server_1 | 1:M 31 Jan 2022 12:26:05.448 # Server initialized
+redis-server_1 | 1:M 31 Jan 2022 12:26:05.449 * Ready to accept connections
+flask-demo_1 | * Serving Flask app 'app.py' (lazy loading)
+flask-demo_1 | * Environment: production
+flask-demo_1 | WARNING: This is a development server. Do not use it in a production deployment.
+flask-demo_1 | Use a production WSGI server instead.
+flask-demo_1 | * Debug mode: off
+flask-demo_1 | * Running on all addresses.
+flask-demo_1 | WARNING: This is a development server. Do not use it in a production deployment.
+flask-demo_1 | * Running on http://172.25.0.3:5000/ (Press CTRL+C to quit)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打開瀏覽器輸入&lt;br&gt;
+127.0.0.1:8899&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/pES3Goo.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;</description></item><item><title>[Docker-compose] 安裝</title><link>https://quietbo.com/2022/01/23/docker-compose-%E5%AE%89%E8%A3%9D/</link><pubDate>Sun, 23 Jan 2022 15:01:47 +0000</pubDate><guid>https://quietbo.com/2022/01/23/docker-compose-%E5%AE%89%E8%A3%9D/</guid><description>&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ Mac在默認安裝了docker desktop以後，docker-compose隨之自動安裝，直接下指令來查詢目前docker-compose的版本:
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker-compose --version
+docker-compose version 1.29.2, build 5becea4c&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ Linux用戶需要自行安裝
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最新版本號可以在這裡查詢:&lt;a class="link" href="https://github.com/docker/compose/releases" target="_blank" rel="noopener"
+ &gt;GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ docker-compose --version
+docker-compose version 1.29.2, build 5becea4c&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 使用python的用戶，可以使用pip去安裝docker-Compose
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;pip install docker-compose&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docker] Mac -Python Flask+Redis(練習)</title><link>https://quietbo.com/2022/01/22/docker-mac-python-flaskredis%E7%B7%B4%E7%BF%92/</link><pubDate>Fri, 21 Jan 2022 19:48:54 +0000</pubDate><guid>https://quietbo.com/2022/01/22/docker-mac-python-flaskredis%E7%B7%B4%E7%BF%92/</guid><description>&lt;p&gt;環境&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ Mac M1
+ &lt;/li&gt;
+ &lt;li&gt;
+ docker:Version 20.10.11
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 建立app.py
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python line-numbers"&gt;from flask import Flask
+from redis import Redis
+import os
+import socket
+
+app = Flask(__name__)
+redis = Redis(host=os.environ.get('REDIS_HOST', '127.0.0.1'), port=6379)
+
+
+@app.route('/')
+def hello():
+ redis.incr('hits')
+ return f"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\n"&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 同一層建立dockerfile
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;FROM python:3.9.5-slim
+
+RUN pip install flask redis &amp;&amp; \
+ groupadd -r flask &amp;&amp; useradd -r -g flask flask &amp;&amp; \
+ mkdir /src &amp;&amp; \
+ chown -R flask:flask /src
+
+USER flask
+
+COPY app.py /src/app.py
+
+WORKDIR /src
+
+ENV FLASK_APP=app.py REDIS_HOST=redis
+
+EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ image 的準備
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker image pull redis
+$ docker image build -t flask-demo .
+$ docker image ls
+REPOSITORY TAG IMAGE ID CREATED SIZE
+flask-demo latest d92f7778af76 9 minutes ago 123MB
+redis latest f16c30136ff3 4 weeks ago 107MB&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="4"&gt;
+ &lt;li&gt;
+ 創建一個docker bridge
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker network create -d bridge demo-network
+960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7
+$ docker network ls
+NETWORK ID NAME DRIVER SCOPE
+b2077f8151cb bridge bridge local
+caf0f586ef79 demo-network bridge local
+d1465da885e1 host host local&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="5"&gt;
+ &lt;li&gt;
+ 創建redis container&lt;br /&gt;創建一個叫 redis-server 的container，連到demo-network上
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker container run -d --name redis-server --network demo-network redis
+960a617c97c6a197624c51fc02dbbf9007080662052551296d55b0cc7d5f2ba7
+
+$ docker container ls
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+960a617c97c6 redis "docker-entrypoint.s…" 12 minutes ago Up 12 minutes 6379/tcp redis-server&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="6"&gt;
+ &lt;li&gt;
+ 創建flask container
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker container run -d --network demo-network --name flask-demo --env REDIS_HOST=redis-server -p 5000:5000 flask-demo&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="7"&gt;
+ &lt;li&gt;
+ 打開瀏覽器
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;輸入:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;127.0.0.1:5000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;會看到下圖，每次刷新頁面，計數加1:ㄋ&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/iCAiHPA.png" alt="" /&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;Hello Container World! I have been seen 2 times and my hostname is a426b16a8d01.&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="總結"&gt;總結
+&lt;/h2&gt;&lt;p&gt;如果把上面的步驟合併到一起，成為一個部署腳本:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;# prepare image
+docker image pull redis
+docker image build -t flask-demo .
+
+# create network
+docker network create -d bridge demo-network
+
+# create container
+docker container run -d --name redis-server --network demo-network redis
+docker container run -d --network demo-network --name flask-demo --env REDIS_HOST=redis-server -p 5000:5000 flask-demo&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docker] –network host, None</title><link>https://quietbo.com/2022/01/17/docker-network-host-none/</link><pubDate>Mon, 17 Jan 2022 15:17:52 +0000</pubDate><guid>https://quietbo.com/2022/01/17/docker-network-host-none/</guid><description>&lt;p&gt;環境：Linux&lt;/p&gt;
+&lt;p&gt;注意：&lt;br&gt;
+主機網絡驅動程序僅適用於 Linux 主機，不支持 Docker Desktop for Mac、Docker Desktop for Windows 或 Docker EE for Windows Server。&lt;/p&gt;
+&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/OJh6RUm.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="8211network-host"&gt;–network host
+&lt;/h2&gt;&lt;p&gt;創建4個容器:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker run -d --name web1 nginx
+docker run -d --name web2 nginx
+docker run -d --name web3 nginx
+docker run -d --name web4 --network host nginx&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;都是監聽80的port&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/R15HOJ9.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;打開瀏覽器輸入127.0.0.1&lt;br&gt;
+能夠成功看到nginx的頁面，而這個頁面是由web4與本地連接的，並非we1,web2,web3，若是想要再創建一個web5，則無法創建。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker run -d --name web5 --network host nginx
+docker logs -f web5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原因是80的port已被佔用。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="8211network-none"&gt;–network none
+&lt;/h2&gt;&lt;p&gt;無法對內，對外進行通訊&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker exec -it box1 ip a
+1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000
+ link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+ inet 127.0.0.1/8 scope host lo
+ valid_lft forever preferred_lft forever
+2: tunl0@NONE: &amp;lt;NOARP&gt; mtu 1480 qdisc noop qlen 1000
+ link/ipip 0.0.0.0 brd 0.0.0.0
+3: ip6tnl0@NONE: &amp;lt;NOARP&gt; mtu 1452 qdisc noop qlen 1000
+ link/tunnel6 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 brd 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docker] dockerfile端口轉發</title><link>https://quietbo.com/2022/01/17/docker-dockerfile%E7%AB%AF%E5%8F%A3%E8%BD%89%E7%99%BC/</link><pubDate>Mon, 17 Jan 2022 14:21:35 +0000</pubDate><guid>https://quietbo.com/2022/01/17/docker-dockerfile%E7%AB%AF%E5%8F%A3%E8%BD%89%E7%99%BC/</guid><description>&lt;h2 id="pull-image"&gt;pull image
+&lt;/h2&gt;&lt;p&gt;先pull兩個image:&lt;br&gt;
+python:3.9.5-slim&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker image pull python:3.9.5-slim&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;redis&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker image pull redis&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;新增2個dockerfile&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;FROM python:3.9.5-slim
+
+RUN pip install flask redis &amp;&amp; \
+ groupadd -r flask &amp;&amp; useradd -r -g flask flask &amp;&amp; \
+ mkdir /src &amp;&amp; \
+ chown -R flask:flask /src
+
+USER flask
+
+COPY startup.py /src/startup.py
+
+WORKDIR /src
+
+ENV FLASK_APP=startup.py REDIS_HOST=redis
+
+#EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用上方的dockerfile build image，註解掉EXPOSE的image名為flask-demo：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker image build -t flask-demo .&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再建立一個image，這個image只是把EXPOSE 5000打開。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;FROM python:3.9.5-slim
+
+RUN pip install flask redis &amp;&amp; \
+ groupadd -r flask &amp;&amp; useradd -r -g flask flask &amp;&amp; \
+ mkdir /src &amp;&amp; \
+ chown -R flask:flask /src
+
+USER flask
+
+COPY startup.py /src/startup.py
+
+WORKDIR /src
+
+ENV FLASK_APP=startup.py REDIS_HOST=redis
+
+EXPOSE 5000
+
+CMD ["flask", "run", "-h", "0.0.0.0"]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打開EXPOSE的image名為flask-demo-new。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker image build -t flask-demo-new .&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;建立後查看image&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker image inspect flask-demo
+docker image inspect flask-demo-new&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;裡面的Config只有flask-demo-new的有多出&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;"ExposedPorts": {
+ "5000/tcp": {}
+ },&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/jvFogBK.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;</description></item><item><title>[Docker] 容器端口轉發(外部訪問容器)</title><link>https://quietbo.com/2022/01/17/docker-%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E8%BD%89%E7%99%BC%E5%A4%96%E9%83%A8%E8%A8%AA%E5%95%8F%E5%AE%B9%E5%99%A8/</link><pubDate>Sun, 16 Jan 2022 16:23:13 +0000</pubDate><guid>https://quietbo.com/2022/01/17/docker-%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E8%BD%89%E7%99%BC%E5%A4%96%E9%83%A8%E8%A8%AA%E5%95%8F%E5%AE%B9%E5%99%A8/</guid><description>&lt;p&gt;容器中可以運行一些網絡應用，要讓外部也可以訪問這些應用，可以通過 -P 或 -p 參數來指定端口映射。&lt;br&gt;
+當使用 -P 標記時，Docker 會隨機映射一個端口到內部容器開放的網絡端口。&lt;/p&gt;
+&lt;p&gt;使用:Mac M1。&lt;/p&gt;
+&lt;p&gt;創建容器，注意port已將80轉出到8888&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker container run -d --rm --name web -p 8888:80 nginx&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看IP:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker inspect --format '{{ .NetworkSettings.IPAddress }}' web
+172.17.0.3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;創建image busybox，名為client的容器:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker run -d --rm --name client busybox /bin/sh -c "while true; do sleep 3600; done"&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下載web的index.html:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker exec -it client wget http://172.17.0.3
+Connecting to 172.17.0.3 (172.17.0.3:80)
+saving to 'index.html'
+index.html 100% |********************************| 615 0:00:00 ETA
+'index.html' saved&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;輸入:ifconfig，查找自己的IP，如下:192.168.1.108&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;en0: flags=8863&amp;lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&amp;gt; mtu 1500
+ options=6463&amp;lt;RXCSUM,TXCSUM,TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM&amp;gt;
+ ether a0:78:17:a6:e9:f5
+ inet6 fe80::c75:fc71:85f1:6b48%en0 prefixlen 64 secured scopeid 0xb
+ inet 192.168.1.108 netmask 0xffffff00 broadcast 192.168.1.255
+ inet6 2001:b011:7:1540:c2b:e11f:4b75:5eed prefixlen 64 autoconf secured
+ inet6 2001:b011:7:1540:cc5b:e1c7:11df:d59e prefixlen 64 autoconf temporary
+ nd6 options=201&amp;lt;PERFORMNUD,DAD&amp;gt;
+ media: autoselect
+ status: active&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;開啟瀏覽器輸入:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;192.168.1.108:8888&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;會看到nging的頁面&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;Welcome to nginx!
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org.
+Commercial support is available at nginx.com.
+
+Thank you for using nginx.&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docker] 創建容器時指定gateway與subnet</title><link>https://quietbo.com/2022/01/16/docker-%E5%89%B5%E5%BB%BA%E5%AE%B9%E5%99%A8%E6%99%82%E6%8C%87%E5%AE%9Agateway%E8%88%87subnet/</link><pubDate>Sat, 15 Jan 2022 18:49:32 +0000</pubDate><guid>https://quietbo.com/2022/01/16/docker-%E5%89%B5%E5%BB%BA%E5%AE%B9%E5%99%A8%E6%99%82%E6%8C%87%E5%AE%9Agateway%E8%88%87subnet/</guid><description>&lt;p&gt;可參考之前的&lt;a href="https://quietbo.com/2022/01/16/docker-%e5%89%b5%e5%bb%ba%e5%92%8c%e4%bd%bf%e7%94%a8-bridge-1/" data-type="URL" data-id="https://quietbo.com/2022/01/16/docker-%e5%89%b5%e5%bb%ba%e5%92%8c%e4%bd%bf%e7%94%a8-bridge-1/"&gt;[Docker] 創建和使用 bridge&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker network create --help
+
+Usage: docker network create [OPTIONS] NETWORK
+
+Create a network
+
+Options:
+ --attachable Enable manual container attachment
+ --aux-address map Auxiliary IPv4 or IPv6 addresses used by Network driver (default map[])
+ --config-from string The network from which to copy the configuration
+ --config-only Create a configuration only network
+ -d, --driver string Driver to manage the Network (default "bridge")
+ --gateway strings IPv4 or IPv6 Gateway for the master subnet
+ --ingress Create swarm routing-mesh network
+ --internal Restrict external access to the network
+ --ip-range strings Allocate container ip from a sub-range
+ --ipam-driver string IP Address Management Driver (default "default")
+ --ipam-opt map Set IPAM driver specific options (default map[])
+ --ipv6 Enable IPv6 networking
+ --label list Set metadata on a network
+ -o, --opt map Set driver specific options (default map[])
+ --scope string Control the network's scope
+ --subnet strings Subnet in CIDR format that represents a network segment&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker network create -d bridge --gateway 172.200.0.1 --subnet 172.200.0.0/16 demo&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看剛才創建的demo&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker network inspect demo
+[
+ {
+ "Name": "demo",
+ "Id": "9a5ccdbfa5b5e9968cedb3a9b66b5714e35eade805582538bde47c187e593df5",
+ "Created": "2022-01-15T18:42:53.457025805Z",
+ "Scope": "local",
+ "Driver": "bridge",
+ "EnableIPv6": false,
+ "IPAM": {
+ "Driver": "default",
+ "Options": {},
+ "Config": [
+ {
+ "Subnet": "172.200.0.0/16",
+ "Gateway": "172.200.0.1"
+ }
+ ]
+ },
+ "Internal": false,
+ "Attachable": false,
+ "Ingress": false,
+ "ConfigFrom": {
+ "Network": ""
+ },
+ "ConfigOnly": false,
+ "Containers": {},
+ "Options": {},
+ "Labels": {}
+ }
+]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;建立box4&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker container run -d --rm --name box4 --network demo busybox /bin/sh -c "while true; do sleep 3600; done"&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;將原本的box3新增demo的網路並ping看看有沒有辦法互通&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker network connect demo box3
+docker exec -it box4 ping box3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以使用ip，或是容器名。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/6y7gu0v.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;或是反過來，用box3來pintbox4也是能相通的。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker exec -it box3 ping box4&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docker] 創建和使用 bridge</title><link>https://quietbo.com/2022/01/16/docker-%E5%89%B5%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8-bridge-1/</link><pubDate>Sat, 15 Jan 2022 18:38:33 +0000</pubDate><guid>https://quietbo.com/2022/01/16/docker-%E5%89%B5%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8-bridge-1/</guid><description>&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2022/01/16/docker-%e5%89%b5%e5%bb%ba%e5%92%8c%e4%bd%bf%e7%94%a8-bridge-1/#%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E8%87%AA%E8%A8%82%E5%90%8D%E7%A8%B1%E7%9A%84_docker_network" &gt;建立一個自訂名稱的 docker network&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2022/01/16/docker-%e5%89%b5%e5%bb%ba%e5%92%8c%e4%bd%bf%e7%94%a8-bridge-1/#%E5%89%B5%E5%BB%BA%E4%B8%80%E5%80%8B%E5%AE%B9%E5%99%A8" &gt;創建一個容器&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2022/01/16/docker-%e5%89%b5%e5%bb%ba%e5%92%8c%e4%bd%bf%e7%94%a8-bridge-1/#%E8%AE%93%E4%B8%80%E5%80%8B%E5%AE%B9%E5%99%A8%E9%80%A3%E6%8E%A52%E5%80%8B%E7%B6%B2%E8%B7%AF" &gt;讓一個容器連接2個網路&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2022/01/16/docker-%e5%89%b5%e5%bb%ba%e5%92%8c%e4%bd%bf%e7%94%a8-bridge-1/#%E6%96%B7%E9%96%8B%E5%AE%B9%E5%99%A8%E8%88%87%E7%B6%B2%E7%B5%A1%E7%9A%84%E9%80%A3%E6%8E%A5" &gt;斷開容器與網絡的連接&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="建立一個自訂名稱的-docker-network"&gt;&lt;span class="ez-toc-section" id="%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E8%87%AA%E8%A8%82%E5%90%8D%E7%A8%B1%E7%9A%84_docker_network"&gt;&lt;/span&gt;建立一個自訂名稱的 docker network&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;建立一個自訂名稱的 docker network，這邊取名為mybridge:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker network create -d bridge mybridge&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看目前network的訊息，是否有我們建立的mybridge&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker network ls&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/nnT1EXU.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;查看mybridge的資訊。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker network inspect mybridge
+[
+ {
+ "Name": "mybridge",
+ "Id": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "Created": "2022-01-15T14:21:30.014726296Z",
+ "Scope": "local",
+ "Driver": "bridge",
+ "EnableIPv6": false,
+ "IPAM": {
+ "Driver": "default",
+ "Options": {},
+ "Config": [
+ {
+ "Subnet": "172.18.0.0/16",
+ "Gateway": "172.18.0.1"
+ }
+ ]
+ },
+ "Internal": false,
+ "Attachable": false,
+ "Ingress": false,
+ "ConfigFrom": {
+ "Network": ""
+ },
+ "ConfigOnly": false,
+ "Containers": {},
+ "Options": {},
+ "Labels": {}
+ }
+]&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="創建一個容器"&gt;&lt;span class="ez-toc-section" id="%E5%89%B5%E5%BB%BA%E4%B8%80%E5%80%8B%E5%AE%B9%E5%99%A8"&gt;&lt;/span&gt;創建一個容器&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;將容器指定network在mybridge&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ &amp;#8211;network :後方帶入網路名
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker container run -d --rm --name box3 --network mybridge busybox /bin/sh -c "while true; do sleep 3600; done"&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看box3的訊息，最下方Networks:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="basic" class="language-basic"&gt;"Networks": {
+ "mybridge": {
+ "IPAMConfig": null,
+ "Links": null,
+ "Aliases": [
+ "7ad11d3a4e9c"
+ ],
+ "NetworkID": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "EndpointID": "213898adbc0abf4dc37894e94f10720f44682b59d046a45f9a88ed92172bf306",
+ "Gateway": "172.18.0.1",
+ "IPAddress": "172.18.0.2",
+ "IPPrefixLen": 16,
+ "IPv6Gateway": "",
+ "GlobalIPv6Address": "",
+ "GlobalIPv6PrefixLen": 0,
+ "MacAddress": "02:42:ac:12:00:02",
+ "DriverOpts": null
+ }
+ }&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/bxWulUI.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;回來查看mybridge，會發現有一個新的容器(box3)資料&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker network inspect mybridge
+[
+ {
+ "Name": "mybridge",
+ "Id": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "Created": "2022-01-15T14:21:30.014726296Z",
+ "Scope": "local",
+ "Driver": "bridge",
+ "EnableIPv6": false,
+ "IPAM": {
+ "Driver": "default",
+ "Options": {},
+ "Config": [
+ {
+ "Subnet": "172.18.0.0/16",
+ "Gateway": "172.18.0.1"
+ }
+ ]
+ },
+ "Internal": false,
+ "Attachable": false,
+ "Ingress": false,
+ "ConfigFrom": {
+ "Network": ""
+ },
+ "ConfigOnly": false,
+ "Containers": {
+ "7ad11d3a4e9c0fff207c329a9beae2fc8060b0110a67dc4a32f133c591be4abb": {
+ "Name": "box3",
+ "EndpointID": "213898adbc0abf4dc37894e94f10720f44682b59d046a45f9a88ed92172bf306",
+ "MacAddress": "02:42:ac:12:00:02",
+ "IPv4Address": "172.18.0.2/16",
+ "IPv6Address": ""
+ }
+ },
+ "Options": {},
+ "Labels": {}
+ }
+]&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="讓一個容器連接2個網路"&gt;&lt;span class="ez-toc-section" id="%E8%AE%93%E4%B8%80%E5%80%8B%E5%AE%B9%E5%99%A8%E9%80%A3%E6%8E%A52%E5%80%8B%E7%B6%B2%E8%B7%AF"&gt;&lt;/span&gt;讓一個容器連接2個網路&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;原本的box1與box2是連接預設的docker0(就是bridge)，而box3是連接mybridge&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;$ docker network ls
+NETWORK ID NAME DRIVER SCOPE
+b2077f8151cb bridge bridge local
+d1465da885e1 host host local
+8569e3bba27a mybridge bridge local
+91fc3c2b25fb none null local&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;讓box3連接bridge網路，再查看一次box3的網路資訊:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker network connect bridge box3
+docker inspect box3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原本box3只有一個mybridge，新增連接後的Networks出現了bridge的資料。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;"Networks": {
+ "bridge": {
+ "IPAMConfig": {},
+ "Links": null,
+ "Aliases": [],
+ "NetworkID": "b2077f8151cbe85b063e14c0603ad241acc0066d0155b747d09d5a1171598b62",
+ "EndpointID": "d7ee13480da9ec15d24ced9a42acc24da4344577bf4832b2e927791c4e8d9155",
+ "Gateway": "172.17.0.1",
+ "IPAddress": "172.17.0.6",
+ "IPPrefixLen": 16,
+ "IPv6Gateway": "",
+ "GlobalIPv6Address": "",
+ "GlobalIPv6PrefixLen": 0,
+ "MacAddress": "02:42:ac:11:00:06",
+ "DriverOpts": {}
+ },
+ "mybridge": {
+ "IPAMConfig": null,
+ "Links": null,
+ "Aliases": [
+ "7ad11d3a4e9c"
+ ],
+ "NetworkID": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "EndpointID": "213898adbc0abf4dc37894e94f10720f44682b59d046a45f9a88ed92172bf306",
+ "Gateway": "172.18.0.1",
+ "IPAddress": "172.18.0.2",
+ "IPPrefixLen": 16,
+ "IPv6Gateway": "",
+ "GlobalIPv6Address": "",
+ "GlobalIPv6PrefixLen": 0,
+ "MacAddress": "02:42:ac:12:00:02",
+ "DriverOpts": null
+ }
+ }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;進入到box3來查看ip a的狀態，&lt;br&gt;
+eth0屬於mybridge，eth1屬於bridge。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/XGrrGgI.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="斷開容器與網絡的連接"&gt;&lt;span class="ez-toc-section" id="%E6%96%B7%E9%96%8B%E5%AE%B9%E5%99%A8%E8%88%87%E7%B6%B2%E7%B5%A1%E7%9A%84%E9%80%A3%E6%8E%A5"&gt;&lt;/span&gt;斷開容器與網絡的連接&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;查看網路相關命令：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker network&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;Usage: docker network COMMAND
+
+Manage networks
+
+Commands:
+ connect Connect a container to a network
+ create Create a network
+ disconnect Disconnect a container from a network
+ inspect Display detailed information on one or more networks
+ ls List networks
+ prune Remove all unused networks
+ rm Remove one or more networks
+
+Run 'docker network COMMAND --help' for more information on a command.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;斷開box3與bridge網絡的連接，並查詢box3&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker network disconnect bridge box3
+docker inspect box3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;結果如下，Networks只剩下mybridge:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;"Networks": {
+ "mybridge": {
+ "IPAMConfig": null,
+ "Links": null,
+ "Aliases": [
+ "7ad11d3a4e9c"
+ ],
+ "NetworkID": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "EndpointID": "213898adbc0abf4dc37894e94f10720f44682b59d046a45f9a88ed92172bf306",
+ "Gateway": "172.18.0.1",
+ "IPAddress": "172.18.0.2",
+ "IPPrefixLen": 16,
+ "IPv6Gateway": "",
+ "GlobalIPv6Address": "",
+ "GlobalIPv6PrefixLen": 0,
+ "MacAddress": "02:42:ac:12:00:02",
+ "DriverOpts": null
+ }
+ }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;網路圖如下:&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/zzA6Mbr.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Docker] 創建和使用 bridge</title><link>https://quietbo.com/2022/01/16/docker-%E5%89%B5%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8-bridge/</link><pubDate>Sat, 15 Jan 2022 18:23:58 +0000</pubDate><guid>https://quietbo.com/2022/01/16/docker-%E5%89%B5%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8-bridge/</guid><description>&lt;p&gt;建立一個自訂名稱的 docker network，這邊取名為mybridge:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker network create -d bridge mybridge&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看目前network的訊息，是否有我們建立的mybridge&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker network ls&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/nnT1EXU.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;查看mybridge的資訊。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker network inspect mybridge
+[
+ {
+ "Name": "mybridge",
+ "Id": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "Created": "2022-01-15T14:21:30.014726296Z",
+ "Scope": "local",
+ "Driver": "bridge",
+ "EnableIPv6": false,
+ "IPAM": {
+ "Driver": "default",
+ "Options": {},
+ "Config": [
+ {
+ "Subnet": "172.18.0.0/16",
+ "Gateway": "172.18.0.1"
+ }
+ ]
+ },
+ "Internal": false,
+ "Attachable": false,
+ "Ingress": false,
+ "ConfigFrom": {
+ "Network": ""
+ },
+ "ConfigOnly": false,
+ "Containers": {},
+ "Options": {},
+ "Labels": {}
+ }
+]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;創建一個容器，指定network在mybridge&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker container run -d --rm --name box3 --network mybridge busybox /bin/sh -c "while true; do sleep 3600; done"&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看box3的訊息，最下方Networks:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;"Networks": {
+ "mybridge": {
+ "IPAMConfig": null,
+ "Links": null,
+ "Aliases": [
+ "7ad11d3a4e9c"
+ ],
+ "NetworkID": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "EndpointID": "213898adbc0abf4dc37894e94f10720f44682b59d046a45f9a88ed92172bf306",
+ "Gateway": "172.18.0.1",
+ "IPAddress": "172.18.0.2",
+ "IPPrefixLen": 16,
+ "IPv6Gateway": "",
+ "GlobalIPv6Address": "",
+ "GlobalIPv6PrefixLen": 0,
+ "MacAddress": "02:42:ac:12:00:02",
+ "DriverOpts": null
+ }
+ }&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/bxWulUI.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;回來查看mybridge，會發現有一個新的容器(box3)資料&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker network inspect mybridge
+[
+ {
+ "Name": "mybridge",
+ "Id": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "Created": "2022-01-15T14:21:30.014726296Z",
+ "Scope": "local",
+ "Driver": "bridge",
+ "EnableIPv6": false,
+ "IPAM": {
+ "Driver": "default",
+ "Options": {},
+ "Config": [
+ {
+ "Subnet": "172.18.0.0/16",
+ "Gateway": "172.18.0.1"
+ }
+ ]
+ },
+ "Internal": false,
+ "Attachable": false,
+ "Ingress": false,
+ "ConfigFrom": {
+ "Network": ""
+ },
+ "ConfigOnly": false,
+ "Containers": {
+ "7ad11d3a4e9c0fff207c329a9beae2fc8060b0110a67dc4a32f133c591be4abb": {
+ "Name": "box3",
+ "EndpointID": "213898adbc0abf4dc37894e94f10720f44682b59d046a45f9a88ed92172bf306",
+ "MacAddress": "02:42:ac:12:00:02",
+ "IPv4Address": "172.18.0.2/16",
+ "IPv6Address": ""
+ }
+ },
+ "Options": {},
+ "Labels": {}
+ }
+]&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="讓一個容器連接2個網路"&gt;讓一個容器連接2個網路
+&lt;/h2&gt;&lt;p&gt;原本的box1與box2是連接預設的docker0(就是bridge)，而box3是連接mybridge&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker network ls
+NETWORK ID NAME DRIVER SCOPE
+b2077f8151cb bridge bridge local
+d1465da885e1 host host local
+8569e3bba27a mybridge bridge local
+91fc3c2b25fb none null local&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;讓box3連接bridge網路，再查看一次box3的網路資訊:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker network connect bridge box3
+docker inspect box3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原本box3只有一個mybridge，新增連接後的Networks出現了bridge的資料。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;"Networks": {
+ "bridge": {
+ "IPAMConfig": {},
+ "Links": null,
+ "Aliases": [],
+ "NetworkID": "b2077f8151cbe85b063e14c0603ad241acc0066d0155b747d09d5a1171598b62",
+ "EndpointID": "d7ee13480da9ec15d24ced9a42acc24da4344577bf4832b2e927791c4e8d9155",
+ "Gateway": "172.17.0.1",
+ "IPAddress": "172.17.0.6",
+ "IPPrefixLen": 16,
+ "IPv6Gateway": "",
+ "GlobalIPv6Address": "",
+ "GlobalIPv6PrefixLen": 0,
+ "MacAddress": "02:42:ac:11:00:06",
+ "DriverOpts": {}
+ },
+ "mybridge": {
+ "IPAMConfig": null,
+ "Links": null,
+ "Aliases": [
+ "7ad11d3a4e9c"
+ ],
+ "NetworkID": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "EndpointID": "213898adbc0abf4dc37894e94f10720f44682b59d046a45f9a88ed92172bf306",
+ "Gateway": "172.18.0.1",
+ "IPAddress": "172.18.0.2",
+ "IPPrefixLen": 16,
+ "IPv6Gateway": "",
+ "GlobalIPv6Address": "",
+ "GlobalIPv6PrefixLen": 0,
+ "MacAddress": "02:42:ac:12:00:02",
+ "DriverOpts": null
+ }
+ }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;進入到box3來查看ip a的狀態，&lt;br&gt;
+eth0屬於mybridge，eth1屬於bridge。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/XGrrGgI.png" alt="" /&gt;&lt;/p&gt;
+&lt;h2 id="斷開容器與網絡的連接"&gt;斷開容器與網絡的連接
+&lt;/h2&gt;&lt;p&gt;查看網路相關命令：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker network&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;Usage: docker network COMMAND
+
+Manage networks
+
+Commands:
+ connect Connect a container to a network
+ create Create a network
+ disconnect Disconnect a container from a network
+ inspect Display detailed information on one or more networks
+ ls List networks
+ prune Remove all unused networks
+ rm Remove one or more networks
+
+Run 'docker network COMMAND --help' for more information on a command.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;斷開box3與bridge網絡的連接，並查詢box3&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker network disconnect bridge box3
+docker inspect box3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;結果如下，Networks只剩下mybridge:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;"Networks": {
+ "mybridge": {
+ "IPAMConfig": null,
+ "Links": null,
+ "Aliases": [
+ "7ad11d3a4e9c"
+ ],
+ "NetworkID": "8569e3bba27a4dd6a5f1a8d39c9df7350aa27dc8eb38118ab4b99f9fb4b6e7cf",
+ "EndpointID": "213898adbc0abf4dc37894e94f10720f44682b59d046a45f9a88ed92172bf306",
+ "Gateway": "172.18.0.1",
+ "IPAddress": "172.18.0.2",
+ "IPPrefixLen": 16,
+ "IPv6Gateway": "",
+ "GlobalIPv6Address": "",
+ "GlobalIPv6PrefixLen": 0,
+ "MacAddress": "02:42:ac:12:00:02",
+ "DriverOpts": null
+ }
+ }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;網路圖如下:&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/zzA6Mbr.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Docker] Docker Bridge 網路</title><link>https://quietbo.com/2022/01/14/docker-docker-bridge-%E7%B6%B2%E8%B7%AF/</link><pubDate>Fri, 14 Jan 2022 15:14:13 +0000</pubDate><guid>https://quietbo.com/2022/01/14/docker-docker-bridge-%E7%B6%B2%E8%B7%AF/</guid><description>&lt;h2 id="容器間通信"&gt;容器間通信
+&lt;/h2&gt;&lt;p&gt;容器都連接到了一個叫 docker0 的Linux bridge上&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker network ls
+NETWORK ID NAME DRIVER SCOPE
+b2077f8151cb bridge bridge local
+d1465da885e1 host host local
+91fc3c2b25fb none null local&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下方為bridge的訊息，基本上Containers的IPv4Address會在Subnet的子網內。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker network inspect b20
+[
+ {
+ "Name": "bridge",
+ "Id": "b2077f8151cbe85b063e14c0603ad241acc0066d0155b747d09d5a1171598b62",
+ "Created": "2022-01-05T06:05:45.888144625Z",
+ "Scope": "local",
+ "Driver": "bridge",
+ "EnableIPv6": false,
+ "IPAM": {
+ "Driver": "default",
+ "Options": null,
+ "Config": [
+ {
+ "Subnet": "172.17.0.0/16",
+ "Gateway": "172.17.0.1"
+ }
+ ]
+ },
+ "Internal": false,
+ "Attachable": false,
+ "Ingress": false,
+ "ConfigFrom": {
+ "Network": ""
+ },
+ "ConfigOnly": false,
+ "Containers": {
+ "0f74d05e5298f06e21b056273867145558143b4dda2b62f0e397ef31f25fc074": {
+ "Name": "box1",
+ "EndpointID": "8b7adf5422e5701c9fd762728009809a5a63033cdfe1ea2d621fb3d6a668f4ec",
+ "MacAddress": "02:42:ac:11:00:02",
+ "IPv4Address": "172.17.0.2/16",
+ "IPv6Address": ""
+ },
+ "5360d3a4fb4ab3fab6b4b3fc505932f9360bc5d970d1411db8acd84be37d0338": {
+ "Name": "web2",
+ "EndpointID": "b318ba87a14cc6bb72183805479d0acc35947045242875b2bd590290bdde03ca",
+ "MacAddress": "02:42:ac:11:00:03",
+ "IPv4Address": "172.17.0.3/16",
+ "IPv6Address": ""
+ },
+ "d9875a0e49cd74897dc3d25d7d9ad297bcfbd62bdfde050ddb2e64b5cf5764e0": {
+ "Name": "box2",
+ "EndpointID": "67c774ac6dbac5d7266223d34ff28a0a81c2f24074397ce307d8e49593e5f950",
+ "MacAddress": "02:42:ac:11:00:05",
+ "IPv4Address": "172.17.0.5/16",
+ "IPv6Address": ""
+ },
+ "f8b413a00b3b4715914b381a28b1aef8816dc32942d6ec2eb29c2570da3069ff": {
+ "Name": "web1",
+ "EndpointID": "96c5cbd408523c17fae501ce51c2cb1b6d85ab4d70d629b88e630f7faabc336d",
+ "MacAddress": "02:42:ac:11:00:04",
+ "IPv4Address": "172.17.0.4/16",
+ "IPv6Address": ""
+ }
+ },
+ "Options": {
+ "com.docker.network.bridge.default_bridge": "true",
+ "com.docker.network.bridge.enable_icc": "true",
+ "com.docker.network.bridge.enable_ip_masquerade": "true",
+ "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+ "com.docker.network.bridge.name": "docker0",
+ "com.docker.network.driver.mtu": "1500"
+ },
+ "Labels": {}
+ }
+]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;並且Containers都默認的連接到docker0，如下圖。&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/mqnWun0.png" alt="" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image size-large"&gt;&lt;img loading="lazy" decoding="async" width="1024" height="668" src="https://quietbo.com/uploads/2022/01/image-1024x668.png" alt="" class="wp-image-693" srcset="https://quietbo.com/uploads/2022/01/image-1024x668.png 1024w, https://quietbo.com/uploads/2022/01/image-300x196.png 300w, https://quietbo.com/uploads/2022/01/image-768x501.png 768w, https://quietbo.com/uploads/2022/01/image.png 1316w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /&gt;&lt;/figure&gt;&lt;/p&gt;</description></item><item><title>[Docker] Docker Bridge – 本地練習</title><link>https://quietbo.com/2022/01/13/docker-docker-bridge-%E7%B6%B2%E7%B5%A1/</link><pubDate>Thu, 13 Jan 2022 15:11:07 +0000</pubDate><guid>https://quietbo.com/2022/01/13/docker-docker-bridge-%E7%B6%B2%E7%B5%A1/</guid><description>&lt;figure class="wp-block-image"&gt;&lt;img decoding="async" src="https://i.imgur.com/jlz3BoV.png" alt="" /&gt;&lt;/figure&gt; 
+&lt;p&gt;建立出來的容器是互相可以ping的。&lt;/p&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ pull image
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image pull busybox&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 建立容器
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ &amp;#8211;rm :容器停止後會自動刪除
+ &lt;/li&gt;
+ &lt;li&gt;
+ -name :容器的名字為 box1
+ &lt;/li&gt;
+ &lt;li&gt;
+ /bin/sh -c &amp;#8220;While true; do sleep 3600; done&amp;#8221; : 希望執行的命令
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker container run -d --rm --name box1 busybox /bin/sh -c "while true; do sleep 3600; done"&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 檢查容器是否運行中
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker ps&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="4"&gt;
+ &lt;li&gt;
+ 進入名為box1的容器
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker exec -it box1 sh&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="5"&gt;
+ &lt;li&gt;
+ 查box1的IP
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;ip a&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看eth0中的IP，如下圖：&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/cd4Gjan.png" alt="" /&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="6"&gt;
+ &lt;li&gt;
+ ping看看box1的ip是否有通
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ ping 172.17.0.2
+PING 172.17.0.2 (172.17.0.2): 56 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+Request timeout for icmp_seq 2
+Request timeout for icmp_seq 3&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="7"&gt;
+ &lt;li&gt;
+ 建立名為box2的新的容器
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker container run -d --rm --name box2 busybox /bin/sh -c "while true; do sleep 3600; done"&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="8"&gt;
+ &lt;li&gt;
+ 查看目前容器狀況
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker ps&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/GQVQVie.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="9"&gt;
+ &lt;li&gt;
+ 查看box2的ip
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;這次就不進入容器查看，會看到eth0的IP是172.17.0.3&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker exec -it box2 ip a&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/01E1hxU.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="10"&gt;
+ &lt;li&gt;
+ 用box1來ping box2
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker exec -it box1 ping 172.17.0.3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;結果如下，看起來是有通的：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;PING 172.17.0.3 (172.17.0.3): 56 data bytes
+64 bytes from 172.17.0.3: seq=0 ttl=64 time=0.159 ms
+64 bytes from 172.17.0.3: seq=1 ttl=64 time=0.432 ms
+64 bytes from 172.17.0.3: seq=2 ttl=64 time=0.317 ms
+64 bytes from 172.17.0.3: seq=3 ttl=64 time=0.384 ms&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="11"&gt;
+ &lt;li&gt;
+ pull image nginx
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image pull nginx&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="12"&gt;
+ &lt;li&gt;
+ 創建名為web1的容器
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -d --name web1 nginx&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="13"&gt;
+ &lt;li&gt;
+ 查看web1的IP
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker inspect web1&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Ueid9V0.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;補充：因為web沒有安裝ip的指令，所以使用ip a會跳出錯誤訊息&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;$ docker exec -it web1 ip a
+OCI runtime exec failed: exec failed: container_linux.go:380: starting container process caused: exec: "ip": executable file not found in $PATH: unknown&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="14"&gt;
+ &lt;li&gt;
+ 測試是否相通
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;進入box1的shell&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker exec -it box1 sh&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;/ # ping 172.17.0.4
+PING 172.17.0.4 (172.17.0.4): 56 data bytes
+64 bytes from 172.17.0.4: seq=0 ttl=64 time=0.672 ms
+64 bytes from 172.17.0.4: seq=1 ttl=64 time=0.344 ms
+64 bytes from 172.17.0.4: seq=2 ttl=64 time=0.307 ms
+64 bytes from 172.17.0.4: seq=3 ttl=64 time=0.273 ms&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下載172.17.0.4:80的html&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;/ # wget 172.17.0.4:80
+Connecting to 172.17.0.4:80 (172.17.0.4:80)
+saving to 'index.html'
+index.html 100% |*************************************************************************| 615 0:00:00 ETA
+'index.html' saved&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看html檔案&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;cat index.html&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="15"&gt;
+ &lt;li&gt;
+ 端口轉發
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;建立一個新的container，將80轉到local&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -d -p 80:80 --name web2 nginx&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/ab1GUCU.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="16"&gt;
+ &lt;li&gt;
+ 測試是否有分享到本機
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;開啟瀏覽器，輸入:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;127.0.0.1:80&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果有成功將web2的nginx的80port分享來，會顯示：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;Welcome to nginx!
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org.
+Commercial support is available at nginx.com.
+
+Thank you for using nginx.&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docker] volume 指定/ 不指定-v参数</title><link>https://quietbo.com/2022/01/11/docker-volume-%E6%8C%87%E5%AE%9A-%E4%B8%8D%E6%8C%87%E5%AE%9A-v%E5%8F%82%E6%95%B0/</link><pubDate>Mon, 10 Jan 2022 16:21:51 +0000</pubDate><guid>https://quietbo.com/2022/01/11/docker-volume-%E6%8C%87%E5%AE%9A-%E4%B8%8D%E6%8C%87%E5%AE%9A-v%E5%8F%82%E6%95%B0/</guid><description>&lt;p&gt;下方為dockerfile的內容&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;FROM alpine:latest
+RUN apk update
+RUN apk --no-cache add curl
+ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64 \
+ SUPERCRONIC=supercronic-linux-amd64 \
+ SUPERCRONIC_SHA1SUM=048b95b48b708983effb2e5c935a1ef8483d9e3e
+RUN curl -fsSLO "$SUPERCRONIC_URL" \
+ &amp;&amp; echo "${SUPERCRONIC_SHA1SUM} ${SUPERCRONIC}" | sha1sum -c - \
+ &amp;&amp; chmod +x "$SUPERCRONIC" \
+ &amp;&amp; mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
+ &amp;&amp; ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+COPY my-cron /app/my-cron
+WORKDIR /app
+
+VOLUME ["/app"]
+
+# RUN cron job
+CMD ["/usr/local/bin/supercronic", "/app/my-cron"]&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 構建鏡像&lt;br /&gt;在終端機執行：
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image build -t my-cron .
+docker image ls&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/MquvGsa.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 創建容器(不指定-v參數)
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -d my-cron
+docker volume ls&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此時Docker會自動創建一個隨機名字的volume，存儲在Dockerfile定義的volume&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;VOLUME ["/app"]&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Flj1Mdr.png" alt="" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image"&gt;&lt;img decoding="async" src="https://i.imgur.com/0gKd2fc.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="創建容器指定-v參數"&gt;創建容器(指定-v參數)
+&lt;/h2&gt;&lt;p&gt;在創建容器的時候通過 -v 參數，我們可以手動的指定&lt;strong&gt;需要創建Volume的名字&lt;/strong&gt;，以及&lt;strong&gt;對應於容器內的路徑&lt;/strong&gt;，這個路徑是可以任意的，不必需要在Dockerfile裡通過VOLUME來定義。&lt;/p&gt;
+&lt;p&gt;把原本Dockerfile裡的VOLUME刪除(如下)&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;FROM alpine:latest
+RUN apk update
+RUN apk --no-cache add curl
+ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-amd64 \
+ SUPERCRONIC=supercronic-linux-amd64 \
+ SUPERCRONIC_SHA1SUM=048b95b48b708983effb2e5c935a1ef8483d9e3e
+RUN curl -fsSLO "$SUPERCRONIC_URL" \
+ &amp;&amp; echo "${SUPERCRONIC_SHA1SUM} ${SUPERCRONIC}" | sha1sum -c - \
+ &amp;&amp; chmod +x "$SUPERCRONIC" \
+ &amp;&amp; mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
+ &amp;&amp; ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+COPY my-cron /app/my-cron
+WORKDIR /app
+
+# RUN cron job
+CMD ["/usr/local/bin/supercronic", "/app/my-cron"]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重新build鏡像，然後創建容器，加-v參數:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image build -t my-cron .
+docker container run -d -v cron-data:/app my-cron
+docker volume ls
+docker volume inspect cron-data &lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/HSkWhf0.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="環境清理"&gt;環境清理
+&lt;/h2&gt;&lt;p&gt;強制刪除所有容器，系統清理和volume清理&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker rm -f $(docker container ps -aq)
+docker system prune -f
+docker volume prune -f&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docker] Data Volume的練習(MySQL)</title><link>https://quietbo.com/2022/01/10/docker-data-volume%E7%9A%84%E7%B7%B4%E7%BF%92mysql/</link><pubDate>Mon, 10 Jan 2022 15:05:46 +0000</pubDate><guid>https://quietbo.com/2022/01/10/docker-data-volume%E7%9A%84%E7%B7%B4%E7%BF%92mysql/</guid><description>&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ MAC M1
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 下載Mysql 5.7的image
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker pull --platform linux/amd64 mysql:5.7&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/998OIK4.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 使用剛才下載的image創建出容器，並將mysql的密碼設為123456
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker container run --name some-mysql -e MYSQL_ROOT_PASSWORD=123456 -d -v mysql-data:/var/lib/mysql mysql:5.7
+docker container ls&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/wh0ZN2C.png" alt="" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image"&gt;&lt;img decoding="async" src="https://i.imgur.com/gdHrOxc.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker volume ls
+docker volume inspect mysql-data&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/kOypCQi.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 進入container，下方的71f請更換成自己的container id
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker exec -it containerId sh&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;進入後再進入MySQL，密碼為剛剛的123456&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;mysql -u root -p&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/MansRUm.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="4"&gt;
+ &lt;li&gt;
+ 創建一個database(最後要用;來結尾)
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;show databases;
+create database demo;
+show databases;&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Ej9yBrq.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="5"&gt;
+ &lt;li&gt;
+ 確認有建立demo後，離開mysql和container
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;使用2次exit來離開。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/a4c23zv.png" alt="" /&gt; &lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/dRlrRCF.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;查看文件夾可參考這篇&lt;a class="link" href="https://quietbo.com/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%ef%bc%8c%e6%89%be%e4%b8%8d%e5%88%b0var-lib-docker-volumes-%e5%b7%b2%e8%a7%a3%e6%b1%ba/" target="_blank" rel="noopener"
+ &gt;[Docker] Mac M1 – no such file or directory: /var/lib/docker/volumes ，找不到var/lib/docker/volumes (已解決)&lt;/a&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="6"&gt;
+ &lt;li&gt;
+ 刪除container
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker container ls
+docker container rm -f containerId&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Rcsnl4M.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="7"&gt;
+ &lt;li&gt;
+ 查看volume是否還在
+ &lt;/li&gt;
+&lt;/ol&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Ih097ha.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="8"&gt;
+ &lt;li&gt;
+ 再創建一個已經存在的volume
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;雖然這指令跟第二步驟是一樣的，但因為紅框內還是我們volume的路徑，所以資料會繼續沿用。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker container run --name some-mysql -e MYSQL_ROOT_PASSWORD=123456 -d -v mysql-data:/var/lib/mysql mysql:5.7&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/45Tcpk1.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="9"&gt;
+ &lt;li&gt;
+ 進入container查看mysql的資料，會看到原本創建的demo。&lt;br /&gt;&lt;img decoding="async" src="https://i.imgur.com/B5JetIt.png" alt="" /&gt;
+ &lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>[Docker] Mac M1 – no such file or directory: /var/lib/docker/volumes ，找不到var/lib/docker/volumes (已解決)</title><link>https://quietbo.com/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%EF%BC%8C%E6%89%BE%E4%B8%8D%E5%88%B0var-lib-docker-volumes-%E5%B7%B2%E8%A7%A3%E6%B1%BA/</link><pubDate>Wed, 22 Dec 2021 17:29:36 +0000</pubDate><guid>https://quietbo.com/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%EF%BC%8C%E6%89%BE%E4%B8%8D%E5%88%B0var-lib-docker-volumes-%E5%B7%B2%E8%A7%A3%E6%B1%BA/</guid><description>&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ Mac M1 version 12.0.1
+ &lt;/li&gt;
+ &lt;li&gt;
+ Docker version 20.10.11
+ &lt;/li&gt;
+&lt;/ul&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/porV5EQ.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;嘗試進入這個路徑時，發現它並不存在&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/64ZyrW9.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;網路上有許多解決方式是使用下方指令，但仍錯誤。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;嘗試之後直接閃退：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;[screen is terminating]&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/ghCOFSw.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%ef%bc%8c%e6%89%be%e4%b8%8d%e5%88%b0var-lib-docker-volumes-%e5%b7%b2%e8%a7%a3%e6%b1%ba/#1%E8%A7%A3%E6%B1%BA%E9%96%83%E9%80%80%E5%95%8F%E9%A1%8C%E6%96%B9%E5%BC%8F" &gt;1.解決閃退問題方式&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%ef%bc%8c%e6%89%be%e4%b8%8d%e5%88%b0var-lib-docker-volumes-%e5%b7%b2%e8%a7%a3%e6%b1%ba/#2%E6%AA%A2%E8%A6%96volumes" &gt;2.檢視volumes&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%ef%bc%8c%e6%89%be%e4%b8%8d%e5%88%b0var-lib-docker-volumes-%e5%b7%b2%e8%a7%a3%e6%b1%ba/#%E8%A3%9C%E5%85%85%EF%BC%9A" &gt;補充：&lt;/a&gt;&lt;ul class='ez-toc-list-level-3' &gt;
+ &lt;li class='ez-toc-heading-level-3'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/12/23/docker-mac-m1-no-such-file-or-directory-var-lib-docker-volumes-%ef%bc%8c%e6%89%be%e4%b8%8d%e5%88%b0var-lib-docker-volumes-%e5%b7%b2%e8%a7%a3%e6%b1%ba/#%E9%80%B2%E5%85%A5Mountpoint%E5%B0%8D%E6%87%89%E7%9A%84%E8%B3%87%E6%96%99%E5%A4%BE_Linux" &gt;進入Mountpoint對應的資料夾 (Linux)&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="1解決閃退問題方式"&gt;&lt;span class="ez-toc-section" id="1%E8%A7%A3%E6%B1%BA%E9%96%83%E9%80%80%E5%95%8F%E9%A1%8C%E6%96%B9%E5%BC%8F"&gt;&lt;/span&gt;1.解決閃退問題方式&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;詳細可參考此篇：&lt;a class="link" href="https://stackoverflow.com/questions/38532483/where-is-var-lib-docker-on-mac-os-x/65645462#65645462" target="_blank" rel="noopener"
+ &gt;Where is /var/lib/docker on Mac/OS X&lt;/a&gt;&lt;br&gt;
+mac下docker實際是在vm裡又加了一層，因此需要進入vm 才能進行操作。&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ 終端機執行下方指令
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="2檢視volumes"&gt;&lt;span class="ez-toc-section" id="2%E6%AA%A2%E8%A6%96volumes"&gt;&lt;/span&gt;2.檢視volumes&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;解決閃退問題後，會進入VM內，輸入ls，檢視當前路徑下目錄資訊。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;ls /var/lib/docker/volumes/&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;找到我要的mysql-data，而其他卷掛載都在這個目錄下：&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/6LVBW4n.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;退出：exit&lt;/p&gt;
+&lt;h2 id="補充"&gt;&lt;span class="ez-toc-section" id="%E8%A3%9C%E5%85%85%EF%BC%9A"&gt;&lt;/span&gt;補充：&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;h3 id="進入mountpoint對應的資料夾-linux"&gt;&lt;span class="ez-toc-section" id="%E9%80%B2%E5%85%A5Mountpoint%E5%B0%8D%E6%87%89%E7%9A%84%E8%B3%87%E6%96%99%E5%A4%BE_Linux"&gt;&lt;/span&gt;進入Mountpoint對應的資料夾 (Linux)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;如果使用Linux，可以直接找到Mountpoint對應的目錄，就是和container連接的地方，這裡面的改動和container內是同步的。&lt;br&gt;
+但如果是Mac，用同樣的方式想要進入Mountpoint對應的目錄，會不存在，&lt;/p&gt;
+&lt;p&gt;Mac需要先創建一個Linux的VM，所以Mountpoint對應的不是Mac裡可以找得到的檔案，而是要到那個VM裡去找，&lt;/p&gt;</description></item><item><title>[Docker] Mac M1 – no matching manifest for linux/arm64/v8 in the manifest list entries(已解決)</title><link>https://quietbo.com/2021/09/27/docker-mac-m1-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries%E5%B7%B2%E8%A7%A3%E6%B1%BA/</link><pubDate>Mon, 27 Sep 2021 13:47:30 +0000</pubDate><guid>https://quietbo.com/2021/09/27/docker-mac-m1-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries%E5%B7%B2%E8%A7%A3%E6%B1%BA/</guid><description>&lt;p&gt;在 Mac M1的終端機，docker pull mysql image，出現如下的錯誤訊息：&lt;/p&gt;
+&lt;img decoding="async" src="https://i.imgur.com/h6wkxX3.png" alt="" /&gt; 
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;no matching manifest for linux/arm64/v8 in the manifest list entries&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這個鏡像只有linux/amd64的架構，而M1是ARM芯片，所以pull下來的版本，沒有適用於arm64架構的mysql鏡像&lt;/p&gt;
+&lt;p&gt;到docker hub上看到的，也都是linux/amd64。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/DzDrdLN.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;從&lt;a class="link" href="https://docs.docker.com/desktop/mac/apple-silicon/" target="_blank" rel="noopener"
+ &gt;docker的文檔&lt;/a&gt;有說到：&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/1sqm9qK.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;可以在終端機使用下方指令來&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker pull --platform linux/amd64 mysql&lt;/code&gt;&lt;/pre&gt;
+&lt;img decoding="async" src="https://i.imgur.com/MdIdaxw.png" alt="" /&gt; 
+查看後安裝成功。
+&lt;p&gt;補充：&lt;br&gt;
+如果是dockerfile，加上下面這行，就可以正常運行了：&lt;br&gt;
+原本：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;FROM ubuntu:18.04&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改後：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;FROM --platform=linux/x86_64 ubuntu:18.04&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>[Docker] Mac M1 安裝 Docker</title><link>https://quietbo.com/2021/09/13/docker-%E5%AE%89%E8%A3%9D-mac-m1/</link><pubDate>Mon, 13 Sep 2021 13:07:20 +0000</pubDate><guid>https://quietbo.com/2021/09/13/docker-%E5%AE%89%E8%A3%9D-mac-m1/</guid><description>&lt;p&gt;&lt;a class="link" href="https://docs.docker.com/docker-for-mac/apple-silicon/" target="_blank" rel="noopener"
+ &gt;docker M1晶片安裝網址&lt;/a&gt;&lt;br&gt;
+&lt;a class="link" href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="noopener"
+ &gt;docker Intel安裝網址&lt;/a&gt;&lt;br&gt;
+以往在Linux（ubuntu)環境安裝Docker，都是通過命令行安裝的，但這次 安裝Mac版的Docker變方便許多，下載完成的文件名叫做Docker.dmg。&lt;br&gt;
+雙擊後安裝，完成會出現下圖，把Docker.app移至應用程式就完成了。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/Yxy1rgU.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;應用程式中找到 Docker，雙擊打開，在右上角就會顯示docker已啟用。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/We4WkdA.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;系統要求:&lt;br&gt;
+必須安裝Rosetta 2，因為某些二進製文件仍然是 Darwin/AMD64。要從命令行手動安裝 Rosetta 2，請運行以下命令：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;softwareupdate --install-rosetta&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;檢查當前docker的版本：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash line-numbers"&gt;docker version&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用M1晶片的話，Arch會是arm64&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/QaW3kjD.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;docker.app打開後的畫面如下：&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/R5PL8bA.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Docker-Composer] Couldn’t connect to Docker daemon at http+docker://localhost – is it running?(解決)</title><link>https://quietbo.com/2021/08/17/docker-composer-couldnt-connect-to-docker-daemon-at-httpdocker-localhost-is-it-running%E8%A7%A3%E6%B1%BA/</link><pubDate>Tue, 17 Aug 2021 07:22:02 +0000</pubDate><guid>https://quietbo.com/2021/08/17/docker-composer-couldnt-connect-to-docker-daemon-at-httpdocker-localhost-is-it-running%E8%A7%A3%E6%B1%BA/</guid><description>&lt;p&gt;部屬的環境是用docker-composer，某天用ssh連回去，要下docker指令就出現下面訊息:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;ERROR: Couldn't connect to Docker daemon at http+docker://localhost - is it running?
+
+If it's at a non-standard location, specify the URL with the DOCKER_HOST environment variable.
+make: *** [Makefile:26: restart] Error 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這用google翻譯過來看是:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;無法通過 http+docker://localhost 連接到 Docker 守護進程 - 它是否正在運行？&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;嗯…….(什麼東西，好不直覺)&lt;/p&gt;
+&lt;p style="font-size:25px"&gt;
+ 其實就是&lt;strong&gt;忘記加入docker群組&lt;/strong&gt;呀!!!
+&lt;/p&gt;
+&lt;h2 id="解決方式"&gt;解決方式
+&lt;/h2&gt;&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 在機器內下指令，將docker加入群組
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;sudo gpasswd -a ${USER} docker&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/mMJyzQ0.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 退出當前用戶
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;sudo su&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 切換為原本用戶&lt;br /&gt;下方ubuntu需依照不同用戶名稱去更改。
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;su ubuntu&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="4"&gt;
+ &lt;li&gt;
+ 在終端機下docekr指令試試看吧
+ &lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>[Docker]將Image push到Docker Hub</title><link>https://quietbo.com/2021/07/15/docker%E5%B0%87image-push%E5%88%B0docker-hub/</link><pubDate>Wed, 14 Jul 2021 18:53:19 +0000</pubDate><guid>https://quietbo.com/2021/07/15/docker%E5%B0%87image-push%E5%88%B0docker-hub/</guid><description>&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 需要&lt;a href="https://hub.docker.com/"&gt;docker hub&lt;/a&gt;的帳號
+ &lt;/li&gt;
+ &lt;li&gt;
+ 開啟終端機，輸入下方指令後輸入帳號密碼，成功則顯示：Login Succeeded
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker login&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 建立新的tag&lt;br /&gt;把原本的hello(藍框)建立新的tag，主要是push到docker hub的格式，但這兩個是同一個鏡像(IMAGE ID)
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker tag hello {dockerHub帳號}/hello:1.0&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/dcmznsP.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="4"&gt;
+ &lt;li&gt;
+ push到docker hub
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker image push {dockerHub的帳號}/hello:1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;執行成功如下圖：&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/cuI2tXC.png" alt="" /&gt;&lt;br&gt;
+到docker hub查看是否有push成功。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/quOgzQq.png" alt="" /&gt;&lt;/p&gt;
+&lt;ol class="wp-block-list" start="5"&gt;
+ &lt;li&gt;
+ 拉取剛才push的image:&lt;br /&gt;先刪除原本push的image，沒有的話再pull剛剛傳上去的image
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker pull dockerHub的帳號/hello:1.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用docker image ls 查看pull的image是否成功&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/okiWOQY.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Docker] 獲取Image的三種方式</title><link>https://quietbo.com/2021/07/12/docker-%E7%8D%B2%E5%8F%96image%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F/</link><pubDate>Mon, 12 Jul 2021 09:12:25 +0000</pubDate><guid>https://quietbo.com/2021/07/12/docker-%E7%8D%B2%E5%8F%96image%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F/</guid><description>&lt;div class="wp-block-group"&gt;
+ &lt;div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow"&gt;
+ &lt;div class="wp-block-group"&gt;
+ &lt;div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow"&gt;
+ &lt;p&gt;
+ 獲取Image的三種方式:
+ &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;div class=&amp;quot;wp-block-group&amp;quot;&amp;gt;
+ &amp;lt;div class=&amp;quot;wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow&amp;quot;&amp;gt;
+ &amp;lt;ol class=&amp;quot;wp-block-list&amp;quot;&amp;gt;
+ &amp;lt;li&amp;gt;
+ 從Registry取得Image &amp;amp;#8211; &amp;lt;a href=&amp;quot;https://docs.docker.com/registry/&amp;quot;&amp;gt;registry&amp;lt;/a&amp;gt;&amp;lt;ul&amp;gt;
+ &amp;lt;li&amp;gt;
+ public（公開的，任何人都可以使用）
+ &amp;lt;/li&amp;gt;
+ &amp;lt;li&amp;gt;
+ private（私有）
+ &amp;lt;/li&amp;gt;
+ &amp;lt;/ul&amp;gt;
+ &amp;lt;/li&amp;gt;
+ 
+ &amp;lt;li&amp;gt;
+ 文件導入(可離線時使用）
+ &amp;lt;/li&amp;gt;
+ &amp;lt;li&amp;gt;
+ 從Dockerfile建造
+ &amp;lt;/li&amp;gt;
+ &amp;lt;/ol&amp;gt;
+ &amp;lt;/div&amp;gt;
+ &amp;lt;/div&amp;gt;
+ &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;h1 id="從registry取得image"&gt;從Registry取得Image
+&lt;/h1&gt;&lt;p&gt;如果沒有提供registry名稱的話，預設是從&lt;a class="link" href="https://hub.docker.com/" target="_blank" rel="noopener"
+ &gt;DockerHub&lt;/a&gt;取得。&lt;br&gt;
+如果不指定的話會下載lates。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image pull nginx&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果想指定版本的話就加入:tag名稱&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image pull nginx:1.20.1&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/Kj3d9t4.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;查看已下載的Image&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image ls&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;顯示Image的相關訊息&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image inspect IMAGE_ID&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;刪除Image&lt;/p&gt;
+&lt;p&gt;如果有容器正在使用，無論是運行中或是關閉狀態，會無法刪除。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image rm IMAGE_ID&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="文件導入image"&gt;文件導入Image
+&lt;/h1&gt;&lt;p&gt;其他兩種都是要在有網路的狀況下才可以使用，若是電腦沒有網路的話，可以使用導入的方式。&lt;/p&gt;
+&lt;p&gt;建構Image指令如下:&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image save nginx[:版本] -o 檔案名稱&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/OmxitSX.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;導入Image&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;docker image load -i 檔案路徑&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/ODhSf7a.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id="從dockerfile建造"&gt;從Dockerfile建造
+&lt;/h1&gt;&lt;p&gt;&lt;a class="link" href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="noopener"
+ &gt;Dockerfile參考&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;將下方兩個檔案存在同一個資料夾：&lt;br&gt;
+檔名：hello.py&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="python" class="language-python"&gt;print("Hello this python!")&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;檔名：dockerfile&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;FROM ubuntu:20.04
+RUN apt-get update &amp;&amp; \
+ DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y python3.9 python3-pip python3.9-dev
+ADD hello.py /
+CMD ["python3", "/hello.py"]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我把這兩個檔案放在名為coding的資料夾裡面。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/ZZQiUBP.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;接下來從dockerfile建構Image:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ -t :替image命名所需帶入
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;docker image build -t hello dockerfile路徑
+docker image ls # 查看是否有名為hello的image&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下圖紅框是我們想要為這個image的命名。&lt;br&gt;
+黃框是dockerfile的路徑。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/4EiTOQO.png" alt="" /&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker run -it hello&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看看有沒有顯示hello.py的字串。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/NjapyIi.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Docker]Interactive mode – 交互式模式(必學)</title><link>https://quietbo.com/2021/07/08/docker-%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%A8%A1%E5%BC%8F/</link><pubDate>Wed, 07 Jul 2021 17:17:04 +0000</pubDate><guid>https://quietbo.com/2021/07/08/docker-%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p&gt;下方有兩個進入shell的範例說明，&lt;br&gt;
+方法一是建立container後直接進入shell，&lt;br&gt;
+方法二是建立container後，再下指令進入運行中的container，我個人是很常用方法二。&lt;/p&gt;
+&lt;p&gt;docker Version: 20.10.7&lt;/p&gt;
+&lt;h2 id="方法一"&gt;方法一
+&lt;/h2&gt;&lt;p&gt;創建ubuntu(或busybox)的container並進入shell&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker container run -it ubuntu sh 
+或
+docker container run -it busybox sh&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用法：&lt;/p&gt;
+&lt;blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"&gt;
+ &lt;p&gt;
+ docker container run [OPTIONS] IMAGE [COMMAND] [ARG…]
+ &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ -it ：啟動容器並進入終端交互模式(it通常是一起使用的)
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;想查看更多_OPTIONS_可輸入&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker container run --help&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;進入某的運行中的容器裡面&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker exec -it CONTAINER_ID sh&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;退出方式有兩種：&lt;/p&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ exit 退出容器後，容器會停止
+ &lt;/li&gt;
+ &lt;li&gt;
+ ctrl+P+Q 退出容器但容器不停止
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="方法二"&gt;方法二
+&lt;/h2&gt;&lt;p&gt;建立nginx的container&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker container run -d -p 80:80 nginx&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查詢CONTAINER ID，輸入指令進到container的內部。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;docker ps
+docker exec -it CONTAINER_ID sh&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用法：&lt;/p&gt;
+&lt;blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"&gt;
+ &lt;p&gt;
+ docker exec [OPTIONS] CONTAINER COMMAND [ARG…]
+ &lt;/p&gt;
+&lt;/blockquote&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/jzzFWkM.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;退出方法兩種：&lt;/p&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ exit 退出容器後，容器不會停止。
+ &lt;/li&gt;
+ &lt;li&gt;
+ ctrl+P+Q 退出容器但容器不停止
+ &lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>[Docker] Run container in the background – detached背景執行</title><link>https://quietbo.com/2021/07/06/docker-detached%E8%83%8C%E6%99%AF%E5%9F%B7%E8%A1%8C/</link><pubDate>Mon, 05 Jul 2021 19:17:38 +0000</pubDate><guid>https://quietbo.com/2021/07/06/docker-detached%E8%83%8C%E6%99%AF%E5%9F%B7%E8%A1%8C/</guid><description>&lt;p&gt;本機:mac M1 11.2.3&lt;br&gt;
+docker: 20.10.7&lt;/p&gt;
+&lt;p&gt;先讓容器在背景保持運作中，不進入shell介面。&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+ &lt;li&gt;
+ run 是pull(下載 image) 和 create（創建容器）和 start（啟動容器）組合在一起的功能。
+ &lt;/li&gt;
+ &lt;li&gt;
+ -d 代表 detach，將docker在背景執行。
+ &lt;/li&gt;
+ &lt;li&gt;
+ -p 80:80是將主機的80port轉到web這個Container的80 port。
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;docker run -d -p 80:80 nginx
+docker ps -a&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;建立完後會跳出一串英數的字串，這是CONTAINER ID，顯示完就會直接回來，且不會卡在shell。&lt;figure class="wp-block-image"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/iWcc1M4.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;用本機的瀏覽器打開網頁，輸入127.0.0.1會看到下圖。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/Ev40ddq.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;回到終端機，會看到終端機還是維持原本的畫面，但正常來說只要有進到網頁，就會有log，如果想要看到log的話，就可以輸入：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker container logs CONTAINER_ID&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這樣就會印出該container的log。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/3uYrAXB.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;但這樣也很麻煩，因為想看log的話就要一直來下指令，下方為自動顯示log的指令：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker container logs -f CONTAINER_ID&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;若是在這時候使用control+C的話，不會將container關閉。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/R8MUnzJ.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;下方指令用attach來連接運行中的container。&lt;br&gt;
+回到container的shell，之後的log會顯示出來。（如果想看之前的紀錄就開另一個終端機去執行logs)&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker"&gt;docker attach CONTAINER_ID&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在attach時使用&lt;code&gt;control+C&lt;/code&gt;就直接被關閉。&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/9NaYIbX.png" alt="" /&gt;&lt;/p&gt;</description></item><item><title>[Docker] 三個基本概念</title><link>https://quietbo.com/2021/07/01/docker-%E4%B8%89%E5%80%8B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link><pubDate>Thu, 01 Jul 2021 11:05:00 +0000</pubDate><guid>https://quietbo.com/2021/07/01/docker-%E4%B8%89%E5%80%8B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid><description>&lt;p&gt;三個基本概念:&lt;/p&gt;
+&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ Image (映像檔)
+ &lt;/li&gt;
+ &lt;li&gt;
+ Container (容器)
+ &lt;/li&gt;
+ &lt;li&gt;
+ repositories (倉庫)
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="image-映像檔"&gt;&lt;span class="ez-toc-section" id="Image_%E6%98%A0%E5%83%8F%E6%AA%94"&gt;&lt;/span&gt;Image (映像檔)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h1&gt;&lt;p&gt;Docker Image是一個唯讀的模板，用來建立 Docker Container(容器)&lt;/p&gt;
+&lt;p&gt;例如：&lt;br&gt;
+一個image包含一個完整的ubuntu，裡面安裝了python3或其它需使用的應用程式。&lt;br&gt;
+Docker 提供了一個非常簡單的方式來建立image或更新現有的image，大部分的使用者可以直接從其他人已經做好的image來下載來用。&lt;/p&gt;
+&lt;h1 id="container容器"&gt;&lt;span class="ez-toc-section" id="Container%E5%AE%B9%E5%99%A8"&gt;&lt;/span&gt;Container(容器)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h1&gt;&lt;p&gt;Docker 利用Container來執行應用。(注意Image是一個唯讀，要有Container才有操作)&lt;br&gt;
+Container是從Image建立的執行實例。主要進行Container的啟動、停止、刪除。而這裡的每個Container都是相互隔離的，彼此不會互相影響。&lt;/p&gt;
+&lt;h1 id="repository倉庫"&gt;&lt;span class="ez-toc-section" id="Repository%E5%80%89%E5%BA%AB"&gt;&lt;/span&gt;Repository(倉庫)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h1&gt;&lt;p&gt;倉庫是集中Image檔案的地方，我看過的幾部教學影片，會把倉庫註冊伺服器(Registry)混為成同一個東西，&lt;br&gt;
+倉庫分為Public(公開)和Private(私有)兩種形式。&lt;/p&gt;
+&lt;p&gt;補充:Registry上存放著多個Repository，每個Repository又有多個Image，每個Image又有不同的版本(也可以當tag標籤)。&lt;/p&gt;
+&lt;h2 id="public公開"&gt;&lt;span class="ez-toc-section" id="Public%E5%85%AC%E9%96%8B"&gt;&lt;/span&gt;Public(公開)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;最大的公開倉庫是大部分人都知道的 Docker Hub。其他的話還有&lt;a rel="noreferrer noopener" href="https://www.redhat.com/zh/technologies/cloud-computing/quay" target="_blank"&gt;紅帽&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="private私有"&gt;&lt;span class="ez-toc-section" id="Private%E7%A7%81%E6%9C%89"&gt;&lt;/span&gt;Private(私有)&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;使用者也可以在本地網路內建立一個私有倉庫。當使用者建立了自己的Image之後就可以使用 push 命令將它上傳到公開或者私有倉庫，這樣下次在另外一台機器上使用這個Image時候，只需要從倉庫上 pull 下來就可以了。&lt;/p&gt;
+&lt;p&gt;來源:&lt;a rel="noreferrer noopener" href="https://philipzheng.gitbook.io/docker_practice/repository" target="_blank"&gt;Docker —— 從入門到實踐&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[Docke] ubuntu 安裝Docke</title><link>https://quietbo.com/2021/05/12/docke-ubuntu-%E5%AE%89%E8%A3%9D/</link><pubDate>Tue, 11 May 2021 17:56:00 +0000</pubDate><guid>https://quietbo.com/2021/05/12/docke-ubuntu-%E5%AE%89%E8%A3%9D/</guid><description>&lt;p&gt;以下為ubuntu20.04&lt;/p&gt;
+&lt;div id="ez-toc-container" class="ez-toc-v2_0_82_2 ez-toc-wrap-center counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction"&gt;
+ &lt;div class="ez-toc-title-container"&gt;
+ &lt;p class="ez-toc-title" style="cursor:inherit"&gt;
+ Table of Contents
+ &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;ez-toc-title-toggle&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle&amp;quot; aria-label=&amp;quot;顯示/隱藏內容目錄&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-js-icon-con&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;eztoc-hide&amp;quot; style=&amp;quot;display:none;&amp;quot;&amp;gt;Toggle&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;ez-toc-icon-toggle-span&amp;quot;&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;list-377408&amp;quot; width=&amp;quot;20px&amp;quot; height=&amp;quot;20px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; fill=&amp;quot;none&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt;&amp;lt;/path&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;svg style=&amp;quot;fill: #999;color:#999&amp;quot; class=&amp;quot;arrow-unsorted-368013&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;10px&amp;quot; height=&amp;quot;10px&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; version=&amp;quot;1.2&amp;quot; baseProfile=&amp;quot;tiny&amp;quot;&amp;gt;&amp;lt;path d=&amp;quot;M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+ &lt;/div&gt;&lt;nav&gt;
+ &lt;ul class='ez-toc-list ez-toc-list-level-1 ' &gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-1" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#Linux_%E5%AE%89%E8%A3%9Ddocker" &gt;Linux 安裝docker&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-2" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#Linux_%E5%AE%89%E8%A3%9Ddocker_Compose" &gt;Linux 安裝docker Compose&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-3" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#docker_%E5%88%87%E6%8F%9B%E4%BD%BF%E7%94%A8%E8%80%85" &gt;docker 切換使用者&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-4" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#%E6%9B%B4%E6%96%B0apt%E5%8C%85%E8%B5%84%E6%BA%90%E7%B4%A2%E5%BC%95" &gt;更新apt包资源索引&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-5" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#%E5%AE%89%E8%A3%9D%E8%BB%9F%E4%BB%B6%E5%8C%85%E4%BB%A5%E5%85%81%E8%A8%B1apt%E9%80%9A%E9%81%8EHTTPS%E4%BD%BF%E7%94%A8%E5%AD%98%E5%84%B2%E5%BA%AB" &gt;安裝軟件包以允許apt通過HTTPS使用存儲庫:&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li class='ez-toc-page-1 ez-toc-heading-level-2'&gt;
+ &lt;a class="ez-toc-link ez-toc-heading-6" href="https://quietbo.com/2021/05/12/docke-ubuntu-%e5%ae%89%e8%a3%9d/#%E9%87%8D%E6%96%B0%E9%96%8B%E5%95%9Fdocker" &gt;重新開啟docker&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;h2 id="linux-安裝docker"&gt;&lt;span class="ez-toc-section" id="Linux_%E5%AE%89%E8%A3%9Ddocker"&gt;&lt;/span&gt;Linux 安裝docker&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;在 Ubuntu Linux 中，使用 apt 安裝 Docker 比較方便：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo apt-get install docker.io&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/6z0wwDO.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;安裝好之後，查看一下 docker 服務是否有正常啟動：&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;service docker status&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;正常的話，應該可以看到綠色的狀態：&lt;br&gt;
+&lt;img decoding="async" src="https://i.imgur.com/UMvvP4N.png" alt="" /&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo usermod -aG docker 使用者名稱&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/SgP2HST.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;docker version&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/QvrXKqq.png" alt="" /&gt; &lt;/figure&gt; &lt;figure class="wp-block-image"&gt;&lt;img decoding="async" src="https://i.imgur.com/B5QPKn6.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="linux-安裝docker-compose"&gt;&lt;span class="ez-toc-section" id="Linux_%E5%AE%89%E8%A3%9Ddocker_Compose"&gt;&lt;/span&gt;Linux 安裝docker Compose&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;sudo gpasswd -a ${USER} docker&lt;/code&gt;&lt;/pre&gt;&lt;figure class="wp-block-image"&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://i.imgur.com/L9WTE0i.png" alt="" /&gt; &lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id="docker-切換使用者"&gt;&lt;span class="ez-toc-section" id="docker_%E5%88%87%E6%8F%9B%E4%BD%BF%E7%94%A8%E8%80%85"&gt;&lt;/span&gt;docker 切換使用者&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;ol class="wp-block-list"&gt;
+ &lt;li&gt;
+ 將使用者加入群組
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo gpasswd -a ${USER} docker&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="2"&gt;
+ &lt;li&gt;
+ 切換到超級使用者
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo su&lt;/code&gt;&lt;/pre&gt;
+&lt;ol class="wp-block-list" start="3"&gt;
+ &lt;li&gt;
+ 切回使用者
+ &lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;su ubuntu&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="更新apt包资源索引"&gt;&lt;span class="ez-toc-section" id="%E6%9B%B4%E6%96%B0apt%E5%8C%85%E8%B5%84%E6%BA%90%E7%B4%A2%E5%BC%95"&gt;&lt;/span&gt;更新apt包资源索引&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo apt-get update&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="安裝軟件包以允許apt通過https使用存儲庫"&gt;&lt;span class="ez-toc-section" id="%E5%AE%89%E8%A3%9D%E8%BB%9F%E4%BB%B6%E5%8C%85%E4%BB%A5%E5%85%81%E8%A8%B1apt%E9%80%9A%E9%81%8EHTTPS%E4%BD%BF%E7%94%A8%E5%AD%98%E5%84%B2%E5%BA%AB"&gt;&lt;/span&gt;安裝軟件包以允許apt通過HTTPS使用存儲庫:&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;pre class="wp-block-code"&gt;&lt;code class=""&gt;sudo apt-get install \
+ apt-transport-https \
+ ca-certificates \
+ curl \
+ software-properties-common&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="重新開啟docker"&gt;&lt;span class="ez-toc-section" id="%E9%87%8D%E6%96%B0%E9%96%8B%E5%95%9Fdocker"&gt;&lt;/span&gt;重新開啟docker&lt;span class="ez-toc-section-end"&gt;&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;有次早上要執行docker-compose的時候無法正常開啟，出現下方錯誤訊息&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="bash" class="language-bash"&gt;ERROR: Couldn't connect to Docker daemon at http+docker://localhost - is it running?
+
+If it's at a non-standard location, specify the URL with the DOCKER_HOST environment variable.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;當時已經設好群組卻還是一樣，所以有可能就是docker不知道原因**&lt;span style="text-decoration: underline;"&gt;被關閉&lt;/span&gt;**了。&lt;br&gt;
+下方指令為重新開啟docker的方式。&lt;/p&gt;
+&lt;pre class="wp-block-code"&gt;&lt;code lang="docker" class="language-docker line-numbers"&gt;service docker start
+sudo docker-compose up&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>
