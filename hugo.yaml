@@ -5,6 +5,10 @@ title: "Quietbo"
 theme: "hugo-theme-stack"
 summaryLength: 20 
 
+services:
+  googleAnalytics:
+    ID: G-PB19V9H0ZT
+    
 params:
   sidebar:
     emoji: ""
