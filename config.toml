@@ -19,7 +19,7 @@ disqusShortname = "" # Enable comments by entering your Disqus shortname
   pager = true
   post_meta = ["date", "categories"] # Order of post meta information
   mainSections = ["post", "docs"]
-  googleAnalytics = "G-PB19V9H0ZT"
+  googleAnalytics = ""
 
 [Params.logo]
   subtitle = "Just another site" # Logo subtitle
